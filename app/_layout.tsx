@@ -11,7 +11,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import "react-native-reanimated";
 import "../global.css";
-import CustomHeader from "@/components/CustomHeader";
+import CustomHeader from "@/components/CustomGreenButton";
 import { Text, View } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Colors } from "@/constants/Colors";
@@ -53,9 +53,10 @@ export default function RootLayout() {
             headerShadowVisible: false,
             headerTitle: "",
             headerLeft: () => (
-              <Link to="/(tabs)/index.tsx">
-                <Text className="font-[WantedM] text-[20px]"> yom</Text>
-              </Link>
+              <Text className="font-[WantedM] text-[20px] text-yomBlack">
+                {" "}
+                yom
+              </Text>
             ),
             headerRight: () => (
               <Link to="/notification">

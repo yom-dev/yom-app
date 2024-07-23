@@ -19,6 +19,7 @@ export const Colors = {
     yomGray: "#626262",
     yomRed: "#FE555D",
     yomGreen: "#32A079",
+    yomWhite: "#F9F8F4",
     // icon: "#31A063",
     // tabIconDefault: "#6C6C6C",
     // tabIconSelected: "#31A063",
