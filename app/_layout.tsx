@@ -46,8 +46,9 @@ export default function RootLayout() {
           name="(tabs)"
           options={{
             headerShown: true,
-            headerTitle: "",
             headerShadowVisible: false,
+
+            headerTitle: "",
 
             headerLeft: () => (
               <Text className="font-[WantedM] text-[20px]"> yom</Text>
