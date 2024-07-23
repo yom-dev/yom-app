@@ -1,7 +1,9 @@
 import {
   DarkTheme,
   DefaultTheme,
+  Link,
   ThemeProvider,
+  useNavigation, // Import useNavigation
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
@@ -29,6 +31,8 @@ export default function RootLayout() {
     WantedEB: require("../assets/fonts/WantedSans-ExtraBold.otf"),
   });
 
+  const navigation = useNavigation(); // Use the useNavigation hook
+
   useEffect(() => {
     if (loaded) {
       SplashScreen.hideAsync();
@@ -47,18 +51,20 @@ export default function RootLayout() {
           options={{
             headerShown: true,
             headerShadowVisible: false,
-
             headerTitle: "",
-
             headerLeft: () => (
-              <Text className="font-[WantedM] text-[20px]"> yom</Text>
+              <Link to="/(tabs)/index.tsx">
+                <Text className="font-[WantedM] text-[20px]"> yom</Text>
+              </Link>
             ),
             headerRight: () => (
-              <Ionicons
-                name="notifications-outline"
-                size={24}
-                color={"#000000"}
-              />
+              <Link to="/notification">
+                <Ionicons
+                  name="notifications-outline"
+                  size={24}
+                  color={"#000000"}
+                />
+              </Link>
             ),
             headerStyle: {
               backgroundColor: Colors.light.background,
@@ -66,6 +72,25 @@ export default function RootLayout() {
           }}
         />
         <Stack.Screen name="+not-found" />
+        <Stack.Screen
+          name="notification"
+          options={{
+            headerShown: true,
+            headerShadowVisible: false,
+            headerTitle: "",
+            headerBackground() {
+              return <View className="bg-yomWhite w-full h-full" />;
+            },
+            headerLeft: () => (
+              <Ionicons
+                name="arrow-back"
+                size={24}
+                color={"#000000"}
+                onPress={navigation.goBack} // Update to use navigation.goBack
+              />
+            ),
+          }}
+        />
       </Stack>
     </ThemeProvider>
   );
