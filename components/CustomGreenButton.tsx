@@ -13,8 +13,8 @@ const CustomGreenButton = ({
 
   return (
     <View>
-      <Pressable className="w-full h-full bg-yomGreen flex justify-center items-center rounded-full">
-        <Text>{title}</Text>
+      <Pressable className="w-full h-full bg-yomGreen flex justify-center items-center rounded-full ">
+        <Text className="text-yomWhite font-[WantedSB]">{title}</Text>
       </Pressable>
     </View>
   );
