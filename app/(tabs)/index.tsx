@@ -1,6 +1,6 @@
 import CustomGreenButton from "@/components/CustomGreenButton";
 import CustomWhiteButton from "@/components/CustomWhiteButton";
-import { View, Text, Button } from "react-native";
+import { View, Text, Button, Pressable } from "react-native";
 import { Colors } from "@/constants/Colors";
 
 export default function HomeScreen() {
