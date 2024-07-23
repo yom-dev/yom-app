@@ -13,7 +13,7 @@ export default function HomeScreen() {
           title="저장하기"
           titleSize={14}
           backgroundColor="yomGreen"
-          activeBackgroundColor="yomDeepGreen"
+          activeBackgroundColor="yomDarkGreen"
           textColor="yomWhite"
         />
       </View>
@@ -22,7 +22,7 @@ export default function HomeScreen() {
           title="저장하기"
           titleSize={14}
           backgroundColor="yomWhite"
-          activeBackgroundColor="yomLigthGray"
+          activeBackgroundColor="yomLightGray"
           textColor="yomGreen"
         />
       </View>

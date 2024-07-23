@@ -6,15 +6,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        tabGray: "#6C6C6C",
-        tabGreen: "#31A063",
+        tabGray: "#6c6c6c",
+        tabGreen: "#31a063",
         yomBlack: "#181818",
         yomGray: "#626262",
-        yomRed: "#FE555D",
-        yomGreen: "#32A079",
+        yomRed: "#fe555d",
+        yomGreen: "#32a079",
         yomDarkGreen: "#298665",
-        yomWhite: "#F9F8F4",
-        yomLightGray: "#F1F1F1",
+        yomWhite: "#f9f8f4",
+        yomLightGray: "#f1f1f1",
       },
     },
   },
