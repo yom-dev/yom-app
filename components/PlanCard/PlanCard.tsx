@@ -1,7 +1,6 @@
-import { View, Text } from "react-native";
+import { View, Text, ImageBackground } from "react-native";
 import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
-import { ImageBackground } from "react-native";
 
 const PlanCard = ({
   size,
@@ -54,6 +53,8 @@ const PlanCard = ({
     book: "@/assets/images/book-icon.png",
   };
 
+  const image = { url: iconVariants[icon] };
+
   return (
     <View className={`${sizeVariants[size]}`}>
       <LinearGradient
@@ -71,7 +72,7 @@ const PlanCard = ({
           <View className="w-full h-full flex-row justify-end items-start mt-[5px]">
             <View className="w-[90%] h-[70%]">
               <ImageBackground
-                source={`${iconVariants[icon]}`}
+                source={image}
                 className="w-full h-full flex justify-center items-center"
                 resizeMode="contain"
                 // style={width: iconWidth, height:iconHeight}
