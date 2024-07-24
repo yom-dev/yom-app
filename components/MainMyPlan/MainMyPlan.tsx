@@ -7,7 +7,7 @@ import { AntDesign } from "@expo/vector-icons";
 const MainMyPlan = () => {
   return (
     <View className="w-full h-full">
-      <View className="w-full h-[25%] flex flex-row justify-between items-end">
+      <View className="w-full h-fit flex flex-row justify-between items-end">
         <Text className="text-[24px] text-yomBlack font-[WantedSB]">
           내 플랜
         </Text>
