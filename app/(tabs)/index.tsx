@@ -20,9 +20,11 @@ export default function HomeScreen() {
           <View className="w-full h-[400px] mt-[20px]">
             <MainCard />
           </View>
-          <View className="w-full h-[280px] mt-[35px]">
+          <View className="w-full h-[215px] mt-[35px]">
             <MainMyPlan />
           </View>
+
+          <View className="w-full h-[50px]"></View>
         </ScrollView>
       </View>
     </View>
