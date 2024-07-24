@@ -11,7 +11,10 @@ export default function HomeScreen() {
   return (
     <View className="h-full w-full bg-yomWhite flex items-center">
       <View className="bg-yomWhite w-[90%] flex h-full">
-        <ScrollView className="w-full h-full">
+        <ScrollView
+          className="w-full h-full"
+          showsVerticalScrollIndicator={false}
+        >
           <View className="h-fit flex flex-col justify-end mt-[20px]">
             <Text className="text-[32px] text-yomBlack font-[WantedSB]">
               상훈님, 반가워요.
