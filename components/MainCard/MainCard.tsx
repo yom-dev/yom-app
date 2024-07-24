@@ -22,10 +22,9 @@ const MainCard = () => {
           </View>
 
           <View className="w-full h-[60%] flex justify-center items-center">
-            <Text className="font-[WantedM] text-[24px] text-yomWhite opacity-40">
+            <Text className="font-[WantedM] text-[24px] text-yomWhite opacity-40 text-center">
               오늘 하루
-            </Text>
-            <Text className="font-[WantedM] text-[24px] text-yomWhite opacity-40">
+              {"\n"}
               감사하셨나요?
             </Text>
           </View>
