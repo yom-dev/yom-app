@@ -29,7 +29,7 @@ const MainCard = () => {
             </Text>
           </View>
           <View className="h-[20%] flex justify-end">
-            <View className="h-[68%] w-full">
+            <View className="h-[80%] w-full">
               <CustomButton
                 title="작성하기"
                 titleSize={14}
