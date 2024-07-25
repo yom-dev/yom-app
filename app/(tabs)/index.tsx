@@ -3,7 +3,6 @@ import { View, Text, Button, Pressable, ScrollView } from "react-native";
 import { Colors } from "@/constants/Colors";
 import MainCard from "@/components/MainCard/MainCard";
 import { Link } from "expo-router";
-import AntDesign from "@expo/vector-icons/AntDesign";
 import MainMyPlan from "@/components/MainMyPlan/MainMyPlan";
 import { useState } from "react";
 import GratitudeModal from "@/components/Modal/GratitudeModal";
