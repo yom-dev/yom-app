@@ -1,16 +1,29 @@
-import Ionicons from "@expo/vector-icons/Ionicons";
-import { StyleSheet, Image, Platform, View, Text } from "react-native";
-
-import { Collapsible } from "@/components/default/Collapsible";
-import { ExternalLink } from "@/components/default/ExternalLink";
-import ParallaxScrollView from "@/components/default/ParallaxScrollView";
-import { ThemedText } from "@/components/default/ThemedText";
-import { ThemedView } from "@/components/default/ThemedView";
+import {
+  StyleSheet,
+  Image,
+  Platform,
+  View,
+  Text,
+  ScrollView,
+} from "react-native";
 
 export default function Plan() {
   return (
-    <View className="bg-yomWhite w-full flex h-full px-[20px] py-[20px]">
-      <Text className="text-[32px] text-black font-[WantedSB]">플랜</Text>
+    <View className="h-full w-full bg-yomWhite flex items-center">
+      <View className="bg-yomWhite w-[90%] flex h-full">
+        <ScrollView
+          className="w-full h-full"
+          showsVerticalScrollIndicator={false}
+        >
+          <View className="h-fit flex flex-col justify-end mt-[20px]">
+            <Text className="text-[32px] text-yomBlack font-[WantedSB]">
+              플랜
+            </Text>
+          </View>
+
+          <View className="w-full h-[50px]"></View>
+        </ScrollView>
+      </View>
     </View>
   );
 }

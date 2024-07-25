@@ -1,8 +1,12 @@
-import { View, Text, ImageBackground } from "react-native";
+import { View, Text, ImageBackground, Pressable } from "react-native";
 import CustomButton from "@/components/Button/CustomButton";
 import React from "react";
 
-const MainCard = () => {
+interface MainCardProps {
+  onPress: () => void;
+}
+
+const MainCard: React.FC<MainCardProps> = ({ onPress }) => {
   return (
     <View className="bg-yomBlack w-full h-full border-none rounded-2xl overflow-hidden ">
       <ImageBackground
@@ -36,6 +40,7 @@ const MainCard = () => {
                 backgroundColor="yomWhite"
                 activeBackgroundColor="yomLightGray"
                 textColor="yomGreen"
+                onPress={onPress}
               />
             </View>
           </View>

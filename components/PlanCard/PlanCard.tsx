@@ -1,5 +1,5 @@
 import { View, Text, ImageBackground } from "react-native";
-import React from "react";
+import { useState, useEffect } from "react";
 import { LinearGradient } from "expo-linear-gradient";
 
 const PlanCard = ({
@@ -47,14 +47,6 @@ const PlanCard = ({
     large: "text-[21px] font-[WantedM] text-yomWhite",
   };
 
-  const iconVariants: { [key: string]: string } = {
-    tree: "@/assets/images/tree-icon.png",
-    dumbell: "@/assets/images/dumbell-icon.png",
-    book: "@/assets/images/book-icon.png",
-  };
-
-  const image = { url: iconVariants[icon] };
-
   return (
     <View className={`${sizeVariants[size]}`}>
       <LinearGradient
@@ -70,14 +62,14 @@ const PlanCard = ({
           </View>
 
           <View className="w-full h-full flex-row justify-end items-start mt-[5px]">
-            <View className="w-[90%] h-[70%]">
-              <ImageBackground
-                source={image}
+            <View className="w-[95%] h-[70%] bg-slate-400">
+              {/* <ImageBackground
+                source={icon}
                 className="w-full h-full flex justify-center items-center"
                 resizeMode="contain"
                 // style={width: iconWidth, height:iconHeight}
                 // ImageBackground에 직접 borderRadius 추가
-              />
+              /> */}
             </View>
           </View>
         </View>

@@ -7,12 +7,14 @@ const CustomButton = ({
   backgroundColor,
   textColor,
   activeBackgroundColor,
+  onPress,
 }: {
   title: string;
   titleSize: number;
   backgroundColor: string;
   textColor: string;
   activeBackgroundColor: string;
+  onPress: () => void;
 }) => {
   const bgColorVariants: { [key: string]: string } = {
     yomGreen: "bg-yomGreen",
@@ -46,6 +48,7 @@ const CustomButton = ({
   return (
     <Pressable
       className={`w-full h-full ${bgColorVariants[backgroundColor]} flex justify-center items-center rounded-full active:opacity-90 ${bgColorVariantsActive[activeBackgroundColor]}`}
+      onPress={onPress}
     >
       <Text className={`${textColorVariants[textColor]} font-[WantedSB]`}>
         {title}
