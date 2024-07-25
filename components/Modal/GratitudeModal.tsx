@@ -28,8 +28,8 @@ const GratitudeModal: React.FC<GratitudeModalProps> = ({
       presentationStyle="pageSheet"
       animationType="slide"
     >
-      <View className="h-full w-full bg-yomWhite flex items-center">
-        <View className="bg-yomWhite w-[90%] flex h-full">
+      <View className="h-full w-full bg-white flex items-center">
+        <View className="bg-white w-[90%] flex h-full">
           <ModalHeader onRequestClose={onRequestClose} />
 
           <ScrollView
@@ -44,10 +44,16 @@ const GratitudeModal: React.FC<GratitudeModalProps> = ({
                 style={{ borderRadius: 20 }} // ImageBackground에 직접 borderRadius 추가
               />
             </View>
-            <View className="">
+
+            <View>
+              <Text className="text-[16px] font-[WantedSB] mt-[55px]">
+                오늘 하루 감사한 일은 어떤 것들이 있었나요?
+              </Text>
+            </View>
+            <View className="h-[230px] mt-[30px]">
               <ModalContent />
             </View>
-            <View className="w-full h-[50px]">
+            <View className="w-full h-[50px] mt-[35px]">
               <CustomButton
                 title="저장하기"
                 titleSize={18}
