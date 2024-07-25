@@ -50,7 +50,7 @@ const GratitudeModal: React.FC<GratitudeModalProps> = ({
                 오늘 하루 감사한 일은 어떤 것들이 있었나요?
               </Text>
             </View>
-            <View className="h-[230px] mt-[30px]">
+            <View className="h-[220px] mt-[30px]">
               <ModalContent />
             </View>
             <View className="w-full h-[50px] mt-[35px]">

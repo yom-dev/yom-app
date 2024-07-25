@@ -3,24 +3,18 @@ import { useState, useEffect } from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import { Image } from "expo-image";
 
-const PlanCard = ({
+const PlanCardReading = ({
   size,
   startColor,
   endColor,
   title,
   subTitle,
-  icon,
-  iconWidth,
-  iconHeight,
 }: {
   size: string;
   startColor: string;
   endColor: string;
   title: string;
   subTitle: string;
-  icon: string;
-  iconWidth: number;
-  iconHeight: number;
 }) => {
   const sizeVariants: { [key: string]: string } = {
     small: "w-[105px] h-[135px] rounded-[25px] border-none",
@@ -65,8 +59,8 @@ const PlanCard = ({
 
             <View className="w-full h-[65%] flex-row ">
               <ImageBackground
-                source={require("@/assets/images/tree-icon.png")}
-                className="w-full h-full ml-[15px]"
+                source={require("@/assets/images/book-icon.png")}
+                className="w-full h-full ml-[10px]"
                 resizeMode="contain"
                 // style={width: iconWidth, height:iconHeight}
                 // ImageBackground에 직접 borderRadius 추가
@@ -79,4 +73,4 @@ const PlanCard = ({
   );
 };
 
-export default PlanCard;
+export default PlanCardReading;

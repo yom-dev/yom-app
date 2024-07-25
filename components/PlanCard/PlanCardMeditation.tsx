@@ -3,24 +3,18 @@ import { useState, useEffect } from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import { Image } from "expo-image";
 
-const PlanCard = ({
+const PlanCardMeditation = ({
   size,
   startColor,
   endColor,
   title,
   subTitle,
-  icon,
-  iconWidth,
-  iconHeight,
 }: {
   size: string;
   startColor: string;
   endColor: string;
   title: string;
   subTitle: string;
-  icon: string;
-  iconWidth: number;
-  iconHeight: number;
 }) => {
   const sizeVariants: { [key: string]: string } = {
     small: "w-[105px] h-[135px] rounded-[25px] border-none",
@@ -79,4 +73,4 @@ const PlanCard = ({
   );
 };
 
-export default PlanCard;
+export default PlanCardMeditation;
