@@ -1,3 +1,4 @@
+import MainCarousel from "@/components/Carousel/MainCarousel";
 import {
   StyleSheet,
   Image,
@@ -20,6 +21,8 @@ export default function Plan() {
               플랜
             </Text>
           </View>
+
+          <MainCarousel />
 
           <View className="w-full h-[50px]"></View>
         </ScrollView>

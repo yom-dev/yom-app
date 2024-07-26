@@ -3,6 +3,7 @@ import MainCard from "@/components/MainCard/MainCard";
 import MainMyPlan from "@/components/MainMyPlan/MainMyPlan";
 import { useState } from "react";
 import GratitudeModal from "@/components/Modal/GratitudeModal";
+import MainCarousel from "@/components/Carousel/MainCarousel";
 
 export default function HomeScreen() {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -31,6 +32,7 @@ export default function HomeScreen() {
           {/* 메인 카드 */}
           <View className="w-full h-[400px] mt-[20px]">
             <MainCard onPress={handleModalOpen} />
+            {/* <MainCarousel /> */}
           </View>
 
           {/* 내 플랜 */}
