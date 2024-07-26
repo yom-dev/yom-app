@@ -11,6 +11,7 @@ import React, { useState } from "react";
 import ModalHeader from "@/components/Modal/ModalHeader";
 import CustomButton from "@/components/Button/CustomButton";
 import ModalContent from "./ModalContent";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 interface GratitudeModalProps extends ModalProps {
   visible: boolean;
@@ -32,7 +33,7 @@ const GratitudeModal: React.FC<GratitudeModalProps> = ({
         <View className="bg-white w-[90%] flex h-full">
           <ModalHeader onRequestClose={onRequestClose} />
 
-          <ScrollView
+          <KeyboardAwareScrollView
             className="w-full h-full"
             showsVerticalScrollIndicator={false}
           >
@@ -50,7 +51,7 @@ const GratitudeModal: React.FC<GratitudeModalProps> = ({
                 오늘 하루 감사한 일은 어떤 것들이 있었나요?
               </Text>
             </View>
-            <View className="h-[220px] mt-[30px]">
+            <View className="h-[220px] mt-[30px] flex">
               <ModalContent />
             </View>
             <View className="w-full h-[50px] mt-[35px]">
@@ -63,7 +64,7 @@ const GratitudeModal: React.FC<GratitudeModalProps> = ({
                 onPress={onRequestClose}
               />
             </View>
-          </ScrollView>
+          </KeyboardAwareScrollView>
         </View>
       </View>
     </Modal>
