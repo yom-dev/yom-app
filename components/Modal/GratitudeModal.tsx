@@ -36,6 +36,8 @@ const GratitudeModal: React.FC<GratitudeModalProps> = ({
           <KeyboardAwareScrollView
             className="w-full h-full"
             showsVerticalScrollIndicator={false}
+            extraScrollHeight={30}
+            keyboardOpeningTime={100}
           >
             <View className="w-full h-[200px] mt-[60px]">
               <ImageBackground
