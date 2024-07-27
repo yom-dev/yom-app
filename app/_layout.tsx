@@ -55,7 +55,6 @@ export default function RootLayout() {
             headerTitle: "",
             headerLeft: () => (
               <Text className="font-[WantedM] text-[20px] text-yomBlack">
-                {" "}
                 yom
               </Text>
             ),

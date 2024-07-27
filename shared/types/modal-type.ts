@@ -1,4 +1,4 @@
-export type ModalType = "gratitude";
+export type ModalType = "gratitude" | "gratitude-info";
 
 export interface ModalStore {
   type: ModalType | null;
