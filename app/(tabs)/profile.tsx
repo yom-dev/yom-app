@@ -1,5 +1,5 @@
 import { View, Text, ScrollView } from "react-native";
-import MainCard from "@/components/MainCard/MainCard";
+import MainCard from "@/components/MainCard/GratitudeMainCard/GratitudeMainCard";
 import MainCarousel from "@/components/Carousel/MainCarousel";
 
 export default function profile() {

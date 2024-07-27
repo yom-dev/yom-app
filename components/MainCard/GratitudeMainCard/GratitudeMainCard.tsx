@@ -3,7 +3,7 @@ import CustomButton from "@/components/Button/CustomButton";
 import React from "react";
 import { useModal } from "@/shared/store/use-modal-store";
 
-const MainCard: React.FC = ({}) => {
+const GratitudeMainCard: React.FC = ({}) => {
   const { onOpen } = useModal();
   return (
     <View className="bg-yomBlack w-full h-full border-none rounded-2xl overflow-hidden ">
@@ -53,4 +53,4 @@ const MainCard: React.FC = ({}) => {
   );
 };
 
-export default MainCard;
+export default GratitudeMainCard;

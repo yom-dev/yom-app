@@ -1,5 +1,4 @@
 import { View, Text, Button, Pressable, ScrollView } from "react-native";
-import MainCard from "@/components/MainCard/MainCard";
 import MainMyPlan from "@/components/MainMyPlan/MainMyPlan";
 import { useState } from "react";
 import MainCarousel from "@/components/Carousel/MainCarousel";
