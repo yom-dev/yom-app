@@ -1,5 +1,6 @@
 import { View, Text, ScrollView } from "react-native";
 import MainCard from "@/components/MainCard/MainCard";
+import MainCarousel from "@/components/Carousel/MainCarousel";
 
 export default function profile() {
   return (
@@ -14,9 +15,7 @@ export default function profile() {
               프로필
             </Text>
           </View>
-          <View className="w-full h-[200px]">
-            <MainCard />
-          </View>
+          <View className="w-full h-[450px]"></View>
 
           <View className="w-full h-[50px]"></View>
         </ScrollView>

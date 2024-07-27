@@ -2,6 +2,7 @@ import { View, Text, Button, Pressable, ScrollView } from "react-native";
 import MainCard from "@/components/MainCard/MainCard";
 import MainMyPlan from "@/components/MainMyPlan/MainMyPlan";
 import { useState } from "react";
+import MainCarousel from "@/components/Carousel/MainCarousel";
 
 export default function HomeScreen() {
   return (
@@ -19,10 +20,10 @@ export default function HomeScreen() {
             </Text>
           </View>
 
-          {/* 메인 카드 */}
-          <View className="w-full h-[400px] mt-[20px]">
-            <MainCard />
-            {/* <MainCarousel /> */}
+          {/* 메인 카드:  */}
+          <View className="w-full h-[410px] mt-[20px]">
+            {/* <MainCard /> */}
+            <MainCarousel itemHeight={400} containerHeight={410} />
           </View>
 
           {/* 내 플랜 */}
