@@ -1,12 +1,10 @@
 import { View, Text, ImageBackground, Pressable } from "react-native";
 import CustomButton from "@/components/Button/CustomButton";
 import React from "react";
+import { useModal } from "@/shared/store/use-modal-store";
 
-interface MainCardProps {
-  onPress: () => void;
-}
-
-const MainCard: React.FC<MainCardProps> = ({ onPress }) => {
+const MainCard: React.FC = ({}) => {
+  const { onOpen } = useModal();
   return (
     <View className="bg-yomBlack w-full h-full border-none rounded-2xl overflow-hidden ">
       {/*배경화면 설정*/}
@@ -45,7 +43,7 @@ const MainCard: React.FC<MainCardProps> = ({ onPress }) => {
                 backgroundColor="yomWhite"
                 activeBackgroundColor="yomLightGray"
                 textColor="yomGreen"
-                onPress={onPress}
+                onPress={() => onOpen("gratitude")}
               />
             </View>
           </View>

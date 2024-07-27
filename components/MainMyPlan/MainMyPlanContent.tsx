@@ -18,7 +18,7 @@ const MainMyPlanContent = () => {
               size="medium"
               startColor="#9bd069"
               endColor="#d0ad69"
-              title="Meditation"
+              title="명상"
               subTitle="Coming Soon"
             />
           </View>
@@ -27,7 +27,7 @@ const MainMyPlanContent = () => {
               size="medium"
               startColor="#979797"
               endColor="#CAC9C9"
-              title="Workout"
+              title="근력 운동"
               subTitle="Coming Soon"
             />
           </View>
@@ -37,7 +37,7 @@ const MainMyPlanContent = () => {
               size="medium"
               startColor="#615EE2"
               endColor="#BA8DF3"
-              title="Reading"
+              title="독서"
               subTitle="Coming Soon"
             />
           </View>
@@ -47,7 +47,7 @@ const MainMyPlanContent = () => {
               size="medium"
               startColor="#EEA901"
               endColor="#F0DDAD"
-              title="Vocab"
+              title="영어단어"
               subTitle="Coming Soon"
             />
           </View>

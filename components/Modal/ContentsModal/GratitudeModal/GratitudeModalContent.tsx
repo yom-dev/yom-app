@@ -1,7 +1,7 @@
 import { KeyboardAvoidingView, View, Text, TextInput } from "react-native";
 import React from "react";
 
-const ModalContent = () => {
+const GratitudeModalContent = () => {
   return (
     <KeyboardAvoidingView
       className="flex"
@@ -48,4 +48,4 @@ const ModalContent = () => {
   );
 };
 
-export default ModalContent;
+export default GratitudeModalContent;

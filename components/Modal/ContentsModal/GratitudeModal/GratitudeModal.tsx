@@ -1,40 +1,30 @@
-import {
-  View,
-  Text,
-  Modal,
-  ModalProps,
-  Pressable,
-  ScrollView,
-  ImageBackground,
-} from "react-native";
-import React, { useState } from "react";
+import React from "react";
+import { View, Text, Modal, ModalProps, ImageBackground } from "react-native";
 import ModalHeader from "@/components/Modal/ModalHeader";
 import CustomButton from "@/components/Button/CustomButton";
-import ModalContent from "./ModalContent";
+import GratitudeModalContent from "@/components/Modal/ContentsModal/GratitudeModal/GratitudeModalContent";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import { useModal } from "@/shared/store/use-modal-store";
 
 interface GratitudeModalProps extends ModalProps {
   visible: boolean;
-  onRequestClose: () => void;
 }
 
-const GratitudeModal: React.FC<GratitudeModalProps> = ({
-  visible,
-  onRequestClose,
-}) => {
+const GratitudeModal: React.FC<GratitudeModalProps> = ({ visible }) => {
+  const { onClose } = useModal();
+
   return (
     <Modal
       visible={visible}
-      onRequestClose={onRequestClose}
+      onRequestClose={onClose}
       presentationStyle="pageSheet"
       animationType="slide"
     >
-      <View className="h-full w-full bg-white flex items-center">
-        <View className="bg-white w-[90%] flex h-full">
-          <ModalHeader onRequestClose={onRequestClose} />
-
+      <View style={{ flex: 1, alignItems: "center", backgroundColor: "white" }}>
+        <View style={{ width: "90%", flex: 1 }}>
+          <ModalHeader onRequestClose={onClose} />
           <KeyboardAwareScrollView
-            className="w-full h-full"
+            style={{ flex: 1 }}
             showsVerticalScrollIndicator={false}
             extraScrollHeight={30}
             keyboardOpeningTime={100}
@@ -54,7 +44,7 @@ const GratitudeModal: React.FC<GratitudeModalProps> = ({
               </Text>
             </View>
             <View className="h-[220px] mt-[30px] flex">
-              <ModalContent />
+              <GratitudeModalContent />
             </View>
             <View className="w-full h-[50px] mt-[35px]">
               <CustomButton
@@ -63,7 +53,9 @@ const GratitudeModal: React.FC<GratitudeModalProps> = ({
                 backgroundColor="yomGreen"
                 activeBackgroundColor="yomDarkGreen"
                 textColor="yomWhite"
-                onPress={onRequestClose}
+                onPress={() => {
+                  onClose();
+                }}
               />
             </View>
           </KeyboardAwareScrollView>
