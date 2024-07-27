@@ -7,6 +7,10 @@ import {
   Text,
   ScrollView,
 } from "react-native";
+import Carousel from "react-native-reanimated-carousel";
+import MainCard from "@/components/MainCard/MainCard";
+import PlanCard from "@/components/PlanCard/PlanCard";
+import PlanCardMeditation from "@/components/PlanCard/PlanCardMeditation";
 
 export default function Plan() {
   return (

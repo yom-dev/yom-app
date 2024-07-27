@@ -1,4 +1,5 @@
 import { View, Text, ScrollView } from "react-native";
+import MainCard from "@/components/MainCard/MainCard";
 
 export default function profile() {
   return (
@@ -12,6 +13,9 @@ export default function profile() {
             <Text className="text-[32px] text-yomBlack font-[WantedSB]">
               프로필
             </Text>
+          </View>
+          <View className="w-full h-[200px]">
+            <MainCard />
           </View>
 
           <View className="w-full h-[50px]"></View>

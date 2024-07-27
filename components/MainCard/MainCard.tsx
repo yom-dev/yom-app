@@ -27,7 +27,7 @@ const MainCard: React.FC = ({}) => {
 
           {/* 메인카드 컨텐츠 */}
           <View className="w-full h-[60%] flex justify-center items-center">
-            <Text className="font-[WantedM] text-[24px] text-yomWhite opacity-40 text-center">
+            <Text className="font-[WantedSB] text-[24px] text-yomWhite opacity-40 text-center">
               오늘 하루
               {"\n"}
               감사하셨나요?
