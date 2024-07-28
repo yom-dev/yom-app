@@ -4,6 +4,7 @@ import PlanCardMeditation from "@/components/PlanCard/PlanCardMeditation";
 import PlanCardReading from "@/components/PlanCard/PlanCardReading";
 import PlanCardVocab from "../PlanCard/PlanCardVocab";
 import PlanCardWorkout from "../PlanCard/PlanCardWorkout";
+import PlanCardGratitude from "../PlanCard/PlanCardGratitude";
 const MainMyPlanContent = () => {
   const cards = [
     {
@@ -36,6 +37,14 @@ const MainMyPlanContent = () => {
       startColor: "#EEA901",
       endColor: "#F0DDAD",
       title: "영어단어",
+      subTitle: "Coming Soon",
+    },
+    {
+      key: "5",
+      Component: PlanCardGratitude,
+      startColor: "#13201B",
+      endColor: "#2B8364",
+      title: "하루감사",
       subTitle: "Coming Soon",
     },
   ];
