@@ -46,19 +46,19 @@ const GratitudeModal: React.FC<GratitudeModalProps> = ({ visible }) => {
             <View className="h-[220px] mt-[30px] flex">
               <GratitudeModalContent />
             </View>
-            <View className="w-full h-[50px] mt-[35px]">
-              <CustomButton
-                title="저장하기"
-                titleSize={18}
-                backgroundColor="yomGreen"
-                activeBackgroundColor="yomDarkGreen"
-                textColor="yomWhite"
-                onPress={() => {
-                  onClose();
-                }}
-              />
-            </View>
           </KeyboardAwareScrollView>
+          <View className="w-full h-[50px] mt-[35px] fixed bottom-10">
+            <CustomButton
+              title="저장하기"
+              titleSize={18}
+              backgroundColor="yomGreen"
+              activeBackgroundColor="yomDarkGreen"
+              textColor="yomWhite"
+              onPress={() => {
+                onClose();
+              }}
+            />
+          </View>
         </View>
       </View>
     </Modal>
