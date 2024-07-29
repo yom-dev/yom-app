@@ -71,11 +71,11 @@ export default function Plan() {
         <View className="w-full h-full">
           <View className="h-fit flex flex-col justify-end mt-[20px]">
             <Text className="text-[32px] text-yomBlack font-[WantedSB]">
-              내 플랜
+              스토어
             </Text>
           </View>
 
-          <View className="w-full  h-full mt-[30px]">
+          <View className="w-full h-full mt-[30px]">
             <FlatList
               data={cards}
               numColumns={3}

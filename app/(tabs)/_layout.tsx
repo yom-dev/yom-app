@@ -1,7 +1,6 @@
 import { Tabs } from "expo-router";
 import React from "react";
-
-import { TabBarIcon } from "@/components/navigation/TabBarIcon";
+import { TabBarIcon } from "@/components/Navigation/TabBarIcon";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
 
@@ -42,6 +41,15 @@ export default function TabLayout() {
           title: "기록",
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={"book"} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="store"
+        options={{
+          title: "스토어",
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={"shopping-cart"} color={color} />
           ),
         }}
       />
