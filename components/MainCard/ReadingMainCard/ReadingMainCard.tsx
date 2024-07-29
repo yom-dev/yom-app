@@ -41,7 +41,7 @@ const ReadingMainCard: React.FC = ({}) => {
                 backgroundColor="yomWhite"
                 activeBackgroundColor="yomLightGray"
                 textColor="yomGreen"
-                onPress={() => onOpen("gratitude-info")}
+                onPress={() => onOpen("gratitude-edit")}
               />
             </View>
           </View>
