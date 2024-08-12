@@ -1,7 +1,6 @@
 import { View, Text, ImageBackground } from "react-native";
 import { useState, useEffect } from "react";
 import { LinearGradient } from "expo-linear-gradient";
-import { Image } from "expo-image";
 
 const PlanCardGratitude = ({
   size,

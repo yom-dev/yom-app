@@ -2,6 +2,7 @@ import { View, Text, Button, Pressable, ScrollView } from "react-native";
 import MainMyPlan from "@/components/MainMyPlan/MainMyPlan";
 import { useState } from "react";
 import MainCarousel from "@/components/Carousel/MainCarousel";
+import { Link } from "expo-router";
 
 export default function HomeScreen() {
   return (
@@ -13,6 +14,13 @@ export default function HomeScreen() {
           showsVerticalScrollIndicator={false}
         >
           {/* 메인 타이틀 */}
+          <Link href="/Plan/Info/gratitude">
+            <Text>Go to info</Text>
+          </Link>
+          <Link href="/Plan/Edit/Grtitude">
+            <Text>Go to Edit</Text>
+          </Link>
+
           <View className="h-fit flex flex-col justify-end mt-[20px]">
             <Text className="text-[32px] text-yomBlack font-[WantedSB]">
               상훈님, 반가워요.
