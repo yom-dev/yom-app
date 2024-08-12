@@ -23,6 +23,7 @@ export default function Plan() {
       endColor: "#d0ad69",
       title: "명상",
       subTitle: "Coming Soon",
+      active: false,
     },
     {
       key: "2",
@@ -31,6 +32,7 @@ export default function Plan() {
       endColor: "#CAC9C9",
       title: "근력 운동",
       subTitle: "Coming Soon",
+      active: false,
     },
     {
       key: "3",
@@ -39,6 +41,7 @@ export default function Plan() {
       endColor: "#BA8DF3",
       title: "독서",
       subTitle: "Coming Soon",
+      active: false,
     },
     {
       key: "4",
@@ -47,6 +50,7 @@ export default function Plan() {
       endColor: "#F0DDAD",
       title: "영어단어",
       subTitle: "Coming Soon",
+      active: false,
     },
     {
       key: "4",
@@ -55,6 +59,7 @@ export default function Plan() {
       endColor: "#F0DDAD",
       title: "영어단어",
       subTitle: "Coming Soon",
+      active: false,
     },
     {
       key: "3",
@@ -63,6 +68,7 @@ export default function Plan() {
       endColor: "#BA8DF3",
       title: "독서",
       subTitle: "Coming Soon",
+      active: false,
     },
   ];
   return (
@@ -92,6 +98,7 @@ export default function Plan() {
                     endColor={item.endColor}
                     title={item.title}
                     subTitle={item.subTitle}
+                    active={item.active}
                   />
                 </View>
               )}

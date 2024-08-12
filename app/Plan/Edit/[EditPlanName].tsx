@@ -3,10 +3,10 @@ import React from "react";
 import { useLocalSearchParams } from "expo-router";
 
 const EditPage = () => {
-  const { planName } = useLocalSearchParams();
+  const { editPlanName } = useLocalSearchParams();
   return (
     <View>
-      <Text>{planName}</Text>
+      <Text>{editPlanName}</Text>
     </View>
   );
 };

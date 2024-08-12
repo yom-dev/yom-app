@@ -1,7 +1,8 @@
-import { View, Text, ImageBackground } from "react-native";
-import { useState, useEffect } from "react";
+import { View, Text, ImageBackground, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native"; // 네비게이션 훅 가져오기
 import { LinearGradient } from "expo-linear-gradient";
 import { Image } from "expo-image";
+import { useRouter } from "expo-router";
 
 const PlanCardMeditation = ({
   size,
@@ -9,13 +10,18 @@ const PlanCardMeditation = ({
   endColor,
   title,
   subTitle,
+  active,
 }: {
   size: string;
   startColor: string;
   endColor: string;
   title: string;
   subTitle: string;
+  active: boolean;
 }) => {
+  // const navigation = useNavigation(); // 네비게이션 훅 사용
+  const router = useRouter();
+
   const sizeVariants: { [key: string]: string } = {
     small: "w-[105px] h-[135px] rounded-[25px] border-none",
     medium: "w-[135px] h-[170px] rounded-[25px] border-none",
@@ -42,8 +48,13 @@ const PlanCardMeditation = ({
     large: "text-[21px] font-[WantedM] text-yomWhite",
   };
 
+  const handlePress = () => {
+    const route = active ? "/plan/edit/meditation" : "/plan/info/meditation";
+    router.push(route); // 조건에 따라 경로 설정
+  };
+
   return (
-    <View className={`${sizeVariants[size]}`}>
+    <TouchableOpacity onPress={handlePress} className={`${sizeVariants[size]}`}>
       <LinearGradient
         colors={[startColor, endColor]}
         start={[1, 0]}
@@ -62,14 +73,12 @@ const PlanCardMeditation = ({
                 source={require("@/assets/images/tree-icon.png")}
                 className="w-full h-full ml-[15px]"
                 resizeMode="contain"
-                // style={width: iconWidth, height:iconHeight}
-                // ImageBackground에 직접 borderRadius 추가
               />
             </View>
           </View>
         </View>
       </LinearGradient>
-    </View>
+    </TouchableOpacity>
   );
 };
 

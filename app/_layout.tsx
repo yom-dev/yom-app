@@ -92,6 +92,45 @@ export default function RootLayout() {
             ),
           }}
         />
+
+        <Stack.Screen
+          name="plan/info/[infoPlanName]" // 특정 경로를 지정
+          options={{
+            headerShown: true,
+            headerShadowVisible: false,
+            headerTitle: "Info",
+            headerBackground() {
+              return <View className="bg-yomWhite w-full h-full" />;
+            },
+            headerLeft: () => (
+              <Ionicons
+                name="arrow-back"
+                size={24}
+                color={"#000000"}
+                onPress={navigation.goBack}
+              />
+            ),
+          }}
+        />
+        <Stack.Screen
+          name="plan/edit/[editPlanName]" // 특정 경로를 지정
+          options={{
+            headerShown: true,
+            headerShadowVisible: false,
+            headerTitle: "Edit",
+            headerBackground() {
+              return <View className="bg-yomWhite w-full h-full" />;
+            },
+            headerLeft: () => (
+              <Ionicons
+                name="arrow-back"
+                size={24}
+                color={"#000000"}
+                onPress={navigation.goBack}
+              />
+            ),
+          }}
+        />
       </Stack>
     </ThemeProvider>
   );

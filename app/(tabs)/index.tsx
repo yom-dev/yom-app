@@ -14,12 +14,12 @@ export default function HomeScreen() {
           showsVerticalScrollIndicator={false}
         >
           {/* 메인 타이틀 */}
-          <Link href="/Plan/Info/gratitude">
+          {/* <Link href="/plan/info/gratitude">
             <Text>Go to info</Text>
           </Link>
-          <Link href="/Plan/Edit/Grtitude">
+          <Link href="/plan/edit/gratitude">
             <Text>Go to Edit</Text>
-          </Link>
+          </Link> */}
 
           <View className="h-fit flex flex-col justify-end mt-[20px]">
             <Text className="text-[32px] text-yomBlack font-[WantedSB]">

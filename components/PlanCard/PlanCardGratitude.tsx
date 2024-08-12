@@ -1,6 +1,6 @@
-import { View, Text, ImageBackground } from "react-native";
-import { useState, useEffect } from "react";
+import { View, Text, ImageBackground, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import { useRouter } from "expo-router";
 
 const PlanCardGratitude = ({
   size,
@@ -8,13 +8,17 @@ const PlanCardGratitude = ({
   endColor,
   title,
   subTitle,
+  active,
 }: {
   size: string;
   startColor: string;
   endColor: string;
   title: string;
   subTitle: string;
+  active: boolean;
 }) => {
+  const router = useRouter(); // useRouter 훅 사용
+
   const sizeVariants: { [key: string]: string } = {
     small: "w-[105px] h-[135px] rounded-[25px] border-none",
     medium: "w-[135px] h-[170px] rounded-[25px] border-none",
@@ -41,8 +45,13 @@ const PlanCardGratitude = ({
     large: "text-[21px] font-[WantedM] text-yomWhite",
   };
 
+  const handlePress = () => {
+    const route = active ? "/plan/edit/gratitude" : "/plan/info/gratitude";
+    router.push(route as never); // 조건에 따라 경로 설정
+  };
+
   return (
-    <View className={`${sizeVariants[size]}`}>
+    <TouchableOpacity onPress={handlePress} className={`${sizeVariants[size]}`}>
       <LinearGradient
         colors={[startColor, endColor]}
         start={[1, 0]}
@@ -61,14 +70,12 @@ const PlanCardGratitude = ({
                 source={require("@/assets/images/note-icon.png")}
                 className="w-full h-full ml-[10px]"
                 resizeMode="contain"
-                // style={width: iconWidth, height:iconHeight}
-                // ImageBackground에 직접 borderRadius 추가
               />
             </View>
           </View>
         </View>
       </LinearGradient>
-    </View>
+    </TouchableOpacity>
   );
 };
 
