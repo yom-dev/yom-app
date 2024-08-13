@@ -4,9 +4,10 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 
 interface TimeInputProps {
   onChange: (event: any, selectedDate: Date | undefined) => void;
+  value: Date;
 }
 
-const TimeInput: React.FC<TimeInputProps> = ({ onChange }) => {
+const TimeInput: React.FC<TimeInputProps> = ({ onChange, value }) => {
   return (
     <View className="w-full flex items-center justify-between gap-[20px]">
       <Text className="text-[24px] font-[WantedM]"> 시간 설정 </Text>
@@ -14,7 +15,7 @@ const TimeInput: React.FC<TimeInputProps> = ({ onChange }) => {
       <DateTimePicker
         mode="time"
         display="spinner"
-        value={new Date()}
+        value={value}
         onChange={onChange}
         style={{ flex: 1 }}
       />

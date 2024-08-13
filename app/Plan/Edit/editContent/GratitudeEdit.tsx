@@ -21,6 +21,11 @@ const GratitudeEdit: React.FC<GratitudeEditProps> = ({ visible }) => {
         extraScrollHeight={30}
         keyboardOpeningTime={100}
       >
+        <View className="flex-row justify-center mt-[20px]">
+          <Text className="text-[24px] font-[WantedB] text-yomBlack">
+            하루감사
+          </Text>
+        </View>
         <View className="w-full h-[200px] mt-[60px]">
           <ImageBackground
             source={require("@/assets/images/note-icon.png")}
@@ -37,6 +42,7 @@ const GratitudeEdit: React.FC<GratitudeEditProps> = ({ visible }) => {
           {notification && (
             <View className="mt-[50px]">
               <TimeInput
+                value={time}
                 onChange={(event, selectedTime) =>
                   setTime(selectedTime || time)
                 }

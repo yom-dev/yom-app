@@ -31,7 +31,7 @@ export default function profile() {
             <ProfileText title="이름" content="임상훈" />
             <ProfileText title="닉네임" content="29" />
             <ProfileText title="이메일" content="sanghoonim@hanyang.ac.kr" />
-            <ProfileText title="생년월일" content="2000.02.29" />
+            {/* <ProfileText title="생년월일" content="2000.02.29" /> */}
           </View>
 
           <View className="w-full h-[50px]"></View>

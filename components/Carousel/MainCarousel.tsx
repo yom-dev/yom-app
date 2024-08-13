@@ -32,10 +32,6 @@ const MainCarousel = ({
       key: "3",
       Component: GratitudeMainCard,
     },
-    {
-      key: "4",
-      Component: ReadingMainCard,
-    },
   ];
 
   return (
