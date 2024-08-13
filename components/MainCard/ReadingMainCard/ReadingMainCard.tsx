@@ -41,7 +41,9 @@ const ReadingMainCard: React.FC = ({}) => {
                 backgroundColor="yomWhite"
                 activeBackgroundColor="yomLightGray"
                 textColor="yomGreen"
-                onPress={() => onOpen("gratitude-edit")}
+                onPress={() => {
+                  console.log("작성하기 버튼 클릭");
+                }}
               />
             </View>
           </View>

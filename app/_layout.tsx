@@ -98,7 +98,7 @@ export default function RootLayout() {
           options={{
             headerShown: true,
             headerShadowVisible: false,
-            headerTitle: "Info",
+            headerTitle: "",
             headerBackground() {
               return <View className="bg-yomWhite w-full h-full" />;
             },
@@ -117,7 +117,7 @@ export default function RootLayout() {
           options={{
             headerShown: true,
             headerShadowVisible: false,
-            headerTitle: "Edit",
+            headerTitle: "",
             headerBackground() {
               return <View className="bg-yomWhite w-full h-full" />;
             },

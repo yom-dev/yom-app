@@ -29,7 +29,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="plan"
         options={{
-          title: "플랜",
+          title: "내 플랜",
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={"search"} color={color} />
           ),

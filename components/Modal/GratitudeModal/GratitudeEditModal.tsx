@@ -26,8 +26,6 @@ const GratitudeEditModal: React.FC<GratitudeModalProps> = ({ visible }) => {
     >
       <View style={{ flex: 1, alignItems: "center", backgroundColor: "white" }}>
         <View style={{ width: "90%", flex: 1 }}>
-          <ModalHeader title={"하루감사"} onRequestClose={onClose} />
-
           <KeyboardAwareScrollView
             style={{ flex: 1 }}
             showsVerticalScrollIndicator={false}
