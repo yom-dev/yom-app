@@ -27,7 +27,7 @@ const ReadingMainCard: React.FC = ({}) => {
 
           {/* 메인카드 컨텐츠 */}
           <View className="w-full h-[60%] flex justify-center items-center">
-            <Text className="font-[WantedR] text-[28px] text-yomWhite text-center">
+            <Text className="font-[WantedSB] text-[28px] text-yomWhite text-center">
               Finish yom.
             </Text>
           </View>

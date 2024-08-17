@@ -28,7 +28,7 @@ export default function HomeScreen() {
             <View>
               <View className="h-fit flex flex-col justify-end mt-[20px]">
                 <Text className="text-[32px] text-yomBlack font-[WantedSB]">
-                  상훈님, 반가워요.
+                  Welcome, Joseph.
                 </Text>
               </View>
 
