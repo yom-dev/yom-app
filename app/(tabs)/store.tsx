@@ -13,61 +13,45 @@ import PlanCardReading from "@/components/PlanCard/PlanCardReading";
 import PlanCardVocab from "@/components/PlanCard/PlanCardVocab";
 import PlanCardWorkout from "@/components/PlanCard/PlanCardWorkout";
 import PlanCardGratitude from "@/components/PlanCard/PlanCardGratitude";
+import StoreCard from "@/components/StoreCard/StoreCard";
 
 export default function Plan() {
   const cards = [
     {
       key: "1",
-      Component: PlanCardMeditation,
+      planName: "meditation",
       startColor: "#9bd069",
       endColor: "#d0ad69",
-      title: "명상",
-      subTitle: "Coming Soon",
+      title: "Meditation",
+      subTitle: "Excercise for Healthier Mind",
       active: false,
     },
+
     {
       key: "2",
-      Component: PlanCardWorkout,
-      startColor: "#979797",
-      endColor: "#CAC9C9",
-      title: "근력 운동",
-      subTitle: "Coming Soon",
+      planName: "vocab",
+      startColor: "#eea901",
+      endColor: "#f0ddad",
+      title: "Vocabulary",
+      subTitle: "Improve your range of Vocabulary",
       active: false,
     },
     {
       key: "3",
-      Component: PlanCardReading,
       startColor: "#615EE2",
       endColor: "#BA8DF3",
       title: "독서",
       subTitle: "Coming Soon",
       active: false,
+      planName: "reading",
     },
     {
       key: "4",
-      Component: PlanCardVocab,
       startColor: "#EEA901",
       endColor: "#F0DDAD",
-      title: "영어단어",
+      title: "Workout",
       subTitle: "Coming Soon",
-      active: false,
-    },
-    {
-      key: "4",
-      Component: PlanCardVocab,
-      startColor: "#EEA901",
-      endColor: "#F0DDAD",
-      title: "영어단어",
-      subTitle: "Coming Soon",
-      active: false,
-    },
-    {
-      key: "3",
-      Component: PlanCardReading,
-      startColor: "#615EE2",
-      endColor: "#BA8DF3",
-      title: "독서",
-      subTitle: "Coming Soon",
+      planName: "workout",
       active: false,
     },
   ];
@@ -84,21 +68,20 @@ export default function Plan() {
           <View className="w-full h-full mt-[30px]">
             <FlatList
               data={cards}
-              numColumns={3}
+              numColumns={2}
               className="w-full h-fit "
               columnWrapperStyle={{
                 justifyContent: "space-between",
                 marginBottom: 20,
               }}
               renderItem={({ item }) => (
-                <View>
-                  <item.Component
-                    size="small"
+                <View className="w-[45%]">
+                  <StoreCard
                     startColor={item.startColor}
                     endColor={item.endColor}
                     title={item.title}
-                    subTitle={item.subTitle}
-                    active={item.active}
+                    description={item.subTitle}
+                    planName={item.planName}
                   />
                 </View>
               )}

@@ -17,6 +17,7 @@ import { Colors } from "@/constants/Colors";
 
 import { useColorScheme } from "@/hooks/useColorScheme";
 import ModalProvider from "@/shared/providers/modal-provider";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -45,112 +46,114 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <ModalProvider />
-      <Stack>
-        <Stack.Screen
-          name="(tabs)"
-          options={{
-            headerShown: true,
-            headerShadowVisible: false,
-            headerTitle: "",
-            headerLeft: () => (
-              <Text className="font-[WantedM] text-[20px] text-yomBlack">
-                yom
-              </Text>
-            ),
-            headerRight: () => (
-              <Link to="/notification">
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <ModalProvider />
+        <Stack>
+          <Stack.Screen
+            name="(tabs)"
+            options={{
+              headerShown: true,
+              headerShadowVisible: false,
+              headerTitle: "",
+              headerLeft: () => (
+                <Text className="font-[WantedM] text-[20px] text-yomBlack">
+                  yom
+                </Text>
+              ),
+              headerRight: () => (
+                <Link to="/notification">
+                  <Ionicons
+                    name="notifications-outline"
+                    size={24}
+                    color={"#000000"}
+                  />
+                </Link>
+              ),
+              headerStyle: {
+                backgroundColor: Colors.light.background,
+              },
+            }}
+          />
+          <Stack.Screen name="+not-found" />
+          <Stack.Screen
+            name="notification"
+            options={{
+              headerShown: true,
+              headerShadowVisible: false,
+              headerTitle: "",
+              headerBackground() {
+                return <View className="bg-yomWhite w-full h-full" />;
+              },
+              headerLeft: () => (
                 <Ionicons
-                  name="notifications-outline"
+                  name="arrow-back"
                   size={24}
                   color={"#000000"}
+                  onPress={navigation.goBack} // Update to use navigation.goBack
                 />
-              </Link>
-            ),
-            headerStyle: {
-              backgroundColor: Colors.light.background,
-            },
-          }}
-        />
-        <Stack.Screen name="+not-found" />
-        <Stack.Screen
-          name="notification"
-          options={{
-            headerShown: true,
-            headerShadowVisible: false,
-            headerTitle: "",
-            headerBackground() {
-              return <View className="bg-yomWhite w-full h-full" />;
-            },
-            headerLeft: () => (
-              <Ionicons
-                name="arrow-back"
-                size={24}
-                color={"#000000"}
-                onPress={navigation.goBack} // Update to use navigation.goBack
-              />
-            ),
-          }}
-        />
+              ),
+            }}
+          />
 
-        <Stack.Screen
-          name="plan/info/[infoPlanName]" // 특정 경로를 지정
-          options={{
-            headerShown: true,
-            headerShadowVisible: false,
-            headerTitle: "",
-            headerBackground() {
-              return <View className="bg-yomWhite w-full h-full" />;
-            },
-            headerLeft: () => (
-              <Ionicons
-                name="arrow-back"
-                size={24}
-                color={"#000000"}
-                onPress={navigation.goBack}
-              />
-            ),
-          }}
-        />
-        <Stack.Screen
-          name="plan/edit/[editPlanName]" // 특정 경로를 지정
-          options={{
-            headerShown: true,
-            headerShadowVisible: false,
-            headerTitle: "",
-            headerBackground() {
-              return <View className="bg-yomWhite w-full h-full" />;
-            },
-            headerLeft: () => (
-              <Ionicons
-                name="arrow-back"
-                size={24}
-                color={"#000000"}
-                onPress={navigation.goBack}
-              />
-            ),
-          }}
-        />
-        <Stack.Screen
-          name="plan/plan/[contentPlanName]" // 특정 경로를 지정
-          options={{
-            headerShown: true,
-            headerShadowVisible: false,
-            headerTitle: "",
-            headerBackground() {
-              return <View className="bg-yomWhite w-full h-full" />;
-            },
-            headerLeft: () => (
-              <Ionicons
-                name="arrow-back"
-                size={24}
-                color={"#000000"}
-                onPress={navigation.goBack}
-              />
-            ),
-          }}
-        />
-      </Stack>
+          <Stack.Screen
+            name="plan/info/[infoPlanName]" // 특정 경로를 지정
+            options={{
+              headerShown: true,
+              headerShadowVisible: false,
+              headerTitle: "",
+              headerBackground() {
+                return <View className="bg-yomWhite w-full h-full" />;
+              },
+              headerLeft: () => (
+                <Ionicons
+                  name="arrow-back"
+                  size={24}
+                  color={"#000000"}
+                  onPress={navigation.goBack}
+                />
+              ),
+            }}
+          />
+          <Stack.Screen
+            name="plan/edit/[editPlanName]" // 특정 경로를 지정
+            options={{
+              headerShown: true,
+              headerShadowVisible: false,
+              headerTitle: "",
+              headerBackground() {
+                return <View className="bg-yomWhite w-full h-full" />;
+              },
+              headerLeft: () => (
+                <Ionicons
+                  name="arrow-back"
+                  size={24}
+                  color={"#000000"}
+                  onPress={navigation.goBack}
+                />
+              ),
+            }}
+          />
+          <Stack.Screen
+            name="plan/plan/[contentPlanName]" // 특정 경로를 지정
+            options={{
+              headerShown: true,
+              headerShadowVisible: false,
+              headerTitle: "",
+              headerBackground() {
+                return <View className="bg-yomWhite w-full h-full" />;
+              },
+              headerLeft: () => (
+                <Ionicons
+                  name="arrow-back"
+                  size={24}
+                  color={"#000000"}
+                  onPress={navigation.goBack}
+                />
+              ),
+            }}
+          />
+        </Stack>
+      </GestureHandlerRootView>
     </ThemeProvider>
   );
 }
