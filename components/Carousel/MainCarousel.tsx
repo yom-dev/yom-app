@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Carousel, { ICarouselInstance } from "react-native-reanimated-carousel";
 import { Dimensions, View } from "react-native";
 import GratitudeMainCard from "@/components/MainCard/GratitudeMainCard/GratitudeMainCard";
+import ToDoMainCard from "@/components/MainCard/ToDoMainCard/ToDoMainCard";
 import ReadingMainCard from "../MainCard/ReadingMainCard/ReadingMainCard";
 
 const MainCarousel = ({
@@ -22,7 +23,7 @@ const MainCarousel = ({
   const data = [
     {
       key: "1",
-      Component: GratitudeMainCard,
+      Component: ToDoMainCard,
     },
     {
       key: "2",

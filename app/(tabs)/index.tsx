@@ -13,14 +13,6 @@ export default function HomeScreen() {
           className="w-full h-full"
           showsVerticalScrollIndicator={false}
         >
-          {/* 메인 타이틀 */}
-          {/* <Link href="/plan/info/gratitude">
-            <Text>Go to info</Text>
-          </Link>
-          <Link href="/plan/edit/gratitude">
-            <Text>Go to Edit</Text>
-          </Link> */}
-
           <View className="h-fit flex flex-col justify-end mt-[20px]">
             <Text className="text-[32px] text-yomBlack font-[WantedSB]">
               상훈님, 반가워요.
@@ -29,7 +21,6 @@ export default function HomeScreen() {
 
           {/* 메인 카드:  */}
           <View className="w-full h-[410px] mt-[20px]">
-            {/* <MainCard /> */}
             <MainCarousel itemHeight={400} containerHeight={410} />
           </View>
 
