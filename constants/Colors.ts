@@ -22,6 +22,7 @@ export const Colors = {
     yomWhite: "#F9F8F4",
     yomDarkGreen: "#298665",
     yomLightGray: "#F1F1F1",
+    yomPurple: "#403277",
 
     // icon: "#31A063",
     // tabIconDefault: "#6C6C6C",

@@ -15,6 +15,7 @@ module.exports = {
         yomDarkGreen: "#298665",
         yomWhite: "#f9f8f4",
         yomLightGray: "#f1f1f1",
+        yomPurple: "#403277",
       },
     },
   },

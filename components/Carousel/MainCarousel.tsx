@@ -3,8 +3,8 @@ import Carousel, { ICarouselInstance } from "react-native-reanimated-carousel";
 import { Dimensions, View } from "react-native";
 import GratitudeMainCard from "@/components/MainCard/GratitudeMainCard/GratitudeMainCard";
 import ToDoMainCard from "@/components/MainCard/ToDoMainCard/ToDoMainCard";
-import ReadingMainCard from "../MainCard/ReadingMainCard/ReadingMainCard";
-
+import MonthlyGoalMainCard from "@/components/MainCard/MonthlyGoalMainCard/MonthlyGoalMainCard";
+import yomMainCard from "@/components/MainCard/AdMainCard/yomMainCard";
 const MainCarousel = ({
   itemHeight,
   containerHeight,
@@ -27,11 +27,11 @@ const MainCarousel = ({
     },
     {
       key: "2",
-      Component: ReadingMainCard,
+      Component: MonthlyGoalMainCard,
     },
     {
       key: "3",
-      Component: GratitudeMainCard,
+      Component: yomMainCard,
     },
   ];
 
@@ -75,7 +75,7 @@ const MainCarousel = ({
         {data.map((_, index) => (
           <View
             key={index}
-            className={`h-2.5 w-2.5 rounded-full mx-1 ${
+            className={`h-3 w-3 rounded-full mx-1 border-yomGray border-[0.3px] ${
               currentIndex === index ? "bg-[#FFF2C0]" : "bg-yomWhite"
             }`}
           />
