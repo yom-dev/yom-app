@@ -23,10 +23,10 @@ const ToDoItem = ({
     <Link href={`/plan/plan/${planName}`}>
       <TouchableOpacity>
         <View
-          className="w-full h-[45px] rounded-lg px-3 py-2 flex-row justify-between items-center bg-yomWhite"
+          className="w-full h-[50px] rounded-lg px-3 py-2 flex-row justify-between items-center bg-yomWhite"
           style={{ opacity: isDone ? 1 : 0.75 }} // 조건부로 opacity 설정
         >
-          <Image source={icons[validPlanName]} className="w-[20px] h-[20px]" />
+          <Image source={icons[validPlanName]} className="w-[25px] h-[25px]" />
           <Text className="font-[WantedM] text-[14px] text-yomBlack">
             {text}
           </Text>

@@ -1,9 +1,9 @@
 import React from "react";
 import { View, Text, ImageBackground } from "react-native";
 import ToDoItem from "./ToDoItem";
-import { ScrollView } from "react-native-gesture-handler";
-import CustomButton from "@/components/Button/CustomButton";
+
 import { FlatList } from "react-native-gesture-handler";
+import EmptyToDo from "./EmptyToDo";
 
 const mockData: Array<{
   id: string;
@@ -29,36 +29,6 @@ const mockData: Array<{
     text: "Workout",
     isDone: false,
   },
-  {
-    id: "4",
-    planName: "workout",
-    text: "Workout",
-    isDone: false,
-  },
-  {
-    id: "5",
-    planName: "workout",
-    text: "Workout",
-    isDone: false,
-  },
-  {
-    id: "6",
-    planName: "workout",
-    text: "Workout",
-    isDone: false,
-  },
-  // {
-  //   id: "7",
-  //   planName: "workout",
-  //   text: "Workout",
-  //   isDone: false,
-  // },
-  // {
-  //   id: "8",
-  //   planName: "workout",
-  //   text: "Workout",
-  //   isDone: false,
-  // },
 ];
 
 const ToDoMainCard: React.FC = () => {
@@ -92,36 +62,13 @@ const ToDoMainCard: React.FC = () => {
             </Text>
           </View>
 
-          <View className="w-full h-[80%] mt-5 flex-1 ">
+          <View className="w-full h-[80%] mt-5">
             <FlatList
               data={sortedData}
               renderItem={renderItem}
               keyExtractor={(item) => item.id}
               showsVerticalScrollIndicator={false}
-              ListEmptyComponent={
-                <View className="h-full">
-                  <View className="w-full h-[65%] flex justify-center items-center">
-                    <Text className="font-[WantedSB] text-[28px] text-yomWhite text-center">
-                      There is no plan today.
-                    </Text>
-                  </View>
-
-                  <View className="h-[35%] flex justify-end">
-                    <View className="h-[50px] w-full">
-                      <CustomButton
-                        title="Go to My Plan"
-                        titleSize={14}
-                        backgroundColor="yomWhite"
-                        activeBackgroundColor="yomLightGray"
-                        textColor="yomGreen"
-                        onPress={() => {
-                          console.log("작성하기 버튼 클릭");
-                        }}
-                      />
-                    </View>
-                  </View>
-                </View>
-              }
+              ListEmptyComponent={<EmptyToDo />}
             />
           </View>
         </View>

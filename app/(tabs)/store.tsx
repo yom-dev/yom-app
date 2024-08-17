@@ -24,7 +24,7 @@ export default function Plan() {
       endColor: "#d0ad69",
       title: "Meditation",
       subTitle: "Excercise for Healthier Mind",
-      active: false,
+      isActive: true,
     },
 
     {
@@ -34,7 +34,7 @@ export default function Plan() {
       endColor: "#f0ddad",
       title: "Vocabulary",
       subTitle: "Coming Soon",
-      active: false,
+      isActive: false,
     },
     {
       key: "3",
@@ -42,7 +42,7 @@ export default function Plan() {
       endColor: "#BA8DF3",
       title: "Reading",
       subTitle: "Coming Soon",
-      active: false,
+      isActive: false,
       planName: "reading",
     },
     {
@@ -52,7 +52,7 @@ export default function Plan() {
       title: "Workout",
       subTitle: "Coming Soon",
       planName: "workout",
-      active: false,
+      isActive: false,
     },
   ];
   return (
@@ -82,6 +82,7 @@ export default function Plan() {
                     title={item.title}
                     description={item.subTitle}
                     planName={item.planName}
+                    isActive={item.isActive}
                   />
                 </View>
               )}

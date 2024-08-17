@@ -17,6 +17,7 @@ interface StoreCardProps {
   endColor: string;
   title: string;
   description: string;
+  isActive: boolean;
 }
 
 const StoreCard = ({
@@ -25,6 +26,7 @@ const StoreCard = ({
   endColor,
   title,
   description,
+  isActive,
 }: StoreCardProps) => {
   const validPlanName = planName as PlanName;
 
@@ -32,7 +34,10 @@ const StoreCard = ({
     <GestureHandlerRootView>
       <Link href={`plan/info/${planName}`} asChild>
         <TouchableOpacity>
-          <View className="w-full h-fit flex justify-start">
+          <View
+            className="w-full h-fit flex justify-start"
+            style={{ opacity: isActive ? 1 : 0.5 }} // isActive가 true일 경우 opacity를 60%로 설정
+          >
             <View className="w-full h-[160px] ">
               <LinearGradient
                 colors={[startColor, endColor]}
