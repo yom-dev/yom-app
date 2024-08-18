@@ -13,62 +13,21 @@ import PlanCardReading from "@/components/PlanCard/PlanCardReading";
 import PlanCardVocab from "@/components/PlanCard/PlanCardVocab";
 import PlanCardWorkout from "@/components/PlanCard/PlanCardWorkout";
 import PlanCardGratitude from "@/components/PlanCard/PlanCardGratitude";
+import PlanCard from "@/components/PlanCard/PlanCard";
 
 export default function Plan() {
   const cards = [
     {
       key: "1",
-      Component: PlanCardMeditation,
-      startColor: "#9bd069",
-      endColor: "#d0ad69",
+      planName: "meditation",
       title: "명상",
       subTitle: "Coming Soon",
-      active: true,
     },
     {
       key: "2",
-      Component: PlanCardWorkout,
-      startColor: "#979797",
-      endColor: "#CAC9C9",
+      planName: "workout",
       title: "근력 운동",
       subTitle: "Coming Soon",
-      active: true,
-    },
-    {
-      key: "3",
-      Component: PlanCardReading,
-      startColor: "#615EE2",
-      endColor: "#BA8DF3",
-      title: "독서",
-      subTitle: "Coming Soon",
-      active: true,
-    },
-    {
-      key: "4",
-      Component: PlanCardVocab,
-      startColor: "#EEA901",
-      endColor: "#F0DDAD",
-      title: "영어단어",
-      subTitle: "Coming Soon",
-      active: true,
-    },
-    {
-      key: "4",
-      Component: PlanCardVocab,
-      startColor: "#EEA901",
-      endColor: "#F0DDAD",
-      title: "영어단어",
-      subTitle: "Coming Soon",
-      active: true,
-    },
-    {
-      key: "3",
-      Component: PlanCardReading,
-      startColor: "#615EE2",
-      endColor: "#BA8DF3",
-      title: "독서",
-      subTitle: "Coming Soon",
-      active: true,
     },
   ];
   return (
@@ -92,13 +51,11 @@ export default function Plan() {
               }}
               renderItem={({ item }) => (
                 <View>
-                  <item.Component
+                  <PlanCard
                     size="small"
-                    startColor={item.startColor}
-                    endColor={item.endColor}
+                    planName={item.planName}
                     title={item.title}
                     subTitle={item.subTitle}
-                    active={item.active}
                   />
                 </View>
               )}

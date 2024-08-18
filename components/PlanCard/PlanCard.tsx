@@ -1,12 +1,13 @@
 import { View, Text, ImageBackground } from "react-native";
-import { useState, useEffect } from "react";
 import { LinearGradient } from "expo-linear-gradient";
-import { Image } from "expo-image";
+import { planGradation } from "@/constants/planGradation";
+import { icons } from "@/constants/Icons";
+type IconPlanName = keyof typeof icons;
+type GradationPlanName = keyof typeof planGradation;
 
 const PlanCard = ({
   size,
-  startColor,
-  endColor,
+  planName,
   title,
   subTitle,
   icon,
@@ -14,8 +15,7 @@ const PlanCard = ({
   iconHeight,
 }: {
   size: string;
-  startColor: string;
-  endColor: string;
+  planName: string;
   title: string;
   subTitle: string;
   icon: string;
@@ -47,6 +47,14 @@ const PlanCard = ({
     medium: "text-[12px] font-[WantedM] text-yomWhite",
     large: "text-[21px] font-[WantedM] text-yomWhite",
   };
+  const GradationPlanName = planName as GradationPlanName;
+  const IconPlanName = planName as IconPlanName;
+
+  // Access the startColor and endColor from planGradation based on the planName
+  const { startColor, endColor } = planGradation[IconPlanName] || {
+    startColor: "#000",
+    endColor: "#FFF",
+  };
 
   return (
     <View className={`${sizeVariants[size]}`}>
@@ -65,11 +73,9 @@ const PlanCard = ({
 
             <View className="w-full h-[65%] flex-row ">
               <ImageBackground
-                source={require("@/assets/images/tree-icon.png")}
+                source={icons[IconPlanName]}
                 className="w-full h-full ml-[15px]"
                 resizeMode="contain"
-                // style={width: iconWidth, height:iconHeight}
-                // ImageBackground에 직접 borderRadius 추가
               />
             </View>
           </View>
