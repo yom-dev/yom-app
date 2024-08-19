@@ -36,23 +36,8 @@ export default function Auth() {
       password: password,
     });
 
-    if (error) Alert.alert(error.message);
-    setLoading(false);
-  }
-
-  async function signUpWithEmail() {
-    setLoading(true);
-    const {
-      data: { session },
-      error,
-    } = await supabase.auth.signUp({
-      email: email,
-      password: password,
-    });
-
-    if (error) Alert.alert(error.message);
-    if (!session)
-      Alert.alert("Please check your inbox for email verification!");
+    if (error) Alert.alert("Invalid email / password");
+    // console.log(error.message)
     setLoading(false);
   }
 

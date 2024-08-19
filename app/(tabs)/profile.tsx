@@ -11,6 +11,7 @@ import ProfileText from "@/components/Text/ProfileText";
 import CustomButton from "@/components/Button/CustomButton";
 import { supabase } from "@/utils/supabase";
 import { Alert } from "react-native";
+import * as Application from "expo-application";
 
 export default function profile() {
   const handleSignOut = () => {

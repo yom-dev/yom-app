@@ -10,7 +10,7 @@ import {
 import { supabase } from "@/utils/supabase";
 import { Button, Input } from "@rneui/themed";
 import SignInButton from "@/components/Button/SignInButton";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 
 // Tells Supabase Auth to continuously refresh the session automatically if
 // the app is in the foreground. When this is added, you will continue to receive
@@ -27,20 +27,15 @@ AppState.addEventListener("change", (state) => {
 export default function Auth() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState(""); // 비밀번호 확인 필드 추가
   const [loading, setLoading] = useState(false);
 
-  async function signInWithEmail() {
-    setLoading(true);
-    const { error } = await supabase.auth.signInWithPassword({
-      email: email,
-      password: password,
-    });
-
-    if (error) Alert.alert(error.message);
-    setLoading(false);
-  }
-
   async function signUpWithEmail() {
+    if (password !== confirmPassword) {
+      Alert.alert("Passwords do not match");
+      return;
+    }
+
     setLoading(true);
     const {
       data: { session },
@@ -50,9 +45,25 @@ export default function Auth() {
       password: password,
     });
 
-    if (error) Alert.alert(error.message);
-    if (!session)
-      Alert.alert("Please check your inbox for email verification!");
+    if (error) {
+      Alert.alert(error.message);
+      setLoading(false);
+      return;
+    }
+
+    if (!session) {
+      Alert.alert(
+        "Please check your inbox for email verification!",
+        "",
+        [
+          {
+            text: "OK",
+            onPress: () => router.replace("/(auth)/signin"),
+          },
+        ],
+        { cancelable: false }
+      );
+    }
     setLoading(false);
   }
 
@@ -67,7 +78,7 @@ export default function Auth() {
           <TextInput
             onChangeText={(text) => setEmail(text)}
             value={email}
-            placeholder="email adress"
+            placeholder="email address"
             autoCapitalize={"none"}
             className="border border-yomGray h-[50px] rounded-2xl p-3 w-full font-[WantedR] text-[14px]"
           />
@@ -80,7 +91,17 @@ export default function Auth() {
             autoCapitalize={"none"}
             className="border border-yomGray h-[50px] rounded-2xl p-3 w-full font-[WantedR] text-[14px]"
           />
+
+          <TextInput
+            onChangeText={(text) => setConfirmPassword(text)}
+            value={confirmPassword}
+            secureTextEntry={true}
+            placeholder="confirm password"
+            autoCapitalize={"none"}
+            className="border border-yomGray h-[50px] rounded-2xl p-3 w-full font-[WantedR] text-[14px]"
+          />
         </View>
+
         <View className="w-full h-[46px] border-yomGray border-[0.5px] rounded-3xl mt-[25px]">
           <SignInButton
             title="Sign up"
@@ -123,18 +144,3 @@ export default function Auth() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    marginTop: 40,
-    padding: 12,
-  },
-  verticallySpaced: {
-    paddingTop: 4,
-    paddingBottom: 4,
-    alignSelf: "stretch",
-  },
-  mt20: {
-    marginTop: 20,
-  },
-});
