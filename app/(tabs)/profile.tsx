@@ -1,10 +1,21 @@
-import { View, Text, ScrollView, Pressable } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  Pressable,
+  TouchableOpacity,
+} from "react-native";
 import MainCard from "@/components/MainCard/GratitudeMainCard/GratitudeMainCard";
 import MainCarousel from "@/components/Carousel/MainCarousel";
 import ProfileText from "@/components/Text/ProfileText";
 import CustomButton from "@/components/Button/CustomButton";
+import { supabase } from "@/utils/supabase";
+import { Alert } from "react-native";
 
 export default function profile() {
+  const handleSignOut = () => {
+    supabase.auth.signOut();
+  };
   return (
     <View className="h-full w-full bg-yomWhite flex items-center">
       <View className="bg-yomWhite w-[90%] flex h-full">
@@ -35,6 +46,19 @@ export default function profile() {
           </View>
 
           <View className="w-full h-[50px]"></View>
+          <View className="w-full h-[50px]">
+            <TouchableOpacity onPress={handleSignOut}>
+              <Text>로그아웃</Text>
+            </TouchableOpacity>
+            {/* <CustomButton
+              title="로그아웃"
+              titleSize={16}
+              textColor="yomBlack"
+              backgroundColor="yomGray"
+              activeBackgroundColor="yomWhite"
+              
+            /> */}
+          </View>
         </ScrollView>
       </View>
     </View>

@@ -74,6 +74,26 @@ export default function RootLayout() {
               },
             }}
           />
+
+          <Stack.Screen
+            name="(auth)"
+            options={{
+              headerShown: false,
+              headerShadowVisible: false,
+              headerTitle: "",
+              headerBackground() {
+                return <View className="bg-white w-full h-full" />;
+              },
+              headerLeft: () => (
+                <Ionicons
+                  name="arrow-back"
+                  size={24}
+                  color={"#000000"}
+                  onPress={navigation.goBack} // Update to use navigation.goBack
+                />
+              ),
+            }}
+          />
           <Stack.Screen name="+not-found" />
           <Stack.Screen
             name="notification"

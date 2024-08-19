@@ -10,17 +10,13 @@ const PlanCard = ({
   planName,
   title,
   subTitle,
-  icon,
-  iconWidth,
-  iconHeight,
+
 }: {
   size: string;
   planName: string;
   title: string;
   subTitle: string;
-  icon: string;
-  iconWidth: number;
-  iconHeight: number;
+
 }) => {
   const sizeVariants: { [key: string]: string } = {
     small: "w-[105px] h-[135px] rounded-[25px] border-none",
