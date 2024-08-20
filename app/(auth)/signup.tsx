@@ -63,7 +63,20 @@ export default function Auth() {
         ],
         { cancelable: false }
       );
+    } else {
+      Alert.alert(
+        "Sign up successful!",
+        "",
+        [
+          {
+            text: "OK",
+            onPress: () => router.replace("/(tabs)/home"),
+          },
+        ],
+        { cancelable: false }
+      );
     }
+
     setLoading(false);
   }
 
@@ -88,6 +101,7 @@ export default function Auth() {
             value={password}
             secureTextEntry={true}
             placeholder="password"
+            textContentType="none"
             autoCapitalize={"none"}
             className="border border-yomGray h-[50px] rounded-2xl p-3 w-full font-[WantedR] text-[14px]"
           />
@@ -97,6 +111,7 @@ export default function Auth() {
             value={confirmPassword}
             secureTextEntry={true}
             placeholder="confirm password"
+            textContentType="none"
             autoCapitalize={"none"}
             className="border border-yomGray h-[50px] rounded-2xl p-3 w-full font-[WantedR] text-[14px]"
           />
@@ -105,23 +120,6 @@ export default function Auth() {
         <View className="w-full h-[46px] border-yomGray border-[0.5px] rounded-3xl mt-[25px]">
           <SignInButton
             title="Sign up"
-            titleSize={14}
-            backgroundColor="yomWhite"
-            textColor="yomBlack"
-            activeBackgroundColor="yomGreen"
-            onPress={() => signUpWithEmail()}
-          />
-        </View>
-
-        <View className="flex-row items-center justify-between my-[40px]">
-          <View className="w-[40%] border-b border-yomGray"></View>
-          <Text className="font-[WantedM] text-[16px]">or</Text>
-          <View className="w-[40%] border-b border-yomGray"></View>
-        </View>
-
-        <View className="w-full h-[46px] border-yomGray border-[0.5px] rounded-3xl">
-          <SignInButton
-            title="Sign up with Google"
             titleSize={14}
             backgroundColor="yomWhite"
             textColor="yomBlack"

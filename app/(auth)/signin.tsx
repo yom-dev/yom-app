@@ -11,6 +11,7 @@ import { supabase } from "@/utils/supabase";
 import { Button, Input } from "@rneui/themed";
 import SignInButton from "@/components/Button/SignInButton";
 import { Link } from "expo-router";
+import GoogleSignInButton from "@/components/Button/GoogleSignInButton";
 
 // Tells Supabase Auth to continuously refresh the session automatically if
 // the app is in the foreground. When this is added, you will continue to receive
@@ -77,26 +78,19 @@ export default function Auth() {
           />
         </View>
 
-        <View className="flex-row items-center justify-between my-[40px]">
+        {/* <View className="flex-row items-center justify-between my-[40px]">
           <View className="w-[40%] border-b border-yomGray"></View>
           <Text className="font-[WantedM] text-[16px]">or</Text>
           <View className="w-[40%] border-b border-yomGray"></View>
-        </View>
+        </View> */}
 
-        <View className="w-full h-[46px] border-yomGray border-[0.5px] rounded-3xl">
-          <SignInButton
-            title="Sign in with Google"
-            titleSize={14}
-            backgroundColor="yomWhite"
-            textColor="yomBlack"
-            activeBackgroundColor="yomGreen"
-            onPress={() => signInWithEmail()}
-          />
-        </View>
+        {/* <View className="w-full h-[46px] border-yomGray border-[0.5px] rounded-3xl">
+          <GoogleSignInButton />
+        </View> */}
 
         <View className="w-full flex-row justify-center mt-[40px]">
           <Text className="text-yomGray mr-1 font-[WantedM]">
-            Are you new to yom?{" "}
+            Are you new to yom?
           </Text>
           <Link href="/(auth)/signup">
             <Text className="text-yomGray font-[WantedM] underline">
