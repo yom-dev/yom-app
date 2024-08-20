@@ -20,6 +20,12 @@ const _layout = () => {
           headerShown: false,
         }}
       />
+      <Stack.Screen
+        name="profileSetting"
+        options={{
+          headerShown: false,
+        }}
+      />
     </Stack>
   );
 };

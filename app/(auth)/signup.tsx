@@ -70,7 +70,7 @@ export default function Auth() {
         [
           {
             text: "OK",
-            onPress: () => router.replace("/(tabs)/home"),
+            onPress: () => router.replace("/(auth)/profileSetting"),
           },
         ],
         { cancelable: false }
