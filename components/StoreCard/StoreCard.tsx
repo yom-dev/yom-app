@@ -56,11 +56,11 @@ const StoreCard = ({
             </View>
 
             <View className="mt-[10px]">
-              <Text className="font-[WantedB] text-[20px] w-full">{title}</Text>
+              <Text className="font-[WantedB] text-[18px] w-full">{title}</Text>
             </View>
 
-            <View className="w-full mt-[5px] font-[WantedM] text-[8px]">
-              <Text>{description}</Text>
+            <View className="w-full mt-[5px] font-[WantedM] ">
+              <Text className="text-[14px]">{description}</Text>
             </View>
           </View>
         </TouchableOpacity>

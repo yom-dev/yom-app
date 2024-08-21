@@ -32,13 +32,6 @@ export default function HomeScreen() {
                 </Text>
               </View>
 
-              {/* <Link href="/signin">
-                <Text>Login</Text>{" "}
-              </Link> */}
-              <Link href="/(auth)/profileSetting">
-                <Text>profileSetting</Text>{" "}
-              </Link>
-
               <View className="w-full h-[410px] mt-[20px]">
                 {/* <MainCard /> */}
                 <MainCarousel itemHeight={400} containerHeight={410} />

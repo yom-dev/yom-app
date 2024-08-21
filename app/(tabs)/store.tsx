@@ -47,11 +47,20 @@ export default function Plan() {
     },
     {
       key: "4",
-      startColor: "#EEA901",
-      endColor: "#F0DDAD",
+      startColor: "#979797",
+      endColor: "#CAC9C9",
       title: "Workout",
       subTitle: "Coming Soon",
       planName: "workout",
+      isActive: false,
+    },
+    {
+      key: "4",
+      startColor: "#BC6C25",
+      endColor: "#F3DFC1",
+      title: "Bible Reading",
+      subTitle: "Coming Soon",
+      planName: "bible",
       isActive: false,
     },
   ];
@@ -59,21 +68,25 @@ export default function Plan() {
     <View className="h-full w-full bg-yomWhite flex items-center">
       <View className="bg-yomWhite w-[90%] flex h-full">
         <View className="w-full h-full">
-          <View className="h-fit flex flex-col justify-end mt-[20px]">
-            <Text className="text-[32px] text-yomBlack font-[WantedSB]">
-              Store
-            </Text>
-          </View>
-
-          <View className="w-full h-full mt-[30px]">
+          <View className="w-full h-full mt-[20px]">
             <FlatList
               data={cards}
               numColumns={2}
               className="w-full h-fit "
+              showsVerticalScrollIndicator={false}
               columnWrapperStyle={{
                 justifyContent: "space-between",
+
                 marginBottom: 20,
               }}
+              ListFooterComponent={<View className="w-full h-[100px]"></View>}
+              ListHeaderComponent={
+                <View className="h-fit flex flex-col justify-end mb-[30px]">
+                  <Text className="text-[32px] text-yomBlack font-[WantedSB]">
+                    Store
+                  </Text>
+                </View>
+              }
               renderItem={({ item }) => (
                 <View className="w-[45%]">
                   <StoreCard

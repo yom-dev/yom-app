@@ -5,4 +5,5 @@ export const icons = {
   reading: require("@/assets/images/book-icon.png"),
   meditation: require("@/assets/images/tree-icon.png"),
   google: require("@/assets/images/google-icon.png"),
+  bible: require("@/assets/images/bible-icon.png"),
 };

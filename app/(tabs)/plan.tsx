@@ -34,13 +34,7 @@ export default function Plan() {
     <View className="h-full w-full bg-yomWhite flex items-center">
       <View className="bg-yomWhite w-[90%] flex h-full">
         <View className="w-full h-full">
-          <View className="h-fit flex flex-col justify-end mt-[20px]">
-            <Text className="text-[32px] text-yomBlack font-[WantedSB]">
-              My Plan
-            </Text>
-          </View>
-
-          <View className="w-full  h-full mt-[30px]">
+          <View className="w-full  h-full mt-[20px]">
             <FlatList
               data={cards}
               numColumns={3}
@@ -60,6 +54,13 @@ export default function Plan() {
                 </View>
               )}
               keyExtractor={(item) => item.key}
+              ListHeaderComponent={
+                <View className="h-fit flex flex-col justify-end mb-[30px]">
+                  <Text className="text-[32px] text-yomBlack font-[WantedSB]">
+                    My Plan
+                  </Text>
+                </View>
+              }
             />
           </View>
 
