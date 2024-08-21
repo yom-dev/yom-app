@@ -3,6 +3,7 @@ import React from "react";
 import { TabBarIcon } from "@/components/Navigation/TabBarIcon";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -20,34 +21,36 @@ export default function TabLayout() {
       <Tabs.Screen
         name="home"
         options={{
-          title: "홈",
+          title: "Home",
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={"home"} color={color} />
+            // <TabBarIcon name={"home"} color={color} />
+            <Ionicons name="home" size={20} color={color} />
           ),
         }}
       />
       <Tabs.Screen
         name="plan"
         options={{
-          title: "내 플랜",
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={"search"} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="record"
-        options={{
-          title: "기록",
+          title: "My Plan",
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={"book"} color={color} />
           ),
         }}
       />
       <Tabs.Screen
+        name="record"
+        options={{
+          title: "Record",
+          tabBarIcon: ({ color, focused }) => (
+            // <TabBarIcon name={"book"} color={color} />
+            <Ionicons name="stats-chart-sharp" size={20} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="store"
         options={{
-          title: "스토어",
+          title: "Store",
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={"shopping-cart"} color={color} />
           ),
@@ -56,7 +59,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="profile"
         options={{
-          title: "프로필",
+          title: "Profile",
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={"user"} color={color} />
           ),

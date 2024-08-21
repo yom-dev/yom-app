@@ -12,11 +12,9 @@ import CustomButton from "@/components/Button/CustomButton";
 import { supabase } from "@/utils/supabase";
 import { Alert } from "react-native";
 import * as Application from "expo-application";
-
+import { Ionicons } from "@expo/vector-icons";
+import { Link } from "expo-router";
 export default function profile() {
-  const handleSignOut = () => {
-    supabase.auth.signOut();
-  };
   return (
     <View className="h-full w-full bg-yomWhite flex items-center">
       <View className="bg-yomWhite w-[90%] flex h-full">
@@ -26,14 +24,12 @@ export default function profile() {
         >
           <View className="h-fit flex-row items-end justify-between mt-[20px]">
             <Text className="text-[32px] text-yomBlack font-[WantedSB]">
-              프로필
+              Profile
             </Text>
 
-            <Pressable>
-              <Text className="text-[14px] text-yomRed font-[WantedR] active:font-[WantedB]">
-                편집하기
-              </Text>
-            </Pressable>
+            <Link href="/(settings)/setting">
+              <Ionicons name="settings-outline" size={22} color="black" />
+            </Link>
           </View>
           <View className="w-full flex-row justify-center mt-[50px]">
             <View className="w-[150px] h-[150px] bg-yomGray rounded-full"></View>
@@ -43,23 +39,11 @@ export default function profile() {
             <ProfileText title="이름" content="임상훈" />
             <ProfileText title="닉네임" content="29" />
             <ProfileText title="이메일" content="sanghoonim@hanyang.ac.kr" />
-            {/* <ProfileText title="생년월일" content="2000.02.29" /> */}
+            <ProfileText title="생년월일" content="2000.02.29" />
           </View>
 
           <View className="w-full h-[50px]"></View>
-          <View className="w-full h-[50px]">
-            <TouchableOpacity onPress={handleSignOut}>
-              <Text>로그아웃</Text>
-            </TouchableOpacity>
-            {/* <CustomButton
-              title="로그아웃"
-              titleSize={16}
-              textColor="yomBlack"
-              backgroundColor="yomGray"
-              activeBackgroundColor="yomWhite"
-              
-            /> */}
-          </View>
+          <View className="w-full h-[50px]"></View>
         </ScrollView>
       </View>
     </View>

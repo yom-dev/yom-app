@@ -32,9 +32,9 @@ export default function HomeScreen() {
                 </Text>
               </View>
 
-              <Link href="/signin">
+              {/* <Link href="/signin">
                 <Text>Login</Text>{" "}
-              </Link>
+              </Link> */}
               <Link href="/(auth)/profileSetting">
                 <Text>profileSetting</Text>{" "}
               </Link>

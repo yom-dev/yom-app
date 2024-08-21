@@ -10,7 +10,7 @@ export default function record() {
         >
           <View className="h-fit flex flex-col justify-end mt-[20px]">
             <Text className="text-[32px] text-yomBlack font-[WantedSB]">
-              기록
+              Record
             </Text>
           </View>
 

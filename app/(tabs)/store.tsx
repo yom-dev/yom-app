@@ -61,7 +61,7 @@ export default function Plan() {
         <View className="w-full h-full">
           <View className="h-fit flex flex-col justify-end mt-[20px]">
             <Text className="text-[32px] text-yomBlack font-[WantedSB]">
-              스토어
+              Store
             </Text>
           </View>
 

@@ -172,6 +172,25 @@ export default function RootLayout() {
               ),
             }}
           />
+          <Stack.Screen
+            name="(settings)" // 특정 경로를 지정
+            options={{
+              headerShown: true,
+              headerShadowVisible: false,
+              headerTitle: "",
+              headerBackground() {
+                return <View className="bg-yomWhite w-full h-full" />;
+              },
+              headerLeft: () => (
+                <Ionicons
+                  name="arrow-back"
+                  size={24}
+                  color={"#000000"}
+                  onPress={navigation.goBack}
+                />
+              ),
+            }}
+          />
         </Stack>
       </GestureHandlerRootView>
     </ThemeProvider>
