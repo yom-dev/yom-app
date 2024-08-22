@@ -8,11 +8,7 @@ import {
   ScrollView,
   FlatList,
 } from "react-native";
-import PlanCardMeditation from "@/components/PlanCard/PlanCardMeditation";
-import PlanCardReading from "@/components/PlanCard/PlanCardReading";
-import PlanCardVocab from "@/components/PlanCard/PlanCardVocab";
-import PlanCardWorkout from "@/components/PlanCard/PlanCardWorkout";
-import PlanCardGratitude from "@/components/PlanCard/PlanCardGratitude";
+
 import StoreCard from "@/components/StoreCard/StoreCard";
 
 export default function Plan() {
@@ -79,7 +75,7 @@ export default function Plan() {
 
                 marginBottom: 20,
               }}
-              ListFooterComponent={<View className="w-full h-[100px]"></View>}
+              ListFooterComponent={<View className="w-full h-[5px]"></View>}
               ListHeaderComponent={
                 <View className="h-fit flex flex-col justify-end mb-[30px]">
                   <Text className="text-[32px] text-yomBlack font-[WantedSB]">

@@ -1,4 +1,3 @@
-import MainCarousel from "@/components/Carousel/MainCarousel";
 import {
   StyleSheet,
   Image,
@@ -8,25 +7,27 @@ import {
   ScrollView,
   FlatList,
 } from "react-native";
-import PlanCardMeditation from "@/components/PlanCard/PlanCardMeditation";
-import PlanCardReading from "@/components/PlanCard/PlanCardReading";
-import PlanCardVocab from "@/components/PlanCard/PlanCardVocab";
-import PlanCardWorkout from "@/components/PlanCard/PlanCardWorkout";
-import PlanCardGratitude from "@/components/PlanCard/PlanCardGratitude";
-import PlanCard from "@/components/PlanCard/PlanCard";
+
+import PlanCardWide from "@/components/PlanCard/PlanCardWide";
 
 export default function Plan() {
   const cards = [
     {
       key: "1",
       planName: "meditation",
-      title: "명상",
+      title: "Meditation",
       subTitle: "Coming Soon",
     },
     {
       key: "2",
-      planName: "workout",
-      title: "근력 운동",
+      planName: "reading",
+      title: "Reading",
+      subTitle: "Coming Soon",
+    },
+    {
+      key: "3",
+      planName: "vocab",
+      title: "Vocabulary",
       subTitle: "Coming Soon",
     },
   ];
@@ -37,16 +38,11 @@ export default function Plan() {
           <View className="w-full  h-full mt-[20px]">
             <FlatList
               data={cards}
-              numColumns={3}
-              className="w-full h-fit "
-              columnWrapperStyle={{
-                justifyContent: "space-between",
-                marginBottom: 20,
-              }}
+              numColumns={1}
+              className="w-full h-fit"
               renderItem={({ item }) => (
-                <View>
-                  <PlanCard
-                    size="small"
+                <View className="mb-[10px]">
+                  <PlanCardWide
                     planName={item.planName}
                     title={item.title}
                     subTitle={item.subTitle}

@@ -10,13 +10,11 @@ const PlanCard = ({
   planName,
   title,
   subTitle,
-
 }: {
   size: string;
   planName: string;
   title: string;
   subTitle: string;
-
 }) => {
   const sizeVariants: { [key: string]: string } = {
     small: "w-[105px] h-[135px] rounded-[25px] border-none",
@@ -46,8 +44,9 @@ const PlanCard = ({
   const GradationPlanName = planName as GradationPlanName;
   const IconPlanName = planName as IconPlanName;
 
-  // Access the startColor and endColor from planGradation based on the planName
-  const { startColor, endColor } = planGradation[IconPlanName] || {
+  const { startColor, endColor } = planGradation[
+    IconPlanName as keyof typeof planGradation
+  ] || {
     startColor: "#000",
     endColor: "#FFF",
   };
