@@ -30,6 +30,12 @@ export default function Plan() {
       title: "Vocabulary",
       subTitle: "Coming Soon",
     },
+    {
+      key: "4",
+      planName: "gratitude",
+      title: "Daily Gratitude",
+      subTitle: "Coming Soon",
+    },
   ];
   return (
     <View className="h-full w-full bg-yomWhite flex items-center">
