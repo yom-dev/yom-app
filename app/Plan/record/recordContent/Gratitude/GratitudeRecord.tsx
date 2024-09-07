@@ -30,7 +30,7 @@ const GratitudeRecord: React.FC = () => {
   return (
     <View className="w-full h-full">
       <ImageBackground
-        source={require("@/assets/images/main-card-background.png")}
+        source={require("@/assets/images/background/main-card-background.png")}
         className="w-full h-full flex justify-start items-start px-[20px] py-[20px]"
         resizeMode="cover"
       >

@@ -10,7 +10,7 @@ const MainMyPlanHeader = () => {
   };
   return (
     <View className="flex flex-row justify-between items-end">
-      <Text className="text-[28px] text-yomBlack font-[WantedSB]">내 플랜</Text>
+      <Text className="text-[28px] text-yomBlack font-[WantedSB]">My Plan</Text>
 
       <View className="flex flex-row items-center justify-end">
         <Link

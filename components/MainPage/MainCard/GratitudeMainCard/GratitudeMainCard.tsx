@@ -9,7 +9,7 @@ const GratitudeMainCard: React.FC = ({}) => {
     <View className="bg-yomBlack w-full h-full border-none rounded-2xl overflow-hidden ">
       {/*배경화면 설정*/}
       <ImageBackground
-        source={require("@/assets/images/main-card-background.png")}
+        source={require("@/assets/images/background/main-card-background.png")}
         className="w-full h-full flex justify-center items-center"
         resizeMode="cover"
         style={{ borderRadius: 20 }}

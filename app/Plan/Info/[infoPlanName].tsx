@@ -16,7 +16,7 @@ const InfoPage = () => {
 
   const infoData: { planName: PlanName; title: string; content: string } = {
     planName: "meditation", // 이 값은 logos의 키 중 하나로 제한됩니다.
-    title: "하루 감사",
+    title: "Daily Gratitude",
     content:
       "Daily Gratitude is a plan to assist you with gratitude. Set a time when you can dedicate your life. Daily Gratitude is a plan to assist you with gratitude. Set a time when you can dedicate your life",
   };
@@ -52,7 +52,7 @@ const InfoPage = () => {
         {/* button */}
         <View className="w-full h-[50px] fixed bottom-10">
           <CustomButton
-            title="내 플랜에 추가하기"
+            title="Add to My Plan"
             titleSize={18}
             backgroundColor="yomGreen"
             activeBackgroundColor="yomDarkGreen"

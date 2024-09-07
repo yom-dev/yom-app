@@ -14,22 +14,22 @@ const Setting = () => {
         <SettingSlot
           iconName="information"
           text="Info"
-          href="/(settings)/setting"
+          href="/(settings)/info"
         />
         <SettingSlot
           iconName="briefcase-sharp"
-          text="Who we are"
-          href="/(settings)/setting"
+          text="About us"
+          href="/(settings)/about-us"
         />
         <SettingSlot
           iconName="people-circle-outline"
           text="Contributers"
-          href="/(settings)/setting"
+          href="/(settings)/contributers"
         />
         <SettingSlot
           iconName="at"
           text="Contact us"
-          href="/(settings)/setting"
+          href="/(settings)/contact"
         />
         <TouchableOpacity
           onPress={handleSignOut}

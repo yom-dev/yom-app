@@ -14,6 +14,30 @@ const _layout = () => {
           headerShown: false,
         }}
       />
+      <Stack.Screen
+        name="about-us"
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="info"
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="contact"
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="contributers"
+        options={{
+          headerShown: false,
+        }}
+      />
     </Stack>
   );
 };

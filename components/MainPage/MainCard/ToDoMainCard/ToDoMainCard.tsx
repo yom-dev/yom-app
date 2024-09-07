@@ -47,7 +47,7 @@ const ToDoMainCard: React.FC = () => {
   return (
     <View className="bg-yomBlack w-full border-none rounded-2xl overflow-hidden">
       <ImageBackground
-        source={require("@/assets/images/main-card-background.png")}
+        source={require("@/assets/images/background/main-card-background.png")}
         className="w-full h-full flex justify-center items-center"
         resizeMode="cover"
         style={{ borderRadius: 20 }}

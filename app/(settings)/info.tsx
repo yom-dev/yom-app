@@ -1,12 +1,12 @@
 import { View, Text } from "react-native";
 import React from "react";
 
-const contributers = () => {
+const info = () => {
   return (
     <View>
-      <Text>contributers</Text>
+      <Text>info</Text>
     </View>
   );
 };
 
-export default contributers;
+export default info;
