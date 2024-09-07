@@ -5,10 +5,10 @@ import {
   Pressable,
   TouchableOpacity,
 } from "react-native";
-import MainCard from "@/components/MainCard/GratitudeMainCard/GratitudeMainCard";
-import MainCarousel from "@/components/Carousel/MainCarousel";
-import ProfileText from "@/components/Text/ProfileText";
-import CustomButton from "@/components/Button/CustomButton";
+import MainCard from "@/components/MainPage/MainCard/GratitudeMainCard/GratitudeMainCard";
+import MainCarousel from "@/components/Shared/Carousel/MainCarousel";
+import ProfileText from "@/components/ProfilePage/ProfileText";
+import CustomButton from "@/components/Shared/Button/CustomButton";
 import { supabase } from "@/utils/supabase";
 import { Alert } from "react-native";
 import * as Application from "expo-application";

@@ -13,7 +13,7 @@ const GratitudeModalContent = () => {
           {/* 텍스트 인풋 */}
 
           <TextInput
-            className="w-full h-full border-yomGray border-[1px] rounded-3xl p-[15px] font-[WantedSB] text-[14px] flex 
+            className="w-full h-full border-yomGray border-[1px] rounded-3xl p-[15px] font-[WantedSB] text-[14px] flex
               "
             placeholder="이곳에 적어주세요"
             // textAlignVertical="center"

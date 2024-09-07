@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
-import SettingSlot from "@/components/Setting/SettingSlot";
+import SettingSlot from "@/components/SettingPage/SettingSlot";
 import { supabase } from "@/utils/supabase";
 import { Link } from "expo-router";
 

@@ -1,6 +1,6 @@
 import { View, Text } from "react-native";
 import React from "react";
-import CustomButton from "@/components/Button/CustomButton";
+import CustomButton from "@/components/Shared/Button/CustomButton";
 
 const EmptyToDo = () => {
   return (

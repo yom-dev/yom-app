@@ -1,4 +1,4 @@
-import MainCarousel from "@/components/Carousel/MainCarousel";
+import MainCarousel from "@/components/Shared/Carousel/MainCarousel";
 import {
   StyleSheet,
   Image,
@@ -9,7 +9,7 @@ import {
   FlatList,
 } from "react-native";
 
-import StoreCard from "@/components/StoreCard/StoreCard";
+import StoreCard from "@/components/StorePage/StoreCard/StoreCard";
 
 export default function Plan() {
   const cards = [

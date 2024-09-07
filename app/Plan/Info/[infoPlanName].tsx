@@ -2,7 +2,7 @@ import { useLocalSearchParams } from "expo-router";
 import React from "react";
 import { View, Text, ScrollView, ImageBackground } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import CustomButton from "@/components/Button/CustomButton";
+import CustomButton from "@/components/Shared/Button/CustomButton";
 import InfoContent from "./infoContent";
 import { Image } from "expo-image";
 import { icons } from "@/constants/Icons";

@@ -1,9 +1,9 @@
 import { View, Text, Modal, ModalProps, ImageBackground } from "react-native";
 import { useState } from "react";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import SwitchInput from "@/components/Input/SwitchInput";
-import CustomButton from "@/components/Button/CustomButton";
-import TimeInput from "@/components/Input/TimeInput";
+import SwitchInput from "@/components/Shared/Input/SwitchInput";
+import CustomButton from "@/components/Shared/Button/CustomButton";
+import TimeInput from "@/components/Shared/Input/TimeInput";
 
 interface GratitudeEditProps {
   visible: boolean;
@@ -28,7 +28,7 @@ const GratitudeEdit: React.FC<GratitudeEditProps> = ({ visible }) => {
         </View>
         <View className="w-full h-[200px] mt-[60px]">
           <ImageBackground
-            source={require("@/assets/images/note-icon.png")}
+            source={require("@/assets/images/icons/note-icon.png")}
             className="w-full h-full flex justify-center items-center"
             resizeMode="contain"
             style={{ borderRadius: 20 }}

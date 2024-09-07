@@ -9,9 +9,9 @@ import {
 } from "react-native";
 import { supabase } from "@/utils/supabase";
 import { Button, Input } from "@rneui/themed";
-import SignInButton from "@/components/Button/SignInButton";
+import SignInButton from "@/components/Shared/Button/SignInButton";
 import { Link } from "expo-router";
-import GoogleSignInButton from "@/components/Button/GoogleSignInButton";
+import GoogleSignInButton from "@/components/Shared/Button/GoogleSignInButton";
 
 // Tells Supabase Auth to continuously refresh the session automatically if
 // the app is in the foreground. When this is added, you will continue to receive

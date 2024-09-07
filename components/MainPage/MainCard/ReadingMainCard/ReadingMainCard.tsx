@@ -1,5 +1,5 @@
 import { View, Text, ImageBackground, Pressable } from "react-native";
-import CustomButton from "@/components/Button/CustomButton";
+import CustomButton from "@/components/Shared/Button/CustomButton";
 import React from "react";
 import { useModal } from "@/shared/store/use-modal-store";
 

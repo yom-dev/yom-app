@@ -1,8 +1,8 @@
 import React from "react";
 import { View, Text, Modal, ModalProps, ImageBackground } from "react-native";
-import ModalHeader from "@/components/Modal/ModalHeader";
-import CustomButton from "@/components/Button/CustomButton";
-import GratitudeModalContent from "@/components/Modal/GratitudeModal/GratitudeModalContent";
+import ModalHeader from "@/components/Shared/Modal/ModalHeader";
+import CustomButton from "@/components/Shared/Button/CustomButton";
+import GratitudeModalContent from "@/components/Shared/Modal/GratitudeModal/GratitudeModalContent";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { useModal } from "@/shared/store/use-modal-store";
 import InfoModalContent from "../InfoModalContent";
@@ -33,7 +33,7 @@ const GratitudeInfoModal: React.FC<GratitudeModalProps> = ({ visible }) => {
           >
             <View className="w-full h-[200px] mt-[60px]">
               <ImageBackground
-                source={require("@/assets/images/note-icon.png")}
+                source={require("@/assets/images/icons/note-icon.png")}
                 className="w-full h-full flex justify-center items-center"
                 resizeMode="contain"
                 style={{ borderRadius: 20 }} // ImageBackground에 직접 borderRadius 추가

@@ -1,6 +1,6 @@
 import { View, Text, ScrollView, FlatList } from "react-native";
 import React from "react";
-import PlanCard from "@/components/PlanCard/PlanCard";
+import PlanCard from "@/components/Shared/PlanCard/PlanCard";
 const MainMyPlanContent = () => {
   const cards = [
     {

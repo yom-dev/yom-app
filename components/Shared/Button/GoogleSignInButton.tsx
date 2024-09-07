@@ -12,7 +12,7 @@ const GoogleSignInButton = () => {
     >
       <View className="w-[50%] flex-row justify-between items-center">
         <Image
-          source={require("@/assets/images/google-icon.png")}
+          source={require("@/assets/icons/google-icon.png")}
           width={18}
           height={18}
           contentFit="cover"

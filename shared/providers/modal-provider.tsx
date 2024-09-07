@@ -1,7 +1,7 @@
 import React from "react";
-import GratitudeModal from "@/components/Modal/GratitudeModal/GratitudeModal";
-import GratitudeInfoModal from "@/components/Modal/GratitudeModal/GratitudeInfoModal";
-import GratitudeEditModal from "@/components/Modal/GratitudeModal/GratitudeEditModal";
+import GratitudeModal from "@/components/Shared/Modal/GratitudeModal/GratitudeModal";
+import GratitudeInfoModal from "@/components/Shared/Modal/GratitudeModal/GratitudeInfoModal";
+import GratitudeEditModal from "@/components/Shared/Modal/GratitudeModal/GratitudeEditModal";
 import { useModal } from "@/shared/store/use-modal-store";
 
 const ModalProvider = () => {

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Alert, View, Text, TextInput } from "react-native";
 import { Button } from "@rneui/themed";
 import { Link } from "expo-router";
-import SignInButton from "@/components/Button/SignInButton";
+import SignInButton from "@/components/Shared/Button/SignInButton";
 import { router } from "expo-router";
 
 const ProfileSetting = () => {

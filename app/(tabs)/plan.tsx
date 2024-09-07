@@ -8,7 +8,7 @@ import {
   FlatList,
 } from "react-native";
 
-import PlanCardWide from "@/components/PlanCard/PlanCardWide";
+import PlanCardWide from "@/components/Shared/PlanCard/PlanCardWide";
 
 export default function Plan() {
   const cards = [

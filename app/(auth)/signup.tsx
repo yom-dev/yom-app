@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { supabase } from "@/utils/supabase";
 import { Button, Input } from "@rneui/themed";
-import SignInButton from "@/components/Button/SignInButton";
+import SignInButton from "@/components/Shared/Button/SignInButton";
 import { Link, router } from "expo-router";
 
 // Tells Supabase Auth to continuously refresh the session automatically if

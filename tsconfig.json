@@ -3,15 +3,14 @@
   "compilerOptions": {
     "strict": true,
     "paths": {
-      "@/*": [
-        "./*"
-      ]
+      "@/*": ["./*"]
     }
   },
   "include": [
     "**/*.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",
-    "expo-env.d.ts"
-, "components/Carousel/MainCarousel2.tsx"  ]
+    "expo-env.d.ts",
+    "components/Shared/Carousel/MainCarousel2.tsx"
+  ]
 }
