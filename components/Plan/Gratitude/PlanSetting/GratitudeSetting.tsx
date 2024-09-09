@@ -5,11 +5,7 @@ import SwitchInput from "@/components/Shared/Input/SwitchInput";
 import CustomButton from "@/components/Shared/Button/CustomButton";
 import TimeInput from "@/components/Shared/Input/TimeInput";
 
-interface GratitudeEditProps {
-  visible: boolean;
-}
-
-const GratitudeSetting: React.FC<GratitudeEditProps> = ({ visible }) => {
+const GratitudeSetting = () => {
   const [notification, setNotification] = useState(false);
   const toggleSwitch = () => setNotification((previousState) => !previousState);
   const [time, setTime] = useState(new Date());
