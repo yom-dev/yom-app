@@ -9,7 +9,7 @@ interface GratitudeEditProps {
   visible: boolean;
 }
 
-const GratitudeEdit: React.FC<GratitudeEditProps> = ({ visible }) => {
+const GratitudeSetting: React.FC<GratitudeEditProps> = ({ visible }) => {
   const [notification, setNotification] = useState(false);
   const toggleSwitch = () => setNotification((previousState) => !previousState);
   const [time, setTime] = useState(new Date());
@@ -66,4 +66,4 @@ const GratitudeEdit: React.FC<GratitudeEditProps> = ({ visible }) => {
   );
 };
 
-export default GratitudeEdit;
+export default GratitudeSetting;
