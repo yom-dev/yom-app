@@ -19,25 +19,30 @@ const GratitudeSetting = () => {
       >
         <View className="flex-row justify-center mt-[20px]">
           <Text className="text-[24px] font-[WantedB] text-yomBlack">
-            하루감사
+            Gratitude Setting
           </Text>
         </View>
-        <View className="w-full h-[200px] mt-[60px]">
+        {/* <View className="w-full h-[200px] mt-[60px]">
           <ImageBackground
             source={require("@/assets/images/icons/note-icon.png")}
             className="w-full h-full flex justify-center items-center"
             resizeMode="contain"
             style={{ borderRadius: 20 }}
           />
-        </View>
+        </View> */}
 
         <View>
           <View className="mt-[70px]">
-            <SwitchInput value={notification} onValueChange={toggleSwitch} />
+            <SwitchInput
+              value={notification}
+              onValueChange={toggleSwitch}
+              title="Notification"
+            />
           </View>
           {notification && (
-            <View className="mt-[50px]">
+            <View className="mt-[70px]">
               <TimeInput
+                title="Time"
                 value={time}
                 onChange={(event, selectedTime) =>
                   setTime(selectedTime || time)
@@ -48,7 +53,7 @@ const GratitudeSetting = () => {
         </View>
         <View className="h-fit w-full mt-[30px] flex items-center mb-[60]"></View>
       </KeyboardAwareScrollView>
-      <View className="w-full h-[50px] fixed bottom-10">
+      <View className="w-full h-[50px] fixed bottom-20">
         <CustomButton
           title="저장하기"
           titleSize={18}
