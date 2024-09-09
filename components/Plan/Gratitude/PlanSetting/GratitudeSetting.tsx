@@ -10,7 +10,7 @@ const GratitudeSetting = () => {
   const toggleSwitch = () => setNotification((previousState) => !previousState);
   const [time, setTime] = useState(new Date());
   return (
-    <View className="bg-yomWhite flex justify-center w-full h-full">
+    <View className="bg-white flex justify-center w-full h-full">
       <KeyboardAwareScrollView
         style={{ flex: 1 }}
         showsVerticalScrollIndicator={false}

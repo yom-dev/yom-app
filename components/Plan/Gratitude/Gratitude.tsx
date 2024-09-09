@@ -8,8 +8,8 @@ const Gratitude = () => {
   const [selectedValue, setSelectedValue] = useState("Main");
 
   return (
-    <View className="w-full flex-row justify-center bg-yomWhite h-full">
-      <View className="w-[90%] bg-yomWhite h-full">
+    <View className="w-full flex-row justify-center bg-white h-full">
+      <View className="w-[90%] bg-white h-full">
         <SegmentedControl
           values={["Main", "Record", "Settings"]}
           selectedIndex={selectedIndex}
