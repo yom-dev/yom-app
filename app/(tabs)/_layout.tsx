@@ -37,7 +37,7 @@ export default function TabLayout() {
           ),
         }}
       />
-      <Tabs.Screen
+      {/* <Tabs.Screen
         name="record"
         options={{
           title: "Record",
@@ -46,7 +46,7 @@ export default function TabLayout() {
             <Ionicons name="stats-chart-sharp" size={20} color={color} />
           ),
         }}
-      />
+      /> */}
       <Tabs.Screen
         name="store"
         options={{
