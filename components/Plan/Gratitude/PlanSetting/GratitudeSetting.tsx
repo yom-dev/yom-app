@@ -17,10 +17,10 @@ const GratitudeSetting = () => {
         extraScrollHeight={30}
         keyboardOpeningTime={100}
       >
-        <View className="flex-row justify-center mt-[20px]">
-          <Text className="text-[24px] font-[WantedB] text-yomBlack">
-            Gratitude Setting
-          </Text>
+        <View className="flex-row justify-center mt-[30px]">
+          {/* <Text className="text-[24px] font-[WantedB] text-yomBlack">
+          Setting
+          </Text> */}
         </View>
         {/* <View className="w-full h-[200px] mt-[60px]">
           <ImageBackground
@@ -36,7 +36,7 @@ const GratitudeSetting = () => {
             <SwitchInput
               value={notification}
               onValueChange={toggleSwitch}
-              title="Notification"
+              title="Daily Notification"
             />
           </View>
           {notification && (
@@ -53,14 +53,16 @@ const GratitudeSetting = () => {
         </View>
         <View className="h-fit w-full mt-[30px] flex items-center mb-[60]"></View>
       </KeyboardAwareScrollView>
-      <View className="w-full h-[50px] fixed bottom-20">
+      <View className="w-full h-[45px] mt-[35px] fixed bottom-20">
         <CustomButton
-          title="저장하기"
+          title="Save"
           titleSize={18}
           backgroundColor="yomGreen"
           activeBackgroundColor="yomDarkGreen"
           textColor="yomWhite"
-          onPress={() => {}}
+          onPress={() => {
+            console.log("저장하기");
+          }}
         />
       </View>
     </View>

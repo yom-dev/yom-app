@@ -1,6 +1,6 @@
 import { View, Text, FlatList } from "react-native";
 import React from "react";
-import { ImageBackground, ScrollView } from "react-native";
+import { ScrollView, ImageBackground } from "react-native";
 import GratitudeRecordItem from "./GratitudeRecordItem";
 
 interface GratitudeRecordData {
@@ -28,30 +28,32 @@ const GratitudeRecord: React.FC = () => {
   ];
 
   return (
-    <View className="w-full h-full">
-      <ImageBackground
-        source={require("@/assets/images/background/main-card-background.png")}
-        className="w-full h-full flex justify-start items-start px-[20px] py-[20px]"
-        resizeMode="cover"
-      >
-        <View className="flex flex-column justify-between h-[15%]">
-          <Text className="text-yomWhite font-[WantedM] text-[16px]">
-            Joseph,
-          </Text>
-          <Text className="text-yomWhite font-[WantedSB] text-[32px]">
-            You thanked for....
-          </Text>
-        </View>
-        <FlatList
-          data={gratitudeData}
-          keyExtractor={(item) => item.date}
-          renderItem={({ item }) => (
-            <GratitudeRecordItem date={item.date} items={item.items} />
-          )}
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ gap: 20 }}
-        />
-      </ImageBackground>
+    <View className="w-full h-[90%] mt-[30px]">
+      <View className="w-full h-full rounded-xl overflow-hidden">
+        <ImageBackground
+          source={require("@/assets/images/background/main-card-background.png")}
+          className="w-full h-full flex justify-start items-start px-[20px] py-[20px]"
+          resizeMode="cover"
+        >
+          <View className="flex flex-column justify-between h-[12%]">
+            <Text className="text-yomWhite font-[WantedM] text-[16px]">
+              Joseph,
+            </Text>
+            <Text className="text-yomWhite font-[WantedSB] text-[32px]">
+              You thanked for....
+            </Text>
+          </View>
+          <FlatList
+            data={gratitudeData}
+            keyExtractor={(item) => item.date}
+            renderItem={({ item }) => (
+              <GratitudeRecordItem date={item.date} items={item.items} />
+            )}
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={{ gap: 20 }}
+          />
+        </ImageBackground>
+      </View>
     </View>
   );
 };

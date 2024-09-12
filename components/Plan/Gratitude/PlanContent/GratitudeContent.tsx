@@ -14,7 +14,7 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 const GratitudeContent = () => {
   return (
     <View className="w-full h-full flex-row justify-center">
-      <View className="w-[90%]">
+      <View className="w-full">
         <KeyboardAwareScrollView
           style={{ flex: 1 }}
           showsVerticalScrollIndicator={false}
