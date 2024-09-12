@@ -1,7 +1,8 @@
 import { View, Text, FlatList } from "react-native";
-import React from "react";
-import { ScrollView, ImageBackground } from "react-native";
+import React, { useState } from "react";
+import { ImageBackground } from "react-native";
 import GratitudeRecordItem from "./GratitudeRecordItem";
+import GratitudeRecordMonthPicker from "./GratitudeRecordMonthPicker";
 
 interface GratitudeRecordData {
   date: string;
@@ -24,8 +25,11 @@ const GratitudeRecord: React.FC = () => {
       date: "2024-01-02",
       items: ["a good health", "the kindness of strangers", "a delicious meal"],
     },
-    // 추가적인 데이터들을 여기 넣을 수 있습니다.
   ];
+
+  // State for month and year
+  const [month, setMonth] = useState("January");
+  const [year, setYear] = useState(2024);
 
   return (
     <View className="w-full h-[90%] mt-[30px]">
@@ -35,13 +39,13 @@ const GratitudeRecord: React.FC = () => {
           className="w-full h-full flex justify-start items-start px-[20px] py-[20px]"
           resizeMode="cover"
         >
-          <View className="flex flex-column justify-between h-[12%]">
-            <Text className="text-yomWhite font-[WantedM] text-[16px]">
-              Joseph,
-            </Text>
-            <Text className="text-yomWhite font-[WantedSB] text-[32px]">
-              You thanked for....
-            </Text>
+          <View className="flex flex-column justify-between h-[7%]  w-full">
+            <GratitudeRecordMonthPicker
+              month={month}
+              year={year}
+              setMonth={setMonth}
+              setYear={setYear}
+            />
           </View>
           <FlatList
             data={gratitudeData}
