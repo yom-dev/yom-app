@@ -11,6 +11,7 @@ interface PlanStore {
   planName: string;
   subTitle: string;
   title: string;
+  description: string;
 }
 
 export default function Plan() {
@@ -36,7 +37,7 @@ export default function Plan() {
   if (loading) {
     return (
       <View className="h-full w-full flex justify-center items-center bg-yomWhite">
-        <ActivityIndicator />{" "}
+        <ActivityIndicator />
       </View>
     );
   }
