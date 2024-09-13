@@ -8,13 +8,13 @@ import React from "react";
 import { icons } from "@/constants/Icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { Link } from "expo-router";
+import { planGradation } from "@/constants/planGradation";
 
 type PlanName = keyof typeof icons;
 
 interface StoreCardProps {
   planName: string;
-  startColor: string;
-  endColor: string;
+
   title: string;
   description: string;
   isActive: boolean;
@@ -22,13 +22,19 @@ interface StoreCardProps {
 
 const StoreCard = ({
   planName,
-  startColor,
-  endColor,
+
   title,
   description,
   isActive,
 }: StoreCardProps) => {
   const validPlanName = planName as PlanName;
+  const { startColor, endColor } = planGradation[
+    validPlanName as keyof typeof planGradation
+  ] || {
+    startColor: "#000",
+
+    endColor: "#FFF",
+  };
 
   return (
     <GestureHandlerRootView>

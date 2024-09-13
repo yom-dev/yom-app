@@ -31,7 +31,7 @@ const ToDoItem = ({
           <Text className="font-[WantedM] text-[14px] text-yomBlack">
             {text}
           </Text>
-          <CheckBox isDone={isDone} />
+          <CheckBox isDone={true} />
         </View>
       </TouchableOpacity>
     </Link>

@@ -27,7 +27,7 @@ const mockData: Array<{
     id: "3",
     planName: "workout",
     text: "Workout",
-    isDone: false,
+    isDone: true,
   },
 ];
 
@@ -55,10 +55,10 @@ const ToDoMainCard: React.FC = () => {
         <View className="w-[85%] h-[85%] flex justify-start">
           <View className="flex flex-column justify-between gap-[5px] h-[20%]">
             <Text className="text-yomWhite font-[WantedM] text-[16px]">
-              Today's yom plan just for you.
+              Yom plans you added.
             </Text>
             <Text className="text-yomWhite font-[WantedSB] text-[32px]">
-              To-Do
+              My plan
             </Text>
           </View>
 

@@ -1,78 +1,58 @@
-import MainCarousel from "@/components/Shared/Carousel/MainCarousel";
-import {
-  StyleSheet,
-  Image,
-  Platform,
-  View,
-  Text,
-  ScrollView,
-  FlatList,
-} from "react-native";
-
+import React, { useEffect, useState } from "react";
+import { View, Text, FlatList } from "react-native";
+import { supabase } from "@/utils/supabase";
 import StoreCard from "@/components/StorePage/StoreCard/StoreCard";
+import { ActivityIndicator } from "react-native";
+
+// Supabase에서 가져오는 planStore 데이터의 타입 정의
+interface PlanStore {
+  id: number;
+  isActive: boolean;
+  planName: string;
+  subTitle: string;
+  title: string;
+}
 
 export default function Plan() {
-  const cards = [
-    {
-      key: "1",
-      planName: "meditation",
-      startColor: "#9bd069",
-      endColor: "#d0ad69",
-      title: "Meditation",
-      subTitle: "Excercise for Healthier Mind",
-      isActive: true,
-    },
+  // planStore 타입을 지정하여 상태를 설정
+  const [planStore, setPlanStore] = useState<PlanStore[]>([]);
+  const [loading, setLoading] = useState(true);
 
-    {
-      key: "2",
-      planName: "vocab",
-      startColor: "#eea901",
-      endColor: "#f0ddad",
-      title: "Vocabulary",
-      subTitle: "Coming Soon",
-      isActive: false,
-    },
-    {
-      key: "3",
-      startColor: "#615EE2",
-      endColor: "#BA8DF3",
-      title: "Reading",
-      subTitle: "Coming Soon",
-      isActive: false,
-      planName: "reading",
-    },
-    {
-      key: "4",
-      startColor: "#979797",
-      endColor: "#CAC9C9",
-      title: "Workout",
-      subTitle: "Coming Soon",
-      planName: "workout",
-      isActive: false,
-    },
-    {
-      key: "4",
-      startColor: "#BC6C25",
-      endColor: "#F3DFC1",
-      title: "Bible Reading",
-      subTitle: "Coming Soon",
-      planName: "bible",
-      isActive: false,
-    },
-  ];
+  useEffect(() => {
+    const fetchPlanStore = async () => {
+      let { data, error } = await supabase.from("planStore").select("*");
+      if (error) {
+        console.error("Error fetching plan store data:", error);
+      } else {
+        setPlanStore(data ?? []); // null일 경우 빈 배열로 처리
+        console.log(data); // Supabase에서 받아온 데이터 로그 확인
+      }
+      setLoading(false);
+    };
+
+    fetchPlanStore();
+  }, []);
+
+  if (loading) {
+    return (
+      <View className="h-full w-full flex justify-center items-center bg-yomWhite">
+        <ActivityIndicator />{" "}
+      </View>
+    );
+  }
+
   return (
     <View className="h-full w-full bg-yomWhite flex items-center">
       <View className="bg-yomWhite w-[90%] flex h-full">
         <View className="w-full h-full">
           <View className="w-full h-full mt-[20px]">
             <FlatList
-              data={cards}
+              data={planStore} // Supabase에서 가져온 데이터를 사용
               numColumns={2}
-              className="w-full h-fit "
+              className="w-full h-fit"
               showsVerticalScrollIndicator={false}
               columnWrapperStyle={{
                 justifyContent: "space-between",
-
                 marginBottom: 20,
               }}
               ListFooterComponent={<View className="w-full h-[5px]"></View>}
@@ -86,8 +66,6 @@ export default function Plan() {
               renderItem={({ item }) => (
                 <View className="w-[45%]">
                   <StoreCard
-                    startColor={item.startColor}
-                    endColor={item.endColor}
                     title={item.title}
                     description={item.subTitle}
                     planName={item.planName}
@@ -95,7 +73,7 @@ export default function Plan() {
                   />
                 </View>
               )}
-              keyExtractor={(item) => item.key}
+              keyExtractor={(item) => item.id.toString()}
             />
           </View>
 
