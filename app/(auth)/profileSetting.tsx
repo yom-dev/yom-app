@@ -1,29 +1,46 @@
 import React, { useState } from "react";
 import { Alert, View, Text, TextInput } from "react-native";
-import { Button } from "@rneui/themed";
-import { Link } from "expo-router";
-import SignInButton from "@/components/Shared/Button/SignInButton";
 import { router } from "expo-router";
+import DateTimePicker from "@react-native-community/datetimepicker";
+import { supabase } from "@/utils/supabase"; // Supabase 설정을 불러옵니다.
+import SignInButton from "@/components/Shared/Button/SignInButton";
+import { useGetUser } from "@/hooks/useGetUser";
 
 const ProfileSetting = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [birthYear, setBirthYear] = useState("");
-  const [birthMonth, setBirthMonth] = useState("");
-  const [birthDay, setBirthDay] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [userName, setUserName] = useState("");
+  const [birthDate, setBirthDate] = useState(new Date());
+  const { user, loading, error } = useGetUser();
 
-  const saveProfile = () => {
-    // 여기에 프로필 저장 로직 추가
-    console.log("Profile Saved:", {
-      firstName,
-      lastName,
-      birthYear,
-      birthMonth,
-      birthDay,
-    });
-    Alert.alert("Profile saved successfully!");
-    router.replace("/(tabs)/home");
+  // DatePicker 변경 핸들러
+  const handleDateChange = (event: any, selectedDate?: Date) => {
+    if (selectedDate) {
+      setBirthDate(selectedDate); // 선택된 날짜를 상태에 저장
+    }
+  };
+
+  // 프로필 저장 및 Supabase 업데이트
+  const saveProfile = async () => {
+    // Supabase 프로필 업데이트
+    const { data, error } = await supabase
+      .from("profiles") // 테이블 이름
+      .update({
+        firstName,
+        lastName,
+        userName,
+        birthDate: birthDate.toISOString().split("T")[0], // Date 객체를 YYYY-MM-DD 형식으로 변환
+      })
+      .eq("id", user.id); // 업데이트할 row 식별 (여기서는 userName을 기준으로 업데이트)
+
+    if (error) {
+      console.error("Error updating profile:", error);
+      Alert.alert("Error", "Failed to update profile.");
+    } else {
+      console.log("Profile updated successfully:", data);
+      Alert.alert("Success", "Profile saved successfully!");
+      router.replace("/(tabs)/home"); // 성공 시 홈으로 이동
+    }
   };
 
   return (
@@ -52,57 +69,34 @@ const ProfileSetting = () => {
             className="border border-yomGray h-[50px] rounded-2xl p-3 w-full font-[WantedR] text-[14px]"
           />
 
-          <Text className="font-[WantedM]">Date of birth</Text>
-          <View className="flex flex-row gap-1 justify-between">
-            <TextInput
-              onChangeText={(text) => setBirthYear(text)}
-              value={birthYear}
-              placeholder="Year"
-              keyboardType="numeric"
-              maxLength={4}
-              className="border border-yomGray h-[50px] rounded-2xl p-3 w-[31%] font-[WantedR] text-[14px]"
-            />
+          <TextInput
+            onChangeText={(text) => setUserName(text)}
+            value={userName}
+            placeholder="Username"
+            autoCapitalize={"words"}
+            className="border border-yomGray h-[50px] rounded-2xl p-3 w-full font-[WantedR] text-[14px]"
+          />
 
-            <TextInput
-              onChangeText={(text) => setBirthMonth(text)}
-              value={birthMonth}
-              placeholder="Month"
-              keyboardType="numeric"
-              maxLength={2}
-              className="border border-yomGray h-[50px] rounded-2xl p-3 w-[31%] font-[WantedR] text-[14px]"
-            />
-
-            <TextInput
-              onChangeText={(text) => setBirthDay(text)}
-              value={birthDay}
-              placeholder="Day"
-              keyboardType="numeric"
-              maxLength={2}
-              className="border border-yomGray h-[50px] rounded-2xl p-3 w-[31%] font-[WantedR] text-[14px]"
+          <Text className="font-[WantedM]">Date of Birth</Text>
+          <View className="w-full h-[180px] ">
+            <DateTimePicker
+              mode="date" // 날짜 선택 모드
+              display="spinner"
+              value={birthDate}
+              onChange={handleDateChange} // 날짜 변경 핸들러
+              style={{ flex: 1 }}
             />
           </View>
-        </View>
-
-        <View className="w-full h-[46px] border-yomGray border-[0.5px] rounded-3xl mt-[25px]">
-          <SignInButton
-            title="Save Profile"
-            titleSize={14}
-            backgroundColor="yomWhite"
-            textColor="yomBlack"
-            activeBackgroundColor="yomGreen"
-            onPress={saveProfile}
-          />
-        </View>
-
-        <View className="w-full flex-row justify-center mt-[40px]">
-          <Text className="text-yomGray mr-1 font-[WantedM]">
-            Want to sign out?
-          </Text>
-          <Link href="/(auth)/signin">
-            <Text className="text-yomGray font-[WantedM] underline">
-              Sign out
-            </Text>
-          </Link>
+          <View className="w-full h-[46px] border-yomGray border-[0.5px] rounded-3xl mt-[10px]">
+            <SignInButton
+              title="Save Profile"
+              titleSize={14}
+              backgroundColor="yomWhite"
+              textColor="yomBlack"
+              activeBackgroundColor="yomGreen"
+              onPress={saveProfile}
+            />
+          </View>
         </View>
       </View>
     </View>
