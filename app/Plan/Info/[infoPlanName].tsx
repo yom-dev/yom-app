@@ -1,50 +1,23 @@
 import { useLocalSearchParams } from "expo-router";
-import React, { useEffect, useState } from "react";
-import { View, Text, ScrollView, ImageBackground } from "react-native";
+import React from "react";
+import {
+  View,
+  Text,
+  ScrollView,
+  ImageBackground,
+  ActivityIndicator,
+} from "react-native";
 import CustomButton from "@/components/Shared/Button/CustomButton";
 import InfoContent from "./infoContent";
 import { icons } from "@/constants/Icons";
-import { supabase } from "@/utils/supabase";
-import { ActivityIndicator } from "react-native";
-
-// Define the type for the Supabase data
-interface PlanStore {
-  id: number;
-  isActive: boolean;
-  planName: string;
-  subTitle: string;
-  title: string;
-  description: string;
-}
+import useGetPlanInfo from "@/hooks/useGetPlanInfo"; // Import the custom hook
 
 // logos 객체의 타입을 정의합니다.
 type PlanName = keyof typeof icons;
 
 const InfoPage = () => {
-  const { infoPlanName } = useLocalSearchParams();
-  const [infoData, setInfoData] = useState<PlanStore | null>(null); // State for storing the fetched data
-  const [loading, setLoading] = useState(true); // State for loading
-
-  useEffect(() => {
-    const fetchPlanStore = async () => {
-      let { data, error } = await supabase
-        .from("planStore")
-        .select("*")
-        .eq("planName", `${infoPlanName}`); // Filter the data by planName
-
-      if (error) {
-        console.error("Error fetching plan store data:", error);
-      } else {
-        if (data && data.length > 0) {
-          setInfoData(data[0]); // Set the first item of the result to state
-        }
-        console.log(data); // Supabase에서 받아온 데이터 로그 확인
-      }
-      setLoading(false); // Set loading to false once data is fetched
-    };
-
-    fetchPlanStore();
-  }, []);
+  const { infoPlanName } = useLocalSearchParams(); // Get the planName from the URL parameters
+  const { infoData, loading, error } = useGetPlanInfo(infoPlanName as string); // Use the custom hook
 
   if (loading) {
     return (
@@ -54,10 +27,10 @@ const InfoPage = () => {
     );
   }
 
-  if (!infoData) {
+  if (error || !infoData) {
     return (
       <View className="h-full w-full flex justify-center items-center bg-yomWhite">
-        <Text>No data found</Text>
+        <Text>{error || "No data found"}</Text>
       </View>
     );
   }
@@ -95,7 +68,7 @@ const InfoPage = () => {
         </ScrollView>
 
         {/* button */}
-        <View className="w-full h-[50px] fixed bottom-10">
+        <View className="w-full h-[50px] bottom-10">
           <CustomButton
             title="Add to My Plan"
             titleSize={18}
