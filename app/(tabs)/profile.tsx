@@ -1,9 +1,10 @@
 import React from "react";
-import { View, Text, ScrollView, ActivityIndicator } from "react-native";
+import { View, Text, ScrollView, ActivityIndicator, Image } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { Link } from "expo-router";
 import ProfileText from "@/components/ProfilePage/ProfileText";
 import useGetProfile from "@/hooks/useGetProfile"; // Import your custom hook
+import AvatarImagePicker from "@/components/ProfilePage/AvatarImagePicker";
 
 export default function ProfilePage() {
   const { profiles, error, loading } = useGetProfile(); // Use the hook to fetch profile data
@@ -48,9 +49,13 @@ export default function ProfilePage() {
 
           {/* Profile Avatar */}
           <View className="w-full flex-row justify-center mt-[50px]">
-            <View className="w-[150px] h-[150px] bg-yomGray rounded-full"></View>
+            {/* <View className="w-[150px] h-[150px] bg-yomGray rounded-full"></View> */}
+            <AvatarImagePicker />
             {/* Replace with profile avatar */}
-            {/* <Image source={{ uri: profile?.avatarUrl }} style={{ width: 150, height: 150, borderRadius: 75 }} /> */}
+            {/* <Image
+              source={{ uri: profile?.avatarUrl }}
+              style={{ width: 150, height: 150, borderRadius: 75 }}
+            /> */}
           </View>
 
           {/* Profile Information */}
@@ -58,11 +63,14 @@ export default function ProfilePage() {
             {profile ? (
               <>
                 <ProfileText
-                  title="임상훈"
+                  title="Name"
                   content={profile.firstName + " " + profile.lastName}
                 />
                 <ProfileText title="Username" content={profile.username} />
-                <ProfileText title="Birth" content={profile.birthday} />
+                <ProfileText
+                  title="Birth"
+                  content={new Date(profile.birthday).toLocaleDateString()}
+                />
 
                 <ProfileText
                   title="Last Update"

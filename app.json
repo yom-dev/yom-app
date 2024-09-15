@@ -29,6 +29,13 @@
     },
     "plugins": [
       [
+        "expo-image-picker",
+        {
+          "photosPermission": "Aloow yom to access your camera",
+          "cameraPermission": "Allow yom to access your camera"
+        }
+      ],
+      [
         "@react-native-google-signin/google-signin",
         {
           "iosUrlScheme": "com.googleusercontent.apps.330776642226-97jaa538gdc5bve38kvikm3ik9gndldr"
