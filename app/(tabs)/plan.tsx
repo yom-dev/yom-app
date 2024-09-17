@@ -13,7 +13,7 @@ import PlanCardWide from "@/components/Shared/PlanCard/PlanCardWide";
 export default function Plan() {
   const cards = [
     {
-      key: "1",
+      key: "3",
       planName: "meditation",
       title: "Meditation",
       subTitle: "Coming Soon",
@@ -24,14 +24,9 @@ export default function Plan() {
       title: "Reading",
       subTitle: "Coming Soon",
     },
+
     {
-      key: "3",
-      planName: "vocab",
-      title: "Vocabulary",
-      subTitle: "Coming Soon",
-    },
-    {
-      key: "4",
+      key: "1",
       planName: "gratitude",
       title: "Daily Gratitude",
       subTitle: "Coming Soon",
