@@ -1,4 +1,10 @@
-import { StyleSheet, View, Text, FlatList } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  FlatList,
+  ActivityIndicator,
+} from "react-native";
 import React, { useEffect } from "react";
 
 import PlanCardWide from "@/components/Shared/PlanCard/PlanCardWide";
@@ -19,7 +25,18 @@ export default function Plan() {
   }, [trueKeys, loading, error]); // 의존성 배열에 data, loading, error 추가
 
   if (loading) {
-    return <Text>Loading...</Text>; // 로딩 중일 때 로딩 메시지 표시
+    return (
+      <View className="h-full w-full bg-yomWhite flex items-center">
+        <View className="bg-yomWhite w-[90%] flex h-full">
+          <View className="h-fit flex flex-col justify-end mb-[30px]">
+            <Text className="text-[32px] text-yomBlack font-[WantedSB]">
+              My Plan
+            </Text>
+          </View>
+          <ActivityIndicator />
+        </View>
+      </View>
+    );
   }
 
   if (error) {

@@ -1,46 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Text, ImageBackground } from "react-native";
 import ToDoItem from "./ToDoItem";
 
 import { FlatList } from "react-native-gesture-handler";
 import EmptyToDo from "./EmptyToDo";
-
-const mockData: Array<{
-  id: string;
-  planName: string;
-  text: string;
-  isDone: boolean;
-}> = [
-  {
-    id: "1",
-    planName: "gratitude",
-    text: "Gratitude",
-    isDone: true,
-  },
-  {
-    id: "2",
-    planName: "meditation",
-    text: "Meditation",
-    isDone: true,
-  },
-  {
-    id: "3",
-    planName: "workout",
-    text: "Workout",
-    isDone: true,
-  },
-];
+import useGetMyPlans from "@/hooks/useGetMyPlans";
 
 const ToDoMainCard: React.FC = () => {
-  const sortedData = [...mockData].sort((a, b) => (a.isDone ? -1 : 1));
+  const { trueKeys, loading, error } = useGetMyPlans();
 
-  const renderItem = ({ item }: { item: (typeof mockData)[0] }) => (
+  useEffect(() => {
+    if (loading) {
+      console.log("Loading...");
+    } else if (error) {
+      console.error("Error:", error);
+    } else {
+      console.log("Data:", trueKeys);
+    }
+  }, [trueKeys, loading, error]);
+
+  // `trueKeys`의 각 항목의 타입은 { key: string, planName: string }
+  const renderItem = ({
+    item,
+  }: {
+    item: { key: string; planName: string };
+  }) => (
     <View className="my-[7px]">
-      <ToDoItem
-        planName={item.planName}
-        text={item.text}
-        isDone={item.isDone}
-      />
+      <ToDoItem planName={item.planName} isDone={true} />
     </View>
   );
 
@@ -64,9 +50,9 @@ const ToDoMainCard: React.FC = () => {
 
           <View className="w-full h-[80%] mt-5">
             <FlatList
-              data={sortedData}
+              data={trueKeys}
               renderItem={renderItem}
-              keyExtractor={(item) => item.id}
+              keyExtractor={(item) => item.key}
               showsVerticalScrollIndicator={false}
               ListEmptyComponent={<EmptyToDo />}
             />
