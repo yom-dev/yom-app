@@ -1,5 +1,5 @@
 import { router, useLocalSearchParams } from "expo-router";
-import React from "react";
+import React, { useEffect } from "react";
 import {
   View,
   Text,
@@ -13,7 +13,7 @@ import { icons } from "@/constants/Icons";
 import useGetPlanInfo from "@/hooks/useGetPlanInfo"; // Import the custom hook
 import { supabase } from "@/utils/supabase";
 import { useGetUserId } from "@/hooks/useGetUserId";
-import info from "@/app/(settings)/info";
+import useGetMyPlans from "@/hooks/useGetMyPlans";
 type PlanName = keyof typeof icons;
 
 const InfoPage = () => {
@@ -23,10 +23,21 @@ const InfoPage = () => {
     loading,
     error,
   } = useGetPlanInfo(infoPlanName as string);
-
   const { data: userId } = useGetUserId();
+  const {
+    trueKeys,
+    loading: myPlansLoading,
+    error: myPlansError,
+  } = useGetMyPlans();
 
-  if (loading) {
+  // Check if the current plan is already in the user's plans
+  const isInMyPlans = trueKeys.some((plan) => plan.planName === infoPlanName);
+
+  useEffect(() => {
+    console.log("True Keys:", trueKeys);
+  }, [trueKeys]);
+
+  if (loading || myPlansLoading) {
     return (
       <View className="h-full w-full flex justify-center items-center bg-yomWhite">
         <ActivityIndicator />
@@ -34,20 +45,20 @@ const InfoPage = () => {
     );
   }
 
-  if (error || !infoData) {
+  if (error || myPlansError || !infoData) {
     return (
       <View className="h-full w-full flex justify-center items-center bg-yomWhite">
-        <Text>{error || "No data found"}</Text>
+        <Text>{error || myPlansError || "No data found"}</Text>
       </View>
     );
   }
 
-  const icon = icons[infoData.planName as PlanName]; // Use the planName from the fetched data
+  const icon = icons[infoData.planName as PlanName];
 
   const handleSave = async () => {
     const { data, error } = await supabase
       .from("myPlans")
-      .update({ [infoPlanName as string]: true }) // 예시로 수정한 부분
+      .update({ [infoPlanName as string]: true })
       .eq("id", userId);
 
     if (error) {
@@ -73,7 +84,7 @@ const InfoPage = () => {
           {/* image */}
           <View className="w-full h-[200px] mt-[50px]">
             <ImageBackground
-              source={icon} // logos 객체에서 가져온 logo를 source에 적용
+              source={icon} // Apply the icon from icons object
               className="w-full h-full flex justify-center items-center"
               resizeMode="contain"
             />
@@ -87,14 +98,22 @@ const InfoPage = () => {
 
         {/* button */}
         <View className="w-full h-[50px] bottom-10">
-          <CustomButton
-            title="Add to My Plan"
-            titleSize={18}
-            backgroundColor="yomGreen"
-            activeBackgroundColor="yomDarkGreen"
-            textColor="yomWhite"
-            onPress={handleSave}
-          />
+          {isInMyPlans ? (
+            <View className="border-yomGreen border-[2px] w-full h-full rounded-full flex-1 justify-center items-center">
+              <Text className="text-yomGreen font-[WantedSB] text-[18px]">
+                Already in my plan.
+              </Text>
+            </View>
+          ) : (
+            <CustomButton
+              title="Add to My Plan"
+              titleSize={18}
+              backgroundColor="yomGreen"
+              activeBackgroundColor="yomDarkGreen"
+              textColor="yomWhite"
+              onPress={handleSave}
+            />
+          )}
         </View>
       </View>
     </View>

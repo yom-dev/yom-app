@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/utils/supabase";
 import { MyPlans } from "@/shared/types/MyPlans";
 
-// 모든 컬럼에 대해 문자열 또는 Boolean 값을 가질 수 있도록 타입 정의
 const useGetMyPlans = () => {
   const [data, setData] = useState<MyPlans | null>(null);
   const [loading, setLoading] = useState(true);
@@ -11,53 +10,56 @@ const useGetMyPlans = () => {
     []
   );
 
-  // boolean 값이 true인 key들의 이름을 key와 planName 형태로 변환
+  // Function to filter and get keys with boolean true values
   const getTrueKeys = (plans: MyPlans) => {
     return Object.keys(plans)
       .filter((key) => plans[key as keyof MyPlans] === true)
       .map((key, index) => ({
-        key: (index + 1).toString(), // 인덱스를 사용하여 key 생성
-        planName: key, // planName은 key 값과 동일
+        key: (index + 1).toString(), // Create keys based on index
+        planName: key, // Use the original key as the planName
       }));
   };
 
+  // Fetch data from the "myPlans" table
   const fetchMyPlans = async () => {
+    setLoading(true);
     try {
       const { data, error } = await supabase.from("myPlans").select("*");
 
       if (error) {
-        throw new Error(error.message); // 에러 발생 시 처리
+        throw new Error(error.message);
       }
 
       if (data && data.length > 0) {
         const rawData = data[0];
 
-        // user_id를 제외한 나머지 값들 중 boolean인 값만 추출
+        // Filter data to include only boolean fields excluding 'id'
         const filteredData = Object.keys(rawData).reduce((acc, key) => {
           if (key !== "id" && typeof rawData[key] === "boolean") {
-            acc[key] = rawData[key]; // boolean 값만 저장
+            acc[key] = rawData[key];
           }
           return acc;
         }, {} as MyPlans);
 
-        setData(filteredData); // 필터링된 데이터 상태 업데이트
+        setData(filteredData);
 
-        // trueKeys 배열 생성
+        // Create trueKeys from filteredData
         const keys = getTrueKeys(filteredData);
-        setTrueKeys(keys); // trueKeys 상태 업데이트
+        setTrueKeys(keys);
       } else {
-        setData(null); // 데이터가 없는 경우
+        setData(null);
       }
     } catch (error: any) {
+      console.error("Error fetching plans:", error);
       setError(error.message || "An unknown error occurred");
     } finally {
-      setLoading(false); // 로딩 상태 해제
+      setLoading(false);
     }
   };
 
   useEffect(() => {
     fetchMyPlans();
-  }, []); // 컴포넌트 마운트 시 한번 실행
+  }, []); // Run once when the component mounts
 
   return { trueKeys, loading, error };
 };
