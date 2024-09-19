@@ -9,16 +9,6 @@ import useGetMyPlans from "@/hooks/useGetMyPlans";
 const ToDoMainCard: React.FC = () => {
   const { trueKeys, loading, error } = useGetMyPlans();
 
-  useEffect(() => {
-    if (loading) {
-      console.log("Loading...");
-    } else if (error) {
-      console.error("Error:", error);
-    } else {
-      console.log("Data:", trueKeys);
-    }
-  }, [trueKeys, loading, error]);
-
   // `trueKeys`의 각 항목의 타입은 { key: string, planName: string }
   const renderItem = ({
     item,

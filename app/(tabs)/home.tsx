@@ -18,11 +18,6 @@ export default function HomeScreen() {
   return (
     <View className="h-full w-full bg-yomWhite flex items-center">
       <View className="bg-yomWhite w-[90%] flex h-full">
-        {/* 스크롤 뷰 */}
-        {/* <ScrollView
-          className="w-full h-full"
-          showsVerticalScrollIndicator={false}
-        > */}
         <FlatList
           data={[]}
           renderItem={null}

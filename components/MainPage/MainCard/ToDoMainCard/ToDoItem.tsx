@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { View, Text, ActivityIndicator } from "react-native";
+import { View, Text, ActivityIndicator, ImageBackground } from "react-native";
 import { Image } from "expo-image";
 import { Link } from "expo-router"; // Import Link from expo-router
 import { icons } from "@/constants/Icons";
@@ -18,7 +18,7 @@ const ToDoItem = ({
 }) => {
   // Convert the planName string into a valid key for the icons object
   const validPlanName = planName as PlanName;
-  const { infoData, loading, error } = useGetPlanInfo(`${planName}`);
+  const { data: infoData, loading, error } = useGetPlanInfo(`${planName}`);
 
   if (loading) {
     return (
@@ -49,7 +49,14 @@ const ToDoItem = ({
           className="w-full h-[50px] rounded-lg px-3 py-2 flex-row justify-between items-center bg-yomWhite"
           style={{ opacity: isDone ? 1 : 0.75 }} // 조건부로 opacity 설정
         >
-          <Image source={icons[validPlanName]} width={23} height={23} />
+          <View className="w-[23px] h-[23px] ">
+            <ImageBackground
+              source={icons[validPlanName]}
+              className="w-full h-full flex justify-center items-center"
+              resizeMode="contain"
+            />
+          </View>
+
           <Text className="font-[WantedM] text-[14px] text-yomBlack">
             {infoData.title}
           </Text>

@@ -17,9 +17,15 @@ import info from "@/app/(settings)/info";
 type PlanName = keyof typeof icons;
 
 const InfoPage = () => {
-  const { infoPlanName } = useLocalSearchParams(); // Get the planName from the URL parameters
-  const { infoData, loading, error } = useGetPlanInfo(infoPlanName as string); // Use the custom hook
-  const { userId } = useGetUserId();
+  const { infoPlanName } = useLocalSearchParams();
+  const {
+    data: infoData,
+    loading,
+    error,
+  } = useGetPlanInfo(infoPlanName as string);
+
+  const { data: userId } = useGetUserId();
+
   if (loading) {
     return (
       <View className="h-full w-full flex justify-center items-center bg-yomWhite">
@@ -39,14 +45,12 @@ const InfoPage = () => {
   const icon = icons[infoData.planName as PlanName]; // Use the planName from the fetched data
 
   const handleSave = async () => {
-    // console.log(infoPlanName);
     const { data, error } = await supabase
       .from("myPlans")
       .update({ [infoPlanName as string]: true }) // 예시로 수정한 부분
       .eq("id", userId);
 
     if (error) {
-      console.log(infoPlanName);
       console.error("Error updating data:", error);
     } else {
       console.log("Data updated successfully:", data);

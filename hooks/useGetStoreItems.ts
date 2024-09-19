@@ -13,7 +13,7 @@ interface PlanStore {
 
 // Custom hook to fetch store items from Supabase
 const useGetStoreItems = () => {
-  const [storeItems, setStoreItems] = useState<PlanStore[]>([]);
+  const [data, setData] = useState<PlanStore[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -24,7 +24,7 @@ const useGetStoreItems = () => {
         if (error) {
           throw new Error(error.message);
         }
-        setStoreItems(data ?? []); // Set to empty array if data is null
+        setData(data ?? []); // Set to empty array if data is null
       } catch (err: any) {
         setError(err.message);
       } finally {
@@ -35,7 +35,7 @@ const useGetStoreItems = () => {
     fetchStoreItems();
   }, []);
 
-  return { storeItems, loading, error };
+  return { data, loading, error };
 };
 
 export default useGetStoreItems;

@@ -12,7 +12,7 @@ interface PlanStore {
 }
 
 const useGetPlanInfo = (infoPlanName: string | undefined) => {
-  const [infoData, setInfoData] = useState<PlanStore | null>(null);
+  const [data, setData] = useState<PlanStore | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -28,9 +28,9 @@ const useGetPlanInfo = (infoPlanName: string | undefined) => {
           setError("Error fetching plan store data");
         } else {
           if (data && data.length > 0) {
-            setInfoData(data[0]); // Set the first item of the result to state
+            setData(data[0]); // Set the first item of the result to state
           } else {
-            setInfoData(null); // No data found
+            setData(null); // No data found
           }
         }
         setLoading(false); // Set loading to false once data is fetched
@@ -40,7 +40,7 @@ const useGetPlanInfo = (infoPlanName: string | undefined) => {
     fetchPlanStore();
   }, [infoPlanName]);
 
-  return { infoData, loading, error };
+  return { data, loading, error };
 };
 
 export default useGetPlanInfo;

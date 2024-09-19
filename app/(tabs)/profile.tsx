@@ -14,8 +14,8 @@ import AvatarImagePicker from "@/components/ProfilePage/AvatarImagePicker";
 import ProfileEditModal from "@/components/Shared/Modal/ProfileEditModal"; // ProfileEditModal 컴포넌트 임포트
 
 export default function ProfilePage() {
-  const { profiles, error, loading, refetch } = useGetProfile(); // refetch 추가
-  const [isModalVisible, setModalVisible] = useState(false); // 모달 가시성 상태 추가
+  const { data, error, loading, refetch } = useGetProfile();
+  const [isModalVisible, setModalVisible] = useState(false);
 
   // Handle loading state
   if (loading) {
@@ -36,7 +36,7 @@ export default function ProfilePage() {
   }
 
   // Assuming the profile array has only one profile object (adjust according to your data structure)
-  const profile = profiles && profiles.length > 0 ? profiles[0] : null;
+  const profile = data && data.length > 0 ? data[0] : null;
 
   // 프로필 업데이트 후 모달을 닫고 데이터를 다시 패칭하는 함수
   const handleProfileUpdate = () => {

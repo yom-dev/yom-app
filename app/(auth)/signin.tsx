@@ -38,7 +38,6 @@ export default function Auth() {
     });
 
     if (error) Alert.alert("Invalid email / password");
-    // console.log(error.message)
     setLoading(false);
   }
 

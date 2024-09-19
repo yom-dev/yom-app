@@ -4,15 +4,7 @@ import StoreCard from "@/components/StorePage/StoreCard/StoreCard";
 import useGetStoreItems from "@/hooks/useGetStoreItems"; // Import the custom hook
 
 export default function Plan() {
-  const { storeItems, loading, error } = useGetStoreItems(); // Use the custom hook
-
-  if (loading) {
-    return (
-      <View className="h-full w-full flex justify-center items-center bg-yomWhite">
-        <ActivityIndicator />
-      </View>
-    );
-  }
+  const { data, loading, error } = useGetStoreItems(); // Use the custom hook
 
   if (error) {
     return (
@@ -28,7 +20,7 @@ export default function Plan() {
         <View className="w-full h-full">
           <View className="w-full h-full mt-[20px]">
             <FlatList
-              data={storeItems} // Using data from the hook
+              data={data} // Using data from the hook
               numColumns={2}
               className="w-full h-fit"
               showsVerticalScrollIndicator={false}
@@ -42,6 +34,7 @@ export default function Plan() {
                   <Text className="text-[32px] text-yomBlack font-[WantedSB]">
                     Store
                   </Text>
+                  {loading ?? <ActivityIndicator />}
                 </View>
               }
               renderItem={({ item }) => (

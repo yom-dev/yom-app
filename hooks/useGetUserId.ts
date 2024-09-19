@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/utils/supabase";
 
 export function useGetUserId() {
-  const [userId, setUserId] = useState<string | null>(null); // 유저 ID를 상태로 저장
+  const [data, setData] = useState<string | null>(null); // 유저 ID를 상태로 저장
   const [loading, setLoading] = useState<boolean>(true); // 로딩 상태 관리
   const [error, setError] = useState<string | null>(null); // 에러 상태 관리
 
@@ -19,7 +19,7 @@ export function useGetUserId() {
         }
 
         if (data?.session?.user) {
-          setUserId(data.session.user.id); // 유저 ID 저장
+          setData(data.session.user.id); // 유저 ID 저장
         } else {
           setError("No active session or user found");
         }
@@ -34,5 +34,5 @@ export function useGetUserId() {
     useGetUserId(); // 유저 ID 가져오기 함수 호출
   }, []); // 컴포넌트가 마운트될 때만 실행
 
-  return { userId }; // 유저 ID, 로딩 상태, 에러 상태 반환
+  return { data }; // 유저 ID, 로딩 상태, 에러 상태 반환
 }

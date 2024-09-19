@@ -21,7 +21,7 @@ const GratitudeSetting = () => {
   const [time, setTime] = useState(new Date());
   const planNameParams = useLocalSearchParams();
   const planName = planNameParams.contentPlanName as string;
-  const { userId } = useGetUserId();
+  const { data: userId } = useGetUserId();
 
   const handleDelete = async () => {
     // Alert API로 사용자에게 확인 메시지 표시
@@ -42,7 +42,6 @@ const GratitudeSetting = () => {
               .eq("id", userId);
 
             if (error) {
-              console.log(planName);
               console.error("Error updating data:", error);
             } else {
               console.log("Data updated successfully:", data);

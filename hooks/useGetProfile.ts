@@ -13,7 +13,7 @@ type Profile = {
 };
 
 const useGetProfile = () => {
-  const [profiles, setProfiles] = useState<Profile[] | null>(null);
+  const [data, setData] = useState<Profile[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -24,7 +24,7 @@ const useGetProfile = () => {
       const { data, error } = await supabase.from("profiles").select("*");
 
       if (error) throw error;
-      setProfiles(data || []); // Ensure data is either an array or empty array
+      setData(data || []); // Ensure data is either an array or empty array
     } catch (err: any) {
       setError(err.message);
     } finally {
@@ -37,7 +37,7 @@ const useGetProfile = () => {
     fetchProfiles();
   }, [fetchProfiles]);
 
-  return { profiles, error, loading, refetch: fetchProfiles }; // refetch 추가
+  return { data, error, loading, refetch: fetchProfiles }; // refetch 추가
 };
 
 export default useGetProfile;

@@ -26,7 +26,7 @@ type IconPlanName = keyof typeof icons;
 type GradationPlanName = keyof typeof planGradation;
 
 const PlanCard = ({ planName }: { planName: string }) => {
-  const { infoData, loading, error } = useGetPlanInfo(planName);
+  const { data: infoData, loading, error } = useGetPlanInfo(planName);
 
   const GradationPlanName = planName as GradationPlanName;
 
