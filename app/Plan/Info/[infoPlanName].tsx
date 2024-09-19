@@ -1,4 +1,4 @@
-import { useLocalSearchParams } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import React from "react";
 import {
   View,
@@ -11,14 +11,15 @@ import CustomButton from "@/components/Shared/Button/CustomButton";
 import InfoContent from "./infoContent";
 import { icons } from "@/constants/Icons";
 import useGetPlanInfo from "@/hooks/useGetPlanInfo"; // Import the custom hook
-
-// logos 객체의 타입을 정의합니다.
+import { supabase } from "@/utils/supabase";
+import { useGetUserId } from "@/hooks/useGetUserId";
+import info from "@/app/(settings)/info";
 type PlanName = keyof typeof icons;
 
 const InfoPage = () => {
   const { infoPlanName } = useLocalSearchParams(); // Get the planName from the URL parameters
   const { infoData, loading, error } = useGetPlanInfo(infoPlanName as string); // Use the custom hook
-
+  const { userId } = useGetUserId();
   if (loading) {
     return (
       <View className="h-full w-full flex justify-center items-center bg-yomWhite">
@@ -37,8 +38,21 @@ const InfoPage = () => {
 
   const icon = icons[infoData.planName as PlanName]; // Use the planName from the fetched data
 
-  const handleSave = () => {
-    // Handle save logic here
+  const handleSave = async () => {
+    // console.log(infoPlanName);
+    const { data, error } = await supabase
+      .from("myPlans")
+      .update({ [infoPlanName as string]: true }) // 예시로 수정한 부분
+      .eq("id", userId);
+
+    if (error) {
+      console.log(infoPlanName);
+      console.error("Error updating data:", error);
+    } else {
+      console.log("Data updated successfully:", data);
+      alert("Data updated successfully");
+      router.push("/(tabs)/plan");
+    }
   };
 
   return (

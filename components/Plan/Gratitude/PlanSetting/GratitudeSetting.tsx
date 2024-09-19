@@ -1,14 +1,59 @@
-import { View, Text, Modal, ModalProps, ImageBackground } from "react-native";
+import {
+  View,
+  Text,
+  Modal,
+  ModalProps,
+  ImageBackground,
+  Alert,
+} from "react-native";
 import { useState } from "react";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import SwitchInput from "@/components/Shared/Input/SwitchInput";
 import CustomButton from "@/components/Shared/Button/CustomButton";
 import TimeInput from "@/components/Shared/Input/TimeInput";
+import { supabase } from "@/utils/supabase";
+import { useLocalSearchParams, router } from "expo-router";
+import { useGetUserId } from "@/hooks/useGetUserId";
 
 const GratitudeSetting = () => {
   const [notification, setNotification] = useState(false);
   const toggleSwitch = () => setNotification((previousState) => !previousState);
   const [time, setTime] = useState(new Date());
+  const planNameParams = useLocalSearchParams();
+  const planName = planNameParams.contentPlanName as string;
+  const { userId } = useGetUserId();
+
+  const handleDelete = async () => {
+    // Alert API로 사용자에게 확인 메시지 표시
+    Alert.alert(
+      "Delete Plan",
+      "Your data will not be restored. Are you sure you want to delete this plan?",
+      [
+        {
+          text: "Cancel",
+          style: "cancel", // 취소 버튼
+        },
+        {
+          text: "OK", // 확인 버튼
+          onPress: async () => {
+            const { data, error } = await supabase
+              .from("myPlans")
+              .update({ [planName]: false }) // 예시로 수정한 부분
+              .eq("id", userId);
+
+            if (error) {
+              console.log(planName);
+              console.error("Error updating data:", error);
+            } else {
+              console.log("Data updated successfully:", data);
+              router.push("/(tabs)/plan");
+            }
+          },
+        },
+      ],
+      { cancelable: true } // 백 버튼으로 닫을 수 있게 설정
+    );
+  };
   return (
     <View className="bg-white flex justify-center w-full h-full">
       <KeyboardAwareScrollView
@@ -53,17 +98,31 @@ const GratitudeSetting = () => {
         </View>
         <View className="h-fit w-full mt-[30px] flex items-center mb-[60]"></View>
       </KeyboardAwareScrollView>
-      <View className="w-full h-[45px] mt-[35px] fixed bottom-20">
-        <CustomButton
-          title="Save"
-          titleSize={18}
-          backgroundColor="yomGreen"
-          activeBackgroundColor="yomDarkGreen"
-          textColor="yomWhite"
-          onPress={() => {
-            console.log("저장하기");
-          }}
-        />
+      <View className="w-full h-[45px] mt-[35px] fixed bottom-20 flex flex-row justify-between">
+        <View className="w-[48%] h-[45px] flex-row justify-center">
+          <CustomButton
+            title="Save"
+            titleSize={18}
+            backgroundColor="yomGreen"
+            activeBackgroundColor="yomDarkGreen"
+            textColor="yomWhite"
+            onPress={() => {
+              console.log("저장하기");
+            }}
+          />
+        </View>
+        <View className="w-[48%]">
+          <CustomButton
+            title="delete"
+            titleSize={18}
+            backgroundColor="yomRed"
+            activeBackgroundColor="yomWhite"
+            textColor="yomWhite"
+            onPress={() => {
+              handleDelete();
+            }}
+          />
+        </View>
       </View>
     </View>
   );
