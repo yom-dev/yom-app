@@ -75,7 +75,7 @@ const GratitudeRecord = ({ data }: GratitudeRecordProps) => {
             ListEmptyComponent={
               <View className="w-full h-full flex-1 flex items-center justify-center mt-[0px]">
                 <Text className="text-yomWhite text-[24px] font-[WantedSB]">
-                  No data in {month}
+                  No gratitude in {month}
                 </Text>
               </View>
             }

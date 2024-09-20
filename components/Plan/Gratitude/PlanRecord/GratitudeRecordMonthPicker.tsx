@@ -45,6 +45,18 @@ const GratitudeRecordMonthPicker: React.FC<GratitudeRecordMonthPickerProps> = ({
 
   const handleNextMonth = () => {
     const currentIndex = monthList.indexOf(month);
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    const currentMonth = currentDate.getMonth();
+
+    // Check if the next month is in the future
+    if (
+      year > currentYear ||
+      (year === currentYear && currentIndex >= currentMonth)
+    ) {
+      return; // Prevent navigating to a future month
+    }
+
     if (currentIndex === 11) {
       // If it's December, switch to January and increment the year
       setMonth(monthList[0]);
@@ -55,8 +67,15 @@ const GratitudeRecordMonthPicker: React.FC<GratitudeRecordMonthPickerProps> = ({
     }
   };
 
+  // Get current date values
+  const currentDate = new Date();
+  const currentYear = currentDate.getFullYear();
+  const currentMonth = currentDate.getMonth();
+  const isCurrentMonth =
+    year === currentYear && monthList.indexOf(month) === currentMonth;
+
   return (
-    <View className=" h-full flex-row justify-between items-center">
+    <View className="h-full flex-row justify-between items-center">
       <AntDesign
         name="left"
         size={20}
@@ -66,11 +85,13 @@ const GratitudeRecordMonthPicker: React.FC<GratitudeRecordMonthPickerProps> = ({
       <Text className="text-yomWhite font-[WantedM] text-[16px]">
         {year} {month}
       </Text>
+
       <AntDesign
         name="right"
         size={20}
         color={"#ffffff"}
         onPress={handleNextMonth}
+        opacity={isCurrentMonth ? 0.5 : 1}
       />
     </View>
   );

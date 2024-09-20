@@ -11,11 +11,13 @@ interface GratitudeProviderProps {
 }
 
 const GratitudeProvider = ({ index }: GratitudeProviderProps) => {
-  const { data, error, refetch } = getGratitudeItems();
+  const { data, error, loading, refetch } = getGratitudeItems();
 
   return (
     <View>
-      {index === 0 && <GratitudeContent data={data} refetch={refetch} />}
+      {index === 0 && (
+        <GratitudeContent data={data} refetch={refetch} loading={loading} />
+      )}
       {index === 1 && <GratitudeRecord data={data} />}
       {index === 2 && <GratitudeSetting />}
     </View>

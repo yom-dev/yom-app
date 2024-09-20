@@ -1,6 +1,6 @@
 // GratitudeContent.tsx
 import React, { useEffect, useState } from "react";
-import { View, Text, ImageBackground } from "react-native";
+import { View, Text, ImageBackground, ActivityIndicator } from "react-native";
 import CustomButton from "@/components/Shared/Button/CustomButton";
 import GratitudeItem from "./GratitudeItem";
 import { supabase } from "@/utils/supabase";
@@ -11,34 +11,34 @@ import { useGetUserId } from "@/hooks/useGetUserId";
 interface GratitudeContentProps {
   data: GratitudeContentType[] | null;
   refetch: () => void;
+  loading: boolean;
 }
 
-const GratitudeContent = ({ data, refetch }: GratitudeContentProps) => {
+const GratitudeContent: React.FC<GratitudeContentProps> = ({
+  data,
+  loading,
+  refetch,
+}) => {
   const [item1, setItem1] = useState("");
   const [item2, setItem2] = useState("");
   const [item3, setItem3] = useState("");
   const [hasTodayEntry, setHasTodayEntry] = useState(false);
   const currentTime = new Date();
   const { data: id } = useGetUserId();
-
-  // 날짜 형식을 'YYYY-MM-DD'로 변환하는 함수
-  const formatDate = (date: Date) => date.toISOString().split("T")[0];
-
-  // 현재 날짜를 'YYYY-MM-DD' 형식으로 포맷팅
-  const todayDate = formatDate(currentTime);
+  const todayDate = currentTime.toISOString().split("T")[0];
 
   useEffect(() => {
-    // 받아온 데이터 중에서 오늘 날짜에 해당하는 데이터가 있는지 확인
     const todayEntry = data?.find(
-      (entry) => entry && formatDate(new Date(entry.createdAt)) === todayDate
+      (entry) =>
+        entry &&
+        new Date(entry.createdAt).toISOString().split("T")[0] === todayDate
     );
 
-    // 오늘 데이터가 있으면 해당 내용을 입력 필드에 설정
     if (todayEntry) {
       setItem1(todayEntry.item1);
       setItem2(todayEntry.item2);
       setItem3(todayEntry.item3);
-      setHasTodayEntry(true); // 오늘 데이터가 있음을 표시
+      setHasTodayEntry(true);
     }
   }, [data, todayDate]);
 
@@ -50,18 +50,24 @@ const GratitudeContent = ({ data, refetch }: GratitudeContentProps) => {
 
     const { data, error } = await supabase
       .from("gratitudeContent")
-      .insert([{ id: id, createdAt: currentTime, item1, item2, item3 }])
-      .select();
+      .insert([{ id: id, createdAt: currentTime, item1, item2, item3 }]);
 
     if (error) {
       alert("Error saving data");
-      console.log("Supabase Error:", error);
-    }
-    if (data) {
+      console.error("Supabase Error:", error);
+    } else if (data) {
       alert("Data saved successfully");
-      refetch(); // 데이터 업로드 후 데이터 다시 가져오기
+      refetch();
     }
   };
+
+  if (loading) {
+    return (
+      <View className="w-full h-full flex-row justify-center items-center">
+        <ActivityIndicator />
+      </View>
+    );
+  }
 
   return (
     <View className="w-full h-full flex-row justify-center">
@@ -80,32 +86,49 @@ const GratitudeContent = ({ data, refetch }: GratitudeContentProps) => {
               style={{ borderRadius: 20 }}
             />
           </View>
-          <View>
-            <Text className="text-[16px] font-[WantedSB] mt-[55px]">
-              What are you grateful for today?
-            </Text>
-          </View>
-          <View className="h-[220px] mt-[30px] flex">
-            <GratitudeItem
-              item1={item1}
-              item2={item2}
-              item3={item3}
-              setItem1={setItem1}
-              setItem2={setItem2}
-              setItem3={setItem3}
+
+          {!hasTodayEntry ? (
+            <View>
+              <Text className="text-[16px] font-[WantedSB] mt-[55px]">
+                What are you grateful for today?
+              </Text>
+              <View className="h-[220px] mt-[30px] flex">
+                <GratitudeItem
+                  item1={item1}
+                  item2={item2}
+                  item3={item3}
+                  setItem1={setItem1}
+                  setItem2={setItem2}
+                  setItem3={setItem3}
+                />
+              </View>
+            </View>
+          ) : (
+            <View className="w-full h-[220px]">
+              <Text className="text-[24px] font-[WantedSB] mt-[55px]">
+                Today, you thanked for
+              </Text>
+              <View className="mt-[30px] flex gap-6">
+                <Text className="text-[20px] font-[WantedM]">{item1}</Text>
+
+                <Text className="text-[20px] font-[WantedM]">{item2}</Text>
+                <Text className="text-[20px] font-[WantedM]">{item3}</Text>
+              </View>
+            </View>
+          )}
+        </KeyboardAwareScrollView>
+        {!hasTodayEntry && (
+          <View className="w-full h-[45px] mt-[35px] fixed bottom-20">
+            <CustomButton
+              title="Save"
+              titleSize={18}
+              backgroundColor="yomGreen"
+              activeBackgroundColor="yomDarkGreen"
+              textColor="yomWhite"
+              onPress={handleSave}
             />
           </View>
-        </KeyboardAwareScrollView>
-        <View className="w-full h-[45px] mt-[35px] fixed bottom-20">
-          <CustomButton
-            title={hasTodayEntry ? "You've thanked today." : "Save"}
-            titleSize={18}
-            backgroundColor="yomGreen"
-            activeBackgroundColor="yomDarkGreen"
-            textColor="yomWhite"
-            onPress={handleSave}
-          />
-        </View>
+        )}
       </View>
     </View>
   );

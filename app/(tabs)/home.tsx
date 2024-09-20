@@ -34,7 +34,7 @@ export default function HomeScreen() {
               </View>
 
               <View className="w-full h-[215px] mt-[35px]">
-                {/* <MainMyPlan /> */}
+                <MainMyPlan />
               </View>
 
               <View className="w-full h-[50px]"></View>

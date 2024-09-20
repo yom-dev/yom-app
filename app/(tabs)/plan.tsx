@@ -9,7 +9,6 @@ import React, { useEffect } from "react";
 
 import PlanCardWide from "@/components/Shared/PlanCard/PlanCardWide";
 import useGetMyPlans from "@/hooks/useGetMyPlans";
-import { LinearGradient } from "expo-linear-gradient";
 export default function Plan() {
   const { trueKeys, loading, error } = useGetMyPlans();
 
