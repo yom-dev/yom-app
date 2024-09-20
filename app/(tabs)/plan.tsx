@@ -9,8 +9,7 @@ import React, { useEffect } from "react";
 
 import PlanCardWide from "@/components/Shared/PlanCard/PlanCardWide";
 import useGetMyPlans from "@/hooks/useGetMyPlans";
-import { act } from "react-test-renderer";
-
+import { LinearGradient } from "expo-linear-gradient";
 export default function Plan() {
   const { trueKeys, loading, error } = useGetMyPlans();
 
@@ -38,6 +37,13 @@ export default function Plan() {
                   <Text className="text-[32px] text-yomBlack font-[WantedSB]">
                     My Plan
                   </Text>
+                </View>
+              }
+              ListEmptyComponent={
+                <View>
+                  <View className="w-full h-[80px] rounded-xl bg-gray-200 mb-[30px]"></View>
+                  <View className="w-full h-[80px] rounded-xl bg-gray-200 mb-[30px]"></View>
+                  <View className="w-full h-[80px] rounded-xl bg-gray-200 mb-[30px]"></View>
                 </View>
               }
             />

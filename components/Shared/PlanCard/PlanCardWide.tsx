@@ -47,7 +47,7 @@ const PlanCard = ({ planName }: { planName: string }) => {
   if (loading) {
     return (
       <TouchableOpacity
-        className="w-full h-[80px] rounded-xl"
+        className="w-full h-[80px] rounded-xl flex justify-center items-center"
         onPress={handlePress}
       >
         <LinearGradient
