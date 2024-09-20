@@ -26,8 +26,8 @@ const GratitudeSetting = () => {
   const handleDelete = async () => {
     // Alert API로 사용자에게 확인 메시지 표시
     Alert.alert(
-      "Delete Plan",
-      "Your data will not be restored. Are you sure you want to delete this plan?",
+      "Remove Plan",
+      "Your data will not be restored. Are you sure you want to remove this plan?",
       [
         {
           text: "Cancel",
@@ -112,7 +112,7 @@ const GratitudeSetting = () => {
         </View>
         <View className="w-[48%]">
           <CustomButton
-            title="delete"
+            title="Remove Plan"
             titleSize={18}
             backgroundColor="yomRed"
             activeBackgroundColor="yomWhite"

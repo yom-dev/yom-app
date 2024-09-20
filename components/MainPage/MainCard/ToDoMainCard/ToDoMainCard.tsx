@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { View, Text, ImageBackground } from "react-native";
+import { View, Text, ImageBackground, ActivityIndicator } from "react-native";
 import ToDoItem from "./ToDoItem";
 
 import { FlatList } from "react-native-gesture-handler";
@@ -9,7 +9,6 @@ import useGetMyPlans from "@/hooks/useGetMyPlans";
 const ToDoMainCard: React.FC = () => {
   const { trueKeys, loading, error } = useGetMyPlans();
 
-  // `trueKeys`의 각 항목의 타입은 { key: string, planName: string }
   const renderItem = ({
     item,
   }: {
@@ -39,13 +38,17 @@ const ToDoMainCard: React.FC = () => {
           </View>
 
           <View className="w-full h-[80%] mt-5">
-            <FlatList
-              data={trueKeys}
-              renderItem={renderItem}
-              keyExtractor={(item) => item.key}
-              showsVerticalScrollIndicator={false}
-              ListEmptyComponent={<EmptyToDo />}
-            />
+            {loading ? (
+              <ActivityIndicator />
+            ) : (
+              <FlatList
+                data={trueKeys}
+                renderItem={renderItem}
+                keyExtractor={(item) => item.key}
+                showsVerticalScrollIndicator={false}
+                ListEmptyComponent={<EmptyToDo />}
+              />
+            )}
           </View>
         </View>
       </ImageBackground>

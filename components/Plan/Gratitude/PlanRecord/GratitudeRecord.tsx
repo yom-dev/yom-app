@@ -1,35 +1,50 @@
+// GratitudeRecord.tsx
 import { View, Text, FlatList } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { ImageBackground } from "react-native";
 import GratitudeRecordItem from "./GratitudeRecordItem";
 import GratitudeRecordMonthPicker from "./GratitudeRecordMonthPicker";
+import { GratitudeContentType } from "@/shared/types/GratitudeContentType";
 
-interface GratitudeRecordData {
+type GratitudeRecordData = {
   date: string;
   items: string[];
+};
+
+interface GratitudeRecordProps {
+  data: GratitudeContentType[] | null;
 }
 
-// GratitudeRecord 컴포넌트
-const GratitudeRecord: React.FC = () => {
-  // 감사 데이터 배열 정의
-  const gratitudeData: GratitudeRecordData[] = [
-    {
-      date: "2024-01-01",
-      items: [
-        "allowing an opportunity to give thanks",
-        "the support of my family",
-        "having a fulfilling job",
-      ],
-    },
-    {
-      date: "2024-01-02",
-      items: ["a good health", "the kindness of strangers", "a delicious meal"],
-    },
-  ];
+const formatDate = (date: Date) => date.toISOString().split("T")[0];
 
-  // State for month and year
-  const [month, setMonth] = useState("January");
-  const [year, setYear] = useState(2024);
+const GratitudeRecord = ({ data }: GratitudeRecordProps) => {
+  // Set the initial month to the current month
+  const [month, setMonth] = useState(
+    new Date().toLocaleString("en-US", { month: "long" })
+  );
+  const [year, setYear] = useState(new Date().getFullYear());
+
+  // Process the received data into GratitudeRecordData format
+  const gratitudeData: GratitudeRecordData[] = useMemo(() => {
+    if (!data) return [];
+    return data
+      .filter((entry) => entry !== null && entry !== undefined) // Check for null or undefined entries
+      .map((entry) => ({
+        date: formatDate(new Date(entry.createdAt)),
+        items: [entry.item1, entry.item2, entry.item3].filter(Boolean), // Remove empty strings
+      }));
+  }, [data]);
+
+  // Filter the data according to the selected month and year
+  const filteredData = useMemo(() => {
+    return gratitudeData.filter((entry) => {
+      const entryDate = new Date(entry.date);
+      return (
+        entryDate.getFullYear() === year &&
+        entryDate.toLocaleString("en-US", { month: "long" }) === month
+      );
+    });
+  }, [gratitudeData, month, year]);
 
   return (
     <View className="w-full h-[90%] mt-[30px]">
@@ -48,13 +63,22 @@ const GratitudeRecord: React.FC = () => {
             />
           </View>
           <FlatList
-            data={gratitudeData}
+            className="w-full h-[93%] mt-[10px]"
+            data={filteredData}
             keyExtractor={(item) => item.date}
             renderItem={({ item }) => (
               <GratitudeRecordItem date={item.date} items={item.items} />
             )}
             showsVerticalScrollIndicator={false}
             contentContainerStyle={{ gap: 20 }}
+            horizontal={false} // Disable horizontal scrolling
+            ListEmptyComponent={
+              <View className="w-full h-full flex-1 flex items-center justify-center mt-[0px]">
+                <Text className="text-yomWhite text-[24px] font-[WantedSB]">
+                  No data in {month}
+                </Text>
+              </View>
+            }
           />
         </ImageBackground>
       </View>

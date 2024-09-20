@@ -9,6 +9,7 @@ import React, { useEffect } from "react";
 
 import PlanCardWide from "@/components/Shared/PlanCard/PlanCardWide";
 import useGetMyPlans from "@/hooks/useGetMyPlans";
+import { act } from "react-test-renderer";
 
 export default function Plan() {
   const { trueKeys, loading, error } = useGetMyPlans();
@@ -37,7 +38,6 @@ export default function Plan() {
                   <Text className="text-[32px] text-yomBlack font-[WantedSB]">
                     My Plan
                   </Text>
-                  {loading && <ActivityIndicator />}
                 </View>
               }
             />

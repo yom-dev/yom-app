@@ -13,8 +13,6 @@ import { Link } from "expo-router";
 import { useGetUser } from "@/hooks/useGetUser";
 
 export default function HomeScreen() {
-  const { user, loading, error } = useGetUser();
-
   return (
     <View className="h-full w-full bg-yomWhite flex items-center">
       <View className="bg-yomWhite w-[90%] flex h-full">
