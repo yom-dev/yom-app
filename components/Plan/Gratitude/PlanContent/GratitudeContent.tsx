@@ -55,7 +55,7 @@ const GratitudeContent: React.FC<GratitudeContentProps> = ({
     if (error) {
       alert("Error saving data");
       console.error("Supabase Error:", error);
-    } else if (data) {
+    } else {
       alert("Data saved successfully");
       refetch();
     }
