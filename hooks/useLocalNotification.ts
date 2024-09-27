@@ -1,9 +1,9 @@
-// useLocalNotifications.js
 import { useEffect } from "react";
 import * as Notifications from "expo-notifications";
 
 // 알림을 설정하고 관리하는 커스텀 훅
 const useLocalNotifications = () => {
+  // 훅 호출 시 알림 권한 요청 및 알림 핸들러 설정
   useEffect(() => {
     requestPermissions();
 
@@ -18,9 +18,13 @@ const useLocalNotifications = () => {
 
   // 알림 권한 요청 함수
   const requestPermissions = async () => {
-    const settings = await Notifications.getPermissionsAsync();
-    if (!settings.granted) {
-      await Notifications.requestPermissionsAsync();
+    try {
+      const settings = await Notifications.getPermissionsAsync();
+      if (!settings.granted) {
+        await Notifications.requestPermissionsAsync();
+      }
+    } catch (error) {
+      console.error("Error requesting permissions:", error);
     }
   };
 
@@ -29,18 +33,68 @@ const useLocalNotifications = () => {
     title = "로컬 알림",
     body = "이것은 로컬 푸시 알림입니다."
   ) => {
-    await Notifications.scheduleNotificationAsync({
-      content: {
-        title,
-        body,
-        data: { data: "알림 데이터" },
-      },
-      trigger: null, // 즉시 알림 트리거
-    });
+    try {
+      await Notifications.scheduleNotificationAsync({
+        content: {
+          title,
+          body,
+          data: { data: "알림 데이터" },
+        },
+        trigger: null,
+      });
+    } catch (error) {
+      console.error("Error triggering notification:", error);
+    }
+  };
+
+  // 예약 알림 보내기 함수
+  const triggerScheduledNotification = async (
+    title = "로컬 알림",
+    body = "이것은 로컬 푸시 알림입니다.",
+    hour = 9,
+    minute = 0
+  ) => {
+    try {
+      await Notifications.scheduleNotificationAsync({
+        content: {
+          title,
+          body,
+          data: { data: "알림 데이터" },
+        },
+        trigger: {
+          repeats: true,
+          hour,
+          minute,
+        },
+      });
+    } catch (error) {
+      console.error("Error scheduling notification:", error);
+    }
+  };
+
+  // 알림 ID로 특정 알림 취소 함수
+  const cancelNotificationById = async (id: string) => {
+    try {
+      await Notifications.cancelScheduledNotificationAsync(id);
+    } catch (error) {
+      console.error("Error canceling notification:", error);
+    }
+  };
+
+  // 모든 예약된 알림 취소 함수
+  const cancelAllNotifications = async () => {
+    try {
+      await Notifications.cancelAllScheduledNotificationsAsync();
+    } catch (error) {
+      console.error("Error canceling all notifications:", error);
+    }
   };
 
   return {
     triggerNotification,
+    triggerScheduledNotification,
+    cancelNotificationById,
+    cancelAllNotifications,
   };
 };
 

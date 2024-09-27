@@ -109,7 +109,7 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.yom"
+    namespace 'com.yom.app'
     defaultConfig {
         applicationId 'com.yom.app'
         minSdkVersion rootProject.ext.minSdkVersion

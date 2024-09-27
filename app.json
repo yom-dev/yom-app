@@ -20,7 +20,11 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ],
+      "package": "com.yom.app"
     },
     "web": {
       "bundler": "metro",
@@ -49,7 +53,9 @@
           "iosUrlScheme": "com.googleusercontent.apps.330776642226-97jaa538gdc5bve38kvikm3ik9gndldr"
         }
       ],
-      ["expo-router"],
+      [
+        "expo-router"
+      ],
       [
         "expo-font",
         {

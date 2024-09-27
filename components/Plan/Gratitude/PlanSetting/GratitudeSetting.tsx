@@ -26,7 +26,6 @@ const GratitudeSetting = () => {
   const { triggerNotification } = useLocalNotification();
 
   const handleSave = async () => {
-    // 로컬 알림을 트리거
     triggerNotification("저장됨", "설정이 저장되었습니다."); // 원하는 제목과 본문으로 변경 가능
   };
 
@@ -68,19 +67,7 @@ const GratitudeSetting = () => {
         extraScrollHeight={30}
         keyboardOpeningTime={100}
       >
-        <View className="flex-row justify-center mt-[30px]">
-          {/* <Text className="text-[24px] font-[WantedB] text-yomBlack">
-          Setting
-          </Text> */}
-        </View>
-        {/* <View className="w-full h-[200px] mt-[60px]">
-          <ImageBackground
-            source={require("@/assets/images/icons/note-icon.png")}
-            className="w-full h-full flex justify-center items-center"
-            resizeMode="contain"
-            style={{ borderRadius: 20 }}
-          />
-        </View> */}
+        <View className="flex-row justify-center mt-[30px]"></View>
 
         <View>
           <View className="mt-[70px]">
