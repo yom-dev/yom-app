@@ -14,6 +14,7 @@ import TimeInput from "@/components/Shared/Input/TimeInput";
 import { supabase } from "@/utils/supabase";
 import { useLocalSearchParams, router } from "expo-router";
 import { useGetUserId } from "@/hooks/useGetUserId";
+import useLocalNotification from "@/hooks/useLocalNotification";
 
 const GratitudeSetting = () => {
   const [notification, setNotification] = useState(false);
@@ -22,6 +23,12 @@ const GratitudeSetting = () => {
   const planNameParams = useLocalSearchParams();
   const planName = planNameParams.contentPlanName as string;
   const { data: userId } = useGetUserId();
+  const { triggerNotification } = useLocalNotification();
+
+  const handleSave = async () => {
+    // 로컬 알림을 트리거
+    triggerNotification("저장됨", "설정이 저장되었습니다."); // 원하는 제목과 본문으로 변경 가능
+  };
 
   const handleDelete = async () => {
     // Alert API로 사용자에게 확인 메시지 표시
@@ -106,7 +113,7 @@ const GratitudeSetting = () => {
             activeBackgroundColor="yomDarkGreen"
             textColor="yomWhite"
             onPress={() => {
-              console.log("저장하기");
+              handleSave();
             }}
           />
         </View>
