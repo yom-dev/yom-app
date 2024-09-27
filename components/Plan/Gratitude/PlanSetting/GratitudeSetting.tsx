@@ -5,6 +5,7 @@ import {
   ModalProps,
   ImageBackground,
   Alert,
+  Pressable,
 } from "react-native";
 import { useState } from "react";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
@@ -15,7 +16,7 @@ import { useLocalSearchParams, router } from "expo-router";
 import { useGetUserId } from "@/hooks/useGetUserId";
 import useLocalNotification from "@/hooks/useLocalNotification";
 import { planDeleteAlert } from "@/utils/Alert/planDeleteAlert";
-
+import * as Notifications from "expo-notifications"; // 알림 가져오기 위한 import
 const GratitudeSetting = () => {
   const [notification, setNotification] = useState(false);
   const toggleSwitch = () => setNotification((previousState) => !previousState);
@@ -23,14 +24,26 @@ const GratitudeSetting = () => {
   const planNameParams = useLocalSearchParams();
   const planName = planNameParams.contentPlanName as string;
   const { data: userId } = useGetUserId();
-  const { triggerScheduledNotification, cancelNotificationById } =
-    useLocalNotification();
+  const {
+    triggerDailyNotification,
+    cancelNotificationById,
+    cancelAllNotifications,
+  } = useLocalNotification();
   const [notificationId, setNotificationId] = useState("");
 
   const handleSave = async () => {
-    cancelNotificationById(notificationId); // Cancel the existing notification if it exists
+    if (notificationId) {
+      // 기존 알림이 있을 경우 취소합니다.
+      try {
+        await cancelNotificationById(notificationId); // await를 사용하여 비동기 처리 완료 후 진행
+        console.log("Previous notification canceled:", notificationId);
+      } catch (error) {
+        console.error("Error canceling previous notification:", error);
+      }
+    }
+
     try {
-      const id = await triggerScheduledNotification(
+      const id = await triggerDailyNotification(
         "저장됨",
         "설정이 저장되었습니다.",
         time.getHours(),
@@ -38,6 +51,7 @@ const GratitudeSetting = () => {
       );
       if (id) {
         setNotificationId(id); // Set the returned ID if scheduling was successful
+        console.log("New Notification ID:", id);
         Alert.alert("Success", "The notification has been saved.");
       }
     } catch (error) {
@@ -50,6 +64,7 @@ const GratitudeSetting = () => {
     // Alert API로 사용자에게 확인 메시지 표시
     planDeleteAlert(planName, userId);
   };
+
   return (
     <View className="bg-white flex justify-center w-full h-full">
       <KeyboardAwareScrollView
@@ -82,6 +97,7 @@ const GratitudeSetting = () => {
         </View>
         <View className="h-fit w-full mt-[30px] flex items-center mb-[60]"></View>
       </KeyboardAwareScrollView>
+
       <View className="w-full h-[45px] mt-[35px] fixed bottom-20 flex flex-row justify-between">
         <View className="w-[48%] h-[45px] flex-row justify-center">
           <CustomButton

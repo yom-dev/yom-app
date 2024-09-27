@@ -47,8 +47,10 @@ const useLocalNotifications = () => {
     }
   };
 
-  // 예약 알림 보내기 함수
-  const triggerScheduledNotification = async (
+  const triggerWeeklyNotification = async () => {};
+
+  // 매일 정해진 시간에 예약 알림 보내기 함수
+  const triggerDailyNotification = async (
     title = "로컬 알림",
     body = "이것은 로컬 푸시 알림입니다.",
     hour = 9,
@@ -94,7 +96,8 @@ const useLocalNotifications = () => {
 
   return {
     triggerNotification,
-    triggerScheduledNotification,
+    triggerDailyNotification,
+    triggerWeeklyNotification,
     cancelNotificationById,
     cancelAllNotifications,
   };
