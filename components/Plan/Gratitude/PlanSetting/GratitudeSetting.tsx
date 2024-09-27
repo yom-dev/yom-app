@@ -11,10 +11,10 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import SwitchInput from "@/components/Shared/Input/SwitchInput";
 import CustomButton from "@/components/Shared/Button/CustomButton";
 import TimeInput from "@/components/Shared/Input/TimeInput";
-import { supabase } from "@/utils/supabase";
 import { useLocalSearchParams, router } from "expo-router";
 import { useGetUserId } from "@/hooks/useGetUserId";
 import useLocalNotification from "@/hooks/useLocalNotification";
+import { planDeleteAlert } from "@/utils/Alert/planDeleteAlert";
 
 const GratitudeSetting = () => {
   const [notification, setNotification] = useState(false);
@@ -23,41 +23,32 @@ const GratitudeSetting = () => {
   const planNameParams = useLocalSearchParams();
   const planName = planNameParams.contentPlanName as string;
   const { data: userId } = useGetUserId();
-  const { triggerNotification } = useLocalNotification();
+  const { triggerScheduledNotification, cancelNotificationById } =
+    useLocalNotification();
+  const [notificationId, setNotificationId] = useState("");
 
   const handleSave = async () => {
-    triggerNotification("저장됨", "설정이 저장되었습니다."); // 원하는 제목과 본문으로 변경 가능
+    cancelNotificationById(notificationId); // Cancel the existing notification if it exists
+    try {
+      const id = await triggerScheduledNotification(
+        "저장됨",
+        "설정이 저장되었습니다.",
+        time.getHours(),
+        time.getMinutes()
+      );
+      if (id) {
+        setNotificationId(id); // Set the returned ID if scheduling was successful
+        Alert.alert("Success", "The notification has been saved.");
+      }
+    } catch (error) {
+      console.error("Error handling save:", error);
+      Alert.alert("Error", "Failed to save the notification.");
+    }
   };
 
   const handleDelete = async () => {
     // Alert API로 사용자에게 확인 메시지 표시
-    Alert.alert(
-      "Remove Plan",
-      "Your data will not be restored. Are you sure you want to remove this plan?",
-      [
-        {
-          text: "Cancel",
-          style: "cancel", // 취소 버튼
-        },
-        {
-          text: "OK", // 확인 버튼
-          onPress: async () => {
-            const { data, error } = await supabase
-              .from("myPlans")
-              .update({ [planName]: false }) // 예시로 수정한 부분
-              .eq("id", userId);
-
-            if (error) {
-              console.error("Error updating data:", error);
-            } else {
-              console.log("Data updated successfully:", data);
-              router.push("/(tabs)/plan");
-            }
-          },
-        },
-      ],
-      { cancelable: true } // 백 버튼으로 닫을 수 있게 설정
-    );
+    planDeleteAlert(planName, userId);
   };
   return (
     <View className="bg-white flex justify-center w-full h-full">

@@ -55,7 +55,7 @@ const useLocalNotifications = () => {
     minute = 0
   ) => {
     try {
-      await Notifications.scheduleNotificationAsync({
+      const notificationId = await Notifications.scheduleNotificationAsync({
         content: {
           title,
           body,
@@ -67,8 +67,10 @@ const useLocalNotifications = () => {
           minute,
         },
       });
+      return notificationId; // Return the notification ID
     } catch (error) {
       console.error("Error scheduling notification:", error);
+      return null; // Return null in case of an error
     }
   };
 
