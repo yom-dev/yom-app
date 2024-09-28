@@ -14,7 +14,7 @@ const useLocalNotifications = () => {
       handleNotification: async () => ({
         shouldShowAlert: true,
         shouldPlaySound: true,
-        shouldSetBadge: false,
+        shouldSetBadge: true,
       }),
     });
   }, []);
@@ -50,7 +50,7 @@ const useLocalNotifications = () => {
         },
         trigger: null,
       });
-      updateBadgeCount();
+      // updateBadgeCount();
     } catch (error) {
       console.error("Error triggering notification:", error);
     }
@@ -77,7 +77,7 @@ const useLocalNotifications = () => {
           minute,
         },
       });
-      updateBadgeCount();
+      // updateBadgeCount();
 
       return notificationId; // Return the notification ID
     } catch (error) {
@@ -90,7 +90,7 @@ const useLocalNotifications = () => {
   const cancelNotificationById = async (id: string) => {
     try {
       await Notifications.dismissNotificationAsync(id);
-      updateBadgeCount();
+      // updateBadgeCount();
     } catch (error) {
       console.error("Error canceling notification:", error);
     }
@@ -100,22 +100,22 @@ const useLocalNotifications = () => {
   const cancelAllNotifications = async () => {
     try {
       await Notifications.dismissAllNotificationsAsync();
-      updateBadgeCount();
+      // updateBadgeCount();
     } catch (error) {
       console.error("Error canceling all notifications:", error);
     }
   };
 
   //뱃지 업데이트 함수
-  const updateBadgeCount = async () => {
-    try {
-      const notifications =
-        await Notifications.getPresentedNotificationsAsync();
-      await Notifications.setBadgeCountAsync(notifications.length);
-    } catch (error) {
-      console.error("Error updating badge count:", error);
-    }
-  };
+  // const updateBadgeCount = async () => {
+  //   try {
+  //     const notifications =
+  //       await Notifications.getPresentedNotificationsAsync();
+  //     await Notifications.setBadgeCountAsync(notifications.length);
+  //   } catch (error) {
+  //     console.error("Error updating badge count:", error);
+  //   }
+  // };
 
   return {
     triggerNotification,

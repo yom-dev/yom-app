@@ -40,7 +40,7 @@ export default function Notification() {
             body={item.request.content.body || "No Body"}
             date={item.date}
             id={item.request.identifier}
-            href={item.request.content.data.targetHref}
+            href={item.request.content.data.href}
           />
         )}
         style={{ width: "100%", marginTop: 4 }}
