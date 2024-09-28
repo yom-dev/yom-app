@@ -5,6 +5,7 @@ import {
   ThemeProvider,
   useNavigation, // Import useNavigation
 } from "@react-navigation/native";
+import React, { useState } from "react";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
@@ -18,12 +19,25 @@ import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import ModalProvider from "@/shared/providers/modal-provider";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import * as Notifications from "expo-notifications"; // 타입 임포트 및 별칭 사용
+import { Image } from "expo-image";
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
+// 앱이 시작할 때 스플래시 스크린을 숨김
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
+  // notifications 상태를 저장할 상태를 만들고 초기값을 빈 배열로 설정
+  const [notification, setNotification] = useState<
+    Notifications.Notification[]
+  >([]);
+
+  // navigation 객체를 가져오는 hook을 사용
+  const navigation = useNavigation();
+
+  // useColorScheme hook을 사용하여 colorScheme을 가져옴
   const colorScheme = useColorScheme();
+
+  // 폰트를 로드하는 useFonts hook을 사용
   const [loaded] = useFonts({
     WantedM: require("../assets/fonts/WantedSans-Medium.otf"),
     WantedR: require("../assets/fonts/WantedSans-Regular.otf"),
@@ -32,8 +46,19 @@ export default function RootLayout() {
     WantedEB: require("../assets/fonts/WantedSans-ExtraBold.otf"),
   });
 
-  const navigation = useNavigation(); // Use the useNavigation hook
+  // 알림을 가져오는 함수
+  async function fetchDeliveredNotifications() {
+    const deliveredNotifications =
+      await Notifications.getPresentedNotificationsAsync();
+    setNotification(deliveredNotifications);
+  }
 
+  // 컴포넌트가 마운트되면 알림을 가져오는 함수를 실행
+  useEffect(() => {
+    fetchDeliveredNotifications();
+  });
+
+  // 폰트 로딩이 완료되면 스플래시 스크린을 숨김
   useEffect(() => {
     if (loaded) {
       SplashScreen.hideAsync();
@@ -62,11 +87,17 @@ export default function RootLayout() {
               ),
               headerRight: () => (
                 <Link to="/notification">
-                  <Ionicons
-                    name="notifications-outline"
-                    size={24}
-                    color={"#000000"}
-                  />
+                  {notification.length > 0 ? (
+                    <Image
+                      source={require("@/assets/images/icons/notification-unread-icon.png")}
+                      style={{ width: 24, height: 24 }}
+                    />
+                  ) : (
+                    <Image
+                      source={require("@/assets/images/icons/notification-icon.png")}
+                      style={{ width: 24, height: 24 }}
+                    />
+                  )}
                 </Link>
               ),
               headerStyle: {
