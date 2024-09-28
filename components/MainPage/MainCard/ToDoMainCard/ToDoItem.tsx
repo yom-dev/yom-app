@@ -26,7 +26,10 @@ const ToDoItem = ({
         className="w-full h-[50px] rounded-lg px-3 py-2 flex-row justify-between items-center bg-yomWhite"
         style={{ opacity: isDone ? 1 : 0.75 }} // 조건부로 opacity 설정
       >
-        <Image source={icons[validPlanName]} width={25} height={23} />
+        <Image
+          source={icons[validPlanName]}
+          style={{ width: 25, height: 23 }}
+        />
         <ActivityIndicator />
         <CheckBox isDone={true} />
       </View>

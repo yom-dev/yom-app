@@ -102,7 +102,7 @@ export default function RootLayout() {
               headerShadowVisible: false,
               headerTitle: "",
               headerBackground() {
-                return <View className="bg-yomWhite w-full h-full" />;
+                return <View className="bg-white w-full h-full" />;
               },
               headerLeft: () => (
                 <Ionicons
