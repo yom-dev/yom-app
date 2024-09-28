@@ -7,7 +7,8 @@ import {
   Alert,
   Pressable,
 } from "react-native";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import SwitchInput from "@/components/Shared/Input/SwitchInput";
 import CustomButton from "@/components/Shared/Button/CustomButton";
@@ -17,10 +18,19 @@ import { useGetUserId } from "@/hooks/useGetUserId";
 import useLocalNotification from "@/hooks/useLocalNotification";
 import { planDeleteAlert } from "@/utils/Alert/planDeleteAlert";
 import * as Notifications from "expo-notifications"; // 알림 가져오기 위한 import
+
+const STORAGE_KEYS = {
+  notification: "@gratitude_notification_enabled",
+  notificationId: "@gratitude_notification_id",
+  time: "@gratitude_notification_time",
+};
+
 const GratitudeSetting = () => {
   const [notification, setNotification] = useState(false);
-  const toggleSwitch = () => setNotification((previousState) => !previousState);
   const [time, setTime] = useState(new Date());
+  const [notificationId, setNotificationId] = useState("");
+
+  const toggleSwitch = () => setNotification((previousState) => !previousState);
   const planNameParams = useLocalSearchParams();
   const planName = planNameParams.contentPlanName as string;
   const { data: userId } = useGetUserId();
@@ -29,13 +39,84 @@ const GratitudeSetting = () => {
     cancelNotificationById,
     cancelAllNotifications,
   } = useLocalNotification();
-  const [notificationId, setNotificationId] = useState("");
 
-  const handleSave = async () => {
-    if (notificationId) {
-      // 기존 알림이 있을 경우 취소합니다.
+  // Load saved notification settings on component mount
+  useEffect(() => {
+    const loadSettings = async () => {
       try {
-        await cancelNotificationById(notificationId); // await를 사용하여 비동기 처리 완료 후 진행
+        const storedNotification = await AsyncStorage.getItem(
+          STORAGE_KEYS.notification
+        );
+        const storedNotificationId = await AsyncStorage.getItem(
+          STORAGE_KEYS.notificationId
+        );
+        const storedTime = await AsyncStorage.getItem(STORAGE_KEYS.time);
+
+        if (storedNotification !== null) {
+          setNotification(JSON.parse(storedNotification));
+        }
+        if (storedNotificationId) {
+          setNotificationId(storedNotificationId);
+        }
+        if (storedTime) {
+          setTime(new Date(storedTime));
+        }
+      } catch (error) {
+        console.error("Error loading notification settings:", error);
+      }
+    };
+
+    loadSettings();
+  }, []);
+
+  // Save notification settings to AsyncStorage
+  const saveSettings = async (id: string) => {
+    try {
+      await AsyncStorage.setItem(
+        STORAGE_KEYS.notification,
+        JSON.stringify(notification)
+      );
+      await AsyncStorage.setItem(
+        STORAGE_KEYS.notificationId,
+        id || notificationId
+      );
+      await AsyncStorage.setItem(STORAGE_KEYS.time, time.toISOString());
+      console.log("Notification settings saved.");
+    } catch (error) {
+      console.error("Error saving notification settings:", error);
+    }
+  };
+  const handleSave = async () => {
+    // If the notification toggle is off, cancel any existing notifications and don't schedule a new one
+    if (!notification) {
+      if (notificationId) {
+        try {
+          await cancelNotificationById(notificationId); // Cancel existing notification
+          console.log(
+            "Notification canceled as the switch is off:",
+            notificationId
+          );
+          setNotificationId(""); // Reset notificationId as it's been canceled
+          await saveSettings(""); // Save settings with no notificationId
+          Alert.alert(
+            "Notification Canceled",
+            "The notification has been canceled."
+          );
+        } catch (error) {
+          console.error(
+            "Error canceling the notification when the switch is off:",
+            error
+          );
+          Alert.alert("Error", "Failed to cancel the notification.");
+        }
+      }
+      return; // Exit the function early as no new notification should be scheduled
+    }
+
+    // Existing notification logic if the switch is on
+    if (notificationId) {
+      try {
+        await cancelNotificationById(notificationId); // Cancel the existing notification
         console.log("Previous notification canceled:", notificationId);
       } catch (error) {
         console.error("Error canceling previous notification:", error);
@@ -50,7 +131,8 @@ const GratitudeSetting = () => {
         time.getMinutes()
       );
       if (id) {
-        setNotificationId(id); // Set the returned ID if scheduling was successful
+        setNotificationId(id); // Set the new notification ID
+        await saveSettings(id); // Save the new notification settings
         console.log("New Notification ID:", id);
         Alert.alert("Success", "The notification has been saved.");
       }
@@ -63,6 +145,10 @@ const GratitudeSetting = () => {
   const handleDelete = async () => {
     // Alert API로 사용자에게 확인 메시지 표시
     planDeleteAlert(planName, userId);
+    // Optionally, clear the saved settings on delete
+    await AsyncStorage.removeItem(STORAGE_KEYS.notification);
+    await AsyncStorage.removeItem(STORAGE_KEYS.notificationId);
+    await AsyncStorage.removeItem(STORAGE_KEYS.time);
   };
 
   return (
