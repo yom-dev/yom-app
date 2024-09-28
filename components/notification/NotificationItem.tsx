@@ -1,6 +1,7 @@
 import { View, Text, Image, TouchableOpacity, Pressable } from "react-native";
 import React from "react";
 import * as Notifications from "expo-notifications";
+import useLocalNotifications from "@/hooks/useLocalNotification";
 
 // Props 타입 정의
 interface NotificationItemProps {
@@ -18,9 +19,8 @@ const NotificationItem: React.FC<NotificationItemProps> = ({
   id,
   href,
 }) => {
-  async function removeNotification(id: string) {
-    await Notifications.dismissNotificationAsync(id);
-  }
+  const { cancelNotificationById } = useLocalNotifications();
+
   const timestampInMilliseconds = date * 1000;
   const finalDate = new Date(timestampInMilliseconds);
   const month = finalDate.getMonth() + 1;
@@ -32,7 +32,7 @@ const NotificationItem: React.FC<NotificationItemProps> = ({
   return (
     <Pressable
       onPress={() => {
-        removeNotification(id);
+        cancelNotificationById(id);
         setRead(true);
       }}
     >

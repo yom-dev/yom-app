@@ -24,7 +24,13 @@ const useLocalNotifications = () => {
     try {
       const settings = await Notifications.getPermissionsAsync();
       if (!settings.granted) {
-        await Notifications.requestPermissionsAsync();
+        await Notifications.requestPermissionsAsync({
+          ios: {
+            allowAlert: true,
+            allowBadge: true,
+            allowSound: true,
+          },
+        });
       }
     } catch (error) {
       console.error("Error requesting permissions:", error);
@@ -44,6 +50,7 @@ const useLocalNotifications = () => {
         },
         trigger: null,
       });
+      updateBadgeCount();
     } catch (error) {
       console.error("Error triggering notification:", error);
     }
@@ -70,6 +77,8 @@ const useLocalNotifications = () => {
           minute,
         },
       });
+      updateBadgeCount();
+
       return notificationId; // Return the notification ID
     } catch (error) {
       console.error("Error scheduling notification:", error);
@@ -80,7 +89,8 @@ const useLocalNotifications = () => {
   // 알림 ID로 특정 알림 취소 함수
   const cancelNotificationById = async (id: string) => {
     try {
-      await Notifications.cancelScheduledNotificationAsync(id);
+      await Notifications.dismissNotificationAsync(id);
+      updateBadgeCount();
     } catch (error) {
       console.error("Error canceling notification:", error);
     }
@@ -89,9 +99,21 @@ const useLocalNotifications = () => {
   // 모든 예약된 알림 취소 함수
   const cancelAllNotifications = async () => {
     try {
-      await Notifications.cancelAllScheduledNotificationsAsync();
+      await Notifications.dismissAllNotificationsAsync();
+      updateBadgeCount();
     } catch (error) {
       console.error("Error canceling all notifications:", error);
+    }
+  };
+
+  //뱃지 업데이트 함수
+  const updateBadgeCount = async () => {
+    try {
+      const notifications =
+        await Notifications.getPresentedNotificationsAsync();
+      await Notifications.setBadgeCountAsync(notifications.length);
+    } catch (error) {
+      console.error("Error updating badge count:", error);
     }
   };
 
