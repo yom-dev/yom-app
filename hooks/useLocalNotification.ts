@@ -1,9 +1,12 @@
 import { useEffect } from "react";
 import * as Notifications from "expo-notifications";
+import { useRouter } from "expo-router";
 
 // 알림을 설정하고 관리하는 커스텀 훅
 const useLocalNotifications = () => {
-  // 훅 호출 시 알림 권한 요청 및 알림 핸들러 설정
+  const router = useRouter();
+
+  // 알림 권한 요청 및 알림 핸들러 설정
   useEffect(() => {
     requestPermissions();
 
@@ -38,7 +41,6 @@ const useLocalNotifications = () => {
         content: {
           title,
           body,
-          data: { data: "알림 데이터" },
         },
         trigger: null,
       });
@@ -61,7 +63,6 @@ const useLocalNotifications = () => {
         content: {
           title,
           body,
-          data: { data: "알림 데이터" },
         },
         trigger: {
           repeats: true,

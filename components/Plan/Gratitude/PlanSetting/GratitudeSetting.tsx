@@ -19,6 +19,7 @@ import useLocalNotification from "@/hooks/useLocalNotification";
 import { planDeleteAlert } from "@/utils/Alert/planDeleteAlert";
 import * as Notifications from "expo-notifications"; // 알림 가져오기 위한 import
 
+// 기존 코드 유지
 const STORAGE_KEYS = {
   notification: "@gratitude_notification_enabled",
   notificationId: "@gratitude_notification_id",
@@ -67,6 +68,21 @@ const GratitudeSetting = () => {
     };
 
     loadSettings();
+  }, []);
+
+  // 알림 클릭 시 이벤트 리스너 추가
+  useEffect(() => {
+    const subscription = Notifications.addNotificationResponseReceivedListener(
+      (response) => {
+        // 여기에 알림을 클릭했을 때 수행할 동작을 추가하세요.
+
+        router.push("/plan/plan/gratitude"); // 특정 화면으로 이동
+      }
+    );
+
+    return () => {
+      subscription.remove(); // 컴포넌트가 언마운트 될 때 리스너 제거
+    };
   }, []);
 
   // Save notification settings to AsyncStorage
@@ -125,8 +141,8 @@ const GratitudeSetting = () => {
 
     try {
       const id = await triggerDailyNotification(
-        "저장됨",
-        "설정이 저장되었습니다.",
+        "Gratitude Reminder",
+        "Have you thanked today?",
         time.getHours(),
         time.getMinutes()
       );
