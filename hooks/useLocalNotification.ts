@@ -14,7 +14,7 @@ const useLocalNotifications = () => {
       handleNotification: async () => ({
         shouldShowAlert: true,
         shouldPlaySound: true,
-        shouldSetBadge: true,
+        shouldSetBadge: false,
       }),
     });
   }, []);
@@ -47,10 +47,11 @@ const useLocalNotifications = () => {
         content: {
           title,
           body,
+          badge: 1, // 뱃지 숫자 설정
         },
         trigger: null,
       });
-      // updateBadgeCount();
+      updateBadgeCount(); // 뱃지 카운트 업데이트
     } catch (error) {
       console.error("Error triggering notification:", error);
     }
@@ -70,6 +71,7 @@ const useLocalNotifications = () => {
         content: {
           title,
           body,
+          badge: 1, // 뱃지 숫자 설정
         },
         trigger: {
           repeats: true,
@@ -77,8 +79,7 @@ const useLocalNotifications = () => {
           minute,
         },
       });
-      // updateBadgeCount();
-
+      updateBadgeCount(); // 뱃지 카운트 업데이트
       return notificationId; // Return the notification ID
     } catch (error) {
       console.error("Error scheduling notification:", error);
@@ -90,7 +91,7 @@ const useLocalNotifications = () => {
   const cancelNotificationById = async (id: string) => {
     try {
       await Notifications.dismissNotificationAsync(id);
-      // updateBadgeCount();
+      updateBadgeCount(); // 뱃지 카운트 업데이트
     } catch (error) {
       console.error("Error canceling notification:", error);
     }
@@ -100,22 +101,21 @@ const useLocalNotifications = () => {
   const cancelAllNotifications = async () => {
     try {
       await Notifications.dismissAllNotificationsAsync();
-      // updateBadgeCount();
+      updateBadgeCount(); // 뱃지 카운트 업데이트
     } catch (error) {
       console.error("Error canceling all notifications:", error);
     }
   };
 
-  //뱃지 업데이트 함수
-  // const updateBadgeCount = async () => {
-  //   try {
-  //     const notifications =
-  //       await Notifications.getPresentedNotificationsAsync();
-  //     await Notifications.setBadgeCountAsync(notifications.length);
-  //   } catch (error) {
-  //     console.error("Error updating badge count:", error);
-  //   }
-  // };
+  const updateBadgeCount = async () => {
+    try {
+      const notifications =
+        await Notifications.getPresentedNotificationsAsync();
+      await Notifications.setBadgeCountAsync(notifications.length); // 알림 수에 맞춰 뱃지 업데이트
+    } catch (error) {
+      console.error("Error updating badge count:", error);
+    }
+  };
 
   return {
     triggerNotification,
