@@ -147,6 +147,18 @@ export default function RootLayout() {
           />
 
           <Stack.Screen
+            name="index"
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="session"
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
             name="plan/info/[infoPlanName]" // 특정 경로를 지정
             options={{
               headerShown: true,
