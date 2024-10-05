@@ -3,11 +3,17 @@ import React from "react";
 import SettingSlot from "@/components/SettingPage/SettingSlot";
 import { supabase } from "@/utils/supabase";
 import { Link } from "expo-router";
+import * as Notifications from "expo-notifications";
+import { getScheduleNotifications } from "@/utils/getScheduledNotifications";
+import { get } from "react-native/Libraries/TurboModule/TurboModuleRegistry";
 
 const Setting = () => {
   const handleSignOut = () => {
     supabase.auth.signOut();
   };
+
+  const handleCheckScheduledNotifications = getScheduleNotifications;
+
   return (
     <View className="w-full h-full bg-yomWhite ">
       <View className="w-full flex justify-center items-center">
@@ -36,6 +42,15 @@ const Setting = () => {
           className="h-[50px] flex justify-center w-[90%]"
         >
           <Text className="text-yomRed font-semibold">Sign Out</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={handleCheckScheduledNotifications}
+          className="h-[50px] flex justify-center w-[90%]"
+        >
+          <Text className="text-yomRed font-semibold">
+            CHECK SCHEDULED NOTIFICATIONS
+          </Text>
         </TouchableOpacity>
 
         <Link href="/signin">
