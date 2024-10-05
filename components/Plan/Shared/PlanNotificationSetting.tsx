@@ -1,46 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View, FlatList } from "react-native";
 import NotificationCardWide from "@/components/notification/NotificationCardWide";
+import { getScheduleNotifications } from "@/utils/getScheduledNotifications";
 
-// Mock 데이터
-const mockData = [
-  {
-    content: {
-      data: { planName: "gratitude", notificationType: "Daily" },
-      title: "Gratitude Reminder",
-      body: "Have you thanked today?",
-    },
-    identifier: "8eb7d260-4a80-4e85-9c80-381a1e23f6be",
-    trigger: {
-      repeats: true,
-      type: "calendar",
-      class: "UNCalendarNotificationTrigger",
-      dateComponents: {
-        hour: 2,
-        minute: 29,
-      },
-    },
-  },
-  {
-    content: {
-      data: { planName: "gratitude", notificationType: "Daily" },
-      title: "Gratitude Reminder",
-      body: "Have you thanked today?",
-    },
-    identifier: "b9c4696f-76ee-431f-b0e9-b6991096fba8",
-    trigger: {
-      repeats: true,
-      type: "calendar",
-      class: "UNCalendarNotificationTrigger",
-      dateComponents: {
-        hour: 2,
-        minute: 33,
-      },
-    },
-  },
-];
+interface PlanNotificationSettingProps {
+  planName: string;
+}
 
-const PlanNotificationSetting = () => {
+const PlanNotificationSetting = ({
+  planName,
+}: PlanNotificationSettingProps) => {
+  // notifications 상태 선언
+  const [notifications, setNotifications] = useState<any[]>([]);
+  const [update, setUpdate] = useState(0);
+
+  useEffect(() => {
+    const fetchNotifications = async () => {
+      const result = await getScheduleNotifications();
+      setNotifications(result);
+    };
+
+    fetchNotifications();
+  }, [update]); // update 값이 변경될 때마다 알림 목록을 다시 불러옴
+
   const renderItem = ({ item }: { item: any }) => {
     return (
       <NotificationCardWide
@@ -48,6 +30,7 @@ const PlanNotificationSetting = () => {
         hour={item.trigger.dateComponents.hour}
         minute={item.trigger.dateComponents.minute}
         notificationType={item.content.data.notificationType}
+        onUpdate={() => setUpdate(update + 1)} // 알림 삭제 시 update 값 증가
       />
     );
   };
@@ -55,10 +38,10 @@ const PlanNotificationSetting = () => {
   return (
     <View className="w-full h-[90%] mt-[30px]">
       <FlatList
-        data={mockData}
+        data={notifications} // 알림 데이터를 상태에서 가져옴
         renderItem={renderItem}
         keyExtractor={(item) => item.identifier}
-        ItemSeparatorComponent={() => <View style={{ height: 15 }} />} // 간격 추가
+        ItemSeparatorComponent={() => <View style={{ height: 15 }} />}
       />
     </View>
   );

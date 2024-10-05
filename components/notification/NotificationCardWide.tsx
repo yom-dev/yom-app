@@ -1,14 +1,15 @@
 import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
-
+import { View, Text, TouchableOpacity, Alert } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons } from "@expo/vector-icons";
+import useLocalNotifications from "@/hooks/useLocalNotification";
 
 interface NotificationCardWideProps {
   identifier: string;
   notificationType: string;
-  hour: string;
-  minute: string;
+  hour: number;
+  minute: number;
+  onUpdate: () => void; // update 값을 증가시키는 함수
 }
 
 const NotificationCardWide: React.FC<NotificationCardWideProps> = ({
@@ -16,11 +17,35 @@ const NotificationCardWide: React.FC<NotificationCardWideProps> = ({
   notificationType,
   hour,
   minute,
+  onUpdate,
 }) => {
+  const { cancelNotificationById } = useLocalNotifications();
+
   const handleDeleteNotification = (id: string) => {
-    console.log("delete notification with id: ", id);
+    // Alert with confirmation
+    Alert.alert(
+      "Delete Notification",
+      "Are you sure you want to delete this notification?",
+      [
+        {
+          text: "Cancel",
+          style: "cancel",
+        },
+        {
+          text: "OK",
+          onPress: async () => {
+            await cancelNotificationById(id); // 알림 취소
+            onUpdate(); // update 값 증가
+          },
+        },
+      ],
+      { cancelable: true }
+    );
   };
-  const handlePress = () => {};
+
+  // 한 자리수일 경우 0을 붙여주는 로직
+  const formattedHour = String(hour).padStart(2, "0");
+  const formattedMinute = String(minute).padStart(2, "0");
 
   return (
     <View className="w-full h-[80px] rounded-xl ">
@@ -44,7 +69,7 @@ const NotificationCardWide: React.FC<NotificationCardWideProps> = ({
             </View>
             <View className="w-[33%] flex justify-center">
               <Text className="font-[WantedSB] text-white text-[24px]">
-                {hour}:{minute}
+                {formattedHour}:{formattedMinute}
               </Text>
             </View>
 

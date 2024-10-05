@@ -90,7 +90,8 @@ const useLocalNotifications = () => {
   // 알림 ID로 특정 알림 취소 함수
   const cancelNotificationById = async (id: string) => {
     try {
-      await Notifications.dismissNotificationAsync(id);
+      // 예약된 알림 취소
+      await Notifications.cancelScheduledNotificationAsync(id);
       updateBadgeCount(); // 뱃지 카운트 업데이트
     } catch (error) {
       console.error("Error canceling notification:", error);

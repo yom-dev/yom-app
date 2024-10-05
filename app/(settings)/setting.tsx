@@ -45,7 +45,9 @@ const Setting = () => {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={handleCheckScheduledNotifications}
+          onPress={() => {
+            handleCheckScheduledNotifications;
+          }}
           className="h-[50px] flex justify-center w-[90%]"
         >
           <Text className="text-yomRed font-semibold">
@@ -54,10 +56,10 @@ const Setting = () => {
         </TouchableOpacity>
 
         <Link href="/signin">
-          <Text>Login</Text>{" "}
+          <Text>Login</Text>
         </Link>
         <Link href="/(auth)/profileSetting">
-          <Text>profileSetting</Text>{" "}
+          <Text>profileSetting</Text>
         </Link>
       </View>
     </View>
