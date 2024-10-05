@@ -1,7 +1,8 @@
 import React from "react";
-import { View, Text, TouchableOpacity, Alert } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons } from "@expo/vector-icons";
+import { notificationDeleteAlert } from "@/utils/Alert/notificationDeleteAlert"; // 경로는 프로젝트 구조에 따라 맞춰 주세요
 import useLocalNotifications from "@/hooks/useLocalNotification";
 
 interface NotificationCardWideProps {
@@ -19,28 +20,13 @@ const NotificationCardWide: React.FC<NotificationCardWideProps> = ({
   minute,
   onUpdate,
 }) => {
-  const { cancelNotificationById } = useLocalNotifications();
+  const { cancelScheduledNotificationById } = useLocalNotifications();
 
   const handleDeleteNotification = (id: string) => {
-    // Alert with confirmation
-    Alert.alert(
-      "Delete Notification",
-      "Are you sure you want to delete this notification?",
-      [
-        {
-          text: "Cancel",
-          style: "cancel",
-        },
-        {
-          text: "OK",
-          onPress: async () => {
-            await cancelNotificationById(id); // 알림 취소
-            onUpdate(); // update 값 증가
-          },
-        },
-      ],
-      { cancelable: true }
-    );
+    notificationDeleteAlert(id, async () => {
+      await cancelScheduledNotificationById(id);
+      onUpdate();
+    });
   };
 
   // 한 자리수일 경우 0을 붙여주는 로직

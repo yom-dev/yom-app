@@ -144,7 +144,8 @@ const GratitudeSetting = () => {
         "Gratitude Reminder",
         "Have you thanked today?",
         time.getHours(),
-        time.getMinutes()
+        time.getMinutes(),
+        "gratitude"
       );
       if (id) {
         setNotificationId(id); // Set the new notification ID

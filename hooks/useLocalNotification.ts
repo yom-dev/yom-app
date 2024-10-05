@@ -61,10 +61,11 @@ const useLocalNotifications = () => {
 
   // 매일 정해진 시간에 예약 알림 보내기 함수
   const triggerDailyNotification = async (
-    title = "로컬 알림",
-    body = "이것은 로컬 푸시 알림입니다.",
-    hour = 9,
-    minute = 0
+    title: string,
+    body: string,
+    hour: number,
+    minute: number,
+    planName: string
   ) => {
     try {
       const notificationId = await Notifications.scheduleNotificationAsync({
@@ -72,6 +73,7 @@ const useLocalNotifications = () => {
           title,
           body,
           badge: 1, // 뱃지 숫자 설정
+          data: { planName: planName, notificationType: "Daily" }, // 알림에 추가 데이터 전달
         },
         trigger: {
           repeats: true,
@@ -88,10 +90,20 @@ const useLocalNotifications = () => {
   };
 
   // 알림 ID로 특정 알림 취소 함수
-  const cancelNotificationById = async (id: string) => {
+  const cancelScheduledNotificationById = async (id: string) => {
     try {
       // 예약된 알림 취소
       await Notifications.cancelScheduledNotificationAsync(id);
+      updateBadgeCount(); // 뱃지 카운트 업데이트
+    } catch (error) {
+      console.error("Error canceling notification:", error);
+    }
+  };
+
+  const cancelNotificationById = async (id: string) => {
+    try {
+      // 이미 발생한 알림을 취소
+      await Notifications.dismissNotificationAsync(id);
       updateBadgeCount(); // 뱃지 카운트 업데이트
     } catch (error) {
       console.error("Error canceling notification:", error);
@@ -124,6 +136,7 @@ const useLocalNotifications = () => {
     triggerWeeklyNotification,
     cancelNotificationById,
     cancelAllNotifications,
+    cancelScheduledNotificationById,
   };
 };
 
