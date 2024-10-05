@@ -5,7 +5,7 @@ import GratitudeContent from "./PlanContent/GratitudeContent";
 import GratitudeRecord from "./PlanRecord/GratitudeRecord";
 import GratitudeSetting from "./PlanSetting/GratitudeSetting";
 import getGratitudeItems from "@/utils/Gratitude/getGratitudeItems";
-
+import PlanNotificationSetting from "@/components/Plan/Shared/PlanNotificationSetting";
 interface GratitudeProviderProps {
   index: number;
 }
@@ -19,7 +19,7 @@ const GratitudeProvider = ({ index }: GratitudeProviderProps) => {
         <GratitudeContent data={data} refetch={refetch} loading={loading} />
       )}
       {index === 1 && <GratitudeRecord data={data} />}
-      {index === 2 && <GratitudeSetting />}
+      {index === 2 && <PlanNotificationSetting />}
     </View>
   );
 };
