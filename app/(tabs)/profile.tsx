@@ -11,7 +11,7 @@ import { Link } from "expo-router";
 import ProfileText from "@/components/ProfilePage/ProfileText";
 import useGetProfile from "@/hooks/useGetProfile"; // Import your custom hook
 import AvatarImagePicker from "@/components/ProfilePage/AvatarImagePicker";
-import ProfileEditModal from "@/components/Shared/Modal/ProfileEditModal"; // ProfileEditModal 컴포넌트 임포트
+import ProfileEditModal from "@/components/Shared/Modal/Profile/ProfileEditModal"; // ProfileEditModal 컴포넌트 임포트
 
 export default function ProfilePage() {
   const { data, error, loading, refetch } = useGetProfile();

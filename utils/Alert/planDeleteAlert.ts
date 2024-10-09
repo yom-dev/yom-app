@@ -15,7 +15,7 @@ export const planDeleteAlert = (planName: string, userId: string | null) => {
         text: "OK", // 확인 버튼
         onPress: async () => {
           const { data, error } = await supabase
-            .from("myPlans")
+            .from("my_plans")
             .update({ [planName]: false }) // 예시로 수정한 부분
             .eq("id", userId);
 

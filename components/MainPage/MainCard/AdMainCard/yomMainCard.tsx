@@ -4,7 +4,9 @@ import React from "react";
 const yomMainCard = () => {
   return (
     <View className="w-full h-full bg-white flex justify-center items-center rounded-xl">
-      <Text className="text-yomBlack font-[WantedSB] text-[32px]">yom</Text>
+      <Text className="text-yomBlack font-[WantedSB] text-[32px]">
+        @yom.office
+      </Text>
     </View>
   );
 };

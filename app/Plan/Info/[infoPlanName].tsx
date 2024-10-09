@@ -57,7 +57,7 @@ const InfoPage = () => {
 
   const handleSave = async () => {
     const { data, error } = await supabase
-      .from("myPlans")
+      .from("my_plans")
       .update({ [infoPlanName as string]: true })
       .eq("id", userId);
 
@@ -98,7 +98,15 @@ const InfoPage = () => {
 
         {/* button */}
         <View className="w-full h-[50px] bottom-10">
-          {isInMyPlans ? (
+          {infoData.isActive === false ? (
+            // When isActive is false, show "Coming Soon"
+            <View className="border-yomGreen border-[2px] w-full h-full rounded-full flex-1 justify-center items-center">
+              <Text className="text-yomGreen font-[WantedSB] text-[18px]">
+                Coming Soon.
+              </Text>
+            </View>
+          ) : // When isActive is true, check if it's already in the user's plans
+          isInMyPlans ? (
             <View className="border-yomGreen border-[2px] w-full h-full rounded-full flex-1 justify-center items-center">
               <Text className="text-yomGreen font-[WantedSB] text-[18px]">
                 Already in my plan.

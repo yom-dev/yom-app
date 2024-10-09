@@ -24,7 +24,7 @@ const useGetMyPlans = () => {
   const fetchMyPlans = async () => {
     setLoading(true);
     try {
-      const { data, error } = await supabase.from("myPlans").select("*");
+      const { data, error } = await supabase.from("my_plans").select("*");
 
       if (error) {
         throw new Error(error.message);
