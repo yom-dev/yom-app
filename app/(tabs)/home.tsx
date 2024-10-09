@@ -27,7 +27,9 @@ export default function HomeScreen() {
             <View>
               <View className="h-fit flex flex-col justify-end mt-[20px]">
                 <Text className="text-[32px] text-yomBlack font-[WantedSB]">
-                  Welcome, {profile ? profile.firstName : ""}
+                  {profile && profile.firstName
+                    ? `Welcome, ${profile.firstName}`
+                    : "Welcome to yom."}
                 </Text>
               </View>
 
