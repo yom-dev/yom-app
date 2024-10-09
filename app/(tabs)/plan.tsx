@@ -12,6 +12,7 @@ import { useRouter } from "expo-router";
 
 import PlanCardWide from "@/components/Shared/PlanCard/PlanCardWide";
 import useGetMyPlans from "@/hooks/useGetMyPlans";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default function Plan() {
   const router = useRouter();
@@ -69,15 +70,15 @@ export default function Plan() {
                 </View>
               }
               ListEmptyComponent={
-                <View>
-                  <Pressable
-                    className="w-full h-[80px] rounded-xl border-gray-400 border-[0.5px] mb-[30px] flex justify-center items-center"
+                <View className="w-full h-[80px] rounded-xl border-gray-400 border-[0.5px] mb-[30px] flex justify-center items-center">
+                  <TouchableOpacity
+                    className="w-full h-full"
                     onPress={() => {
                       router.push("/(tabs)/store");
                     }}
                   >
                     <Text className="font-[WantedM] text-[24px]">Add Plan</Text>
-                  </Pressable>
+                  </TouchableOpacity>
                 </View>
               }
             />

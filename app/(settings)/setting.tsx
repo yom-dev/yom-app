@@ -44,7 +44,7 @@ const Setting = () => {
           <Text className="text-yomRed font-semibold">Sign Out</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity
+        {/* <TouchableOpacity
           onPress={() => {
             handleCheckScheduledNotifications;
           }}
@@ -53,14 +53,14 @@ const Setting = () => {
           <Text className="text-yomRed font-semibold">
             CHECK SCHEDULED NOTIFICATIONS
           </Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
 
-        <Link href="/signin">
+        {/* <Link href="/signin">
           <Text>Login</Text>
         </Link>
         <Link href="/(auth)/profileSetting">
           <Text>profileSetting</Text>
-        </Link>
+        </Link> */}
       </View>
     </View>
   );

@@ -64,13 +64,15 @@ export default function Auth() {
         { cancelable: false }
       );
     } else {
+      router.push("/(auth)/profileSetting");
+
       Alert.alert(
-        "Sign up successful!",
-        "",
+        "Welcome to yom!",
+        "Sign-up successful🎉",
         [
           {
             text: "OK",
-            onPress: () => router.replace("/(auth)/profileSetting"),
+            // onPress: () => router.replace("/(auth)/profileSetting"),
           },
         ],
         { cancelable: false }

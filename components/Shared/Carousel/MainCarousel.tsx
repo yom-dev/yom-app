@@ -25,10 +25,10 @@ const MainCarousel = ({
       key: "1",
       Component: ToDoMainCard,
     },
-    // {
-    //   key: "2",
-    //   Component: MonthlyGoalMainCard,
-    // },
+    {
+      key: "2",
+      Component: MonthlyGoalMainCard,
+    },
     {
       key: "3",
       Component: yomMainCard,

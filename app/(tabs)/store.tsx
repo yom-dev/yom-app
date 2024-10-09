@@ -6,6 +6,9 @@ import useGetStoreItems from "@/hooks/useGetStoreItems"; // Import the custom ho
 export default function Plan() {
   const { data, loading, error } = useGetStoreItems(); // Use the custom hook
 
+  // id를 기준으로 오름차순 정렬
+  const sortedData = data?.sort((a, b) => a.id - b.id);
+
   if (error) {
     return (
       <View className="h-full w-full flex justify-center items-center bg-yomWhite">
@@ -20,7 +23,7 @@ export default function Plan() {
         <View className="w-full h-full">
           <View className="w-full h-full mt-[20px]">
             <FlatList
-              data={data} // Using data from the hook
+              data={sortedData} // 정렬된 data를 FlatList에 전달
               numColumns={2}
               className="w-full h-fit"
               showsVerticalScrollIndicator={false}
