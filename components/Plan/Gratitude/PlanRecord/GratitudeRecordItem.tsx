@@ -18,10 +18,10 @@ const GratitudeRecordItem: React.FC<GratitudeRecordItemProps> = ({
       <View className="gap-[15px] ml-3">
         {items.map((item, index) => (
           <View key={index} className="w-full h-fit flex-row">
-            <Text className="font-[WantedM] text-[18px] text-white">
+            <Text className="font-[WantedM] text-[16px] text-white">
               {index + 1}.
             </Text>
-            <Text className="font-[WantedM] text-[18px] ml-[5px] text-white">
+            <Text className="font-[WantedM] text-[16px] ml-[5px] text-white">
               {item}
             </Text>
           </View>

@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { View, Text, ImageBackground, ActivityIndicator } from "react-native";
 import ToDoItem from "./ToDoItem";
-
 import { FlatList } from "react-native-gesture-handler";
 import EmptyToDo from "./EmptyToDo";
 import useGetMyPlans from "@/hooks/useGetMyPlans";
@@ -40,13 +39,14 @@ const ToDoMainCard: React.FC = () => {
           <View className="w-full h-[80%] mt-5">
             {loading ? (
               <ActivityIndicator />
+            ) : trueKeys && trueKeys.length === 0 ? (
+              <EmptyToDo />
             ) : (
               <FlatList
                 data={trueKeys}
                 renderItem={renderItem}
                 keyExtractor={(item) => item.key}
                 showsVerticalScrollIndicator={false}
-                ListEmptyComponent={<EmptyToDo />}
               />
             )}
           </View>

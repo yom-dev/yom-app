@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, FlatList, Modal } from "react-native";
+import { View, FlatList, Modal, Text } from "react-native";
 import NotificationCardWide from "@/components/notification/NotificationCardWide";
 import { getScheduleNotifications } from "@/utils/getScheduledNotifications";
 import CustomButton from "@/components/Shared/Button/CustomButton";
@@ -56,6 +56,11 @@ const PlanNotificationSetting = ({
           keyExtractor={(item) => item.identifier}
           ItemSeparatorComponent={() => <View style={{ height: 15 }} />}
           ListFooterComponent={() => <View style={{ height: 100 }} />}
+          ListHeaderComponent={() => (
+            <View className="w-fit h-fit mb-[10px] ">
+              <Text className="font-[WantedSB] text-[28px]"> Notification</Text>
+            </View>
+          )}
         />
       </View>
 

@@ -5,6 +5,7 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 import { supabase } from "@/utils/supabase";
 import SignInButton from "@/components/Shared/Button/SignInButton";
 import { useGetUser } from "@/hooks/useGetUser";
+import { useRouter } from "expo-router";
 
 interface ProfileEditProps extends ModalProps {
   visible: boolean;
@@ -22,6 +23,7 @@ const ProfileEditModal: React.FC<ProfileEditProps> = ({
   const [userName, setUserName] = useState("");
   const [birthDate, setBirthDate] = useState(new Date());
   const { user } = useGetUser(); // 데이터 가져오기
+  const router = useRouter();
 
   // DatePicker 변경 핸들러
   const handleDateChange = (event: any, selectedDate?: Date) => {
@@ -46,8 +48,9 @@ const ProfileEditModal: React.FC<ProfileEditProps> = ({
       console.error("Error updating profile:", error);
       Alert.alert("Error", "Failed to update profile.");
     } else {
-      Alert.alert("Success", "Profile saved successfully!");
+      Alert.alert("Profile saved successfully!");
       onUpdateSuccess(); // 프로필 업데이트 성공 시 호출
+      router.push("/(tabs)/profile");
       onClose(); // 모달 닫기
     }
   };
