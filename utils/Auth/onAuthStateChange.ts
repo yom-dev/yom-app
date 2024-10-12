@@ -7,7 +7,8 @@ export function onAuthStateChange() {
     if (session) {
       router.replace("/(tabs)/home");
     } else {
-      router.replace("/(auth)/signin");
+      // router.replace("/(auth)/signin");
+      console.log("User is not logged in / onAuthStateChange");
     }
   });
 }
