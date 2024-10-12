@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { View, Alert, Text, Pressable } from "react-native";
-import { router } from "expo-router";
 import NetInfo from "@react-native-community/netinfo";
 import { getSession } from "@/utils/Auth/getSession"; // named import
 import { onAuthStateChange } from "@/utils/Auth/onAuthStateChange"; // named import
