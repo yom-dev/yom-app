@@ -66,7 +66,7 @@ const InfoPage = () => {
     } else {
       console.log("Data updated successfully:", data);
       alert("Data updated successfully");
-      router.push("/(tabs)/plan");
+      router.replace("/(tabs)/plan");
     }
   };
 
