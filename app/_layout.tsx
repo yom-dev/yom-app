@@ -15,27 +15,45 @@ import "../global.css";
 import { Text, View } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Colors } from "@/constants/Colors";
+import { useRouter } from "expo-router";
 
 import { useColorScheme } from "@/hooks/useColorScheme";
 import ModalProvider from "@/shared/providers/modal-provider";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import * as Notifications from "expo-notifications"; // 타입 임포트 및 별칭 사용
 import { Image } from "expo-image";
+import NetInfo from "@react-native-community/netinfo"; // 네트워크 연결 상태를 확인하기 위한 라이브러리
 
 // 앱이 시작할 때 스플래시 스크린을 숨김
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  // notifications 상태를 저장할 상태를 만들고 초기값을 빈 배열로 설정
-  const [notification, setNotification] = useState<
-    Notifications.Notification[]
-  >([]);
-
+  const [isConnected, setIsConnected] = useState<boolean | null>(true);
   // navigation 객체를 가져오는 hook을 사용
   const navigation = useNavigation();
 
   // useColorScheme hook을 사용하여 colorScheme을 가져옴
   const colorScheme = useColorScheme();
+
+  const router = useRouter(); // router 객체를 가져오는 hook을 사용
+
+  useEffect(() => {
+    const unsubscribe = NetInfo.addEventListener((state) => {
+      setIsConnected(state.isConnected); // 연결 상태 업데이트
+      if (!state.isConnected) {
+        router.replace("/"); // 네트워크 연결 끊김 시 특정 페이지로 이동
+      }
+    });
+
+    return () => {
+      unsubscribe(); // 컴포넌트 언마운트 시 이벤트 리스너 정리
+    };
+  }, [navigation]);
+
+  // notifications 상태를 저장할 상태를 만들고 초기값을 빈 배열로 설정
+  const [notification, setNotification] = useState<
+    Notifications.Notification[]
+  >([]);
 
   // 폰트를 로드하는 useFonts hook을 사용
   const [loaded] = useFonts({

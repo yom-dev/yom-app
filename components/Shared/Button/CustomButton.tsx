@@ -57,7 +57,7 @@ const CustomButton = ({
 
   return (
     <Pressable
-      className={`w-full h-full ${bgColorVariants[backgroundColor]} flex justify-center items-center rounded-full active:opacity-90 ${bgColorVariantsActive[activeBackgroundColor]}`}
+      className={`w-full h-full ${bgColorVariants[backgroundColor]} flex justify-center items-center rounded-2xl active:opacity-90 ${bgColorVariantsActive[activeBackgroundColor]}`}
       onPress={onPress}
     >
       <Text

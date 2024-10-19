@@ -201,7 +201,7 @@ const GratitudeSetting = () => {
         <View className="h-fit w-full mt-[30px] flex items-center mb-[60]"></View>
       </KeyboardAwareScrollView>
 
-      <View className="w-full h-[45px] mt-[35px] fixed bottom-20 flex flex-row justify-between">
+      <View className="w-full h-[45px] mt-[35px] fixed bottom-12 flex flex-row justify-between">
         <View className="w-[48%] h-[45px] flex-row justify-center">
           <CustomButton
             title="Save"

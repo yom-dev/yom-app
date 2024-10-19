@@ -4,6 +4,7 @@ import { Dimensions, View } from "react-native";
 import GratitudeMainCard from "@/components/MainPage/MainCard/GratitudeMainCard/GratitudeMainCard";
 import ToDoMainCard from "@/components/MainPage/MainCard/ToDoMainCard/ToDoMainCard";
 import MonthlyGoalMainCard from "@/components/MainPage/MainCard/MonthlyGoalMainCard/MonthlyGoalMainCard";
+import TutorialMainCard from "@/components/MainPage/MainCard/TutorialMainCard/TutorialMainCard";
 import yomMainCard from "@/components/MainPage/MainCard/AdMainCard/yomMainCard";
 const MainCarousel = ({
   itemHeight,
@@ -27,7 +28,7 @@ const MainCarousel = ({
     },
     {
       key: "2",
-      Component: MonthlyGoalMainCard,
+      Component: TutorialMainCard,
     },
     {
       key: "3",

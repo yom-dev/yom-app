@@ -88,7 +88,7 @@ const GratitudeContent: React.FC<GratitudeContentProps> = ({
           </View>
 
           {!hasTodayEntry ? (
-            <View>
+            <View className="mb-[30px]">
               <Text className="text-[16px] font-[WantedSB] mt-[55px]">
                 What are you grateful for today?
               </Text>
@@ -118,7 +118,7 @@ const GratitudeContent: React.FC<GratitudeContentProps> = ({
           )}
         </KeyboardAwareScrollView>
         {!hasTodayEntry && (
-          <View className="w-full h-[45px] mt-[35px] fixed bottom-20">
+          <View className="w-full h-[45px] mt-[35px] fixed bottom-14">
             <CustomButton
               title="Save"
               titleSize={18}

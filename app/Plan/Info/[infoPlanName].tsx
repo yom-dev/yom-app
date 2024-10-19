@@ -97,7 +97,7 @@ const InfoPage = () => {
         </ScrollView>
 
         {/* button */}
-        <View className="w-full h-[50px] bottom-10">
+        <View className="w-full h-[50px] bottom-5">
           {infoData.isActive === false ? (
             // When isActive is false, show "Coming Soon"
             <View className="border-yomGreen border-[2px] w-full h-full rounded-full flex-1 justify-center items-center">
