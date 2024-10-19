@@ -6,14 +6,14 @@ import { useRouter } from "expo-router";
 const EmptyToDo = () => {
   const router = useRouter();
   return (
-    <View className="h-full">
-      <View className="w-full h-[65%] flex justify-center items-center">
+    <View className="h-full ">
+      <View className="w-full h-[60%] flex justify-center items-center">
         <Text className="font-[WantedSB] text-[28px] text-yomWhite text-center">
           Start by adding {"\n"}your very first plan.
         </Text>
       </View>
 
-      <View className="h-[35%] flex justify-center">
+      <View className="h-[38%] flex justify-center">
         <View className="h-[50px] w-full">
           <CustomButton
             title="Go to Plan Store"
