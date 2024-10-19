@@ -32,7 +32,7 @@ const ToDoMainCard: React.FC = () => {
               Check your yom plans.
             </Text>
             <Text className="text-yomWhite font-[WantedSB] text-[32px]">
-              My plan
+              My plans
             </Text>
           </View>
 

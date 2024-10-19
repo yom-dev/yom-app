@@ -61,6 +61,13 @@ const PlanNotificationSetting = ({
               <Text className="font-[WantedSB] text-[28px]"> Notification</Text>
             </View>
           )}
+          ListEmptyComponent={() => (
+            <View className="h-[70px] flex justify-center items-center border-[1px] border-gray-500 rounded-2xl">
+              <Text className="font-[WantedR] text-[20px] text-gray-500">
+                No notifications set
+              </Text>
+            </View>
+          )}
         />
       </View>
 

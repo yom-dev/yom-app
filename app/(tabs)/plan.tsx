@@ -70,14 +70,16 @@ export default function Plan() {
                 </View>
               }
               ListEmptyComponent={
-                <View className="w-full h-[80px] rounded-xl border-gray-400 border-[0.5px] mb-[30px] flex justify-center items-center">
+                <View className="w-full h-[80px] rounded-xl border-gray-500 border-[0.5px] mb-[30px] flex justify-center items-center">
                   <TouchableOpacity
                     className="w-full h-full"
                     onPress={() => {
                       router.push("/(tabs)/store");
                     }}
                   >
-                    <Text className="font-[WantedM] text-[24px]">Add Plan</Text>
+                    <Text className="font-[WantedM] text-[24px] text-gray-500">
+                      Add Plan
+                    </Text>
                   </TouchableOpacity>
                 </View>
               }
