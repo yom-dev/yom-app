@@ -49,7 +49,7 @@ export default function App() {
       ) : (
         <>
           <Text className="w-[90%] font-[WantedSB] text-yomRed text-[16px] absolute top-20 text-center">
-            Please reaccess the app after connecting to network.
+            Please close and re-open the app after connecting to network.
           </Text>
 
           <View className="w-[85%] h-[50px] border-yomRed bg-yomRed rounded-full border-[2px] flex justify-center items-center absolute bottom-10">

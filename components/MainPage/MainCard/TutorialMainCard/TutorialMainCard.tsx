@@ -35,7 +35,7 @@ const TutorialMainCard: React.FC = ({}) => {
           {/* 메인카드 컨텐츠 */}
           <View className="w-full h-[60%] flex justify-center items-center">
             <Text className="font-[WantedSB] text-[28px] text-yomWhite text-center">
-              Visit our tutorial webpage!
+              Visit our tutorial page!
             </Text>
           </View>
 
@@ -43,7 +43,7 @@ const TutorialMainCard: React.FC = ({}) => {
           <View className="h-[20%] flex justify-start">
             <View className="h-[50px] w-full">
               <CustomButton
-                title="Visit Webpage"
+                title="Check Tutorial"
                 titleSize={14}
                 backgroundColor="yomWhite"
                 activeBackgroundColor="yomLightGray"
