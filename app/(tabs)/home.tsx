@@ -38,9 +38,9 @@ export default function HomeScreen() {
                 <MainCarousel itemHeight={400} containerHeight={410} />
               </View>
 
-              {/* <View className="w-full h-[215px] mt-[35px]">
+              <View className="w-full h-[215px] mt-[35px]">
                 <MainMyPlan />
-              </View> */}
+              </View>
 
               <View className="w-full h-[50px]"></View>
             </View>

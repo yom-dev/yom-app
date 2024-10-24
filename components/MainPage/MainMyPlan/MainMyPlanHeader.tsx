@@ -10,7 +10,7 @@ const MainMyPlanHeader = () => {
   };
   return (
     <View className="flex flex-row justify-between items-end">
-      <Text className="text-[28px] text-yomBlack font-[WantedSB]">My Plan</Text>
+      <Text className="text-[28px] text-yomBlack font-[WantedSB]">Plans</Text>
 
       <View className="flex flex-row items-center justify-end">
         <Link
@@ -18,8 +18,8 @@ const MainMyPlanHeader = () => {
           asChild
           className="flex flex-row items-center justify-end"
         >
-          <Text className="text-[14px] text-yomRed font-[WantedR] active:font-[WantedSB] active:bg-none">
-            자세히 보기
+          <Text className="text-[16px] text-yomRed font-[WantedR] active:font-[WantedSB] active:bg-none">
+            Detail
           </Text>
         </Link>
         <Link href="/plan" className="flex flex-row items-center justify-end">

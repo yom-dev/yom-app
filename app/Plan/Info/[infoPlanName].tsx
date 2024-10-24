@@ -94,6 +94,8 @@ const InfoPage = () => {
           <View className="flex-row justify-center mt-[50px]">
             <InfoContent text={infoData.description} />
           </View>
+
+          <View className="h-[50px]"></View>
         </ScrollView>
 
         {/* button */}

@@ -5,6 +5,7 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 import { supabase } from "@/utils/supabase"; // Supabase 설정을 불러옵니다.
 import SignInButton from "@/components/Shared/Button/SignInButton";
 import { useGetUser } from "@/hooks/useGetUser";
+import { ScrollView } from "react-native-gesture-handler";
 
 const ProfileSetting = () => {
   const [firstName, setFirstName] = useState("");
@@ -44,13 +45,13 @@ const ProfileSetting = () => {
   };
 
   return (
-    <View className="bg-white h-full w-full flex items-center">
-      <View className="w-[90%] h-full">
-        <View className="flex items-center h-[20%] justify-end">
+    <View className="bg-white h-full w-full flex items-center ">
+      <ScrollView className="w-[90%] h-full">
+        <View className="flex items-center h-[10%] justify-end">
           <Text className="font-[WantedSB] text-[40px]">yom</Text>
         </View>
 
-        <View className="flex h-fit gap-4 mt-[40px]">
+        <View className="flex h-full gap-4 mt-[40px]">
           <Text className="font-[WantedM]">Basic Info</Text>
 
           <TextInput
@@ -87,7 +88,7 @@ const ProfileSetting = () => {
               style={{ flex: 1 }}
             />
           </View>
-          <View className="w-full h-[46px] border-yomGray border-[0.5px] rounded-3xl mt-[10px]">
+          <View className="w-full h-[46px] border-yomGray border-[0.5px] rounded-3xl mt-[7px]">
             <SignInButton
               title="Save Profile"
               titleSize={14}
@@ -97,8 +98,10 @@ const ProfileSetting = () => {
               onPress={saveProfile}
             />
           </View>
+
+          <View className="h-[80px]"></View>
         </View>
-      </View>
+      </ScrollView>
     </View>
   );
 };

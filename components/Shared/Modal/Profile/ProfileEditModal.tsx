@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { View, Text, Modal, ModalProps, TextInput, Alert } from "react-native";
+import {
+  View,
+  Text,
+  Modal,
+  ModalProps,
+  TextInput,
+  Alert,
+  ScrollView,
+} from "react-native";
 
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { supabase } from "@/utils/supabase";
@@ -63,8 +71,8 @@ const ProfileEditModal: React.FC<ProfileEditProps> = ({
       animationType="slide"
     >
       <View className="bg-white h-full w-full flex items-center">
-        <View className="w-[90%] h-full">
-          <View className="flex items-center h-[20%] justify-end">
+        <ScrollView className="w-[90%] h-full">
+          <View className="flex items-center h-[15%] justify-end">
             <Text className="font-[WantedSB] text-[40px]">yom</Text>
           </View>
 
@@ -115,8 +123,10 @@ const ProfileEditModal: React.FC<ProfileEditProps> = ({
                 onPress={saveProfile}
               />
             </View>
+
+            <View className="h-[50px]"></View>
           </View>
-        </View>
+        </ScrollView>
       </View>
     </Modal>
   );
