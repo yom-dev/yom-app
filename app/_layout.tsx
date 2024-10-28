@@ -73,7 +73,15 @@ export default function RootLayout() {
 
   // 컴포넌트가 마운트되면 알림을 가져오는 함수를 실행
   useEffect(() => {
-    fetchDeliveredNotifications();
+    // 알림이 도착할 때마다 fetchDeliveredNotifications 호출
+    const subscription = Notifications.addNotificationReceivedListener(() => {
+      fetchDeliveredNotifications();
+    });
+
+    // 컴포넌트가 언마운트될 때 구독 해제
+    return () => {
+      subscription.remove();
+    };
   }, []);
 
   // 폰트 로딩이 완료되면 스플래시 스크린을 숨김

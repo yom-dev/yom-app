@@ -91,10 +91,10 @@ export default function ProfilePage() {
                     title="Birth"
                     content={new Date(profile.birthDate).toLocaleDateString()}
                   />
-                  <ProfileText
+                  {/* <ProfileText
                     title="Last Update"
                     content={new Date(profile.updatedAt).toLocaleDateString()}
-                  />
+                  /> */}
                 </View>
               </>
             ) : (
