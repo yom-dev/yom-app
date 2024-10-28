@@ -14,7 +14,7 @@
     },
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "com.yom.app"
+      "bundleIdentifier": "com.yom.office.app"
     },
     "android": {
       "adaptiveIcon": {
@@ -68,6 +68,11 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ccf0e8ca-7524-4bd4-892b-ee2d1137a7de"
+      }
     }
   }
 }

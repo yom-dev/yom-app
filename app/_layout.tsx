@@ -39,7 +39,7 @@ export default function RootLayout() {
 
   useEffect(() => {
     const unsubscribe = NetInfo.addEventListener((state) => {
-      setIsConnected(state.isConnected); // 연결 상태 업데이트
+      setIsConnected(state.isConnected);
       if (!state.isConnected) {
         router.replace("/"); // 네트워크 연결 끊김 시 특정 페이지로 이동
       }
@@ -48,7 +48,7 @@ export default function RootLayout() {
     return () => {
       unsubscribe(); // 컴포넌트 언마운트 시 이벤트 리스너 정리
     };
-  }, [navigation]);
+  }, [isConnected]); // 의존성 배열 수정
 
   // notifications 상태를 저장할 상태를 만들고 초기값을 빈 배열로 설정
   const [notification, setNotification] = useState<
@@ -74,11 +74,13 @@ export default function RootLayout() {
   // 컴포넌트가 마운트되면 알림을 가져오는 함수를 실행
   useEffect(() => {
     fetchDeliveredNotifications();
-  });
+  }, []);
 
   // 폰트 로딩이 완료되면 스플래시 스크린을 숨김
   useEffect(() => {
-    if (loaded) {
+    if (!loaded) {
+      SplashScreen.preventAutoHideAsync();
+    } else {
       SplashScreen.hideAsync();
     }
   }, [loaded]);
