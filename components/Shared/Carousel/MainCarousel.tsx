@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import Carousel, { ICarouselInstance } from "react-native-reanimated-carousel";
 import { Dimensions, View } from "react-native";
-import GratitudeMainCard from "@/components/MainPage/MainCard/GratitudeMainCard/GratitudeMainCard";
-import ToDoMainCard from "@/components/MainPage/MainCard/ToDoMainCard/ToDoMainCard";
-import MonthlyGoalMainCard from "@/components/MainPage/MainCard/MonthlyGoalMainCard/MonthlyGoalMainCard";
-import TutorialMainCard from "@/components/MainPage/MainCard/TutorialMainCard/TutorialMainCard";
-import yomMainCard from "@/components/MainPage/MainCard/AdMainCard/yomMainCard";
+import GratitudeMainCard from "@/components/Page/MainPage/MainCard/GratitudeMainCard/GratitudeMainCard";
+import ToDoMainCard from "@/components/Page/MainPage/MainCard/ToDoMainCard/ToDoMainCard";
+import MonthlyGoalMainCard from "@/components/Page/MainPage/MainCard/MonthlyGoalMainCard/MonthlyGoalMainCard";
+import TutorialMainCard from "@/components/Page/MainPage/MainCard/TutorialMainCard/TutorialMainCard";
+import yomMainCard from "@/components/Page/MainPage/MainCard/AdMainCard/yomMainCard";
 const MainCarousel = ({
   itemHeight,
   containerHeight,

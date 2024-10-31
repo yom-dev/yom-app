@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, FlatList } from "react-native";
-import NotificationItem from "@/components/notification/NotificationItem";
+import NotificationItem from "@/components/Notification/NotificationItem";
 import * as Notifications from "expo-notifications";
 import { Notification as ExpoNotification } from "expo-notifications"; // 타입 임포트 및 별칭 사용
 

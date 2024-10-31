@@ -8,9 +8,9 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { Link } from "expo-router";
-import ProfileText from "@/components/ProfilePage/ProfileText";
+import ProfileText from "@/components/Page/ProfilePage/ProfileText";
 import useGetProfile from "@/hooks/useGetProfile"; // Import your custom hook
-import AvatarImagePicker from "@/components/ProfilePage/AvatarImagePicker";
+import AvatarImagePicker from "@/components/Page/ProfilePage/AvatarImagePicker";
 import ProfileEditModal from "@/components/Shared/Modal/Profile/ProfileEditModal"; // ProfileEditModal 컴포넌트 임포트
 
 export default function ProfilePage() {

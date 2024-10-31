@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { View, FlatList, Modal, Text } from "react-native";
-import NotificationCardWide from "@/components/notification/NotificationCardWide";
+import NotificationCardWide from "@/components/Notification/NotificationCardWide";
 import { getScheduleNotifications } from "@/utils/Notifications/getScheduledNotifications";
 import CustomButton from "@/components/Shared/Button/CustomButton";
 import { planDeleteAlert } from "@/utils/Alert/planDeleteAlert";

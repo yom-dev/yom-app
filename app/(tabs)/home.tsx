@@ -6,7 +6,7 @@ import {
   ScrollView,
   FlatList,
 } from "react-native";
-import MainMyPlan from "@/components/MainPage/MainMyPlan/MainMyPlan";
+import MainMyPlan from "@/components/Page/MainPage/MainMyPlan/MainMyPlan";
 import { useState } from "react";
 import MainCarousel from "@/components/Shared/Carousel/MainCarousel";
 import { Link } from "expo-router";

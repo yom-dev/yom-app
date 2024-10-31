@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, FlatList, ActivityIndicator } from "react-native";
-import StoreCard from "@/components/StorePage/StoreCard/StoreCard";
+import StoreCard from "@/components/Page/StorePage/StoreCard/StoreCard";
 import useGetStoreItems from "@/hooks/useGetStoreItems"; // Import the custom hook
 
 export default function Plan() {
