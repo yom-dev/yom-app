@@ -3,59 +3,36 @@ import {
   DefaultTheme,
   Link,
   ThemeProvider,
-  useNavigation, // Import useNavigation
+  useNavigation,
 } from "@react-navigation/native";
-import React, { useState } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
-import "react-native-reanimated";
 import "../global.css";
-import { Text, View } from "react-native";
+import { Text, View, AppState, AppStateStatus } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Colors } from "@/constants/Colors";
 import { useRouter } from "expo-router";
-
 import { useColorScheme } from "@/hooks/useColorScheme";
 import ModalProvider from "@/shared/providers/modal-provider";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import * as Notifications from "expo-notifications"; // 타입 임포트 및 별칭 사용
+import * as Notifications from "expo-notifications";
 import { Image } from "expo-image";
-import NetInfo from "@react-native-community/netinfo"; // 네트워크 연결 상태를 확인하기 위한 라이브러리
+import NetInfo from "@react-native-community/netinfo";
 
-// 앱이 시작할 때 스플래시 스크린을 숨김
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [isConnected, setIsConnected] = useState<boolean | null>(true);
-  // navigation 객체를 가져오는 hook을 사용
   const navigation = useNavigation();
-
-  // useColorScheme hook을 사용하여 colorScheme을 가져옴
   const colorScheme = useColorScheme();
-
-  const router = useRouter(); // router 객체를 가져오는 hook을 사용
-
-  useEffect(() => {
-    const unsubscribe = NetInfo.addEventListener((state) => {
-      setIsConnected(state.isConnected);
-      if (!state.isConnected) {
-        router.replace("/"); // 네트워크 연결 끊김 시 특정 페이지로 이동
-      }
-    });
-
-    return () => {
-      unsubscribe(); // 컴포넌트 언마운트 시 이벤트 리스너 정리
-    };
-  }, [isConnected]); // 의존성 배열 수정
-
-  // notifications 상태를 저장할 상태를 만들고 초기값을 빈 배열로 설정
+  const router = useRouter();
+  const [appState, setAppState] = useState(AppState.currentState);
   const [notification, setNotification] = useState<
     Notifications.Notification[]
   >([]);
 
-  // 폰트를 로드하는 useFonts hook을 사용
   const [loaded] = useFonts({
     WantedM: require("../assets/fonts/WantedSans-Medium.otf"),
     WantedR: require("../assets/fonts/WantedSans-Regular.otf"),
@@ -64,27 +41,67 @@ export default function RootLayout() {
     WantedEB: require("../assets/fonts/WantedSans-ExtraBold.otf"),
   });
 
-  // 알림을 가져오는 함수
   async function fetchDeliveredNotifications() {
     const deliveredNotifications =
       await Notifications.getPresentedNotificationsAsync();
     setNotification(deliveredNotifications);
   }
-
-  // 컴포넌트가 마운트되면 알림을 가져오는 함수를 실행
   useEffect(() => {
-    // 알림이 도착할 때마다 fetchDeliveredNotifications 호출
-    const subscription = Notifications.addNotificationReceivedListener(() => {
-      fetchDeliveredNotifications();
-    });
+    const fetchDeliveredNotifications = async () => {
+      const deliveredNotifications =
+        await Notifications.getPresentedNotificationsAsync();
+      setNotification(deliveredNotifications);
+    };
 
-    // 컴포넌트가 언마운트될 때 구독 해제
+    const subscription = Notifications.addNotificationReceivedListener(
+      fetchDeliveredNotifications
+    );
+
     return () => {
       subscription.remove();
     };
   }, []);
 
-  // 폰트 로딩이 완료되면 스플래시 스크린을 숨김
+  useEffect(() => {
+    const handleAppStateChange = (nextAppState: AppStateStatus) => {
+      if (appState.match(/inactive|background/) && nextAppState === "active") {
+        fetchDeliveredNotifications();
+      }
+      setAppState(nextAppState);
+    };
+
+    const appStateListener = AppState.addEventListener(
+      "change",
+      handleAppStateChange
+    );
+
+    return () => {
+      appStateListener.remove();
+    };
+  }, [appState]);
+
+  useEffect(() => {
+    const unsubscribe = NetInfo.addEventListener((state) => {
+      setIsConnected(state.isConnected);
+      if (!state.isConnected) {
+        router.replace("/");
+      }
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, [isConnected]);
+
+  useEffect(() => {
+    const subscription = Notifications.addNotificationReceivedListener(
+      fetchDeliveredNotifications
+    );
+    return () => {
+      subscription.remove();
+    };
+  }, []);
+
   useEffect(() => {
     if (!loaded) {
       SplashScreen.preventAutoHideAsync();
@@ -96,6 +113,10 @@ export default function RootLayout() {
   if (!loaded) {
     return null;
   }
+
+  const handleNotificationClick = () => {
+    setNotification([]); // 알림을 읽은 것으로 간주하여 배열을 빈 배열로 만듦
+  };
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
@@ -114,7 +135,11 @@ export default function RootLayout() {
                 </Text>
               ),
               headerRight: () => (
-                <Link to="/notification">
+                <Link
+                  to="/notification"
+                  key={notification.length}
+                  onPress={handleNotificationClick}
+                >
                   {notification.length > 0 ? (
                     <Image
                       source={require("@/assets/images/icons/notification-unread-icon.png")}
@@ -148,7 +173,7 @@ export default function RootLayout() {
                   name="arrow-back"
                   size={24}
                   color={"#000000"}
-                  onPress={navigation.goBack} // Update to use navigation.goBack
+                  onPress={navigation.goBack}
                 />
               ),
             }}

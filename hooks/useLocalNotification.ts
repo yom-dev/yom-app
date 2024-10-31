@@ -100,7 +100,7 @@ const useLocalNotifications = () => {
     }
   };
 
-  const cancelNotificationById = async (id: string) => {
+  const readNotificationById = async (id: string) => {
     try {
       // 이미 발생한 알림을 취소
       await Notifications.dismissNotificationAsync(id);
@@ -111,7 +111,7 @@ const useLocalNotifications = () => {
   };
 
   // 모든 예약된 알림 취소 함수
-  const cancelAllNotifications = async () => {
+  const readAllNotifications = async () => {
     try {
       await Notifications.dismissAllNotificationsAsync();
       updateBadgeCount(); // 뱃지 카운트 업데이트
@@ -134,8 +134,8 @@ const useLocalNotifications = () => {
     triggerNotification,
     triggerDailyNotification,
     triggerWeeklyNotification,
-    cancelNotificationById,
-    cancelAllNotifications,
+    readNotificationById,
+    readAllNotifications,
     cancelScheduledNotificationById,
   };
 };

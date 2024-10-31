@@ -19,7 +19,7 @@ const NotificationItem: React.FC<NotificationItemProps> = ({
   id,
   href,
 }) => {
-  const { cancelNotificationById } = useLocalNotifications();
+  const { readNotificationById } = useLocalNotifications();
 
   const timestampInMilliseconds = date * 1000;
   const finalDate = new Date(timestampInMilliseconds);
@@ -32,7 +32,7 @@ const NotificationItem: React.FC<NotificationItemProps> = ({
   return (
     <Pressable
       onPress={() => {
-        cancelNotificationById(id);
+        readNotificationById(id);
         setRead(true);
       }}
     >

@@ -3,6 +3,7 @@ import { View, Text, FlatList } from "react-native";
 import NotificationItem from "@/components/Notification/NotificationItem";
 import * as Notifications from "expo-notifications";
 import { Notification as ExpoNotification } from "expo-notifications"; // 타입 임포트 및 별칭 사용
+import useLocalNotifications from "@/hooks/useLocalNotification";
 
 export default function Notification() {
   const [notifications, setNotifications] = useState<ExpoNotification[]>([]); // 별칭을 사용한 타입 지정
@@ -14,8 +15,11 @@ export default function Notification() {
     setNotifications(deliveredNotifications);
   }
 
+  const { readAllNotifications } = useLocalNotifications();
+
   useEffect(() => {
     fetchDeliveredNotifications();
+    readAllNotifications();
   }, []);
 
   return (
