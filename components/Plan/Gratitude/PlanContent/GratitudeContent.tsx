@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { View, Text, ImageBackground, ActivityIndicator } from "react-native";
 import CustomButton from "@/components/Shared/Button/CustomButton";
 import GratitudeItem from "./GratitudeItem";
-import { supabase } from "@/utils/supabase";
+import { supabase } from "@/utils/Supabase/supabase";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { GratitudeContentType } from "@/shared/types/GratitudeContentType";
 import { useGetUserId } from "@/hooks/useGetUserId";

@@ -1,10 +1,10 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import SettingSlot from "@/components/SettingPage/SettingSlot";
-import { supabase } from "@/utils/supabase";
+import { supabase } from "@/utils/Supabase/supabase";
 import { Link } from "expo-router";
 import * as Notifications from "expo-notifications";
-import { getScheduleNotifications } from "@/utils/getScheduledNotifications";
+import { getScheduleNotifications } from "@/utils/Notifications/getScheduledNotifications";
 import { get } from "react-native/Libraries/TurboModule/TurboModuleRegistry";
 
 const Setting = () => {

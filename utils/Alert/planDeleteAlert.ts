@@ -1,5 +1,5 @@
 import { Alert } from "react-native";
-import { supabase } from "@/utils/supabase";
+import { supabase } from "@/utils/Supabase/supabase";
 import { router } from "expo-router";
 
 export const planDeleteAlert = (planName: string, userId: string | null) => {

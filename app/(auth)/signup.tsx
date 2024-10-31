@@ -7,15 +7,11 @@ import {
   Text,
   TextInput,
 } from "react-native";
-import { supabase } from "@/utils/supabase";
-import { Button, Input } from "@rneui/themed";
+import { signUpWithEmail } from "@/utils/Auth/SignUp/signUpWithEmail";
 import SignInButton from "@/components/Shared/Button/SignInButton";
-import { Link, router } from "expo-router";
+import { Link } from "expo-router";
+import { supabase } from "@/utils/Supabase/supabase";
 
-// Tells Supabase Auth to continuously refresh the session automatically if
-// the app is in the foreground. When this is added, you will continue to receive
-// `onAuthStateChange` events with the `TOKEN_REFRESHED` or `SIGNED_OUT` event
-// if the user's session is terminated. This should only be registered once.
 AppState.addEventListener("change", (state) => {
   if (state === "active") {
     supabase.auth.startAutoRefresh();
@@ -27,60 +23,8 @@ AppState.addEventListener("change", (state) => {
 export default function Auth() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState(""); // 비밀번호 확인 필드 추가
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
-
-  async function signUpWithEmail() {
-    if (password !== confirmPassword) {
-      Alert.alert("Passwords do not match");
-      return;
-    }
-
-    setLoading(true);
-    const {
-      data: { session },
-      error,
-    } = await supabase.auth.signUp({
-      email: email,
-      password: password,
-    });
-
-    if (error) {
-      Alert.alert(error.message);
-      setLoading(false);
-      return;
-    }
-
-    if (!session) {
-      Alert.alert(
-        "Please check your inbox for email verification!",
-        "",
-        [
-          {
-            text: "OK",
-            onPress: () => router.replace("/(auth)/signin"),
-          },
-        ],
-        { cancelable: false }
-      );
-    } else {
-      router.push("/(auth)/profileSetting");
-
-      Alert.alert(
-        "Welcome to yom!",
-        "Sign-up successful🎉",
-        [
-          {
-            text: "OK",
-            // onPress: () => router.replace("/(auth)/profileSetting"),
-          },
-        ],
-        { cancelable: false }
-      );
-    }
-
-    setLoading(false);
-  }
 
   return (
     <View className="bg-white h-full w-full flex items-center ">
@@ -126,7 +70,9 @@ export default function Auth() {
             backgroundColor="yomWhite"
             textColor="yomBlack"
             activeBackgroundColor="yomGreen"
-            onPress={() => signUpWithEmail()}
+            onPress={() =>
+              signUpWithEmail(email, password, confirmPassword, setLoading)
+            }
           />
         </View>
 

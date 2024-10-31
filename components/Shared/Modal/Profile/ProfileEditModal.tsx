@@ -10,7 +10,7 @@ import {
 } from "react-native";
 
 import DateTimePicker from "@react-native-community/datetimepicker";
-import { supabase } from "@/utils/supabase";
+import { supabase } from "@/utils/Supabase/supabase";
 import SignInButton from "@/components/Shared/Button/SignInButton";
 import { useGetUser } from "@/hooks/useGetUser";
 import { useRouter } from "expo-router";

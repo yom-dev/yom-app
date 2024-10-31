@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { supabase } from "@/utils/supabase";
+import { supabase } from "@/utils/Supabase/supabase";
 import { MyPlans } from "@/shared/types/MyPlans";
 
 const useGetMyPlans = () => {

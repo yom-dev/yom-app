@@ -10,40 +10,40 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		23CF6FF4BD8B4167A224C78E /* WantedSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 29D2967B903849B9A20967A1 /* WantedSans-Bold.otf */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		54BACA6EA8304AE7AFA834E7 /* WantedSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = DC77649773F04C9FB82EC8D5 /* WantedSans-Medium.otf */; };
-		596C3474474441D995C2F45F /* WantedSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 580DABFFE5954B15AD933072 /* WantedSans-Regular.otf */; };
-		5C701CFD8DD4463CF803F870 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = BC876377148E1C905ABC488C /* PrivacyInfo.xcprivacy */; };
-		7987A1A72C4A41AEA6D664DA /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8D9C0E0EFD4CF4B4D39027 /* noop-file.swift */; };
+		4830AC51AA2B4C929C72BFBD /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7191A207BA4ED892FDBE19 /* noop-file.swift */; };
+		5E1A0BA0B19E49169460729F /* WantedSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 923AF4C44F1140039FF55AB8 /* WantedSans-Medium.otf */; };
+		88712C546D6A41F5AA045E42 /* WantedSans-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F4828F7F453C408396C9C17D /* WantedSans-ExtraBold.otf */; };
 		96905EF65AED1B983A6B3ABC /* libPods-yom.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EEBF8E8E6FB1BC6CAF49B5 /* libPods-yom.a */; };
-		9DF81EA38AAA4D42AE2A45A7 /* WantedSans-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4DB3655CFB3A4D71B00D4CDC /* WantedSans-ExtraBold.otf */; };
-		A39F0222318C4176A4A3A46B /* WantedSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0AF06A427F3447CE9792BF7F /* WantedSans-Bold.otf */; };
 		B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
-		CD21FB079E344D5B93E2AC74 /* WantedSans-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A96E8D9037B14B1F8C4436C0 /* WantedSans-SemiBold.otf */; };
+		BEABFEFA41F1E78DED6F7171 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = E342146D302BB4BB29D870D4 /* PrivacyInfo.xcprivacy */; };
+		EC38A0311DB941ADAE28FCBE /* WantedSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 530BF0F3F57541D2AC5D4B1A /* WantedSans-Regular.otf */; };
+		F76AD297C4244337BF63BF63 /* WantedSans-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7712F55397EE4BE18B094ECD /* WantedSans-SemiBold.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0AF06A427F3447CE9792BF7F /* WantedSans-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "WantedSans-Bold.otf"; path = "../assets/fonts/WantedSans-Bold.otf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* yom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = yom/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = yom/AppDelegate.mm; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = yom/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = yom/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = yom/main.m; sourceTree = "<group>"; };
-		4DB3655CFB3A4D71B00D4CDC /* WantedSans-ExtraBold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "WantedSans-ExtraBold.otf"; path = "../assets/fonts/WantedSans-ExtraBold.otf"; sourceTree = "<group>"; };
-		580DABFFE5954B15AD933072 /* WantedSans-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "WantedSans-Regular.otf"; path = "../assets/fonts/WantedSans-Regular.otf"; sourceTree = "<group>"; };
+		1D7191A207BA4ED892FDBE19 /* noop-file.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = "noop-file.swift"; path = "yom/noop-file.swift"; sourceTree = "<group>"; };
+		231C113C5E8E43B782F63CCB /* yom-Bridging-Header.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "yom-Bridging-Header.h"; path = "yom/yom-Bridging-Header.h"; sourceTree = "<group>"; };
+		29D2967B903849B9A20967A1 /* WantedSans-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "WantedSans-Bold.otf"; path = "../assets/fonts/WantedSans-Bold.otf"; sourceTree = "<group>"; };
+		530BF0F3F57541D2AC5D4B1A /* WantedSans-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "WantedSans-Regular.otf"; path = "../assets/fonts/WantedSans-Regular.otf"; sourceTree = "<group>"; };
 		58EEBF8E8E6FB1BC6CAF49B5 /* libPods-yom.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-yom.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C2E3173556A471DD304B334 /* Pods-yom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yom.debug.xcconfig"; path = "Target Support Files/Pods-yom/Pods-yom.debug.xcconfig"; sourceTree = "<group>"; };
-		6D8D9C0E0EFD4CF4B4D39027 /* noop-file.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = "noop-file.swift"; path = "yom/noop-file.swift"; sourceTree = "<group>"; };
+		7712F55397EE4BE18B094ECD /* WantedSans-SemiBold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "WantedSans-SemiBold.otf"; path = "../assets/fonts/WantedSans-SemiBold.otf"; sourceTree = "<group>"; };
 		7A4D352CD337FB3A3BF06240 /* Pods-yom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yom.release.xcconfig"; path = "Target Support Files/Pods-yom/Pods-yom.release.xcconfig"; sourceTree = "<group>"; };
-		A96E8D9037B14B1F8C4436C0 /* WantedSans-SemiBold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "WantedSans-SemiBold.otf"; path = "../assets/fonts/WantedSans-SemiBold.otf"; sourceTree = "<group>"; };
+		923AF4C44F1140039FF55AB8 /* WantedSans-Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "WantedSans-Medium.otf"; path = "../assets/fonts/WantedSans-Medium.otf"; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = yom/SplashScreen.storyboard; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
-		BC876377148E1C905ABC488C /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = yom/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		D3B2391DDD514AA0B3B8856A /* yom-Bridging-Header.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "yom-Bridging-Header.h"; path = "yom/yom-Bridging-Header.h"; sourceTree = "<group>"; };
-		DC77649773F04C9FB82EC8D5 /* WantedSans-Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "WantedSans-Medium.otf"; path = "../assets/fonts/WantedSans-Medium.otf"; sourceTree = "<group>"; };
+		E342146D302BB4BB29D870D4 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = yom/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F4828F7F453C408396C9C17D /* WantedSans-ExtraBold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "WantedSans-ExtraBold.otf"; path = "../assets/fonts/WantedSans-ExtraBold.otf"; sourceTree = "<group>"; };
 		FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-yom/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,9 +69,9 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				6D8D9C0E0EFD4CF4B4D39027 /* noop-file.swift */,
-				D3B2391DDD514AA0B3B8856A /* yom-Bridging-Header.h */,
-				BC876377148E1C905ABC488C /* PrivacyInfo.xcprivacy */,
+				1D7191A207BA4ED892FDBE19 /* noop-file.swift */,
+				231C113C5E8E43B782F63CCB /* yom-Bridging-Header.h */,
+				E342146D302BB4BB29D870D4 /* PrivacyInfo.xcprivacy */,
 			);
 			name = yom;
 			sourceTree = "<group>";
@@ -83,6 +83,18 @@
 				58EEBF8E8E6FB1BC6CAF49B5 /* libPods-yom.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7B84045DC2AA43D18573A4B5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				923AF4C44F1140039FF55AB8 /* WantedSans-Medium.otf */,
+				530BF0F3F57541D2AC5D4B1A /* WantedSans-Regular.otf */,
+				29D2967B903849B9A20967A1 /* WantedSans-Bold.otf */,
+				7712F55397EE4BE18B094ECD /* WantedSans-SemiBold.otf */,
+				F4828F7F453C408396C9C17D /* WantedSans-ExtraBold.otf */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -101,7 +113,7 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				D65327D7A22EEC0BE12398D9 /* Pods */,
 				D7E4C46ADA2E9064B798F356 /* ExpoModulesProviders */,
-				CA62161CD80A420A8C36679F /* Resources */,
+				7B84045DC2AA43D18573A4B5 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -133,18 +145,6 @@
 			path = yom/Supporting;
 			sourceTree = "<group>";
 		};
-		CA62161CD80A420A8C36679F /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				DC77649773F04C9FB82EC8D5 /* WantedSans-Medium.otf */,
-				580DABFFE5954B15AD933072 /* WantedSans-Regular.otf */,
-				0AF06A427F3447CE9792BF7F /* WantedSans-Bold.otf */,
-				A96E8D9037B14B1F8C4436C0 /* WantedSans-SemiBold.otf */,
-				4DB3655CFB3A4D71B00D4CDC /* WantedSans-ExtraBold.otf */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
 		D65327D7A22EEC0BE12398D9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -170,13 +170,13 @@
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "yom" */;
 			buildPhases = (
 				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
-				1A6571313327250DC3B29848 /* [Expo] Configure project */,
+				D2D08318CC4B57C88E334119 /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				DDF9ACE868D588DB8AB5B074 /* [CP] Embed Pods Frameworks */,
+				E834D1258FD34FB16627C72D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -196,7 +196,9 @@
 				LastUpgradeCheck = 1130;
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = ZGL6B27HP3;
 						LastSwiftMigration = 1250;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -226,12 +228,12 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				54BACA6EA8304AE7AFA834E7 /* WantedSans-Medium.otf in Resources */,
-				596C3474474441D995C2F45F /* WantedSans-Regular.otf in Resources */,
-				A39F0222318C4176A4A3A46B /* WantedSans-Bold.otf in Resources */,
-				CD21FB079E344D5B93E2AC74 /* WantedSans-SemiBold.otf in Resources */,
-				9DF81EA38AAA4D42AE2A45A7 /* WantedSans-ExtraBold.otf in Resources */,
-				5C701CFD8DD4463CF803F870 /* PrivacyInfo.xcprivacy in Resources */,
+				5E1A0BA0B19E49169460729F /* WantedSans-Medium.otf in Resources */,
+				EC38A0311DB941ADAE28FCBE /* WantedSans-Regular.otf in Resources */,
+				23CF6FF4BD8B4167A224C78E /* WantedSans-Bold.otf in Resources */,
+				F76AD297C4244337BF63BF63 /* WantedSans-SemiBold.otf in Resources */,
+				88712C546D6A41F5AA045E42 /* WantedSans-ExtraBold.otf in Resources */,
+				BEABFEFA41F1E78DED6F7171 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,25 +277,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		1A6571313327250DC3B29848 /* [Expo] Configure project */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "[Expo] Configure project";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-yom/expo-configure-project.sh\"\n";
-		};
 		800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -336,7 +319,26 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-yom/Pods-yom-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DDF9ACE868D588DB8AB5B074 /* [CP] Embed Pods Frameworks */ = {
+		D2D08318CC4B57C88E334119 /* [Expo] Configure project */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[Expo] Configure project";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-yom/expo-configure-project.sh\"\n";
+		};
+		E834D1258FD34FB16627C72D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -364,7 +366,7 @@
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */,
-				7987A1A72C4A41AEA6D664DA /* noop-file.swift in Sources */,
+				4830AC51AA2B4C929C72BFBD /* noop-file.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +380,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = yom/yom.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZGL6B27HP3;
 				ENABLE_BITCODE = NO;
@@ -400,8 +404,6 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yom.office.app;
 				PRODUCT_NAME = yom;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "yom/yom-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -417,6 +419,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = yom/yom.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZGL6B27HP3;
 				INFOPLIST_FILE = yom/Info.plist;
@@ -434,8 +438,6 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yom.office.app;
 				PRODUCT_NAME = yom;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "yom/yom-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -502,10 +504,7 @@
 				LIBRARY_SEARCH_PATHS = "$(SDKROOT)/usr/lib/swift\"$(inherited)\"";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -563,10 +562,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(SDKROOT)/usr/lib/swift\"$(inherited)\"";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;

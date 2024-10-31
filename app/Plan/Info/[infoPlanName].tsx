@@ -11,7 +11,7 @@ import CustomButton from "@/components/Shared/Button/CustomButton";
 import InfoContent from "./infoContent";
 import { icons } from "@/constants/Icons";
 import useGetPlanInfo from "@/hooks/useGetPlanInfo"; // Import the custom hook
-import { supabase } from "@/utils/supabase";
+import { supabase } from "@/utils/Supabase/supabase";
 import { useGetUserId } from "@/hooks/useGetUserId";
 import useGetMyPlans from "@/hooks/useGetMyPlans";
 type PlanName = keyof typeof icons;

@@ -30,7 +30,7 @@
 // }
 
 import { useState, useEffect } from "react";
-import { supabase } from "@/utils/supabase";
+import { supabase } from "@/utils/Supabase/supabase";
 import { View, ActivityIndicator } from "react-native";
 import { Session } from "@supabase/supabase-js";
 import { router } from "expo-router";
