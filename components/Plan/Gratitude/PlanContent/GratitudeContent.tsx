@@ -1,6 +1,12 @@
 // GratitudeContent.tsx
 import React, { useEffect, useState } from "react";
-import { View, Text, ImageBackground, ActivityIndicator } from "react-native";
+import {
+  View,
+  Text,
+  ImageBackground,
+  ActivityIndicator,
+  ScrollView,
+} from "react-native";
 import CustomButton from "@/components/Shared/Button/CustomButton";
 import GratitudeItem from "./GratitudeItem";
 import { supabase } from "@/utils/Supabase/supabase";
@@ -75,47 +81,50 @@ const GratitudeContent: React.FC<GratitudeContentProps> = ({
         <KeyboardAwareScrollView
           style={{ flex: 1 }}
           showsVerticalScrollIndicator={false}
-          extraScrollHeight={30}
+          extraScrollHeight={80} // 키보드와 인풋 사이의 간격을 설정
+          enableAutomaticScroll={true} // 자동 스크롤을 활성화
           keyboardOpeningTime={100}
         >
-          <View className="w-full h-[200px] mt-[60px] flex-1 justify-center items-center">
-            <ImageBackground
-              source={require("@/assets/images/icons/note-icon.png")}
-              className="w-full h-full flex justify-center items-center"
-              resizeMode="contain"
-              style={{ borderRadius: 20 }}
-            />
-          </View>
-
-          {!hasTodayEntry ? (
-            <View className="mb-[30px]">
-              <Text className="text-[16px] font-[WantedSB] mt-[55px]">
-                What are you grateful for today?
-              </Text>
-              <View className="h-[220px] mt-[30px] flex">
-                <GratitudeItem
-                  item1={item1}
-                  item2={item2}
-                  item3={item3}
-                  setItem1={setItem1}
-                  setItem2={setItem2}
-                  setItem3={setItem3}
-                />
-              </View>
+          <ScrollView>
+            <View className="w-full h-[200px] mt-[60px] flex-1 justify-center items-center">
+              <ImageBackground
+                source={require("@/assets/images/icons/note-icon.png")}
+                className="w-full h-full flex justify-center items-center"
+                resizeMode="contain"
+                style={{ borderRadius: 20 }}
+              />
             </View>
-          ) : (
-            <View className="w-full h-[220px]">
-              <Text className="text-[24px] font-[WantedSB] mt-[55px]">
-                Today, you thanked for
-              </Text>
-              <View className="mt-[30px] flex gap-6">
-                <Text className="text-[20px] font-[WantedM]">{item1}</Text>
 
-                <Text className="text-[20px] font-[WantedM]">{item2}</Text>
-                <Text className="text-[20px] font-[WantedM]">{item3}</Text>
+            {!hasTodayEntry ? (
+              <View className="mb-[30px]">
+                <Text className="text-[16px] font-[WantedSB] mt-[55px]">
+                  What are you grateful for today?
+                </Text>
+                <View className="h-[220px] mt-[30px] flex">
+                  <GratitudeItem
+                    item1={item1}
+                    item2={item2}
+                    item3={item3}
+                    setItem1={setItem1}
+                    setItem2={setItem2}
+                    setItem3={setItem3}
+                  />
+                </View>
               </View>
-            </View>
-          )}
+            ) : (
+              <View className="w-full h-[220px]">
+                <Text className="text-[24px] font-[WantedSB] mt-[55px]">
+                  Today, you thanked for
+                </Text>
+                <View className="mt-[30px] flex gap-6">
+                  <Text className="text-[20px] font-[WantedM]">{item1}</Text>
+
+                  <Text className="text-[20px] font-[WantedM]">{item2}</Text>
+                  <Text className="text-[20px] font-[WantedM]">{item3}</Text>
+                </View>
+              </View>
+            )}
+          </ScrollView>
         </KeyboardAwareScrollView>
         {!hasTodayEntry && (
           <View className="w-full h-[45px] mt-[35px] fixed bottom-14">

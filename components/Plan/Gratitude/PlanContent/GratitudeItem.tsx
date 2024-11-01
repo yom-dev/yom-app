@@ -1,5 +1,6 @@
 import { KeyboardAvoidingView, View, TextInput } from "react-native";
 import React from "react";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 interface GratitudeItemProps {
   item1: string;
@@ -19,45 +20,44 @@ const GratitudeItem = ({
   setItem3,
 }: GratitudeItemProps) => {
   return (
-    <KeyboardAvoidingView className="flex" behavior="padding">
-      <View className="w-full h-full flex justify-between">
-        <View className="w-full h-[55px]">
-          {/* 텍스트 인풋 */}
-          <TextInput
-            className="w-full h-full border-yomGray border-[1px] rounded-3xl p-[15px] font-[WantedSB] text-[14px] flex"
-            placeholder="Write here"
-            keyboardType="default"
-            placeholderTextColor={"gray"}
-            value={item1}
-            onChangeText={setItem1}
-          />
-        </View>
-
+    <View className="w-full h-full flex justify-between">
+      <View className="w-full h-[55px]">
         {/* 텍스트 인풋 */}
-        <View className="w-full h-[55px]">
-          <TextInput
-            className="w-full h-full border-yomGray border-[1px] rounded-3xl p-[15px] font-[WantedSB] text-[14px]"
-            placeholder="Write here"
-            keyboardType="default"
-            placeholderTextColor={"gray"}
-            value={item2}
-            onChangeText={setItem2}
-          />
-        </View>
 
-        {/* 텍스트 인풋 */}
-        <View className="w-full h-[55px]">
-          <TextInput
-            className="w-full h-full border-yomGray border-[1px] rounded-3xl p-[15px] font-[WantedSB] text-[14px]"
-            placeholder="Write here"
-            keyboardType="default"
-            placeholderTextColor={"gray"}
-            value={item3}
-            onChangeText={setItem3}
-          />
-        </View>
+        <TextInput
+          className="w-full h-full border-yomGray border-[1px] rounded-3xl p-[15px] font-[WantedSB] text-[14px] flex"
+          placeholder="Write here"
+          keyboardType="default"
+          placeholderTextColor={"gray"}
+          value={item1}
+          onChangeText={setItem1}
+        />
       </View>
-    </KeyboardAvoidingView>
+
+      {/* 텍스트 인풋 */}
+      <View className="w-full h-[55px]">
+        <TextInput
+          className="w-full h-full border-yomGray border-[1px] rounded-3xl p-[15px] font-[WantedSB] text-[14px]"
+          placeholder="Write here"
+          keyboardType="default"
+          placeholderTextColor={"gray"}
+          value={item2}
+          onChangeText={setItem2}
+        />
+      </View>
+
+      {/* 텍스트 인풋 */}
+      <View className="w-full h-[55px]">
+        <TextInput
+          className="w-full h-full border-yomGray border-[1px] rounded-3xl p-[15px] font-[WantedSB] text-[14px]"
+          placeholder="Write here"
+          keyboardType="default"
+          placeholderTextColor={"gray"}
+          value={item3}
+          onChangeText={setItem3}
+        />
+      </View>
+    </View>
   );
 };
 
