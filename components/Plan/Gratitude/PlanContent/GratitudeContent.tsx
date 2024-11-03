@@ -112,16 +112,16 @@ const GratitudeContent: React.FC<GratitudeContentProps> = ({
                 </View>
               </View>
             ) : (
-              <View className="w-full h-[220px]">
+              <View className="w-full h-fit">
                 <Text className="text-[24px] font-[WantedSB] mt-[55px]">
                   Today, you thanked for
                 </Text>
                 <View className="mt-[30px] flex gap-6">
                   <Text className="text-[20px] font-[WantedM]">{item1}</Text>
-
                   <Text className="text-[20px] font-[WantedM]">{item2}</Text>
                   <Text className="text-[20px] font-[WantedM]">{item3}</Text>
                 </View>
+                <View className="h-[60px]"></View>
               </View>
             )}
           </ScrollView>
