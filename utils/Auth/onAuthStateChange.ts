@@ -1,4 +1,4 @@
-import { supabase } from "../Supabase/supabase";
+import { supabase } from "../supabase";
 import { router } from "expo-router";
 
 export function onAuthStateChange() {

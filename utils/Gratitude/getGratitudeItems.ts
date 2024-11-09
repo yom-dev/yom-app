@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { supabase } from "@/utils/Supabase/supabase";
+import { supabase } from "@/utils/supabase";
 import Gratitude from "@/components/Plan/Gratitude/Gratitude";
 
 import { GratitudeContentType } from "@/shared/types/GratitudeContentType";

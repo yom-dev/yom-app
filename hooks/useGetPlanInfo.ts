@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { supabase } from "@/utils/Supabase/supabase";
+import { supabase } from "@/utils/supabase";
 
 // Define the type for the Supabase data
 interface PlanStore {

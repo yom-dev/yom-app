@@ -1,0 +1,7 @@
+{
+  // 허용 설정
+  "deno.enable": true,
+  // 작업영역 폴더의 특정 경로에 대해서만 Deno Language Server를 사용할 수 있는지 여부를 제어합니다. 기본값은 빈 목록입니다.
+  "deno.enablePaths": ["./supabase/functions/delete-user"],
+  "deno.importMap": "./supabase/functions/import_map.json"
+}

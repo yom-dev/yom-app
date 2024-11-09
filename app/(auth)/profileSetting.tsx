@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Alert, View, Text, TextInput } from "react-native";
 import { router } from "expo-router";
 import DateTimePicker from "@react-native-community/datetimepicker";
-import { supabase } from "@/utils/Supabase/supabase"; // Supabase 설정을 불러옵니다.
+import { supabase } from "@/utils/supabase"; // Supabase 설정을 불러옵니다.
 import SignInButton from "@/components/Shared/Button/SignInButton";
 import { useGetUser } from "@/hooks/useGetUser";
 import { ScrollView } from "react-native-gesture-handler";

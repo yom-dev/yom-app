@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { supabase } from "@/utils/Supabase/supabase";
+import { supabase } from "@/utils/supabase";
 
 export function useGetUserId() {
   const [data, setData] = useState<string | null>(null); // 유저 ID를 상태로 저장
@@ -34,5 +34,5 @@ export function useGetUserId() {
     useGetUserId(); // 유저 ID 가져오기 함수 호출
   }, []); // 컴포넌트가 마운트될 때만 실행
 
-  return { data }; // 유저 ID, 로딩 상태, 에러 상태 반환
+  return { data, error, loading }; // 유저 ID, 로딩 상태, 에러 상태 반환
 }

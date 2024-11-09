@@ -10,7 +10,7 @@ import {
 import { signUpWithEmail } from "@/utils/Auth/SignUp/signUpWithEmail";
 import SignInButton from "@/components/Shared/Button/SignInButton";
 import { Link } from "expo-router";
-import { supabase } from "@/utils/Supabase/supabase";
+import { supabase } from "@/utils/supabase";
 
 AppState.addEventListener("change", (state) => {
   if (state === "active") {

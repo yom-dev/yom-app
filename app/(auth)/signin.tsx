@@ -7,7 +7,7 @@ import {
   Text,
   TextInput,
 } from "react-native";
-import { supabase } from "@/utils/Supabase/supabase";
+import { supabase } from "@/utils/supabase";
 import { Button, Input } from "@rneui/themed";
 import SignInButton from "@/components/Shared/Button/SignInButton";
 import { Link } from "expo-router";

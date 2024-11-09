@@ -1,6 +1,6 @@
 // import { Platform } from "react-native";
 // import * as AppleAuthentication from "expo-apple-authentication";
-// import { supabase } from "@/utils/Supabase/supabase";
+// import { supabase } from "@/utils/supabase";
 
 // export function AppleSignInButton() {
 //   //   if (Platform.OS === 'ios')

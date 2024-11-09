@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { supabase } from "@/utils/Supabase/supabase"; // Supabase 설정이 제대로 되어 있어야 합니다.
+import { supabase } from "@/utils/supabase"; // Supabase 설정이 제대로 되어 있어야 합니다.
 
 export function useGetUser() {
   const [user, setUser] = useState<any>(null); // 유저 객체 저장

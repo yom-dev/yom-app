@@ -1,0 +1,8 @@
+{
+  "imports": {
+    "std/server": "https://deno.land/std@0.168.0/http/server.ts",
+    "lodash": "https://cdn.skypack.dev/lodash",
+    "@/": "./"
+
+  }
+}

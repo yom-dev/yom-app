@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Image, View, TouchableOpacity, ActivityIndicator } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import { Ionicons } from "@expo/vector-icons";
-import { supabase } from "@/utils/Supabase/supabase";
+import { supabase } from "@/utils/supabase";
 import { useGetUser } from "@/hooks/useGetUser"; // 커스텀 훅을 가져옵니다.
 
 export default function AvatarImagePicker() {

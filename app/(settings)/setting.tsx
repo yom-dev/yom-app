@@ -1,21 +1,36 @@
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, Alert } from "react-native";
 import React from "react";
 import SettingSlot from "@/components/Page/SettingPage/SettingSlot";
-import { supabase } from "@/utils/Supabase/supabase";
-import { Link } from "expo-router";
-import * as Notifications from "expo-notifications";
-import { getScheduleNotifications } from "@/utils/Notifications/getScheduledNotifications";
-import { get } from "react-native/Libraries/TurboModule/TurboModuleRegistry";
+import { supabase } from "@/utils/supabase";
+import { useDeleteUser } from "@/hooks/useDeleteUser";
 
 const Setting = () => {
   const handleSignOut = () => {
     supabase.auth.signOut();
   };
 
-  const handleCheckScheduledNotifications = getScheduleNotifications;
+  // Using the deleteUser function and isDeleting state from the hook
+  const { deleteUser, isDeleting } = useDeleteUser();
+
+  const handleDeleteAccount = () => {
+    Alert.alert(
+      "Request for delete account",
+      "Your account will be deleted within 24 hours. It will be notified via the email address used to register.  ",
+      [
+        {
+          text: "Request",
+          onPress: deleteUser,
+        },
+        {
+          text: "Cancel",
+          style: "cancel",
+        },
+      ]
+    );
+  };
 
   return (
-    <View className="w-full h-full bg-yomWhite ">
+    <View className="w-full h-full bg-yomWhite">
       <View className="w-full flex justify-center items-center">
         <SettingSlot
           iconName="information"
@@ -29,14 +44,15 @@ const Setting = () => {
         />
         <SettingSlot
           iconName="people-circle-outline"
-          text="Contributers"
-          href="/(settings)/contributers"
+          text="Contributors"
+          href="/(settings)/contributors"
         />
         <SettingSlot
           iconName="at"
           text="Contact us"
           href="/(settings)/contact"
         />
+
         <TouchableOpacity
           onPress={handleSignOut}
           className="h-[50px] flex justify-center w-[90%]"
@@ -44,23 +60,16 @@ const Setting = () => {
           <Text className="text-yomRed font-semibold">Sign Out</Text>
         </TouchableOpacity>
 
-        {/* <TouchableOpacity
-          onPress={() => {
-            handleCheckScheduledNotifications;
-          }}
+        {/* Delete Account Button */}
+        <TouchableOpacity
+          onPress={handleDeleteAccount} // Call handleDeleteAccount on press
+          disabled={isDeleting} // Disable the button while deleting
           className="h-[50px] flex justify-center w-[90%]"
         >
           <Text className="text-yomRed font-semibold">
-            CHECK SCHEDULED NOTIFICATIONS
+            Request User Deletion
           </Text>
-        </TouchableOpacity> */}
-
-        {/* <Link href="/signin">
-          <Text>Login</Text>
-        </Link>
-        <Link href="/(auth)/profileSetting">
-          <Text>profileSetting</Text>
-        </Link> */}
+        </TouchableOpacity>
       </View>
     </View>
   );
