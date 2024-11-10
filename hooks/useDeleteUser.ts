@@ -29,13 +29,13 @@ export const useDeleteUser = () => {
         }
       } else {
         console.log("User delete requested successfully.");
-        Alert.alert("요청 완료", "계정 삭제 요청이 완료되었습니다.");
+        Alert.alert("Request completed", "User deletion request completed.");
       }
     } catch (error) {
       console.error("Unexpected error:", error);
       Alert.alert(
-        "오류",
-        "예기치 않은 오류가 발생했습니다. 다시 시도해 주세요."
+        "Error",
+        "An unexpected error occurred. Please try again later."
       );
     } finally {
       setIsDeleting(false); // 삭제 완료
