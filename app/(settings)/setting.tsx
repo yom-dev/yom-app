@@ -9,7 +9,6 @@ const Setting = () => {
     supabase.auth.signOut();
   };
 
-  // Using the deleteUser function and isDeleting state from the hook
   const { deleteUser, isDeleting } = useDeleteUser();
 
   const handleDeleteAccount = () => {
