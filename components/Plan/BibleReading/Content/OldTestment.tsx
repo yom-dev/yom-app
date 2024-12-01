@@ -53,7 +53,7 @@ const OldTestment = () => {
   ];
 
   return (
-    <View className="mt-[30px]">
+    <View className="mt-[15px]">
       <FlatList
         data={bookData}
         renderItem={({ item }) => (
@@ -62,7 +62,7 @@ const OldTestment = () => {
           </View>
         )}
         keyExtractor={(item) => item.title}
-        ListFooterComponent={<View className="w-full h-[50px]" />}
+        ListFooterComponent={<View className="w-full h-[180px]" />}
         showsVerticalScrollIndicator={false}
       />
     </View>

@@ -50,7 +50,7 @@ const NewTestment = () => {
   ];
 
   return (
-    <View style={{ marginTop: 30 }}>
+    <View className="mt-[15px]">
       <FlatList
         data={bookData}
         renderItem={({ item }) => (
@@ -59,7 +59,7 @@ const NewTestment = () => {
           </View>
         )}
         keyExtractor={(item) => item.title}
-        ListFooterComponent={<View style={{ width: "100%", height: 50 }} />}
+        ListFooterComponent={<View style={{ width: "100%", height: 180 }} />}
         showsVerticalScrollIndicator={false}
       />
     </View>
