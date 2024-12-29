@@ -1,5 +1,6 @@
-import { View, Text } from "react-native";
-import React from "react";
+import React, { useState } from "react";
+import { Text, TouchableOpacity } from "react-native";
+import BookModal from "./BookModal";
 
 interface BookItemProps {
   title: string;
@@ -7,17 +8,33 @@ interface BookItemProps {
 }
 
 const BookItem: React.FC<BookItemProps> = ({ title, inProgress }) => {
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const handleOpenModal = () => setModalVisible(true);
+  const handleCloseModal = () => setModalVisible(false);
+
   return (
     <>
       {inProgress ? (
-        <View className="w-[80px] h-[50px] flex items-center justify-center bg-bibleBrown rounded-md">
+        <TouchableOpacity
+          onPress={handleOpenModal}
+          className="w-[80px] h-[50px] flex items-center justify-center bg-bibleBrown rounded-md"
+        >
           <Text className="font-[WantedM] text-[16px]">{title}</Text>
-        </View>
+        </TouchableOpacity>
       ) : (
-        <View className="w-[80px] h-[50px] flex items-center justify-center bg-bibleIvory rounded-md">
+        <TouchableOpacity
+          onPress={handleOpenModal}
+          className="w-[80px] h-[50px] flex items-center justify-center bg-bibleIvory rounded-md"
+        >
           <Text className="font-[WantedR] text-[16px]">{title}</Text>
-        </View>
+        </TouchableOpacity>
       )}
+      <BookModal
+        isVisible={modalVisible}
+        onClose={handleCloseModal}
+        title={title}
+      />
     </>
   );
 };

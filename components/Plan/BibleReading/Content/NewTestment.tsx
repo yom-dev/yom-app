@@ -1,53 +1,23 @@
 import { View, FlatList } from "react-native";
 import React from "react";
 import BookList from "./Components/BookList";
+import { NewTestmentBooks } from "./Constants/NewTestmentBooks";
+import { BibleReadingContentType } from "@/shared/types/BibleReadingContentType";
 
-const NewTestment = () => {
-  const bookData = [
-    {
-      title: "The Gospels",
-      books: ["Matt", "Mark", "Luke", "John"],
-    },
-    {
-      title: "History",
-      books: ["Acts"],
-    },
-    {
-      title: "Paul's Epistles",
-      books: [
-        "Rom",
-        "1Cor",
-        "2Cor",
-        "Gal",
-        "Eph",
-        "Phil",
-        "Col",
-        "1Thess",
-        "2Thess",
-        "1Tim",
-        "2Tim",
-        "Titus",
-        "Philem",
-      ],
-    },
-    {
-      title: "General Epistles",
-      books: [
-        "Heb",
-        "James",
-        "1Pet",
-        "2Pet",
-        "1John",
-        "2John",
-        "3John",
-        "Jude",
-      ],
-    },
-    {
-      title: "Prophecy",
-      books: ["Rev"],
-    },
-  ];
+interface NewTestmentProps {
+  data: BibleReadingContentType[] | null;
+  loading: boolean;
+  refetch: () => void;
+  error: string | null;
+}
+
+const NewTestment: React.FC<NewTestmentProps> = ({
+  data,
+  loading,
+  refetch,
+  error,
+}) => {
+  const bookData = NewTestmentBooks;
 
   return (
     <View className="mt-[15px]">
