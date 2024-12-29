@@ -1,11 +1,14 @@
 import { View, FlatList } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import BookList from "./Components/BookList";
 import { NewTestmentBooks } from "./Constants/NewTestmentBooks";
-import { BibleReadingContentType } from "@/shared/types/BibleReadingContentType";
+import {
+  BibleReadingContentType,
+  Testament,
+} from "@/shared/types/BibleReadingContentType";
 
 interface NewTestmentProps {
-  data: BibleReadingContentType[] | null;
+  data: Testament | undefined;
   loading: boolean;
   refetch: () => void;
   error: string | null;
@@ -18,6 +21,9 @@ const NewTestment: React.FC<NewTestmentProps> = ({
   error,
 }) => {
   const bookData = NewTestmentBooks;
+  useEffect(() => {
+    console.log(data);
+  }, []);
 
   return (
     <View className="mt-[15px]">

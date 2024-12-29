@@ -7,6 +7,7 @@ import Stats from "./Stats/Stats";
 import DropDownPicker from "react-native-dropdown-picker";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import getBibleReadingContent from "@/utils/BibleReading/getBibleReadingContent";
+import { Testament } from "@/shared/types/BibleReadingContentType";
 
 interface BibleReadingProviderProps {
   index: number;
@@ -15,9 +16,9 @@ interface BibleReadingProviderProps {
 const BibleReadingProvider = ({ index }: BibleReadingProviderProps) => {
   const { data, error, loading, refetch } = getBibleReadingContent();
 
-  console.log("Data:", data);
-  console.log("Error:", error);
-  console.log("Loading:", loading);
+  // console.log("Data:", data);
+  // console.log("Error:", error);
+  // console.log("Loading:", loading);
 
   return (
     <View>
@@ -38,7 +39,7 @@ const BibleReadingProvider = ({ index }: BibleReadingProviderProps) => {
 
       {index === 0 && (
         <OldTestment
-          data={data}
+          data={data?.oldTestament}
           loading={loading}
           refetch={refetch}
           error={error}
@@ -46,7 +47,7 @@ const BibleReadingProvider = ({ index }: BibleReadingProviderProps) => {
       )}
       {index === 1 && (
         <NewTestment
-          data={data}
+          data={data?.newTestament}
           loading={loading}
           refetch={refetch}
           error={error}

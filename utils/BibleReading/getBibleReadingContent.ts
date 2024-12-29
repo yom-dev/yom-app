@@ -4,7 +4,10 @@ import { supabase } from "@/utils/supabase";
 import { BibleReadingContentType } from "@/shared/types/BibleReadingContentType";
 
 const getBibleReadingContent = () => {
-  const [data, setData] = useState<BibleReadingContentType[] | null>(null);
+  const [intialData, setInitialData] = useState<
+    BibleReadingContentType[] | null
+  >(null);
+  const [data, setData] = useState<BibleReadingContentType | null>(null);
 
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
@@ -15,10 +18,11 @@ const getBibleReadingContent = () => {
     try {
       const { data, error } = await supabase
         .from("bibleReadingContent")
-        .select("*");
+        .select("*")
+        .eq("planName", "Test1");
 
       if (error) throw error;
-      setData(data);
+      setData(data[0]);
     } catch (err: any) {
       setError(err.message);
     } finally {

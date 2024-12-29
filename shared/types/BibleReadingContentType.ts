@@ -15,7 +15,7 @@ export type BibleReadingContentType = {
   id: number;
   user_id: string;
   created_at: Date;
-  oldTestment: Testament;
-  newTestment: Testament;
+  oldTestament: Testament; // Changed from 'oldTestment' to 'oldTestament'
+  newTestament: Testament; // Changed from 'newTestment' to 'newTestament'
   planName: string;
-} | null;
+};

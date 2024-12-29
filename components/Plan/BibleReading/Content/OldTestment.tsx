@@ -2,9 +2,12 @@ import { View, FlatList } from "react-native";
 import React from "react";
 import BookList from "./Components/BookList";
 import { OldTestmentBooks } from "./Constants/OldTestmentBooks";
-import { BibleReadingContentType } from "@/shared/types/BibleReadingContentType";
+import {
+  BibleReadingContentType,
+  Testament,
+} from "@/shared/types/BibleReadingContentType";
 interface OldTestmentProps {
-  data: BibleReadingContentType[] | null;
+  data: Testament;
   loading: boolean;
   refetch: () => void;
   error: string | null;
