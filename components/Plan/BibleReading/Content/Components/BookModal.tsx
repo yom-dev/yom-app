@@ -18,11 +18,7 @@ interface BookModalProps {
   isVisible: boolean;
   onClose: () => void;
   title: string;
-  bookData: Book;
-}
-
-interface ChapterMap {
-  [key: string]: boolean;
+  bookData?: Book[];
 }
 
 const BookModal: React.FC<BookModalProps> = ({
@@ -32,6 +28,7 @@ const BookModal: React.FC<BookModalProps> = ({
   bookData,
 }) => {
   // 초기 챕터 데이터
+  const matchingBook = bookData?.find((book) => book.bookName === title);
 
   return (
     <Modal
@@ -48,7 +45,7 @@ const BookModal: React.FC<BookModalProps> = ({
           <View className="w-full h-full">
             <FlatList
               scrollEnabled={true}
-              data={bookData.chapters}
+              data={matchingBook?.chapters}
               renderItem={({ item }) => {
                 return (
                   <View className="mb-[15px]">

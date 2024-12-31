@@ -36,7 +36,6 @@ const BookItem: React.FC<BookItemProps> = ({
   const handleCloseModal = () => setModalVisible(false);
 
   // 타이틀이 일치하는 책 데이터 찾기
-  const matchingBook = bookData?.find((book) => book.bookName === title);
 
   return (
     <>
@@ -46,14 +45,13 @@ const BookItem: React.FC<BookItemProps> = ({
       >
         <Text className="font-[WantedR] text-[16px]">{abvTitle}</Text>
       </TouchableOpacity>
-      {matchingBook && (
-        <BookModal
-          isVisible={modalVisible}
-          onClose={handleCloseModal}
-          title={title}
-          bookData={matchingBook}
-        />
-      )}
+
+      <BookModal
+        isVisible={modalVisible}
+        onClose={handleCloseModal}
+        title={title}
+        bookData={bookData}
+      />
     </>
   );
 };
