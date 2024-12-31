@@ -1,7 +1,7 @@
 import { View, FlatList } from "react-native";
 import React from "react";
 import BookList from "./Components/BookList";
-import { OldTestmentBooks } from "./Constants/OldTestmentBooks";
+import { OldTestamentBooks } from "./Constants/OldTestmentBooks";
 import {
   BibleReadingContentType,
   Testament,
@@ -19,19 +19,19 @@ const OldTestment: React.FC<OldTestmentProps> = ({
   refetch,
   error,
 }) => {
-  const bookData = OldTestmentBooks;
+  const bookData = OldTestamentBooks;
 
   return (
     <View className="mt-[15px]">
       <FlatList
         data={bookData}
         renderItem={({ item }) => (
-          <View className="mb-[18px]">
+          <View style={{ marginBottom: 18 }}>
             <BookList title={item.title} bookData={item.books} />
           </View>
         )}
         keyExtractor={(item) => item.title}
-        ListFooterComponent={<View className="w-full h-[180px]" />}
+        ListFooterComponent={<View style={{ width: "100%", height: 180 }} />}
         showsVerticalScrollIndicator={false}
       />
     </View>

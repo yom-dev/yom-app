@@ -35,6 +35,7 @@ const BookList: React.FC<BookListProps> = ({ title, bookData }) => {
               abvTitle={item.abbreviation}
               inProgress={item.inProgress}
               finished={item.finished}
+              bookData={bookData}
             />
           </View>
         )}

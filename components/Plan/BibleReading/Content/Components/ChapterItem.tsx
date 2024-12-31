@@ -2,19 +2,19 @@ import React, { useState } from "react";
 import { Text, TouchableOpacity } from "react-native";
 
 interface ChapterItemProps {
-  title: string;
-  inProgress?: boolean;
+  title: number;
+  finished?: boolean;
   onClick: () => void;
 }
 
 const ChapterItem: React.FC<ChapterItemProps> = ({
   title,
-  inProgress,
+  finished,
   onClick,
 }) => {
   return (
     <>
-      {inProgress ? (
+      {finished ? (
         <TouchableOpacity
           onPress={onClick}
           className="w-[70px] h-[50px] flex items-center justify-center bg-bibleBrown rounded-md"

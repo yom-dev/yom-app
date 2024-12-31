@@ -2,55 +2,36 @@ import React, { useState } from "react";
 import { View, Text, Modal, FlatList } from "react-native";
 import ChapterItem from "./ChapterItem";
 
+interface Book {
+  bookName: string;
+  chapters: Chapter[];
+  finished: boolean;
+  inProgress: boolean;
+  abbreviation: string;
+}
+interface Chapter {
+  chapterNumber: number;
+  completed: boolean;
+}
+
 interface BookModalProps {
   isVisible: boolean;
   onClose: () => void;
   title: string;
+  bookData: Book;
 }
 
 interface ChapterMap {
   [key: string]: boolean;
 }
 
-const BookModal: React.FC<BookModalProps> = ({ isVisible, onClose, title }) => {
+const BookModal: React.FC<BookModalProps> = ({
+  isVisible,
+  onClose,
+  title,
+  bookData,
+}) => {
   // 초기 챕터 데이터
-  const initialChapters = [
-    { "1": true },
-    { "2": true },
-    { "3": true },
-    { "4": true },
-    { "5": true },
-    { "6": true },
-    { "7": true },
-    { "8": true },
-    { "9": true },
-    { "10": true },
-    { "11": true },
-    { "12": true },
-    { "13": false },
-    { "14": false },
-    { "15": false },
-    { "16": false },
-    { "17": false },
-    { "18": false },
-    { "19": false },
-    { "20": false },
-  ];
-
-  // 로컬 상태로 챕터 데이터 관리
-  const [chapters, setChapters] = useState<ChapterMap[]>(initialChapters);
-
-  const handleChapterClick = (chapterTitle: string, inProgress: boolean) => {
-    // 챕터의 inProgress 상태를 업데이트
-    const updatedChapters = chapters.map((chapter) => {
-      if (Object.keys(chapter)[0] === chapterTitle) {
-        return { [chapterTitle]: !inProgress };
-      }
-      return chapter;
-    });
-
-    setChapters(updatedChapters);
-  };
 
   return (
     <Modal
@@ -67,25 +48,21 @@ const BookModal: React.FC<BookModalProps> = ({ isVisible, onClose, title }) => {
           <View className="w-full h-full">
             <FlatList
               scrollEnabled={true}
-              data={chapters}
+              data={bookData.chapters}
               renderItem={({ item }) => {
-                const chapterTitle = Object.keys(item)[0];
-                const inProgress = item[chapterTitle];
                 return (
                   <View className="mb-[15px]">
                     <ChapterItem
-                      title={chapterTitle}
-                      inProgress={inProgress}
-                      onClick={() =>
-                        handleChapterClick(chapterTitle, inProgress)
-                      }
+                      title={item.chapterNumber}
+                      finished={item.completed}
+                      onClick={() => {}}
                     />
                   </View>
                 );
               }}
-              keyExtractor={(item, index) => Object.keys(item)[0]}
+              // keyExtractor={(item, index) => Object.keys(item)[0]}
               numColumns={4}
-              columnWrapperStyle={{ justifyContent: "space-between" }}
+              columnWrapperStyle={{ justifyContent: "space-around" }}
               ListFooterComponent={
                 <View style={{ width: "100%", height: 100 }} />
               }

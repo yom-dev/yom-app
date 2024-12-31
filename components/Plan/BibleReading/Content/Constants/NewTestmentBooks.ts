@@ -46,8 +46,8 @@ export const NewTestmentBooks = [
         finished: false,
 
         chapters: [
-          { chapterNumber: 1, completed: false },
-          { chapterNumber: 2, completed: false },
+          { chapterNumber: 1, completed: true },
+          { chapterNumber: 2, completed: true },
           { chapterNumber: 3, completed: false },
           { chapterNumber: 4, completed: false },
           { chapterNumber: 5, completed: false },

@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import BookList from "./Components/BookList";
 import { NewTestmentBooks } from "./Constants/NewTestmentBooks";
 import {
-  BibleReadingContentType,
+  // BibleReadingContentType,
   Testament,
 } from "@/shared/types/BibleReadingContentType";
 
