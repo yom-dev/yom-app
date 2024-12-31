@@ -7,7 +7,7 @@ import {
   Testament,
 } from "@/shared/types/BibleReadingContentType";
 interface OldTestmentProps {
-  data: Testament;
+  data: Testament | undefined;
   loading: boolean;
   refetch: () => void;
   error: string | null;

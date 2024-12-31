@@ -2,9 +2,22 @@ import { View, Text, FlatList } from "react-native";
 import BookItem from "./BookItem";
 import React, { useState } from "react";
 
+interface Chapter {
+  chapterNumber: number;
+  completed: boolean;
+}
+
+interface Book {
+  bookName: string;
+  chapters: Chapter[];
+  finished: boolean;
+  inProgress: boolean;
+  abbreviation: string;
+}
+
 interface BookListProps {
   title: string;
-  bookData: string[];
+  bookData: Book[];
 }
 
 const BookList: React.FC<BookListProps> = ({ title, bookData }) => {
@@ -17,10 +30,15 @@ const BookList: React.FC<BookListProps> = ({ title, bookData }) => {
         data={bookData}
         renderItem={({ item }) => (
           <View className="mb-[15px]">
-            <BookItem title={item} inProgress={false} />
+            <BookItem
+              title={item.bookName}
+              abvTitle={item.abbreviation}
+              inProgress={item.inProgress}
+              finished={item.finished}
+            />
           </View>
         )}
-        keyExtractor={(item) => item}
+        keyExtractor={(item) => item.bookName}
         numColumns={4} // 각 행에 2개의 아이템 렌더링
         columnWrapperStyle={{
           justifyContent: "space-between",

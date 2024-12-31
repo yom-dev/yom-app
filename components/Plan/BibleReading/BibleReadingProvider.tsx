@@ -4,10 +4,8 @@ import OldTestment from "./Content/OldTestment";
 import NewTestment from "./Content/NewTestment";
 import PlanNotificationSetting from "@/components/Plan/Shared/PlanNotificationSetting";
 import Stats from "./Stats/Stats";
-import DropDownPicker from "react-native-dropdown-picker";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import getBibleReadingContent from "@/utils/BibleReading/getBibleReadingContent";
-import { Testament } from "@/shared/types/BibleReadingContentType";
 
 interface BibleReadingProviderProps {
   index: number;

@@ -2,7 +2,7 @@ import { View, Text } from "react-native";
 import React from "react";
 import { BibleReadingContentType } from "@/shared/types/BibleReadingContentType";
 interface StatsProps {
-  data: BibleReadingContentType[] | null;
+  data: BibleReadingContentType | null;
   loading: boolean;
   refetch: () => void;
   error: string | null;
