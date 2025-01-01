@@ -1,21 +1,19 @@
-export type BookChapter = {
-  [key: string]: boolean;
+export type Chapter = {
+  chapterNumber: number;
+  completed: boolean;
 };
 
-export type BibleBook = {
+// Book 타입 정의
+export type Book = {
   bookName: string;
-  chapters: BookChapter[];
+  abbreviation: string;
+  inProgress: boolean;
+  finished: boolean;
+  chapters: Chapter[];
 };
 
-export type Testament = {
-  [key: string]: BibleBook;
-};
-
-export type BibleReadingContentType = {
-  id: number;
-  user_id: string;
-  created_at: Date;
-  oldTestament: Testament; // Changed from 'oldTestment' to 'oldTestament'
-  newTestament: Testament; // Changed from 'newTestment' to 'newTestament'
-  planName: string;
+// Section 타입 정의
+export type Section = {
+  title: string;
+  books: Book[];
 };

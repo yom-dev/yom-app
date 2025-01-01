@@ -12,18 +12,26 @@ const ChapterItem: React.FC<ChapterItemProps> = ({
   finished,
   onClick,
 }) => {
+  const [done, setDone] = useState(finished);
+
+  const handleDone = () => {
+    done ? setDone(false) : setDone(true);
+    onClick();
+    console.log("clicked");
+  };
+
   return (
     <>
-      {finished ? (
+      {done ? (
         <TouchableOpacity
-          onPress={onClick}
+          onPress={handleDone}
           className="w-[70px] h-[50px] flex items-center justify-center bg-bibleBrown rounded-md"
         >
           <Text className="font-[WantedM] text-[16px]">{title}</Text>
         </TouchableOpacity>
       ) : (
         <TouchableOpacity
-          onPress={onClick}
+          onPress={handleDone}
           className="w-[70px] h-[50px] flex items-center justify-center bg-bibleIvory rounded-md"
         >
           <Text className="font-[WantedR] text-[16px]">{title}</Text>

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useReducer, useEffect } from "react";
 import { View, Text, Modal, FlatList } from "react-native";
 import ChapterItem from "./ChapterItem";
+import { useBibleStore } from "@/shared/store/useBibleStore";
 
 interface Book {
   bookName: string;
@@ -27,8 +28,36 @@ const BookModal: React.FC<BookModalProps> = ({
   title,
   bookData,
 }) => {
+  const initialState = bookData;
   // 초기 챕터 데이터
   const matchingBook = bookData?.find((book) => book.bookName === title);
+  const zustandBookData = useBibleStore((state) => state.NewTestamentBooks);
+  const updateChapter = useBibleStore((state) => state.updateChapterStatus);
+
+  const handleOnClick = (data: Chapter) => {
+    console.log("clicked");
+    // data.completed = !data.completed;
+    // console.log(data);
+  };
+
+  const [stateBook, setStateBook] = useState(initialState);
+
+  if (!matchingBook) {
+    return (
+      <Modal
+        visible={isVisible}
+        presentationStyle="pageSheet"
+        animationType="slide"
+        onRequestClose={onClose}
+      >
+        <View
+          style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+        >
+          <Text>Book not found.</Text>
+        </View>
+      </Modal>
+    );
+  }
 
   return (
     <Modal
@@ -52,7 +81,13 @@ const BookModal: React.FC<BookModalProps> = ({
                     <ChapterItem
                       title={item.chapterNumber}
                       finished={item.completed}
-                      onClick={() => {}}
+                      onClick={() =>
+                        updateChapter(
+                          matchingBook.bookName,
+                          item.chapterNumber,
+                          !item.completed
+                        )
+                      }
                     />
                   </View>
                 );
