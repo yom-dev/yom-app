@@ -4,6 +4,7 @@ import NewBookList from "@/components/Plan/BibleReading/Content/Components/NewTe
 import { NewTestmentBooks } from "./Constants/NewTestmentBooks";
 import { Section } from "@/shared/types/BibleReadingContentType";
 import { useNewTestamentStore } from "@/shared/store/BibleReading/useNewTestamentStore";
+import CustomButton from "@/components/Shared/Button/CustomButton";
 
 interface NewTestmentProps {
   data: Section[] | undefined;
@@ -30,9 +31,20 @@ const NewTestment: React.FC<NewTestmentProps> = ({
           </View>
         )}
         keyExtractor={(item) => item.title}
-        ListFooterComponent={<View style={{ width: "100%", height: 180 }} />}
+        ListFooterComponent={<View className="w-full h-[230px]" />}
         showsVerticalScrollIndicator={false}
       />
+
+      <View className="w-full h-[40px] absolute top-[73%]">
+        <CustomButton
+          title="Save Reading"
+          titleSize={16}
+          backgroundColor={"bibleBrown"}
+          activeBackgroundColor={"bibleBrown"}
+          textColor={"yomWhite"}
+          onPress={() => {}}
+        />
+      </View>
     </View>
   );
 };

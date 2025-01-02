@@ -5,6 +5,7 @@ import { OldTestamentBooks } from "./Constants/OldTestmentBooks";
 import { Section } from "@/shared/types/BibleReadingContentType";
 import { useBibleStore } from "@/shared/store/useBibleStore";
 import { useOldTestamentStore } from "@/shared/store/BibleReading/useOldTestamentStore";
+import CustomButton from "@/components/Shared/Button/CustomButton";
 
 interface OldTestmentProps {
   data: Section[] | undefined;
@@ -22,7 +23,7 @@ const OldTestment: React.FC<OldTestmentProps> = ({
   const bookData = useOldTestamentStore((state) => state.OldTestamentBooks);
 
   return (
-    <View className="mt-[15px]">
+    <View className="mt-[15px] ">
       <FlatList
         data={bookData}
         renderItem={({ item }) => (
@@ -31,9 +32,19 @@ const OldTestment: React.FC<OldTestmentProps> = ({
           </View>
         )}
         keyExtractor={(item) => item.title}
-        ListFooterComponent={<View style={{ width: "100%", height: 180 }} />}
+        ListFooterComponent={<View className="w-full h-[230px]" />}
         showsVerticalScrollIndicator={false}
       />
+      <View className="w-full h-[40px] absolute top-[73%]">
+        <CustomButton
+          title="Save Reading"
+          titleSize={16}
+          backgroundColor={"bibleBrown"}
+          activeBackgroundColor={"bibleBrown"}
+          textColor={"yomWhite"}
+          onPress={() => {}}
+        />
+      </View>
     </View>
   );
 };

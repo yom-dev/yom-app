@@ -5,11 +5,13 @@ import CustomButton from "@/components/Shared/Button/CustomButton";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import useLocalNotifications from "@/hooks/useLocalNotification";
 import ModalHeader from "../ModalHeader";
+import { NotifyMsg } from "@/constants/NotifyMsg";
+
 interface AddNotificationModalProps {
   isVisible: boolean;
   onClose: () => void;
   onUpdate: () => void; // update 값을 증가시키는 함수
-  planName: string;
+  planName: string; // NotifyMsg 키만 허용
 }
 
 const AddNotificationModal: React.FC<AddNotificationModalProps> = ({
@@ -21,11 +23,16 @@ const AddNotificationModal: React.FC<AddNotificationModalProps> = ({
   const [time, setTime] = useState(new Date());
   const { triggerDailyNotification } = useLocalNotifications();
 
+  const notifyData = NotifyMsg[planName];
+
+  const notifyTitle = notifyData.title;
+  const notifyBody = notifyData.body;
+
   const handleSave = async () => {
     try {
       const id = await triggerDailyNotification(
-        "Gratitude Reminder",
-        "Have you thanked today?",
+        notifyTitle,
+        notifyBody,
         time.getHours(),
         time.getMinutes(),
         planName

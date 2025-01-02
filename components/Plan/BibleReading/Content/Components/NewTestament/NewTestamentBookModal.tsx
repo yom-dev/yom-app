@@ -70,15 +70,15 @@ const NewTestamentBookModal: React.FC<NewTestamentModalProps> = ({
       <View className="w-full h-full flex items-center">
         <View className="w-[90%] h-full">
           <View className="w-full h-[70px] flex justify-center">
-            <View className="w-full h-[22px] flex-row justify-between items-center">
+            <View className="w-full h-[30px] flex-row justify-between items-center ">
               <View className="w-[50px] bg-red-600"></View>
               <Text className="font-[WantedM] text-[20px]">{title}</Text>
               <Pressable
                 onPress={onClose}
-                className="w-[50px] h-full justify-end "
+                className="w-[50px] h-full justify-center "
               >
                 <Text className="font-[WantedM] text-[15px] text-blue-500">
-                  Done
+                  Close
                 </Text>
               </Pressable>
             </View>

@@ -23,7 +23,10 @@ interface BookListProps {
 const OldBookList: React.FC<BookListProps> = ({ title, bookData }) => {
   return (
     <View className="w-full h-fit">
-      <Text className="text-[22px] font-[WantedR] mb-[12px]">{title}</Text>
+      <View className="mb-[12px]">
+        <Text className="text-[22px] font-[WantedR] mb-[2px]">{title}</Text>
+        <View className="h-[1px] bg-gray-200"></View>
+      </View>
       <FlatList
         scrollEnabled={false}
         className="w-full "

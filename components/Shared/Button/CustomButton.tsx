@@ -24,6 +24,9 @@ const CustomButton = ({
     yomRed: "bg-yomRed",
     yomDarkGreen: "bg-yomDarkGreen",
     yomLightGray: "bg-yomLightGray",
+    bibleIvory: "bg-bibleIvory",
+    bibleBrown: "bg-bibleBrown",
+    bibleLightBrown: "bg-bibleLightBrown",
   };
 
   const textColorVariants: { [key: string]: string } = {
@@ -34,6 +37,9 @@ const CustomButton = ({
     yomRed: "text-yomRed",
     yomDarkGreen: "text-yomDarkGreen",
     yomLightGray: "text-yomLightGray",
+    bibleIvory: "bg-bibleIvory",
+    bibleBrown: "bg-bibleBrown",
+    bibleLightBrown: "bg-bibleLightBrown",
   };
   const bgColorVariantsActive: { [key: string]: string } = {
     yomGreen: "active:bg-yomGreen",
@@ -43,6 +49,9 @@ const CustomButton = ({
     yomRed: "active:bg-yomRed",
     yomDarkGreen: "active:bg-yomDarkGreen",
     yomLightGray: "active:bg-yomLightGray",
+    bibleIvory: "bg-bibleIvory",
+    bibleBrown: "bg-bibleBrown",
+    bibleLightBrown: "bg-bibleLightBrown",
   };
 
   const titleSizeVariants: { [key: number]: string } = {
