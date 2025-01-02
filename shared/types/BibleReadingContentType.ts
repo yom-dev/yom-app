@@ -17,3 +17,12 @@ export type Section = {
   title: string;
   books: Book[];
 };
+
+export type BibleReadingContentType = {
+  id: number;
+  user_id: string;
+  created_at: Date;
+  planName: string;
+  oldTestament: Section[];
+  newTestament: Section[];
+};

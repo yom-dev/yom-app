@@ -3,7 +3,7 @@ import { supabase } from "@/utils/supabase";
 
 import { BibleReadingContentType } from "@/shared/types/BibleReadingContentType";
 
-const getBibleReadingContent = () => {
+const getBibleReadingContent = (planName: string) => {
   const [intialData, setInitialData] = useState<
     BibleReadingContentType[] | null
   >(null);
@@ -19,7 +19,7 @@ const getBibleReadingContent = () => {
       const { data, error } = await supabase
         .from("bibleReadingContent")
         .select("*")
-        .eq("planName", "Test1");
+        .eq("planName", `${planName}`);
 
       if (error) throw error;
       setData(data[0]);

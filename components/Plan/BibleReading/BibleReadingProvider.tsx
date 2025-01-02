@@ -1,22 +1,37 @@
 import { View, Text } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import OldTestment from "./Content/OldTestment";
 import NewTestment from "./Content/NewTestment";
 import PlanNotificationSetting from "@/components/Plan/Shared/PlanNotificationSetting";
 import Stats from "./Stats/Stats";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import getBibleReadingContent from "@/utils/BibleReading/getBibleReadingContent";
+import { useOldTestamentStore } from "@/shared/store/BibleReading/useOldTestamentStore";
+import { useNewTestamentStore } from "@/shared/store/BibleReading/useNewTestamentStore";
 
 interface BibleReadingProviderProps {
   index: number;
 }
 
 const BibleReadingProvider = ({ index }: BibleReadingProviderProps) => {
-  const { data, error, loading, refetch } = getBibleReadingContent();
+  const { data, error, loading, refetch } = getBibleReadingContent("Test1");
 
-  // console.log("Data:", data);
-  // console.log("Error:", error);
-  // console.log("Loading:", loading);
+  const setOldTestamentBooks = useOldTestamentStore(
+    (state) => state.setOldTestamentBooks
+  );
+  const setNewTestamentBooks = useNewTestamentStore(
+    (state) => state.setNewTestamentBooks
+  );
+
+  useEffect(() => {
+    if (data?.oldTestament) {
+      setOldTestamentBooks(data.oldTestament);
+    }
+    if (data?.newTestament) {
+      setNewTestamentBooks(data.newTestament);
+    }
+    console.log(data);
+  }, [data, setOldTestamentBooks, setNewTestamentBooks]);
 
   return (
     <View>

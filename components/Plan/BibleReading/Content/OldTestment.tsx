@@ -1,13 +1,13 @@
 import { View, FlatList } from "react-native";
 import React from "react";
-import BookList from "./Components/BookList";
+import OldBookList from "@/components/Plan/BibleReading/Content/Components/OldTestament/OldBookList";
 import { OldTestamentBooks } from "./Constants/OldTestmentBooks";
-import {
-  BibleReadingContentType,
-  Testament,
-} from "@/shared/types/BibleReadingContentType";
+import { Section } from "@/shared/types/BibleReadingContentType";
+import { useBibleStore } from "@/shared/store/useBibleStore";
+import { useOldTestamentStore } from "@/shared/store/BibleReading/useOldTestamentStore";
+
 interface OldTestmentProps {
-  data: Testament | undefined;
+  data: Section[] | undefined;
   loading: boolean;
   refetch: () => void;
   error: string | null;
@@ -19,7 +19,7 @@ const OldTestment: React.FC<OldTestmentProps> = ({
   refetch,
   error,
 }) => {
-  const bookData = OldTestamentBooks;
+  const bookData = useOldTestamentStore((state) => state.OldTestamentBooks);
 
   return (
     <View className="mt-[15px]">
@@ -27,7 +27,7 @@ const OldTestment: React.FC<OldTestmentProps> = ({
         data={bookData}
         renderItem={({ item }) => (
           <View style={{ marginBottom: 18 }}>
-            <BookList title={item.title} bookData={item.books} />
+            <OldBookList title={item.title} bookData={item.books} />
           </View>
         )}
         keyExtractor={(item) => item.title}

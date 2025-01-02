@@ -1,7 +1,7 @@
 import React, { useState, useReducer, useEffect } from "react";
-import { View, Text, Modal, FlatList } from "react-native";
-import ChapterItem from "./ChapterItem";
-import { useBibleStore } from "@/shared/store/useBibleStore";
+import { View, Text, Modal, FlatList, Pressable } from "react-native";
+import ChapterItem from "../ChapterItem";
+import { useNewTestamentStore } from "@/shared/store/BibleReading/useNewTestamentStore";
 
 interface Book {
   bookName: string;
@@ -15,32 +15,33 @@ interface Chapter {
   completed: boolean;
 }
 
-interface BookModalProps {
+interface NewTestamentModalProps {
   isVisible: boolean;
   onClose: () => void;
   title: string;
   bookData?: Book[];
 }
 
-const BookModal: React.FC<BookModalProps> = ({
+const NewTestamentBookModal: React.FC<NewTestamentModalProps> = ({
   isVisible,
   onClose,
   title,
   bookData,
 }) => {
-  const initialState = bookData;
   // 초기 챕터 데이터
   const matchingBook = bookData?.find((book) => book.bookName === title);
-  const zustandBookData = useBibleStore((state) => state.NewTestamentBooks);
-  const updateChapter = useBibleStore((state) => state.updateChapterStatus);
+  const zustandBookData = useNewTestamentStore(
+    (state) => state.NewTestamentBooks
+  );
+  const updateChapter = useNewTestamentStore(
+    (state) => state.updateChapterStatus
+  );
 
   const handleOnClick = (data: Chapter) => {
     console.log("clicked");
     // data.completed = !data.completed;
     // console.log(data);
   };
-
-  const [stateBook, setStateBook] = useState(initialState);
 
   if (!matchingBook) {
     return (
@@ -68,8 +69,19 @@ const BookModal: React.FC<BookModalProps> = ({
     >
       <View className="w-full h-full flex items-center">
         <View className="w-[90%] h-full">
-          <View className="flex w-full h-[70px] justify-center items-center">
-            <Text className="font-[WantedM] text-[18px]">{title}</Text>
+          <View className="w-full h-[70px] flex justify-center">
+            <View className="w-full h-[22px] flex-row justify-between items-center">
+              <View className="w-[50px] bg-red-600"></View>
+              <Text className="font-[WantedM] text-[20px]">{title}</Text>
+              <Pressable
+                onPress={onClose}
+                className="w-[50px] h-full justify-end "
+              >
+                <Text className="font-[WantedM] text-[15px] text-blue-500">
+                  Done
+                </Text>
+              </Pressable>
+            </View>
           </View>
           <View className="w-full h-full">
             <FlatList
@@ -106,4 +118,4 @@ const BookModal: React.FC<BookModalProps> = ({
   );
 };
 
-export default BookModal;
+export default NewTestamentBookModal;
