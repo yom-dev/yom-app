@@ -7,7 +7,7 @@ interface UpdateNewTestamentReadingReturn {
   newData: Section | null;
   newLoading: boolean;
   newError: string | null;
-  newRefetch: () => Promise<void>;
+  newRefetch: () => void;
   setPlanName: (planName: string) => void;
 }
 const updateNewTestamentReading = (initialPlanName: string) => {

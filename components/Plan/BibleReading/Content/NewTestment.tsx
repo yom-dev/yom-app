@@ -11,7 +11,7 @@ import updateOldTestamentReading from "@/utils/BibleReading/updateOldTestamentRe
 interface NewTestmentProps {
   data: Section[] | undefined;
   loading: boolean;
-  newRefetch: () => void;
+  refetch: () => void;
   error: string | null;
 }
 

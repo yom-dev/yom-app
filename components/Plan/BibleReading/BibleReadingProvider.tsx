@@ -16,7 +16,7 @@ interface BibleReadingProviderProps {
 
 const BibleReadingProvider = ({ index }: BibleReadingProviderProps) => {
   //서버로부터 데이터 받아오기
-  const { data, error, loading, refetch } = getBibleReadingContent("Test1");
+  const { data, error, loading, refetch } = getBibleReadingContent("Test");
 
   //서버로부터 받아온 데이터를 store(zustand)에 저장하는 함수 지정.
   const setOldTestamentBooks = useOldTestamentStore(
