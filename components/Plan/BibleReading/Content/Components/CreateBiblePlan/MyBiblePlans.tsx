@@ -5,8 +5,6 @@ import BiblePlanItem from "./BiblePlanItem";
 const MyBiblePlans = () => {
   return (
     <View className="w-full h-full">
-      <Text>MyBiblePlans</Text>
-
       <BiblePlanItem />
     </View>
   );
