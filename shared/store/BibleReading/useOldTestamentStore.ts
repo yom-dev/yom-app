@@ -37,7 +37,27 @@ type StoreState = {
 // Zustand 스토어 생성
 export const useOldTestamentStore = create<StoreState>((set) => ({
   OldTestamentBooks: [],
-  setOldTestamentBooks: (data: Section[]) => set({ OldTestamentBooks: data }),
+  setOldTestamentBooks: (data: Section[]) =>
+    set({
+      OldTestamentBooks: data.map((section) => ({
+        ...section,
+        books: section.books.map((book) => {
+          const hasInProgress = book.chapters.some(
+            (chapter) => chapter.completed === true
+          );
+          const isFinished = book.chapters.every(
+            (chapter) => chapter.completed === true
+          );
+
+          return {
+            ...book,
+            inProgress: hasInProgress,
+            finished: isFinished,
+          };
+        }),
+      })),
+    }),
+
   updateChapterStatus: (
     bookName: string,
     chapterNumber: number,
@@ -46,19 +66,31 @@ export const useOldTestamentStore = create<StoreState>((set) => ({
     set((state) => {
       const newState = state.OldTestamentBooks.map((section) => ({
         ...section,
-        books: section.books.map((book) => ({
-          ...book,
-          chapters:
-            book.bookName === bookName
-              ? book.chapters.map((chapter) =>
-                  chapter.chapterNumber === chapterNumber
-                    ? { ...chapter, completed }
-                    : chapter
-                )
-              : book.chapters,
-        })),
+        books: section.books.map((book) => {
+          if (book.bookName === bookName) {
+            const updatedChapters = book.chapters.map((chapter) =>
+              chapter.chapterNumber === chapterNumber
+                ? { ...chapter, completed }
+                : chapter
+            );
+
+            const hasInProgress = updatedChapters.some(
+              (chapter) => chapter.completed === true
+            );
+            const isFinished = updatedChapters.every(
+              (chapter) => chapter.completed === true
+            );
+
+            return {
+              ...book,
+              chapters: updatedChapters,
+              inProgress: hasInProgress,
+              finished: isFinished,
+            };
+          }
+          return book;
+        }),
       }));
-      //   console.log(JSON.stringify(newState, null, 2)); --> chapter가 변하는지 확인할 때 사용.
       return { OldTestamentBooks: newState };
     }),
 }));

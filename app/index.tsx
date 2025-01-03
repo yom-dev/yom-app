@@ -42,7 +42,7 @@ export default function App() {
       <Text className="font-[WantedSB] text-[60px]">yom</Text>
       {isConnected === null ? (
         <Text className="w-[90%] font-[WantedM] text-yomGreen text-[18px] absolute top-20 text-center">
-          Loggin in....
+          Logging in....
         </Text>
       ) : isConnected ? (
         <></>

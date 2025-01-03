@@ -38,27 +38,37 @@ type StoreState = {
 export const useNewTestamentStore = create<StoreState>((set) => ({
   NewTestamentBooks: [],
   setNewTestamentBooks: (data: Section[]) => set({ NewTestamentBooks: data }),
-  updateChapterStatus: (
-    bookName: string,
-    chapterNumber: number,
-    completed: boolean
-  ) =>
+  updateChapterStatus: (bookName, chapterNumber, completed) =>
     set((state) => {
       const newState = state.NewTestamentBooks.map((section) => ({
         ...section,
-        books: section.books.map((book) => ({
-          ...book,
-          chapters:
-            book.bookName === bookName
-              ? book.chapters.map((chapter) =>
-                  chapter.chapterNumber === chapterNumber
-                    ? { ...chapter, completed }
-                    : chapter
-                )
-              : book.chapters,
-        })),
+        books: section.books.map((book) => {
+          if (book.bookName === bookName) {
+            // 챕터 상태 업데이트
+            const updatedChapters = book.chapters.map((chapter) =>
+              chapter.chapterNumber === chapterNumber
+                ? { ...chapter, completed }
+                : chapter
+            );
+
+            // inProgress 및 finished 상태 업데이트
+            const hasInProgress = updatedChapters.some(
+              (chapter) => chapter.completed === true
+            );
+            const isFinished = updatedChapters.every(
+              (chapter) => chapter.completed === true
+            );
+
+            return {
+              ...book,
+              chapters: updatedChapters,
+              inProgress: hasInProgress,
+              finished: isFinished,
+            };
+          }
+          return book;
+        }),
       }));
-      //   console.log(JSON.stringify(newState, null, 2)); --> chapter가 변하는지 확인할 때 사용.
       return { NewTestamentBooks: newState };
     }),
 }));

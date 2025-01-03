@@ -1,4 +1,4 @@
-import { View, FlatList } from "react-native";
+import { View, FlatList, Alert } from "react-native";
 import React from "react";
 import OldBookList from "@/components/Plan/BibleReading/Content/Components/OldTestament/OldBookList";
 import { OldTestamentBooks } from "./Constants/OldTestmentBooks";
@@ -6,6 +6,8 @@ import { Section } from "@/shared/types/BibleReadingContentType";
 import { useBibleStore } from "@/shared/store/useBibleStore";
 import { useOldTestamentStore } from "@/shared/store/BibleReading/useOldTestamentStore";
 import CustomButton from "@/components/Shared/Button/CustomButton";
+import updateNewTestamentReading from "@/utils/BibleReading/updateNewTestamentReading";
+import updateOldTestamentReading from "@/utils/BibleReading/updateOldTestamentReading";
 
 interface OldTestmentProps {
   data: Section[] | undefined;
@@ -22,6 +24,28 @@ const OldTestment: React.FC<OldTestmentProps> = ({
 }) => {
   const bookData = useOldTestamentStore((state) => state.OldTestamentBooks);
 
+  const { newData, newLoading, newError, newRefetch } =
+    updateNewTestamentReading("Test1");
+
+  const { oldData, oldLoading, oldError, oldRefetch } =
+    updateOldTestamentReading("Test1");
+
+  const handleButtonClick = async () => {
+    const isNewSuccess = await newRefetch();
+    const isOldSuccess = await oldRefetch();
+
+    if (isNewSuccess && isOldSuccess) {
+      // 둘 다 성공하면 성공 메시지 표시
+      Alert.alert("Success", "Reading saved successfully.");
+    } else {
+      // 둘 중 하나라도 실패하면 에러 메시지 표시
+      Alert.alert(
+        "Error",
+        "An error occurred while saving reading. Please try again."
+      );
+    }
+  };
+
   return (
     <View className="mt-[15px] ">
       <FlatList
@@ -35,14 +59,16 @@ const OldTestment: React.FC<OldTestmentProps> = ({
         ListFooterComponent={<View className="w-full h-[230px]" />}
         showsVerticalScrollIndicator={false}
       />
-      <View className="w-full h-[40px] absolute top-[73%]">
+      <View className="w-full h-[42px] absolute top-[73%]">
         <CustomButton
           title="Save Reading"
           titleSize={16}
           backgroundColor={"bibleBrown"}
           activeBackgroundColor={"bibleBrown"}
           textColor={"yomWhite"}
-          onPress={() => {}}
+          onPress={() => {
+            handleButtonClick();
+          }}
         />
       </View>
     </View>

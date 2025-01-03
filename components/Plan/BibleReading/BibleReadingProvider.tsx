@@ -56,9 +56,7 @@ const BibleReadingProvider = ({ index }: BibleReadingProviderProps) => {
       {index === 3 ? null : (
         <View className="w-full mt-[25px] flex-row justify-between items-end">
           <View className="w-[85%] h-[30px]">
-            <Text className="font-[WantedM] text-[25px]">
-              2025 Bible Reading
-            </Text>
+            <Text className="font-[WantedM] text-[25px]">{data?.planName}</Text>
           </View>
           <TouchableOpacity>
             <Text className="font-[WantedM] text-[11px] text-bibleBrown">
