@@ -5,7 +5,7 @@ import { planGradation } from "@/constants/planGradation";
 import { Ionicons } from "@expo/vector-icons";
 import { icons } from "@/constants/Icons";
 
-const BiblePlanItem = () => {
+const BiblePlanItem = ({ title }: { title: string }) => {
   const icon = icons.bibleReading;
   const startColor = planGradation.bibleReading.startColor;
   const endColor = planGradation.bibleReading.endColor;
@@ -28,7 +28,7 @@ const BiblePlanItem = () => {
             </View>
             <View className="w-[70%] h-full flex justify-center items-center">
               <Text className="font-[WantedSB] text-[14px] text-white">
-                Let's Read the Bible
+                {title}
               </Text>
             </View>
             <View className="w-[15%] h-full flex justify-center items-end">
