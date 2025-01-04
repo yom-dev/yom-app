@@ -13,16 +13,17 @@ interface NewTestmentProps {
   loading: boolean;
   refetch: () => void;
   error: string | null;
+  planName: string;
 }
 
-const NewTestment: React.FC<NewTestmentProps> = ({}) => {
+const NewTestment: React.FC<NewTestmentProps> = ({ planName }) => {
   const bookData = useNewTestamentStore((state) => state.NewTestamentBooks);
 
   const { newData, newLoading, newError, newRefetch } =
-    updateNewTestamentReading("Test1");
+    updateNewTestamentReading(planName);
 
   const { oldData, oldLoading, oldError, oldRefetch } =
-    updateOldTestamentReading("Test1");
+    updateOldTestamentReading(planName);
 
   const handleButtonClick = async () => {
     const isNewSuccess = await newRefetch();

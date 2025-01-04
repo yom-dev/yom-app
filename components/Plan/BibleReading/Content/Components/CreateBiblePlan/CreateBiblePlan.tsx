@@ -14,9 +14,13 @@ import storePlanName from "@/shared/store/BibleReading/storePlanName";
 
 interface CreateBiblePlanProps {
   onClose: () => void;
+  refetch: () => void;
 }
 
-const CreateBiblePlan: React.FC<CreateBiblePlanProps> = ({ onClose }) => {
+const CreateBiblePlan: React.FC<CreateBiblePlanProps> = ({
+  onClose,
+  refetch,
+}) => {
   const [planName, setPlanName] = useState<string>(""); // 상태 타입 지정
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null); // 상태 타입을 string | null로 지정

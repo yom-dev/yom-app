@@ -9,18 +9,20 @@ import getBibleReadingContent from "@/utils/BibleReading/getBibleReadingContent"
 import { useOldTestamentStore } from "@/shared/store/BibleReading/useOldTestamentStore";
 import { useNewTestamentStore } from "@/shared/store/BibleReading/useNewTestamentStore";
 import StartBibleReadingTracker from "./Content/Components/StartBibleReadingTracker";
-import getStoredPlanName from "@/utils/BibleReading/getStoredPlanName";
 import CreatePlanModal from "./Content/Components/CreateBiblePlan/CreatePlanModal";
 
 interface BibleReadingProviderProps {
   index: number;
+  planName: string;
 }
 
-const BibleReadingProvider = ({ index }: BibleReadingProviderProps) => {
-  const [planName, setPlanName] = useState<string>("");
+const BibleReadingProvider = ({
+  index,
+  planName,
+}: BibleReadingProviderProps) => {
   const [modalVisible, setModalVisible] = useState<boolean>(false); // Modal visibility state
 
-  const { data, error, loading, refetch } = getBibleReadingContent("Test1");
+  const { data, error, loading, refetch } = getBibleReadingContent(planName);
 
   //서버로부터 받아온 데이터를 store(zustand)에 저장하는 함수 지정.
   const setOldTestamentBooks = useOldTestamentStore(
@@ -39,7 +41,7 @@ const BibleReadingProvider = ({ index }: BibleReadingProviderProps) => {
       setNewTestamentBooks(data.newTestament);
     }
     console.log(data);
-  }, [data, setOldTestamentBooks, setNewTestamentBooks]);
+  }, [data, setOldTestamentBooks, setNewTestamentBooks, refetch]);
 
   //loading 중일 때, 로딩 화면 출력
   if (loading) {
@@ -80,6 +82,7 @@ const BibleReadingProvider = ({ index }: BibleReadingProviderProps) => {
           loading={loading}
           refetch={refetch}
           error={error}
+          planName={planName}
         />
       )}
       {index === 1 && (
@@ -88,6 +91,7 @@ const BibleReadingProvider = ({ index }: BibleReadingProviderProps) => {
           loading={loading}
           refetch={refetch}
           error={error}
+          planName={planName}
         />
       )}
       {index === 2 && (
@@ -100,6 +104,7 @@ const BibleReadingProvider = ({ index }: BibleReadingProviderProps) => {
         onClose={() => {
           setModalVisible(false);
         }}
+        refetch={refetch}
       />
     </View>
   );

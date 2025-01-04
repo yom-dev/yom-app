@@ -3,7 +3,7 @@ import { supabase } from "@/utils/supabase";
 
 import { BibleReadingContentType } from "@/shared/types/BibleReadingContentType";
 
-const getBibleReadingContent = (planName: string) => {
+const getBibleReadingContent = (planName: string | null | undefined) => {
   const [intialData, setInitialData] = useState<
     BibleReadingContentType[] | null
   >(null);
