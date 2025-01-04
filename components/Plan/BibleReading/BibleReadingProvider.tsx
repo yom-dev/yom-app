@@ -1,5 +1,5 @@
 import { View, Text, ActivityIndicator, ImageBackground } from "react-native";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import OldTestment from "./Content/OldTestment";
 import NewTestment from "./Content/NewTestment";
 import PlanNotificationSetting from "@/components/Plan/Shared/PlanNotificationSetting";
@@ -9,14 +9,18 @@ import getBibleReadingContent from "@/utils/BibleReading/getBibleReadingContent"
 import { useOldTestamentStore } from "@/shared/store/BibleReading/useOldTestamentStore";
 import { useNewTestamentStore } from "@/shared/store/BibleReading/useNewTestamentStore";
 import StartBibleReadingTracker from "./Content/Components/StartBibleReadingTracker";
+import getStoredPlanName from "@/utils/BibleReading/getStoredPlanName";
+import CreatePlanModal from "./Content/Components/CreateBiblePlan/CreatePlanModal";
 
 interface BibleReadingProviderProps {
   index: number;
 }
 
 const BibleReadingProvider = ({ index }: BibleReadingProviderProps) => {
-  //서버로부터 데이터 받아오기
-  const { data, error, loading, refetch } = getBibleReadingContent("Test");
+  const [planName, setPlanName] = useState<string>("");
+  const [modalVisible, setModalVisible] = useState<boolean>(false); // Modal visibility state
+
+  const { data, error, loading, refetch } = getBibleReadingContent("Test1");
 
   //서버로부터 받아온 데이터를 store(zustand)에 저장하는 함수 지정.
   const setOldTestamentBooks = useOldTestamentStore(
@@ -58,7 +62,11 @@ const BibleReadingProvider = ({ index }: BibleReadingProviderProps) => {
           <View className="w-[85%] h-[30px]">
             <Text className="font-[WantedM] text-[25px]">{data?.planName}</Text>
           </View>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              setModalVisible(true);
+            }}
+          >
             <Text className="font-[WantedM] text-[11px] text-bibleBrown">
               change plan
             </Text>
@@ -86,6 +94,13 @@ const BibleReadingProvider = ({ index }: BibleReadingProviderProps) => {
         <Stats data={data} loading={loading} refetch={refetch} error={error} />
       )}
       {index === 3 && <PlanNotificationSetting planName="bibleReading" />}
+
+      <CreatePlanModal
+        visible={modalVisible}
+        onClose={() => {
+          setModalVisible(false);
+        }}
+      />
     </View>
   );
 };

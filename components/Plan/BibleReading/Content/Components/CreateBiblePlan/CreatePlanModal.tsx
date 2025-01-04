@@ -33,7 +33,15 @@ const CreatePlanModal: React.FC<CreatePlanModalProps> = ({
             }
           />
           <View className="w-full h-[90%]">
-            {selectedIndex === 0 ? <MyBiblePlans /> : <CreateBiblePlan />}
+            {selectedIndex === 0 ? (
+              <MyBiblePlans />
+            ) : (
+              <CreateBiblePlan
+                onClose={() => {
+                  onClose();
+                }}
+              />
+            )}
           </View>
 
           {/* Close Button */}

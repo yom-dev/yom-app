@@ -5,10 +5,19 @@ import { planGradation } from "@/constants/planGradation";
 import { Ionicons } from "@expo/vector-icons";
 import { icons } from "@/constants/Icons";
 
-const BiblePlanItem = ({ title }: { title: string }) => {
+const BiblePlanItem = ({
+  title,
+  startDate,
+}: {
+  title: string;
+  startDate: Date;
+}) => {
   const icon = icons.bibleReading;
   const startColor = planGradation.bibleReading.startColor;
   const endColor = planGradation.bibleReading.endColor;
+  const startDateString = new Date(startDate).toISOString().split("T")[0];
+
+  // const startDateString = startDate.toISOString().split("T")[0];
   return (
     <View className="w-full h-[65px]">
       <TouchableOpacity className="w-full h-[60px]">
@@ -40,7 +49,9 @@ const BiblePlanItem = ({ title }: { title: string }) => {
         </LinearGradient>
       </TouchableOpacity>
       <View className="w-full flex-row justify-end mt-[3px]">
-        <Text className="text-[8px] text-yomGray">Start Date: 2024-10-24</Text>
+        <Text className="text-[8px] text-yomGray">
+          Start Date: {startDateString}
+        </Text>
       </View>
     </View>
   );

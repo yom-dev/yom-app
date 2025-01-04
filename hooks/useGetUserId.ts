@@ -4,7 +4,7 @@ import { supabase } from "@/utils/supabase";
 export function useGetUserId() {
   const [data, setData] = useState<string | null>(null); // 유저 ID를 상태로 저장
   const [loading, setLoading] = useState<boolean>(true); // 로딩 상태 관리
-  const [error, setError] = useState<string | null>(null); // 에러 상태 관리
+  const [error, setError] = useState<string | null>(); // 에러 상태 관리
 
   useEffect(() => {
     const useGetUserId = async () => {
