@@ -12,19 +12,18 @@ import createNewBiblePlan from "@/utils/BibleReading/createNewBiblePlan";
 import { useGetUserId } from "@/hooks/useGetUserId";
 import storePlanName from "@/shared/store/BibleReading/storePlanName";
 
+import { useRouter } from "expo-router";
+
 interface CreateBiblePlanProps {
   onClose: () => void;
-  refetch: () => void;
 }
 
-const CreateBiblePlan: React.FC<CreateBiblePlanProps> = ({
-  onClose,
-  refetch,
-}) => {
+const CreateBiblePlan: React.FC<CreateBiblePlanProps> = ({ onClose }) => {
   const [planName, setPlanName] = useState<string>(""); // 상태 타입 지정
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null); // 상태 타입을 string | null로 지정
   const { data: userId } = useGetUserId(); // 사용자 ID 가져오기
+  const router = useRouter();
 
   const handleCreatePlanClick = async () => {
     if (!planName.trim()) {
@@ -50,6 +49,9 @@ const CreateBiblePlan: React.FC<CreateBiblePlanProps> = ({
       Alert.alert("Success", "Plan created successfully!");
       storePlanName(planName); // 입력값 저장
       onClose();
+      // refresh();
+      // refetch();
+      router.replace("/plan/plan/bibleReading");
     } else {
       setError(result.error || "An unknown error occurred."); // 에러 메시지 설정
       Alert.alert("Error", result.error || "An unknown error occurred.");

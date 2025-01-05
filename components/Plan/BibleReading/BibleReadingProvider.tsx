@@ -104,7 +104,6 @@ const BibleReadingProvider = ({
         onClose={() => {
           setModalVisible(false);
         }}
-        refetch={refetch}
       />
     </View>
   );

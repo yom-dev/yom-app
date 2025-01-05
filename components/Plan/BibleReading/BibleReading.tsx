@@ -1,5 +1,5 @@
-import { View, Text } from "react-native";
 import React, { useState } from "react";
+import { View, Text } from "react-native";
 import SegmentedControl from "@react-native-segmented-control/segmented-control";
 import BibleReadingProvider from "@/components/Plan/BibleReading/BibleReadingProvider";
 import useStoredPlanName from "@/utils/BibleReading/getStoredPlanName";
@@ -8,6 +8,11 @@ const BibleReading = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [selectedValue, setSelectedValue] = useState("Main");
   const { planName, loading, error } = useStoredPlanName();
+  const [refreshKey, setRefreshKey] = useState(0); // Key to force re-render
+
+  const refreshPage = () => {
+    setRefreshKey((prev) => prev + 1); // Update key to trigger re-mount
+  };
 
   return (
     <View className="w-full flex-row justify-center bg-white h-full">
@@ -26,7 +31,11 @@ const BibleReading = () => {
             <Text>Loading...</Text>
           </View>
         ) : (
-          <BibleReadingProvider index={selectedIndex} planName={planName} />
+          <BibleReadingProvider
+            key={refreshKey} // Force re-render by changing key
+            index={selectedIndex}
+            planName={planName}
+          />
         )}
       </View>
     </View>

@@ -3,7 +3,6 @@ import React from "react";
 import { useLocalSearchParams } from "expo-router";
 import Gratitude from "@/components/Plan/Gratitude/Gratitude";
 import BibleReading from "@/components/Plan/BibleReading/BibleReading"; // BibleReading 컴포넌트 경로 확인 필요
-
 const ContentPage = () => {
   const { contentPlanName } = useLocalSearchParams();
 
