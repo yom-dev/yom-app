@@ -48,6 +48,7 @@ const useLocalNotifications = () => {
           title,
           body,
           badge: 1, // 뱃지 숫자 설정
+          sound: "notification_sound_1.wav",
         },
         trigger: null,
       });
@@ -74,6 +75,7 @@ const useLocalNotifications = () => {
           body,
           badge: 1, // 뱃지 숫자 설정
           data: { planName: planName, notificationType: "Daily" }, // 알림에 추가 데이터 전달
+          sound: "notification_sound_1.wav",
         },
         trigger: {
           repeats: true,

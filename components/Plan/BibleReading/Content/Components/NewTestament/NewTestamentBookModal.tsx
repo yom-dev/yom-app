@@ -77,8 +77,8 @@ const NewTestamentBookModal: React.FC<NewTestamentModalProps> = ({
                 onPress={onClose}
                 className="w-[50px] h-full justify-center "
               >
-                <Text className="font-[WantedM] text-[15px] text-blue-500">
-                  Close
+                <Text className="font-[WantedR] text-[15px] text-blue-500">
+                  Done
                 </Text>
               </Pressable>
             </View>

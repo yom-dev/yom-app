@@ -12,6 +12,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "assets": ["./assets/sounds/notification/notificaion_sound_1.wav"],
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.yom.office.app"
@@ -36,7 +37,8 @@
           "icon": "./assets/images/icon.png",
           "color": "#ffffff",
           "defaultChannel": "default",
-          "badge": true
+          "badge": true,
+          "sounds": ["./assets/sounds/notification/notificaion_sound_1.wav"]
         }
       ],
       [
