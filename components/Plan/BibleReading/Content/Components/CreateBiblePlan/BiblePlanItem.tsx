@@ -1,26 +1,39 @@
 import { View, Text, ImageBackground, TouchableOpacity } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import { planGradation } from "@/constants/planGradation";
 import { Ionicons } from "@expo/vector-icons";
 import { icons } from "@/constants/Icons";
+import storePlanName from "@/shared/store/BibleReading/storePlanName";
+import { useRouter } from "expo-router";
 
 const BiblePlanItem = ({
   title,
   startDate,
+  onClose,
 }: {
   title: string;
   startDate: Date;
+  onClose: () => void;
 }) => {
   const icon = icons.bibleReading;
   const startColor = planGradation.bibleReading.startColor;
   const endColor = planGradation.bibleReading.endColor;
   const startDateString = new Date(startDate).toISOString().split("T")[0];
 
-  // const startDateString = startDate.toISOString().split("T")[0];
+  const router = useRouter();
+
+  const onPressItem = () => {
+    storePlanName(title);
+
+    onClose();
+
+    router.push("/plan/plan/bibleReading");
+  };
+
   return (
     <View className="w-full h-[65px]">
-      <TouchableOpacity className="w-full h-[60px]">
+      <TouchableOpacity className="w-full h-[60px]" onPress={onPressItem}>
         <LinearGradient
           colors={[startColor, endColor]}
           start={[1, 0]}

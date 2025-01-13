@@ -3,7 +3,11 @@ import React from "react";
 import BiblePlanItem from "./BiblePlanItem";
 import getBiblePlanNames from "@/utils/BibleReading/getBiblePlanNames";
 
-const MyBiblePlans = () => {
+interface MyBiblePlansProps {
+  onClose: () => void;
+}
+
+const MyBiblePlans: React.FC<MyBiblePlansProps> = ({ onClose }) => {
   const { data, loading, error } = getBiblePlanNames();
 
   if (loading) {
@@ -27,7 +31,13 @@ const MyBiblePlans = () => {
       <FlatList
         data={data}
         renderItem={({ item }) => (
-          <BiblePlanItem title={item.planName} startDate={item.created_at} />
+          <BiblePlanItem
+            title={item.planName}
+            startDate={item.created_at}
+            onClose={() => {
+              onClose();
+            }}
+          />
         )}
         ItemSeparatorComponent={() => <View style={{ height: 20 }} />} // 간격 10px
       />
