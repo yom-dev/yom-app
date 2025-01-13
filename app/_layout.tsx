@@ -46,6 +46,9 @@ export default function RootLayout() {
       await Notifications.getPresentedNotificationsAsync();
     setNotification(deliveredNotifications);
   }
+
+  // 알림 데이터를 가져오고, 알림 수신 시 fetchDeliveredNotifications를 호출하여
+  // 최신 알림 상태를 업데이트하는 리스너를 등록
   useEffect(() => {
     const fetchDeliveredNotifications = async () => {
       const deliveredNotifications =
@@ -62,6 +65,7 @@ export default function RootLayout() {
     };
   }, []);
 
+  // 앱 상태가 활성화되었을 때 알림 데이터를 다시 가져오도록 설정
   useEffect(() => {
     const handleAppStateChange = (nextAppState: AppStateStatus) => {
       if (appState.match(/inactive|background/) && nextAppState === "active") {
@@ -80,6 +84,7 @@ export default function RootLayout() {
     };
   }, [appState]);
 
+  // 네트워크 연결 상태를 감지하여 변경 시 처리
   useEffect(() => {
     const unsubscribe = NetInfo.addEventListener((state) => {
       setIsConnected(state.isConnected);
@@ -93,6 +98,7 @@ export default function RootLayout() {
     };
   }, [isConnected]);
 
+  // 알림 수신 시 fetchDeliveredNotifications 호출로 알림 상태를 업데이트
   useEffect(() => {
     const subscription = Notifications.addNotificationReceivedListener(
       fetchDeliveredNotifications
@@ -102,6 +108,7 @@ export default function RootLayout() {
     };
   }, []);
 
+  //  앱 로드 시 폰트가 로드될 때까지 스플래시 화면 유지
   useEffect(() => {
     if (!loaded) {
       SplashScreen.preventAutoHideAsync();
@@ -135,13 +142,13 @@ export default function RootLayout() {
                 </Text>
               ),
               headerRight: () => (
-                <View className="flex-row items-center justify-between  w-[80px]">
+                <View className="flex-row items-center justify-between  w-[82px]">
                   <View className="flex-row items-center">
                     <Image
                       source={require("@/assets/images/icons/coin-icon.png")}
                       style={{ width: 22, height: 22 }}
                     />
-                    <Text className="font-[WantedSB] ml-2 text-[#F88D0E] text-[14px]">
+                    <Text className="font-[WantedSB] ml-2 text-yomOrange text-[15px]">
                       11
                     </Text>
                   </View>

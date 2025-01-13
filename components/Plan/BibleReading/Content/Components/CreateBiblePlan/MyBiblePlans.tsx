@@ -45,6 +45,13 @@ const MyBiblePlans: React.FC<MyBiblePlansProps> = ({ onClose }) => {
             onRefresh={refetch} // 자식에서 호출 가능
           />
         )}
+        ListEmptyComponent={() => (
+          <View className="flex h-full justify-center items-center mt-[10px]">
+            <Text className="font-[WantedM] text-[16px] text-bibleBrown">
+              No plans added.
+            </Text>
+          </View>
+        )}
         ItemSeparatorComponent={() => <View style={{ height: 20 }} />} // 간격 10px
       />
     </View>

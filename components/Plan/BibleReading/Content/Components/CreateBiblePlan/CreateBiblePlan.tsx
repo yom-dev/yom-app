@@ -46,7 +46,7 @@ const CreateBiblePlan: React.FC<CreateBiblePlanProps> = ({ onClose }) => {
 
     if (result.success) {
       setPlanName(""); // 입력값 초기화
-      Alert.alert("Success", "Plan created successfully!");
+      // Alert.alert("Success", "Plan created successfully!");
       storePlanName(planName); // 입력값 저장
       onClose();
       // refresh();

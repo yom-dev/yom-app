@@ -13,11 +13,13 @@ module.exports = {
         yomRed: "#fe555d",
         yomGreen: "#32a079",
         yomDarkGreen: "#298665",
+        yomOrange: "#F88D0E",
         yomWhite: "#f9f8f4",
         yomLightGray: "#f1f1f1",
         yomPurple: "#403277",
         bibleBrown: "#BC6619",
         bibleIvory: "#FFECCF",
+
         bibleLightBrown: "#F0B775",
       },
     },
