@@ -1,5 +1,5 @@
 import { View, Text, FlatList, ActivityIndicator } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import BiblePlanItem from "./BiblePlanItem";
 import getBiblePlanNames from "@/utils/BibleReading/getBiblePlanNames";
 
@@ -8,7 +8,12 @@ interface MyBiblePlansProps {
 }
 
 const MyBiblePlans: React.FC<MyBiblePlansProps> = ({ onClose }) => {
-  const { data, loading, error } = getBiblePlanNames();
+  const { data, loading, error, refetch } = getBiblePlanNames();
+  const [refreshKey, setRefreshKey] = useState(0); // 키 상태 관리
+
+  const handleRefresh = () => {
+    setRefreshKey((prevKey) => prevKey + 1); // 상태 업데이트로 강제 재렌더링
+  };
 
   if (loading) {
     return (
@@ -37,6 +42,7 @@ const MyBiblePlans: React.FC<MyBiblePlansProps> = ({ onClose }) => {
             onClose={() => {
               onClose();
             }}
+            onRefresh={refetch} // 자식에서 호출 가능
           />
         )}
         ItemSeparatorComponent={() => <View style={{ height: 20 }} />} // 간격 10px
