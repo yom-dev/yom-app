@@ -135,23 +135,35 @@ export default function RootLayout() {
                 </Text>
               ),
               headerRight: () => (
-                <Link
-                  to="/notification"
-                  key={notification.length}
-                  onPress={handleNotificationClick}
-                >
-                  {notification.length > 0 ? (
+                <View className="flex-row items-center justify-between  w-[80px]">
+                  <View className="flex-row items-center">
                     <Image
-                      source={require("@/assets/images/icons/notification-unread-icon.png")}
-                      style={{ width: 24, height: 24 }}
+                      source={require("@/assets/images/icons/coin-icon.png")}
+                      style={{ width: 22, height: 22 }}
                     />
-                  ) : (
-                    <Image
-                      source={require("@/assets/images/icons/notification-icon.png")}
-                      style={{ width: 24, height: 24 }}
-                    />
-                  )}
-                </Link>
+                    <Text className="font-[WantedSB] ml-2 text-[#F88D0E] text-[14px]">
+                      11
+                    </Text>
+                  </View>
+
+                  <Link
+                    to="/notification"
+                    key={notification.length}
+                    onPress={handleNotificationClick}
+                  >
+                    {notification.length > 0 ? (
+                      <Image
+                        source={require("@/assets/images/icons/notification-unread-icon.png")}
+                        style={{ width: 22, height: 22 }}
+                      />
+                    ) : (
+                      <Image
+                        source={require("@/assets/images/icons/notification-icon.png")}
+                        style={{ width: 22, height: 22 }}
+                      />
+                    )}
+                  </Link>
+                </View>
               ),
               headerStyle: {
                 backgroundColor: Colors.light.background,
