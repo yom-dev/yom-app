@@ -2,13 +2,18 @@ import { View, Text } from "react-native";
 import React from "react";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
 
-const MainCircleProgress = () => {
+type MainCircleProgressProps = {
+  startDate: string;
+  fill: number;
+};
+
+const MainCircleProgress = ({ startDate, fill }: MainCircleProgressProps) => {
   return (
     <View className="w-full flex items-center">
       <View className="flex-row justify-center  h-[120px]">
         <AnimatedCircularProgress
           size={240}
-          fill={80}
+          fill={fill}
           arcSweepAngle={180}
           width={15}
           backgroundWidth={15}
@@ -37,14 +42,14 @@ const MainCircleProgress = () => {
       <View className="w-[260px] h-[60px]  mt-10 flex-row py-2">
         <View className="w-[50%]  h-full flex justify-between items-center">
           <Text className="font-[WantedSB] text-bibleBrown text-[18px]">
-            2024.12.13
+            {startDate}
           </Text>
           <Text className="font-[WantedM] text-gray-400">Start Date</Text>
         </View>
         <View className="w-[1px] bg-gray-200 h-full"></View>
         <View className="w-[50%]  h-full flex justify-between items-center">
           <Text className="font-[WantedSB] text-bibleBrown text-[18px]">
-            100%
+            {fill}%
           </Text>
           <Text className="font-[WantedM] text-gray-400">Percentage</Text>
         </View>

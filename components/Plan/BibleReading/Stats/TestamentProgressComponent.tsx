@@ -6,14 +6,24 @@ interface TestamentProgressComponentProps {
   title: string; // `title`의 타입을 문자열로 지정
   fill: number; // `fill`의 타입을 숫자로 지정
   percentage: number;
+  chapterCount: number;
+  totalChapters: number;
+  bookCount: number;
+  totalBooks: number;
 }
 
 const TestamentProgressComponent: React.FC<TestamentProgressComponentProps> = ({
   title,
   fill,
   percentage,
+  chapterCount,
+  totalChapters,
+  bookCount,
+  totalBooks,
 }) => {
   const percentageText = `${percentage}%`;
+  const chapterCountText = `${chapterCount} / ${totalChapters}`;
+  const bookCountText = `${bookCount} / ${totalBooks}`;
 
   return (
     <View>
@@ -49,10 +59,10 @@ const TestamentProgressComponent: React.FC<TestamentProgressComponentProps> = ({
         </View>
         <View className="w-[68%] h-full flex justify-evenly py-1 px-4">
           <Text className="font-[WantedR] text-[16px]">
-            Books Read: 12 / 27
+            Books Read: {bookCountText}
           </Text>
           <Text className="font-[WantedR] text-[16px]">
-            Chapters Read: 35 / 260
+            Chapters Read: {chapterCountText}
           </Text>
         </View>
       </View>
