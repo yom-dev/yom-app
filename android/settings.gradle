@@ -44,7 +44,7 @@ if (getRNMinorVersion() >= 75) {
   }
 }
 
-rootProject.name = 'yom'
+rootProject.name = 'yom.app'
 
 dependencyResolutionManagement {
   versionCatalogs {
