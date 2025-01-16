@@ -6,6 +6,7 @@ import {
   AppState,
   Text,
   TextInput,
+  KeyboardAvoidingView,
 } from "react-native";
 import { supabase } from "@/utils/supabase";
 import { Button, Input } from "@rneui/themed";
@@ -41,10 +42,10 @@ export default function Auth() {
   }
 
   return (
-    <View className="bg-white h-full w-full flex items-center ">
+    <KeyboardAvoidingView className="bg-white h-full w-full flex items-center justify-center">
       <View className="w-[90%] h-full flex justify-center">
         <View className="flex items-center justify-end ">
-          <Text className="font-[WantedSB] text-[40px]">yom!</Text>
+          <Text className="font-[WantedSB] text-[40px]">yom</Text>
         </View>
 
         <View className="flex h-fit gap-4 mt-[60px]">
@@ -97,6 +98,6 @@ export default function Auth() {
           </Link>
         </View>
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 }

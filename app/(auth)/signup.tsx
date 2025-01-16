@@ -6,6 +6,7 @@ import {
   AppState,
   Text,
   TextInput,
+  KeyboardAvoidingView,
 } from "react-native";
 import { signUpWithEmail } from "@/utils/Auth/SignUp/signUpWithEmail";
 import SignInButton from "@/components/Shared/Button/SignInButton";
@@ -27,7 +28,7 @@ export default function Auth() {
   const [loading, setLoading] = useState(false);
 
   return (
-    <View className="bg-white h-full w-full flex items-center ">
+    <KeyboardAvoidingView className="bg-white h-full w-full flex items-center ">
       <View className="w-[90%] h-full flex justify-center">
         <View className="flex items-center  justify-end">
           <Text className="font-[WantedSB] text-[40px]">yom</Text>
@@ -87,6 +88,6 @@ export default function Auth() {
           </Link>
         </View>
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 }
