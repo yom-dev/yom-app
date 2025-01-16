@@ -6,6 +6,7 @@ import {
   ScrollView,
   ImageBackground,
   ActivityIndicator,
+  Alert,
 } from "react-native";
 import CustomButton from "@/components/Shared/Button/CustomButton";
 import InfoContent from "./infoContent";
@@ -65,7 +66,7 @@ const InfoPage = () => {
       console.error("Error updating data:", error);
     } else {
       console.log("Data updated successfully:", data);
-      alert("Data updated successfully");
+      Alert.alert("Plan Added!");
       router.replace("/(tabs)/plan");
     }
   };
@@ -97,9 +98,7 @@ const InfoPage = () => {
 
           <View className="h-[50px]"></View>
         </ScrollView>
-
-        {/* button */}
-        <View className="w-full h-[50px] bottom-5">
+        <View className="w-full h-[50px] absolute top-[78%]">
           {infoData.isActive === false ? (
             // When isActive is false, show "Coming Soon"
             <View className="border-yomGreen border-[2px] w-full h-full rounded-full flex-1 justify-center items-center">
@@ -125,6 +124,8 @@ const InfoPage = () => {
             />
           )}
         </View>
+
+        {/* button */}
       </View>
     </View>
   );
