@@ -11,7 +11,6 @@ import { supabase } from "@/utils/supabase";
 import { Button, Input } from "@rneui/themed";
 import SignInButton from "@/components/Shared/Button/SignInButton";
 import { Link } from "expo-router";
-import GoogleSignInButton from "@/components/Shared/Button/GoogleSignInButton";
 
 // Tells Supabase Auth to continuously refresh the session automatically if
 // the app is in the foreground. When this is added, you will continue to receive
@@ -45,7 +44,7 @@ export default function Auth() {
     <View className="bg-white h-full w-full flex items-center ">
       <View className="w-[90%] h-full flex justify-center">
         <View className="flex items-center justify-end ">
-          <Text className="font-[WantedSB] text-[40px]">yom</Text>
+          <Text className="font-[WantedSB] text-[40px]">yom!</Text>
         </View>
 
         <View className="flex h-fit gap-4 mt-[60px]">
