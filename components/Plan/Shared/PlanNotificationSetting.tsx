@@ -71,7 +71,7 @@ const PlanNotificationSetting = ({
         />
       </View>
 
-      <View className="w-full h-[45px] absolute top-[78%] flex flex-row justify-between">
+      <View className="w-full h-[45px] absolute top-[70%] flex flex-row justify-between">
         <View className="w-[48%] h-[45px] flex-row justify-center">
           <CustomButton
             title="Add Notification"

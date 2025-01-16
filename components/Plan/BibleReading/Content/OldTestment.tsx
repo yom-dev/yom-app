@@ -61,7 +61,7 @@ const OldTestment: React.FC<OldTestmentProps> = ({
         ListFooterComponent={<View className="w-full h-[230px]" />}
         showsVerticalScrollIndicator={false}
       />
-      <View className="w-full h-[42px] absolute top-[73%]">
+      <View className="w-full h-[42px] absolute top-[65%]">
         <CustomButton
           title="Save Reading"
           titleSize={16}

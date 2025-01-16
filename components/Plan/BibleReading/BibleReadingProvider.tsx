@@ -40,7 +40,7 @@ const BibleReadingProvider = ({
     if (data?.newTestament) {
       setNewTestamentBooks(data.newTestament);
     }
-    console.log(data);
+    // console.log(data);
   }, [data, setOldTestamentBooks, setNewTestamentBooks, refetch]);
 
   //loading 중일 때, 로딩 화면 출력

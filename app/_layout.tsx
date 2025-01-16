@@ -1,13 +1,12 @@
 import {
   DarkTheme,
   DefaultTheme,
-  Link,
   ThemeProvider,
   useNavigation,
 } from "@react-navigation/native";
 import React, { useState, useEffect, useLayoutEffect } from "react";
 import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
+import { Stack, Link } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import "../global.css";
 import { Text, View, AppState, AppStateStatus } from "react-native";
@@ -20,10 +19,18 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import * as Notifications from "expo-notifications";
 import { Image } from "expo-image";
 import NetInfo from "@react-native-community/netinfo";
+import {
+  configureReanimatedLogger,
+  ReanimatedLogLevel,
+} from "react-native-reanimated";
 
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
+  configureReanimatedLogger({
+    level: ReanimatedLogLevel.warn,
+    strict: false, // Disable strict mode
+  });
   const [isConnected, setIsConnected] = useState<boolean | null>(true);
   const navigation = useNavigation();
   const colorScheme = useColorScheme();
@@ -154,7 +161,7 @@ export default function RootLayout() {
                   </View>
 
                   <Link
-                    to="/notification"
+                    href="/notification"
                     key={notification.length}
                     onPress={handleNotificationClick}
                   >

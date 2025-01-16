@@ -1,6 +1,6 @@
 import React, { useState, useReducer, useEffect } from "react";
 import { View, Text, Modal, FlatList } from "react-native";
-import ChapterItem from "./ChapterItem";
+import ChapterItem from "../ChapterItem";
 import { useBibleStore } from "@/shared/store/useBibleStore";
 
 interface Book {
@@ -34,7 +34,7 @@ const BookModal: React.FC<BookModalProps> = ({
   const updateChapter = useBibleStore((state) => state.updateChapterStatus);
 
   const handleOnClick = (data: Chapter) => {
-    console.log("clicked");
+    // console.log("clicked");
     // data.completed = !data.completed;
     // console.log(data);
   };

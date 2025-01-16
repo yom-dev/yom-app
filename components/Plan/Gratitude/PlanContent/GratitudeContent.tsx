@@ -127,7 +127,7 @@ const GratitudeContent: React.FC<GratitudeContentProps> = ({
           </ScrollView>
         </KeyboardAwareScrollView>
         {!hasTodayEntry && (
-          <View className="w-full h-[45px] mt-[35px] fixed bottom-14">
+          <View className="w-full h-[45px] mt-[35px] fixed bottom-[20%]">
             <CustomButton
               title="Save"
               titleSize={18}
