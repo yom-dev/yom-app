@@ -51,7 +51,7 @@ const NewTestment: React.FC<NewTestmentProps> = ({ planName }) => {
           </View>
         )}
         keyExtractor={(item) => item.title}
-        ListFooterComponent={<View className="w-full h-[230px]" />}
+        ListFooterComponent={<View className="w-full h-[350px]" />}
         showsVerticalScrollIndicator={false}
       />
 
