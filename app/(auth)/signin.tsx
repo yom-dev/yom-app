@@ -43,8 +43,8 @@ export default function Auth() {
 
   return (
     <View className="bg-white h-full w-full flex items-center ">
-      <View className="w-[90%] h-full">
-        <View className="flex items-center h-[20%] justify-end">
+      <View className="w-[90%] h-full flex justify-center">
+        <View className="flex items-center justify-end ">
           <Text className="font-[WantedSB] text-[40px]">yom</Text>
         </View>
 
@@ -66,7 +66,7 @@ export default function Auth() {
             className="border border-yomGray h-[50px] rounded-2xl p-3 w-full font-[WantedR] text-[14px]"
           />
         </View>
-        <View className="w-full h-[46px] border-yomGray border-[0.5px] rounded-3xl mt-[25px]">
+        <View className="w-full h-[46px]  rounded-3xl mt-[25px]">
           <SignInButton
             title="Sign in"
             titleSize={14}

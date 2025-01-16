@@ -57,14 +57,10 @@ const CustomButton = ({
 
   return (
     <TouchableOpacity
-      className={`w-full h-full ${bgColorVariants[backgroundColor]} flex justify-center items-center rounded-full active:opacity-90 ${bgColorVariantsActive[activeBackgroundColor]}`}
+      className={`w-full h-full bg-yomWhite flex justify-center items-center rounded-lg border-yomGray border-[0.5px] `}
       onPress={onPress}
     >
-      <Text
-        className={`${textColorVariants[textColor]} font-[WantedM] ${titleSizeVariants[titleSize]}`}
-      >
-        {title}
-      </Text>
+      <Text className={`yomBlack font-[WantedM] text-[14px]`}>{title}</Text>
     </TouchableOpacity>
   );
 };

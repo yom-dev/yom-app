@@ -47,7 +47,7 @@ const GratitudeRecord = ({ data }: GratitudeRecordProps) => {
   }, [gratitudeData, month, year]);
 
   return (
-    <View className="w-full h-[90%] mt-[30px]">
+    <View className="w-full h-[86%] mt-[30px]">
       <View className="w-full h-full rounded-xl overflow-hidden">
         <ImageBackground
           source={require("@/assets/images/background/main-card-background.png")}
