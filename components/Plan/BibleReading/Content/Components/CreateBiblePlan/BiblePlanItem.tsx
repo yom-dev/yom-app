@@ -39,7 +39,7 @@ const BiblePlanItem = ({
   const onPressItem = () => {
     storePlanName(title);
     onClose();
-    router.push("/plan/plan/bibleReading");
+    router.replace("/plan/plan/bibleReading");
   };
 
   const onPressDelete = async () => {
