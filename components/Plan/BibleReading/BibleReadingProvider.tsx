@@ -46,7 +46,7 @@ const BibleReadingProvider = ({
   //loading 중일 때, 로딩 화면 출력
   if (loading) {
     return (
-      <View className="w-full h-full flex-row justify-center items-center">
+      <View className="w-full h-[50%] flex-row justify-center items-center ">
         <ActivityIndicator size={"large"} color={"#BC6619"} />
       </View>
     );

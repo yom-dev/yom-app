@@ -149,8 +149,8 @@ export default function RootLayout() {
                 </Text>
               ),
               headerRight: () => (
-                <View className="flex-row items-center justify-between  w-[82px]">
-                  <View className="flex-row items-center">
+                <View className="flex-row items-center justify-end  w-[82px]">
+                  {/* <View className="flex-row items-center">
                     <Image
                       source={require("@/assets/images/icons/coin-icon.png")}
                       style={{ width: 22, height: 22 }}
@@ -158,7 +158,7 @@ export default function RootLayout() {
                     <Text className="font-[WantedSB] ml-2 text-yomOrange text-[15px]">
                       11
                     </Text>
-                  </View>
+                  </View> */}
 
                   <Link
                     href="/notification"

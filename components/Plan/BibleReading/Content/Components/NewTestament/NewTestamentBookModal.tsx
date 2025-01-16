@@ -38,7 +38,7 @@ const NewTestamentBookModal: React.FC<NewTestamentModalProps> = ({
   );
 
   const handleOnClick = (data: Chapter) => {
-    console.log("clicked");
+    // console.log("clicked");
     // data.completed = !data.completed;
     // console.log(data);
   };

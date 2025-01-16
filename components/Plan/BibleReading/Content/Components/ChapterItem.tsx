@@ -17,7 +17,7 @@ const ChapterItem: React.FC<ChapterItemProps> = ({
   const handleDone = () => {
     done ? setDone(false) : setDone(true);
     onClick();
-    console.log("clicked");
+    // console.log("clicked");
   };
 
   return (
