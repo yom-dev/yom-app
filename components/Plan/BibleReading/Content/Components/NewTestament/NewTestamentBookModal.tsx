@@ -1,7 +1,18 @@
-import React, { useState, useReducer, useEffect } from "react";
-import { View, Text, Modal, FlatList, Pressable } from "react-native";
-import ChapterItem from "../ChapterItem";
 import { useNewTestamentStore } from "@/shared/store/BibleReading/useNewTestamentStore";
+import React, { useState, useReducer, useEffect } from "react";
+import {
+  View,
+  Text,
+  Modal,
+  FlatList,
+  Pressable,
+  ImageBackground,
+  Touchable,
+  TouchableOpacity,
+} from "react-native";
+import ChapterItem from "../ChapterItem";
+import { openBibleApp } from "@/utils/BibleReading/openBibleApp";
+import { YouVersionBookName } from "@/constants/YouVersionBookName";
 
 interface Book {
   bookName: string;
@@ -37,11 +48,7 @@ const NewTestamentBookModal: React.FC<NewTestamentModalProps> = ({
     (state) => state.updateChapterStatus
   );
 
-  const handleOnClick = (data: Chapter) => {
-    // console.log("clicked");
-    // data.completed = !data.completed;
-    // console.log(data);
-  };
+  const matchingBookName = matchingBook?.abbreviation || "Gen";
 
   if (!matchingBook) {
     return (
@@ -112,6 +119,21 @@ const NewTestamentBookModal: React.FC<NewTestamentModalProps> = ({
               }
             />
           </View>
+        </View>
+        <View className="w-[53px] h-[53px] p-2 rounded-xl border-gray-400 border-[1px] bg-white absolute top-[87%] left-[80%] shadow-sm">
+          <TouchableOpacity
+            onPress={
+              () => {
+                openBibleApp(YouVersionBookName[matchingBookName]);
+              } // 예: 성경 앱
+            }
+          >
+            <ImageBackground
+              className="w-full h-full flex justify-center items-center"
+              resizeMode="contain"
+              source={require("@/assets/images/icons/bible-icon-2.png")}
+            ></ImageBackground>
+          </TouchableOpacity>
         </View>
       </View>
     </Modal>

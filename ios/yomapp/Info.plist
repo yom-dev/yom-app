@@ -46,6 +46,10 @@
     <string>ca-app-pub-7270360511167481~3716631185</string>
     <key>GADDelayAppMeasurementInit</key>
     <false/>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+      <string>youversion</string>
+    </array>
     <key>LSRequiresIPhoneOS</key>
     <true/>
     <key>NSAppTransportSecurity</key>
