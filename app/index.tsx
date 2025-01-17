@@ -9,8 +9,6 @@ export default function App() {
   const [isConnected, setIsConnected] = useState<boolean | null>(null);
 
   const checkNetworkStatus = async () => {
-    await new Promise((resolve) => setTimeout(resolve, 3000));
-
     try {
       const state = await NetInfo.fetch();
 
