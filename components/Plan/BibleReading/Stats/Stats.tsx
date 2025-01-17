@@ -33,10 +33,11 @@ const Stats: React.FC<StatsProps> = ({ data, loading, refetch, error }) => {
 
   const wholeBiblePercentage = Number(
     (
-      (newTestamentStats.completedChapters +
+      ((newTestamentStats.completedChapters +
         oldTestamentStats.completedChapters) /
-      1189
-    ).toFixed(2)
+        1189) *
+      100
+    ).toFixed(0)
   );
 
   return (
