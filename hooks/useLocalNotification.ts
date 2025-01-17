@@ -79,6 +79,8 @@ const useLocalNotifications = () => {
         },
         trigger: {
           repeats: true,
+          type: "calendar",
+
           hour,
           minute,
         },
