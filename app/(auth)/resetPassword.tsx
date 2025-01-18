@@ -7,38 +7,60 @@ import {
   Text,
   TextInput,
   KeyboardAvoidingView,
+  ActivityIndicator,
 } from "react-native";
 import { supabase } from "@/utils/supabase";
 import { Button, Input } from "@rneui/themed";
 import SignInButton from "@/components/Shared/Button/SignInButton";
-import { Link } from "expo-router";
+import { Link, useRouter } from "expo-router";
 
 // Tells Supabase Auth to continuously refresh the session automatically if
 // the app is in the foreground. When this is added, you will continue to receive
 // `onAuthStateChange` events with the `TOKEN_REFRESHED` or `SIGNED_OUT` event
 // if the user's session is terminated. This should only be registered once.
-AppState.addEventListener("change", (state) => {
-  if (state === "active") {
-    supabase.auth.startAutoRefresh();
-  } else {
-    supabase.auth.stopAutoRefresh();
-  }
-});
-
-export default function Auth() {
+// AppState.addEventListener("change", (state) => {
+//   if (state === "active") {
+//     supabase.auth.startAutoRefresh();
+//   } else {
+//     supabase.auth.stopAutoRefresh();
+//   }
+// });
+const resetPassword = () => {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  async function signInWithEmail() {
+  const router = useRouter();
+
+  async function handleResetPW() {
+    console.log;
     setLoading(true);
-    const { error } = await supabase.auth.signInWithPassword({
-      email: email,
-      password: password,
+    const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: "https://yom.today",
     });
 
-    if (error) Alert.alert("Invalid email / password");
+    if (error) {
+      Alert.alert("Invalid email / password");
+    } else {
+      Alert.alert("Password reset link sent! Please check your email.", "", [
+        {
+          text: "OK",
+          onPress: () => router.replace("/(auth)/signin"),
+        },
+      ]);
+    }
     setLoading(false);
+  }
+
+  if (loading) {
+    // 로딩 상태일 때 보여줄 컴포넌트
+    return (
+      <View className="bg-white h-full w-full flex items-center justify-center">
+        <ActivityIndicator size="large" />
+        <Text className="text-yomGray mt-4 font-[WantedM]">
+          Sending Link to your email......
+        </Text>
+      </View>
+    );
   }
 
   return (
@@ -56,55 +78,42 @@ export default function Auth() {
             autoCapitalize={"none"}
             className="border border-yomGray h-[50px] rounded-2xl p-3 w-full font-[WantedR] text-[14px]"
           />
-
-          <TextInput
-            onChangeText={(text) => setPassword(text)}
-            value={password}
-            secureTextEntry={true}
-            placeholder="password"
-            autoCapitalize={"none"}
-            className="border border-yomGray h-[50px] rounded-2xl p-3 w-full font-[WantedR] text-[14px]"
-          />
         </View>
+
         <View className="w-full h-[46px]  rounded-3xl mt-[25px]">
           <SignInButton
-            title="Sign in"
+            title={"Submit"}
             titleSize={14}
             backgroundColor="yomWhite"
             textColor="yomBlack"
             activeBackgroundColor="yomGreen"
-            onPress={() => signInWithEmail()}
+            onPress={() => {
+              handleResetPW();
+            }}
           />
         </View>
 
         {/* <View className="flex-row items-center justify-between my-[40px]">
-          <View className="w-[40%] border-b border-yomGray"></View>
-          <Text className="font-[WantedM] text-[16px]">or</Text>
-          <View className="w-[40%] border-b border-yomGray"></View>
-        </View> */}
+            <View className="w-[40%] border-b border-yomGray"></View>
+            <Text className="font-[WantedM] text-[16px]">or</Text>
+            <View className="w-[40%] border-b border-yomGray"></View>
+          </View> */}
 
         {/* <View className="w-full h-[46px] border-yomGray border-[0.5px] rounded-3xl">
-          <GoogleSignInButton />
-        </View> */}
+            <GoogleSignInButton />
+          </View> */}
 
         <View className="w-full flex-row justify-center mt-[40px]">
-          <Text className="text-yomGray mr-1 font-[WantedM]">
-            Are you new to yom?
-          </Text>
-          <Link href="/(auth)/signup">
+          <Text className="text-yomGray mr-1 font-[WantedM]">Go back to</Text>
+          <Link href="/(auth)/signin">
             <Text className="text-yomGray font-[WantedM] underline">
-              Sign up
-            </Text>
-          </Link>
-        </View>
-        <View className="w-full flex-row justify-center mt-[10px]">
-          <Link href="/(auth)/resetPassword">
-            <Text className="text-yomGray font-[WantedM] underline ">
-              Forgot PW?
+              Sign in.
             </Text>
           </Link>
         </View>
       </View>
     </KeyboardAvoidingView>
   );
-}
+};
+
+export default resetPassword;

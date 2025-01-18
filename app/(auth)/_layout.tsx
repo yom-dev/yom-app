@@ -15,6 +15,12 @@ const _layout = () => {
         }}
       />
       <Stack.Screen
+        name="resetPassword"
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
         name="signup"
         options={{
           headerShown: false,
