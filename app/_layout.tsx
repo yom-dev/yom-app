@@ -4,6 +4,8 @@ import {
   ThemeProvider,
   useNavigation,
 } from "@react-navigation/native";
+
+import { AppVersionCheck } from "@/utils/VersionCheck/AppVersionCheck";
 import React, { useState, useEffect, useLayoutEffect } from "react";
 import { useFonts } from "expo-font";
 import { Stack, Link } from "expo-router";
@@ -53,6 +55,11 @@ export default function RootLayout() {
       await Notifications.getPresentedNotificationsAsync();
     setNotification(deliveredNotifications);
   }
+
+  useEffect(() => {
+    console.log(AppVersionCheck);
+    AppVersionCheck();
+  }, []);
 
   // 알림 데이터를 가져오고, 알림 수신 시 fetchDeliveredNotifications를 호출하여
   // 최신 알림 상태를 업데이트하는 리스너를 등록
