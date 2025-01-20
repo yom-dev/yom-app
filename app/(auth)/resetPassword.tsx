@@ -14,17 +14,6 @@ import { Button, Input } from "@rneui/themed";
 import SignInButton from "@/components/Shared/Button/SignInButton";
 import { Link, useRouter } from "expo-router";
 
-// Tells Supabase Auth to continuously refresh the session automatically if
-// the app is in the foreground. When this is added, you will continue to receive
-// `onAuthStateChange` events with the `TOKEN_REFRESHED` or `SIGNED_OUT` event
-// if the user's session is terminated. This should only be registered once.
-// AppState.addEventListener("change", (state) => {
-//   if (state === "active") {
-//     supabase.auth.startAutoRefresh();
-//   } else {
-//     supabase.auth.stopAutoRefresh();
-//   }
-// });
 const resetPassword = () => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
@@ -35,9 +24,8 @@ const resetPassword = () => {
     console.log;
     setLoading(true);
     const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: "https://yom.today",
+      redirectTo: "http://yomapps.com/updatePassword",
     });
-
     if (error) {
       Alert.alert("Invalid email / password");
     } else {
