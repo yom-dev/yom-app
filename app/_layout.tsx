@@ -4,27 +4,24 @@ import {
   ThemeProvider,
   useNavigation,
 } from "@react-navigation/native";
-
 import { AppVersionCheck } from "@/utils/VersionCheck/AppVersionCheck";
 import React, { useState, useEffect, useLayoutEffect } from "react";
 import { useFonts } from "expo-font";
 import { Stack, Link } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import "../global.css";
-import { Text, View, AppState, AppStateStatus } from "react-native";
+import { Text, View, AppState } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Colors } from "@/constants/Colors";
 import { useRouter } from "expo-router";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import ModalProvider from "@/shared/providers/modal-provider";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import * as Notifications from "expo-notifications";
-import { Image } from "expo-image";
-import NetInfo from "@react-native-community/netinfo";
 import {
   configureReanimatedLogger,
   ReanimatedLogLevel,
 } from "react-native-reanimated";
+import HeaderRight from "@/components/Shared/Header/HeaderRight";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -33,14 +30,12 @@ export default function RootLayout() {
     level: ReanimatedLogLevel.warn,
     strict: false, // Disable strict mode
   });
+
   const [isConnected, setIsConnected] = useState<boolean | null>(true);
   const navigation = useNavigation();
   const colorScheme = useColorScheme();
   const router = useRouter();
   const [appState, setAppState] = useState(AppState.currentState);
-  const [notification, setNotification] = useState<
-    Notifications.Notification[]
-  >([]);
 
   const [loaded] = useFonts({
     WantedM: require("../assets/fonts/WantedSans-Medium.otf"),
@@ -50,79 +45,11 @@ export default function RootLayout() {
     WantedEB: require("../assets/fonts/WantedSans-ExtraBold.otf"),
   });
 
-  async function fetchDeliveredNotifications() {
-    const deliveredNotifications =
-      await Notifications.getPresentedNotificationsAsync();
-    setNotification(deliveredNotifications);
-  }
-
   useEffect(() => {
-    console.log(AppVersionCheck);
+    console.log("Version Check", AppVersionCheck);
     AppVersionCheck();
   }, []);
 
-  // 알림 데이터를 가져오고, 알림 수신 시 fetchDeliveredNotifications를 호출하여
-  // 최신 알림 상태를 업데이트하는 리스너를 등록
-  useEffect(() => {
-    const fetchDeliveredNotifications = async () => {
-      const deliveredNotifications =
-        await Notifications.getPresentedNotificationsAsync();
-      setNotification(deliveredNotifications);
-    };
-
-    const subscription = Notifications.addNotificationReceivedListener(
-      fetchDeliveredNotifications
-    );
-
-    return () => {
-      subscription.remove();
-    };
-  }, []);
-
-  // 앱 상태가 활성화되었을 때 알림 데이터를 다시 가져오도록 설정
-  useEffect(() => {
-    const handleAppStateChange = (nextAppState: AppStateStatus) => {
-      if (appState.match(/inactive|background/) && nextAppState === "active") {
-        fetchDeliveredNotifications();
-      }
-      setAppState(nextAppState);
-    };
-
-    const appStateListener = AppState.addEventListener(
-      "change",
-      handleAppStateChange
-    );
-
-    return () => {
-      appStateListener.remove();
-    };
-  }, [appState]);
-
-  // 네트워크 연결 상태를 감지하여 변경 시 처리
-  useEffect(() => {
-    const unsubscribe = NetInfo.addEventListener((state) => {
-      setIsConnected(state.isConnected);
-      if (!state.isConnected) {
-        router.replace("/");
-      }
-    });
-
-    return () => {
-      unsubscribe();
-    };
-  }, [isConnected]);
-
-  // 알림 수신 시 fetchDeliveredNotifications 호출로 알림 상태를 업데이트
-  useEffect(() => {
-    const subscription = Notifications.addNotificationReceivedListener(
-      fetchDeliveredNotifications
-    );
-    return () => {
-      subscription.remove();
-    };
-  }, []);
-
-  //  앱 로드 시 폰트가 로드될 때까지 스플래시 화면 유지
   useEffect(() => {
     if (!loaded) {
       SplashScreen.preventAutoHideAsync();
@@ -130,14 +57,9 @@ export default function RootLayout() {
       SplashScreen.hideAsync();
     }
   }, [loaded]);
-
   if (!loaded) {
     return null;
   }
-
-  const handleNotificationClick = () => {
-    setNotification([]); // 알림을 읽은 것으로 간주하여 배열을 빈 배열로 만듦
-  };
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
@@ -155,37 +77,7 @@ export default function RootLayout() {
                   yom
                 </Text>
               ),
-              headerRight: () => (
-                <View className="flex-row items-center justify-end  w-[82px]">
-                  {/* <View className="flex-row items-center">
-                    <Image
-                      source={require("@/assets/images/icons/coin-icon.png")}
-                      style={{ width: 22, height: 22 }}
-                    />
-                    <Text className="font-[WantedSB] ml-2 text-yomOrange text-[15px]">
-                      11
-                    </Text>
-                  </View> */}
-
-                  <Link
-                    href="/notification"
-                    key={notification.length}
-                    onPress={handleNotificationClick}
-                  >
-                    {notification.length > 0 ? (
-                      <Image
-                        source={require("@/assets/images/icons/notification-unread-icon.png")}
-                        style={{ width: 22, height: 22 }}
-                      />
-                    ) : (
-                      <Image
-                        source={require("@/assets/images/icons/notification-icon.png")}
-                        style={{ width: 22, height: 22 }}
-                      />
-                    )}
-                  </Link>
-                </View>
-              ),
+              headerRight: () => <HeaderRight />,
               headerStyle: {
                 backgroundColor: Colors.light.background,
               },
