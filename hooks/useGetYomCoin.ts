@@ -26,7 +26,7 @@ const useGetYomCoin = () => {
 
       if (yomCoinData) {
         setData(yomCoinData[0].coin); // Assign the fetched value
-        console.log("Fetched data:", yomCoinData[0].coin);
+        // console.log("Fetched data:", yomCoinData[0].coin);
       }
     } catch (err: any) {
       setError(err.message);

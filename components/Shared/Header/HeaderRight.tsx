@@ -70,7 +70,7 @@ const HeaderRight = () => {
   }, [appState]);
 
   return (
-    <View className="flex-row items-center justify-between  w-[82px]">
+    <View className="flex-row items-center justify-between  w-[90px]">
       <View className="flex-row items-center">
         <Image
           source={require("@/assets/images/icons/coin-icon.png")}

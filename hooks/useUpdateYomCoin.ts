@@ -43,9 +43,6 @@ const useUpdateYomCoin = () => {
 
       // 상태를 업데이트하여 zustand store에서 coin 값을 최신으로 유지
       setYomCoin(newCoinValue);
-
-      // Supabase 데이터가 변경되었으므로 데이터를 리프레시합니다.
-      refetch();
     } catch (err: any) {
       setError(err.message);
       console.error("Update failed:", err.message);

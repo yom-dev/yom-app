@@ -74,7 +74,7 @@ const Setting = () => {
 
         <TouchableOpacity
           onPress={() => {
-            updateYomCoin(5);
+            updateYomCoin(100);
           }} // Call handleDeleteAccount on press
           disabled={isDeleting} // Disable the button while deleting
           className="h-[50px] flex justify-center w-[90%]"
