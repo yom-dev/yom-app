@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { supabase } from "@/utils/supabase";
 import useGetYomCoin from "./useGetYomCoin";
-
 import { useGetUser } from "./useGetUser";
+import useYomCoinStore from "@/shared/store/yomCoinStore"; // zustand store 임포트
 
 // Custom hook to update YomCoin in Supabase using RPC
 const useUpdateYomCoin = () => {
@@ -15,6 +15,8 @@ const useUpdateYomCoin = () => {
   const { user } = useGetUser();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const { setYomCoin } = useYomCoinStore(); // zustand store에서 setYomCoin 가져오기
 
   const updateYomCoin = async (incrementValue: number) => {
     if (loadingCoin) {
@@ -31,14 +33,19 @@ const useUpdateYomCoin = () => {
       const { error } = await supabase
         .from("yom_coin")
         .update({ coin: newCoinValue })
-        .eq("user_id", user.id); // 예시로 id가 1인 레코드를 업데이트
+        .eq("user_id", user.id); // 예시로 user.id를 사용하여 레코드를 업데이트
 
       if (error) {
         throw new Error(error.message);
       }
 
       console.log("Update successful:", newCoinValue);
-      refetch;
+
+      // 상태를 업데이트하여 zustand store에서 coin 값을 최신으로 유지
+      setYomCoin(newCoinValue);
+
+      // Supabase 데이터가 변경되었으므로 데이터를 리프레시합니다.
+      refetch();
     } catch (err: any) {
       setError(err.message);
       console.error("Update failed:", err.message);
