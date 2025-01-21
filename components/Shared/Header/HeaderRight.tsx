@@ -12,7 +12,12 @@ import * as Notifications from "expo-notifications";
 import useGetYomCoin from "@/hooks/useGetYomCoin";
 
 const HeaderRight = () => {
-  const { data, loading, error } = useGetYomCoin();
+  const { data, loading, error, refetch } = useGetYomCoin();
+
+  useEffect(() => {
+    refetch;
+  }, []);
+
   const [notification, setNotification] = useState<
     Notifications.Notification[]
   >([]);

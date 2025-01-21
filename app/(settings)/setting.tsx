@@ -3,6 +3,7 @@ import React from "react";
 import SettingSlot from "@/components/Page/SettingPage/SettingSlot";
 import { supabase } from "@/utils/supabase";
 import { useDeleteUser } from "@/hooks/useDeleteUser";
+import useUpdateYomCoin from "@/hooks/useUpdateYomCoin";
 
 const Setting = () => {
   const handleSignOut = () => {
@@ -10,6 +11,7 @@ const Setting = () => {
   };
 
   const { deleteUser, isDeleting } = useDeleteUser();
+  const { updateYomCoin, loading, error } = useUpdateYomCoin();
 
   const handleDeleteAccount = () => {
     Alert.alert(
@@ -68,6 +70,16 @@ const Setting = () => {
           <Text className="text-yomRed font-semibold">
             Request User Deletion
           </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={() => {
+            updateYomCoin(5);
+          }} // Call handleDeleteAccount on press
+          disabled={isDeleting} // Disable the button while deleting
+          className="h-[50px] flex justify-center w-[90%]"
+        >
+          <Text className="text-yomRed font-semibold">플러스 </Text>
         </TouchableOpacity>
       </View>
     </View>
