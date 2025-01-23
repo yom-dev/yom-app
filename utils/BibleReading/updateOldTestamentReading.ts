@@ -26,7 +26,7 @@ const updateOldTestamentReading = (
     setError(null); // 이전 에러 초기화
     try {
       const { data, error } = await supabase
-        .from("bibleReadingContent")
+        .from("bible_reading_content")
         .update({ oldTestament: sectionData })
         .eq("planName", planName);
 

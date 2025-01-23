@@ -17,7 +17,7 @@ export const planDeleteAlert = (planName: string, userId: string | null) => {
           const { data, error } = await supabase
             .from("my_plans")
             .update({ [planName]: false }) // 예시로 수정한 부분
-            .eq("id", userId);
+            .eq("user_id", userId);
 
           if (error) {
             console.error("Error updating data:", error);

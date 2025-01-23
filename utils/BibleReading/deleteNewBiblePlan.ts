@@ -5,7 +5,7 @@ const deleteBiblePlan = async (planName: string) => {
   const id = useGetUserId();
   try {
     const { error } = await supabase
-      .from("bibleReadingContent")
+      .from("bible_reading_content")
       .delete()
       .eq("user_id", id)
       .eq("planName", planName);

@@ -50,7 +50,7 @@ const ProfileEditModal: React.FC<ProfileEditProps> = ({
         userName,
         birthDate: birthDate.toISOString().split("T")[0],
       })
-      .eq("id", user?.id); // user ID 기준으로 업데이트
+      .eq("user_id", user?.id); // user ID 기준으로 업데이트
 
     if (error) {
       console.error("Error updating profile:", error);

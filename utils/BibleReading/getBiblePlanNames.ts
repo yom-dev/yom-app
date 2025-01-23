@@ -5,11 +5,11 @@ import { BibleReadingContentType } from "@/shared/types/BibleReadingContentType"
 
 const getBiblePlanNames = () => {
   const [initialData, setInitialData] = useState<
-    Pick<BibleReadingContentType, "planName" | "created_at" | "id">[] | null
+    Pick<BibleReadingContentType, "planName" | "createdAt" | "id">[] | null
   >(null);
   const [data, setData] = useState<Pick<
     BibleReadingContentType,
-    "planName" | "created_at" | "id"
+    "planName" | "createdAt" | "id"
   > | null>(null);
 
   const [error, setError] = useState<string | null>(null);
@@ -20,8 +20,8 @@ const getBiblePlanNames = () => {
     setLoading(true);
     try {
       const { data, error } = await supabase
-        .from("bibleReadingContent")
-        .select("id, planName, created_at"); // 필요한 열만 선택
+        .from("bible_reading_content")
+        .select("id, planName, createdAt"); // 필요한 열만 선택
 
       if (error) throw error;
 

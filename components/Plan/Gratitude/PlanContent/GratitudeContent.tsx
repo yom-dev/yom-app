@@ -63,8 +63,8 @@ const GratitudeContent: React.FC<GratitudeContentProps> = ({
 
     try {
       const { data, error } = await supabase
-        .from("gratitudeContent")
-        .insert([{ id: id, createdAt: currentTime, item1, item2, item3 }]);
+        .from("gratitude_content")
+        .insert([{ user_id: id, createdAt: currentTime, item1, item2, item3 }]);
 
       if (error) {
         console.error("Supabase Error:", error);

@@ -60,7 +60,7 @@ const InfoPage = () => {
     const { data, error } = await supabase
       .from("my_plans")
       .update({ [infoPlanName as string]: true })
-      .eq("id", userId);
+      .eq("user_id", userId);
 
     if (error) {
       console.error("Error updating data:", error);

@@ -16,8 +16,8 @@ interface StatsProps {
 }
 
 const Stats: React.FC<StatsProps> = ({ data, loading, refetch, error }) => {
-  const startDate = data?.created_at
-    ? new Date(data.created_at).toLocaleDateString("en-US")
+  const startDate = data?.createdAt
+    ? new Date(data.createdAt).toLocaleDateString("en-US")
     : null;
 
   const startDateString = startDate || "";

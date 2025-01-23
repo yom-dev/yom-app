@@ -20,7 +20,7 @@ const useGetStoreItems = () => {
   useEffect(() => {
     const fetchStoreItems = async () => {
       try {
-        let { data, error } = await supabase.from("planStore").select("*");
+        let { data, error } = await supabase.from("plan_store").select("*");
         if (error) {
           throw new Error(error.message);
         }

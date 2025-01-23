@@ -3,7 +3,7 @@ import { supabase } from "@/utils/supabase";
 const createNewBiblePlan = async (planName: string, id: string) => {
   try {
     const { error } = await supabase
-      .from("bibleReadingContent")
+      .from("bible_reading_content")
       .insert([{ user_id: id, planName: planName }]);
 
     if (error) {

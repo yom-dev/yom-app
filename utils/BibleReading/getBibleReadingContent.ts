@@ -17,7 +17,7 @@ const getBibleReadingContent = (planName: string | null | undefined) => {
     setLoading(true);
     try {
       const { data, error } = await supabase
-        .from("bibleReadingContent")
+        .from("bible_reading_content")
         .select("*")
         .eq("planName", `${planName}`);
 

@@ -14,7 +14,7 @@ const getGratitudeItems = () => {
     setLoading(true);
     try {
       const { data, error } = await supabase
-        .from("gratitudeContent")
+        .from("gratitude_content")
         .select("*");
 
       if (error) throw error;

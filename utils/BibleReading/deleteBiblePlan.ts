@@ -3,7 +3,7 @@ import { supabase } from "@/utils/supabase";
 const deleteBiblePlan = async (planName: string, user_id: string | null) => {
   try {
     const { error } = await supabase
-      .from("bibleReadingContent")
+      .from("bible_reading_content")
       .delete()
       .eq("user_id", user_id)
       .eq("planName", planName);

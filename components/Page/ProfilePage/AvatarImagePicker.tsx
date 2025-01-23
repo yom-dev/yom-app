@@ -18,14 +18,14 @@ export default function AvatarImagePicker() {
       try {
         const { data, error } = await supabase
           .from("profiles")
-          .select("avatarUrl")
-          .eq("id", user.id)
+          .select("avatar_url")
+          .eq("user_id", user.id)
           .single();
 
         if (error) {
           console.error("Error fetching avatar URL:", error);
         } else if (data) {
-          setImage(data.avatarUrl);
+          setImage(data.avatar_url);
         }
       } catch (error) {
         console.error("Unexpected error occurred", error);
@@ -57,8 +57,8 @@ export default function AvatarImagePicker() {
         // Supabase profiles 테이블에 avatarUrl로 경로를 업데이트
         const { error } = await supabase
           .from("profiles")
-          .update({ avatarUrl: selectedImageUri }) // 이미지 경로를 바로 업데이트
-          .eq("id", user.id);
+          .update({ avatar_url: selectedImageUri }) // 이미지 경로를 바로 업데이트
+          .eq("user_id", user.id);
 
         if (error) {
           console.error("Error updating avatar URL:", error);

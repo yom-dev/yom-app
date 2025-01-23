@@ -21,7 +21,7 @@ export type Section = {
 export type BibleReadingContentType = {
   id: number;
   user_id: string;
-  created_at: Date;
+  createdAt: Date;
   planName: string;
   oldTestament: Section[];
   newTestament: Section[];

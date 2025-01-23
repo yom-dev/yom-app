@@ -20,7 +20,7 @@ const useGetPlanInfo = (infoPlanName: string | undefined) => {
     const fetchPlanStore = async () => {
       if (infoPlanName) {
         let { data, error } = await supabase
-          .from("planStore")
+          .from("plan_store")
           .select("*")
           .eq("planName", infoPlanName); // Filter the data by planName
 

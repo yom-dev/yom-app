@@ -23,7 +23,7 @@ const updateNewTestamentReading = (initialPlanName: string) => {
     setError(null); // 이전 에러 초기화
     try {
       const { data, error } = await supabase
-        .from("bibleReadingContent")
+        .from("bible_reading_content")
         .update({ newTestament: sectionData })
         .eq("planName", planName);
 

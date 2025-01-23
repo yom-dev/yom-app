@@ -38,7 +38,7 @@ const MyBiblePlans: React.FC<MyBiblePlansProps> = ({ onClose }) => {
         renderItem={({ item }) => (
           <BiblePlanItem
             title={item.planName}
-            startDate={item.created_at}
+            startDate={item.createdAt}
             onClose={() => {
               onClose();
             }}
