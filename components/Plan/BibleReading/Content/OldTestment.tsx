@@ -8,6 +8,7 @@ import { useOldTestamentStore } from "@/shared/store/BibleReading/useOldTestamen
 import CustomButton from "@/components/Shared/Button/CustomButton";
 import updateNewTestamentReading from "@/utils/BibleReading/updateNewTestamentReading";
 import updateOldTestamentReading from "@/utils/BibleReading/updateOldTestamentReading";
+import { useModal } from "@/shared/store/use-modal-store";
 
 interface OldTestmentProps {
   data: Section[] | undefined;
@@ -24,6 +25,7 @@ const OldTestment: React.FC<OldTestmentProps> = ({
   error,
   planName,
 }) => {
+  const { onOpen } = useModal();
   const bookData = useOldTestamentStore((state) => state.OldTestamentBooks);
 
   const { newData, newLoading, newError, newRefetch } =
@@ -38,7 +40,8 @@ const OldTestment: React.FC<OldTestmentProps> = ({
 
     if (isNewSuccess && isOldSuccess) {
       // 둘 다 성공하면 성공 메시지 표시
-      Alert.alert("Success", "Reading saved successfully.");
+      // Alert.alert("Success", "Reading saved successfully.");
+      onOpen("RewardedAd", 2);
     } else {
       // 둘 중 하나라도 실패하면 에러 메시지 표시
       Alert.alert(

@@ -1,14 +1,15 @@
 import React from "react";
-import ProfileEditModal from "@/components/Shared/Modal/Profile/ProfileEditModal";
 import { useModal } from "@/shared/store/use-modal-store";
+import { RewardedAd } from "react-native-google-mobile-ads";
+import RewardedAdModal from "@/components/Shared/Modal/Advertisement/RewardedAdModal";
 
 const ModalProvider = () => {
-  const { type, isOpen, onClose } = useModal();
+  const { type, isOpen, onClose, param1 } = useModal();
 
   return (
     <>
-      {type === "profileEdit" && (
-        <ProfileEditModal visible={isOpen} onRequestClose={onClose} />
+      {type === "RewardedAd" && (
+        <RewardedAdModal visible={isOpen} param1={param1} />
       )}
     </>
   );

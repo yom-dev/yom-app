@@ -13,6 +13,7 @@ import { supabase } from "@/utils/supabase";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { GratitudeContentType } from "@/shared/types/GratitudeContentType";
 import { useGetUserId } from "@/hooks/useGetUserId";
+import { useModal } from "@/shared/store/use-modal-store";
 
 interface GratitudeContentProps {
   data: GratitudeContentType[] | null;
@@ -32,6 +33,9 @@ const GratitudeContent: React.FC<GratitudeContentProps> = ({
   const currentTime = new Date();
   const { data: id } = useGetUserId();
   const todayDate = currentTime.toISOString().split("T")[0];
+  const [gLoading, setGLoading] = useState(false);
+
+  const { onOpen } = useModal();
 
   useEffect(() => {
     const todayEntry = data?.find(
@@ -54,16 +58,28 @@ const GratitudeContent: React.FC<GratitudeContentProps> = ({
       return;
     }
 
-    const { data, error } = await supabase
-      .from("gratitudeContent")
-      .insert([{ id: id, createdAt: currentTime, item1, item2, item3 }]);
+    setGLoading(true); // 저장 시작 시 로딩 상태 활성화
+    // await new Promise((resolve) => setTimeout(resolve, 3000));
 
-    if (error) {
-      alert("Error saving data");
-      console.error("Supabase Error:", error);
-    } else {
-      alert("Data saved successfully");
+    try {
+      const { data, error } = await supabase
+        .from("gratitudeContent")
+        .insert([{ id: id, createdAt: currentTime, item1, item2, item3 }]);
+
+      if (error) {
+        console.error("Supabase Error:", error);
+        alert("Error saving data");
+      } else if (data) {
+        // alert("Data saved successfully");
+        // refetch(); // 데이터 리로드
+      }
+    } catch (err) {
+      console.error("Unexpected Error:", err);
+      alert("An unexpected error occurred.");
+    } finally {
+      setGLoading(false); // 저장 작업 종료 후 로딩 상태 해제
       refetch();
+      onOpen("RewardedAd", 5);
     }
   };
 
@@ -129,12 +145,18 @@ const GratitudeContent: React.FC<GratitudeContentProps> = ({
         {!hasTodayEntry && (
           <View className="w-full h-[45px] mt-[35px] fixed bottom-[20%]">
             <CustomButton
-              title="Save"
+              title={gLoading ? "Loading" : "Save"}
               titleSize={18}
               backgroundColor="yomGreen"
               activeBackgroundColor="yomDarkGreen"
               textColor="yomWhite"
-              onPress={handleSave}
+              onPress={
+                gLoading
+                  ? () => {}
+                  : () => {
+                      handleSave();
+                    }
+              }
             />
           </View>
         )}
