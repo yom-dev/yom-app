@@ -34,7 +34,7 @@ const NewTestment: React.FC<NewTestmentProps> = ({ planName }) => {
     if (isNewSuccess && isOldSuccess) {
       // 둘 다 성공하면 성공 메시지 표시
       // Alert.alert("Success", "Reading saved successfully.");
-      onOpen("RewardedAd", 2);
+      onOpen("RewardedAdCap", 2);
     } else {
       // 둘 중 하나라도 실패하면 에러 메시지 표시
       Alert.alert(

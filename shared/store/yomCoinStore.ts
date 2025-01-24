@@ -1,4 +1,4 @@
-import create from "zustand";
+import { create } from "zustand";
 
 // YomCoin 상태의 타입 정의
 interface YomCoinStore {

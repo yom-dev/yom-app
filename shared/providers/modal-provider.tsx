@@ -2,6 +2,7 @@ import React from "react";
 import { useModal } from "@/shared/store/use-modal-store";
 import { RewardedAd } from "react-native-google-mobile-ads";
 import RewardedAdModal from "@/components/Shared/Modal/Advertisement/RewardedAdModal";
+import RewardedAdCapModal from "@/components/Shared/Modal/Advertisement/RewardedAdCapModal";
 
 const ModalProvider = () => {
   const { type, isOpen, onClose, param1 } = useModal();
@@ -10,6 +11,10 @@ const ModalProvider = () => {
     <>
       {type === "RewardedAd" && (
         <RewardedAdModal visible={isOpen} param1={param1} />
+      )}
+
+      {type === "RewardedAdCap" && (
+        <RewardedAdCapModal visible={isOpen} param1={param1} />
       )}
     </>
   );

@@ -22,17 +22,18 @@ interface RewardedAdModalProps {
   param1: number;
 }
 
-const RewardedAdModal: React.FC<RewardedAdModalProps> = ({
+const RewardedAdCapModal: React.FC<RewardedAdModalProps> = ({
   visible,
   param1,
 }) => {
   const { isLoaded, isClosed, load, show, reward, error } = useRewardedAd(
-    AdMobID.rewardedAd
+    AdMobID.rewardedAdCap
   );
 
   const { onClose } = useModal();
   const { updateYomCoin } = useUpdateYomCoin();
   const [AdLoading, setAdLoading] = useState(false);
+  const [capReached, setCapReached] = useState(false);
   const [errorMSG, setErrorMSG] = useState("");
   const [adError, setAdError] = useState(false);
 
@@ -55,16 +56,25 @@ const RewardedAdModal: React.FC<RewardedAdModalProps> = ({
 
   useEffect(() => {
     setAdError(false);
+    setCapReached(false);
   }, [visible]);
 
   //에러가 발생했을 경우 에러
   useEffect(() => {
     if (error) {
-      // 기타 에러 처리
-      console.log("error:", error);
-      setAdLoading(false);
-      setAdError(true);
-      setErrorMSG("Failed to load an Ad. Please try again.");
+      if (error.message && error.message.includes("Frequency cap reached")) {
+        // Frequency cap reached 처리
+        setCapReached(true);
+        setAdError(true);
+        setErrorMSG("You have reached the hourly limit of ads.");
+        setAdLoading(false);
+      } else {
+        // 기타 에러 처리
+        console.log("error:", error);
+        setAdLoading(false);
+        setAdError(true);
+        setErrorMSG("Failed to load an Ad. Please try again.");
+      }
     }
   }, [error]);
 
@@ -94,7 +104,6 @@ const RewardedAdModal: React.FC<RewardedAdModalProps> = ({
         <View className="w-[80%] h-[33%] p-4 bg-white rounded-lg">
           <View className="w-full h-[75%] flex justify-center items-center py-2">
             <Text className="font-[WantedSB] text-[26px] mb-6">
-              {" "}
               {adError ? "I'm sorry." : "Horray!"}
             </Text>
             <View className="w-full flex items-center">
@@ -107,7 +116,7 @@ const RewardedAdModal: React.FC<RewardedAdModalProps> = ({
                 style={{ width: 80, height: 80, marginBottom: 12 }}
               ></Image>
               <Text className="font-[WantedSB] text-[12px] text-yomRed">
-                {adError ? errorMSG : `Don't miss ${param1} yom coin(s)!`}{" "}
+                {adError ? errorMSG : `Don't miss ${param1} yom coin(s)!`}
               </Text>
             </View>
           </View>
@@ -125,7 +134,7 @@ const RewardedAdModal: React.FC<RewardedAdModalProps> = ({
 
             <TouchableOpacity
               onPress={AdLoading ? undefined : handlePress}
-              disabled={AdLoading}
+              disabled={AdLoading || capReached}
               className={`w-[48%] h-full rounded-lg flex-row justify-center items-center ${
                 AdLoading ? "bg-orange-300" : "bg-yomOrange"
               }`}
@@ -135,10 +144,14 @@ const RewardedAdModal: React.FC<RewardedAdModalProps> = ({
               ) : (
                 <>
                   <Text className="font-[WantedR] text-[14px]">
-                    {adError ? `Try Again${"  "}` : ` Get Coins${"  "}`}
+                    {adError ? `Oops!${"  "}` : `Get Coins${"  "}`}
                   </Text>
                   <Image
-                    source={require("@/assets/images/icons/coin-icon.png")}
+                    source={
+                      adError
+                        ? require("@/assets/images/icons/warning-icon-2.png")
+                        : require("@/assets/images/icons/coin-icon.png")
+                    }
                     style={{ width: 20, height: 20 }}
                   />
                 </>
@@ -151,4 +164,4 @@ const RewardedAdModal: React.FC<RewardedAdModalProps> = ({
   );
 };
 
-export default RewardedAdModal;
+export default RewardedAdCapModal;
