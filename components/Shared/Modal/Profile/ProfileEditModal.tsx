@@ -113,7 +113,7 @@ const ProfileEditModal: React.FC<ProfileEditProps> = ({
                 style={{ flex: 1 }}
               />
             </View>
-            <View className="w-full h-[46px] border-yomGray border-[0.5px] rounded-3xl mt-[10px]">
+            <View className="w-full h-[46px]  rounded-3xl mt-[10px]">
               <SignInButton
                 title="Save Profile"
                 titleSize={14}

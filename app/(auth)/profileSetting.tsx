@@ -8,10 +8,10 @@ import { useGetUser } from "@/hooks/useGetUser";
 import { ScrollView } from "react-native-gesture-handler";
 
 const ProfileSetting = () => {
-  const [first_name, setFirstName] = useState("");
-  const [last_name, setLastName] = useState("");
-  const [user_name, setUserName] = useState("");
-  const [birth_date, setBirthDate] = useState(new Date());
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [userName, setUserName] = useState("");
+  const [birthDate, setBirthDate] = useState(new Date());
   const { user, loading, error } = useGetUser();
 
   // DatePicker 변경 핸들러
@@ -27,10 +27,10 @@ const ProfileSetting = () => {
     const { data, error } = await supabase
       .from("profiles") // 테이블 이름
       .update({
-        first_name,
-        last_name,
-        user_name,
-        birth_date: birth_date.toISOString().split("T")[0], // Date 객체를 YYYY-MM-DD 형식으로 변환
+        firstName,
+        lastName,
+        userName,
+        birthDate: birthDate.toISOString().split("T")[0], // Date 객체를 YYYY-MM-DD 형식으로 변환
       })
       .eq("user_id", user.id); // 업데이트할 row 식별 (여기서는 userName을 기준으로 업데이트)
 
@@ -45,9 +45,9 @@ const ProfileSetting = () => {
   };
 
   return (
-    <View className="bg-white h-full w-full flex items-center ">
-      <ScrollView className="w-[90%] h-full">
-        <View className="flex items-center h-[10%] justify-end">
+    <View className="bg-white h-full w-full flex items-center justify-center">
+      <ScrollView className="w-[90%] h-full ">
+        <View className="flex items-center h-[10%] justify-end mt-[70px]">
           <Text className="font-[WantedSB] text-[40px]">yom</Text>
         </View>
 
@@ -56,7 +56,7 @@ const ProfileSetting = () => {
 
           <TextInput
             onChangeText={(text) => setFirstName(text)}
-            value={first_name}
+            value={firstName}
             placeholder="First Name"
             autoCapitalize={"words"}
             className="border border-yomGray h-[50px] rounded-2xl p-3 w-full font-[WantedR] text-[14px]"
@@ -64,7 +64,7 @@ const ProfileSetting = () => {
 
           <TextInput
             onChangeText={(text) => setLastName(text)}
-            value={last_name}
+            value={lastName}
             placeholder="Last Name"
             autoCapitalize={"words"}
             className="border border-yomGray h-[50px] rounded-2xl p-3 w-full font-[WantedR] text-[14px]"
@@ -72,7 +72,7 @@ const ProfileSetting = () => {
 
           <TextInput
             onChangeText={(text) => setUserName(text)}
-            value={user_name}
+            value={userName}
             placeholder="Username"
             autoCapitalize={"words"}
             className="border border-yomGray h-[50px] rounded-2xl p-3 w-full font-[WantedR] text-[14px]"
@@ -83,12 +83,12 @@ const ProfileSetting = () => {
             <DateTimePicker
               mode="date" // 날짜 선택 모드
               display="spinner"
-              value={birth_date}
+              value={birthDate}
               onChange={handleDateChange} // 날짜 변경 핸들러
               style={{ flex: 1 }}
             />
           </View>
-          <View className="w-full h-[46px] border-yomGray border-[0.5px] rounded-3xl mt-[7px]">
+          <View className="w-full h-[46px]  rounded-3xl mt-[7px]">
             <SignInButton
               title="Save Profile"
               titleSize={14}
