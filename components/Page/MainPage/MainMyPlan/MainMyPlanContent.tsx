@@ -24,7 +24,7 @@ const MainMyPlanContent = () => {
       startColor: "#615EE2",
       endColor: "#BA8DF3",
       title: "Reading",
-      planName: "reading",
+      planName: "bibleReadin",
       subTitle: "Coming Soon",
     },
     {

@@ -31,7 +31,7 @@ const MainCarousel = ({
       Component: TutorialMainCard,
     },
     {
-      key: "3",
+      key: "2",
       Component: yomMainCard,
     },
   ];

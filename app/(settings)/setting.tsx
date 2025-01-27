@@ -72,7 +72,7 @@ const Setting = () => {
           </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity
+        {/* <TouchableOpacity
           onPress={() => {
             updateYomCoin(100);
           }} // Call handleDeleteAccount on press
@@ -80,7 +80,7 @@ const Setting = () => {
           className="h-[50px] flex justify-center w-[90%]"
         >
           <Text className="text-yomRed font-semibold">플러스 </Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
     </View>
   );
