@@ -14,7 +14,7 @@ type PlanName = keyof typeof icons;
 
 interface StoreCardProps {
   planName: string;
-
+  price: number;
   title: string;
   description: string;
   isActive: boolean;
@@ -22,7 +22,7 @@ interface StoreCardProps {
 
 const StoreCard = ({
   planName,
-
+  price,
   title,
   description,
   isActive,
@@ -61,8 +61,15 @@ const StoreCard = ({
               </LinearGradient>
             </View>
 
-            <View className="mt-[10px]">
-              <Text className="font-[WantedB] text-[18px] w-full">{title}</Text>
+            <View className="mt-[10px] w-full flex-row justify-between items-end">
+              <Text className="font-[WantedB] text-[18px]">{title}</Text>
+              <View className="w-fit h-full  flex-row justify-between items-end">
+                <Image
+                  source={require("@/assets/images/icons/coin-icon.png")}
+                  className="w-[16px] h-[16px]"
+                />
+                <Text className="font-[WantedM] text-[12px] ml-1">{price}</Text>
+              </View>
             </View>
 
             <View className="w-full mt-[5px] font-[WantedM] ">

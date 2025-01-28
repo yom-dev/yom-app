@@ -9,6 +9,7 @@ interface PlanStore {
   subTitle: string;
   title: string;
   description: string;
+  price: number;
 }
 
 // Custom hook to fetch store items from Supabase

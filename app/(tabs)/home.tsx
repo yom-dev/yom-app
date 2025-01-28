@@ -94,7 +94,7 @@ export default function HomeScreen() {
                 </View>
               </View>
 
-              <View className="w-full h-[60px]"></View>
+              <View className="w-full h-[40px]"></View>
             </View>
           }
         />

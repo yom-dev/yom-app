@@ -47,6 +47,7 @@ export default function Plan() {
                     description={item.subTitle}
                     planName={item.planName}
                     isActive={item.isActive}
+                    price={item.price}
                   />
                 </View>
               )}
