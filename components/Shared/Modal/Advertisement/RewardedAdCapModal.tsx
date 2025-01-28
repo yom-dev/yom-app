@@ -15,7 +15,6 @@ import {
 import useUpdateYomCoin from "@/hooks/useUpdateYomCoin";
 import AdMobID from "@/constants/AdMobID";
 import { useModal } from "@/shared/store/use-modal-store";
-import { isLoading } from "expo-font";
 
 interface RewardedAdModalProps {
   visible: boolean;

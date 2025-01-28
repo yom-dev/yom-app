@@ -9,6 +9,7 @@ interface PlanStore {
   subTitle: string;
   title: string;
   description: string;
+  price: number;
 }
 
 const useGetPlanInfo = (infoPlanName: string | undefined) => {

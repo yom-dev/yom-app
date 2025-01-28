@@ -1,20 +1,19 @@
 import { router, useLocalSearchParams } from "expo-router";
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
   ScrollView,
   ImageBackground,
   ActivityIndicator,
-  Alert,
 } from "react-native";
 import CustomButton from "@/components/Shared/Button/CustomButton";
 import InfoContent from "./infoContent";
 import { icons } from "@/constants/Icons";
 import useGetPlanInfo from "@/hooks/useGetPlanInfo"; // Import the custom hook
-import { supabase } from "@/utils/supabase";
-import { useGetUserId } from "@/hooks/useGetUserId";
 import useGetMyPlans from "@/hooks/useGetMyPlans";
+import PlanPurchaseModal from "@/components/Shared/Modal/PlanStore/PlanPurchaseModal";
+
 type PlanName = keyof typeof icons;
 
 const InfoPage = () => {
@@ -24,7 +23,10 @@ const InfoPage = () => {
     loading,
     error,
   } = useGetPlanInfo(infoPlanName as string);
-  const { data: userId } = useGetUserId();
+
+  const planPrice = infoData?.price;
+  const [modalVisible, setModalVisible] = useState(false);
+
   const {
     trueKeys,
     loading: myPlansLoading,
@@ -33,10 +35,6 @@ const InfoPage = () => {
 
   // Check if the current plan is already in the user's plans
   const isInMyPlans = trueKeys.some((plan) => plan.planName === infoPlanName);
-
-  useEffect(() => {
-    console.log("True Keys:", trueKeys);
-  }, [trueKeys]);
 
   if (loading || myPlansLoading) {
     return (
@@ -57,18 +55,7 @@ const InfoPage = () => {
   const icon = icons[infoData.planName as PlanName];
 
   const handleSave = async () => {
-    const { data, error } = await supabase
-      .from("my_plans")
-      .update({ [infoPlanName as string]: true })
-      .eq("user_id", userId);
-
-    if (error) {
-      console.error("Error updating data:", error);
-    } else {
-      console.log("Data updated successfully:", data);
-      Alert.alert("Plan Added!");
-      router.replace("/(tabs)/plan");
-    }
+    setModalVisible(true);
   };
 
   return (
@@ -127,6 +114,14 @@ const InfoPage = () => {
 
         {/* button */}
       </View>
+      <PlanPurchaseModal
+        visible={modalVisible}
+        price={planPrice}
+        infoPlanName={infoPlanName}
+        onClose={() => {
+          setModalVisible(false);
+        }}
+      />
     </View>
   );
 };
