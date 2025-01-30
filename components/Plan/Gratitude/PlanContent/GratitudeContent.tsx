@@ -30,19 +30,40 @@ const GratitudeContent: React.FC<GratitudeContentProps> = ({
   const [item2, setItem2] = useState("");
   const [item3, setItem3] = useState("");
   const [hasTodayEntry, setHasTodayEntry] = useState(false);
+
+  //현재 날짜 및 시간 변수
   const currentTime = new Date();
+
+  //유저 id
   const { data: id } = useGetUserId();
-  const todayDate = currentTime.toISOString().split("T")[0];
+
+  //서버에 업로드 상태 저장
   const [gLoading, setGLoading] = useState(false);
 
+  // 모달 오픈
   const { onOpen } = useModal();
 
   useEffect(() => {
-    const todayEntry = data?.find(
-      (entry) =>
-        entry &&
-        new Date(entry.createdAt).toISOString().split("T")[0] === todayDate
+    const now = new Date();
+    const localDate = new Date(
+      now.getFullYear(),
+      now.getMonth(),
+      now.getDate()
     );
+
+    const todayEntry = data?.find((entry) => {
+      if (entry !== null) {
+        const entryDate = new Date(entry.createdAt);
+        const entryLocalDate = new Date(
+          entryDate.getFullYear(),
+          entryDate.getMonth(),
+          entryDate.getDate()
+        );
+        return entryLocalDate.getTime() === localDate.getTime(); // 로컬 날짜 기준 비교
+      } else {
+        return false; // entry가 null이면 false 반환하여 find가 계속 진행됨
+      }
+    });
 
     if (todayEntry) {
       setItem1(todayEntry.item1);
@@ -50,7 +71,7 @@ const GratitudeContent: React.FC<GratitudeContentProps> = ({
       setItem3(todayEntry.item3);
       setHasTodayEntry(true);
     }
-  }, [data, todayDate]);
+  }, [data]);
 
   const handleSave = async () => {
     if (hasTodayEntry) {

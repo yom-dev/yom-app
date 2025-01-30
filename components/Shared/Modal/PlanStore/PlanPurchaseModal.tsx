@@ -48,7 +48,7 @@ const PlanPurchaseModal: React.FC<PlanPurchaseModalProps> = ({
         console.error("Error updating data:", error);
       } else {
         console.log("Data updated successfully:", data);
-        Alert.alert("Plan Added!");
+        // Alert.alert("Plan Added!");
         router.replace("/(tabs)/plan");
       }
     }
