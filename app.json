@@ -15,73 +15,125 @@
     "assets": ["./assets/sounds/notification/notificaion_sound_1.wav"],
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "com.yom.office.app"
+      "bundleIdentifier": "com.yom.office.app",
+      "infoPlist": {
+        "NSUserTrackingUsageDescription": "This allows yom.app to provide you with a better ads experience."
+      }
     },
     "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      },
-      "permissions": ["android.permission.RECORD_AUDIO"],
-      "package": "com.yom.app"
+      "package": "com.yom.office.app"
+    }
+  },
+  "android": {
+    "adaptiveIcon": {
+      "foregroundImage": "./assets/images/adaptive-icon.png",
+      "backgroundColor": "#ffffff"
     },
-    "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/favicon.png"
-    },
-    "plugins": [
-      [
-        "expo-notifications",
-        {
-          "icon": "./assets/images/icon.png",
-          "color": "#ffffff",
-          "defaultChannel": "default",
-          "badge": true,
-          "sounds": ["./assets/sounds/notification/notificaion_sound_1.wav"]
-        }
-      ],
-      [
-        "expo-image-picker",
-        {
-          "photosPermission": "Aloow yom to access your camera",
-          "cameraPermission": "Allow yom to access your camera"
-        }
-      ],
-      [
-        "@react-native-google-signin/google-signin",
-        {
-          "iosUrlScheme": "com.googleusercontent.apps.330776642226-97jaa538gdc5bve38kvikm3ik9gndldr"
-        }
-      ],
-      ["expo-router"],
-      [
-        "expo-font",
-        {
-          "fonts": [
-            "./assets/fonts/WantedSans-Medium.otf",
-            "./assets/fonts/WantedSans-Regular.otf",
-            "./assets/fonts/WantedSans-Bold.otf",
-            "./assets/fonts/WantedSans-SemiBold.otf",
-            "./assets/fonts/WantedSans-ExtraBold.otf"
-          ]
-        }
-      ],
-      [
-        "react-native-google-mobile-ads",
-        {
-          "androidAppId": "ca-app-pub-7270360511167481~3716631185",
-          "iosAppId": "ca-app-pub-7270360511167481~3716631185"
-        }
-      ]
-    ],
-    "experiments": {
-      "typedRoutes": true
-    },
-    "extra": {
-      "eas": {
-        "projectId": "ccf0e8ca-7524-4bd4-892b-ee2d1137a7de"
+    "permissions": ["android.permission.RECORD_AUDIO"],
+    "package": "com.yom.app"
+  },
+  "web": {
+    "bundler": "metro",
+    "output": "static",
+    "favicon": "./assets/images/favicon.png"
+  },
+  "plugins": [
+    [
+      "expo-notifications",
+      {
+        "icon": "./assets/images/icon.png",
+        "color": "#ffffff",
+        "defaultChannel": "default",
+        "badge": true,
+        "sounds": ["./assets/sounds/notification/notificaion_sound_1.wav"]
       }
+    ],
+    [
+      "expo-image-picker",
+      {
+        "photosPermission": "Aloow yom to access your camera",
+        "cameraPermission": "Allow yom to access your camera"
+      }
+    ],
+    [
+      "@react-native-google-signin/google-signin",
+      {
+        "iosUrlScheme": "com.googleusercontent.apps.330776642226-97jaa538gdc5bve38kvikm3ik9gndldr"
+      }
+    ],
+    ["expo-router"],
+    [
+      "expo-font",
+      {
+        "fonts": [
+          "./assets/fonts/WantedSans-Medium.otf",
+          "./assets/fonts/WantedSans-Regular.otf",
+          "./assets/fonts/WantedSans-Bold.otf",
+          "./assets/fonts/WantedSans-SemiBold.otf",
+          "./assets/fonts/WantedSans-ExtraBold.otf"
+        ]
+      }
+    ],
+    [
+      "react-native-google-mobile-ads",
+      {
+        "androidAppId": "ca-app-pub-7270360511167481~3716631185",
+        "iosAppId": "ca-app-pub-7270360511167481~3716631185",
+        "userTrackingUsageDescription": "This allows yom.app to provide you with a better ads experience.",
+
+        "skAdNetworkItems": [
+          "cstr6suwn9.skadnetwork",
+          "4fzdc2evr5.skadnetwork",
+          "2fnua5tdw4.skadnetwork",
+          "ydx93a7ass.skadnetwork",
+          "p78axxw29g.skadnetwork",
+          "v72qych5uu.skadnetwork",
+          "ludvb6z3bs.skadnetwork",
+          "cp8zw746q7.skadnetwork",
+          "3sh42y64q3.skadnetwork",
+          "c6k4g5qg8m.skadnetwork",
+          "s39g8k73mm.skadnetwork",
+          "3qy4746246.skadnetwork",
+          "hs6bdukanm.skadnetwork",
+          "mlmmfzh3r3.skadnetwork",
+          "v4nxqhlyqp.skadnetwork",
+          "wzmmz9fp6w.skadnetwork",
+          "su67r6k2v3.skadnetwork",
+          "yclnxrl5pm.skadnetwork",
+          "7ug5zh24hu.skadnetwork",
+          "gta9lk7p23.skadnetwork",
+          "vutu7akeur.skadnetwork",
+          "y5ghdn5j9k.skadnetwork",
+          "v9wttpbfk9.skadnetwork",
+          "n38lu8286q.skadnetwork",
+          "47vhws6wlr.skadnetwork",
+          "kbd757ywx3.skadnetwork",
+          "9t245vhmpl.skadnetwork",
+          "a2p9lx4jpn.skadnetwork",
+          "22mmun2rn5.skadnetwork",
+          "4468km3ulz.skadnetwork",
+          "2u9pt9hc89.skadnetwork",
+          "8s468mfl3y.skadnetwork",
+          "ppxm28t8ap.skadnetwork",
+          "uw77j35x4d.skadnetwork",
+          "pwa73g5rt2.skadnetwork",
+          "578prtvx9j.skadnetwork",
+          "4dzt52r2t5.skadnetwork",
+          "tl55sbb4fm.skadnetwork",
+          "e5fvkxwrpn.skadnetwork",
+          "8c4e2ghe7u.skadnetwork",
+          "3rd42ekr43.skadnetwork",
+          "3qcr597p9d.skadnetwork"
+        ]
+      }
+    ]
+  ],
+  "experiments": {
+    "typedRoutes": true
+  },
+  "extra": {
+    "eas": {
+      "projectId": "ccf0e8ca-7524-4bd4-892b-ee2d1137a7de"
     }
   }
 }

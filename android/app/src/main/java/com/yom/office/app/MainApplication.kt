@@ -1,4 +1,4 @@
-package com.yom.app
+package com.yom.office.app
 
 import android.app.Application
 import android.content.res.Configuration

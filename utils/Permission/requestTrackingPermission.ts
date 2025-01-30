@@ -1,23 +1,17 @@
-import { request, PERMISSIONS } from "react-native-permissions";
-import { Platform } from "react-native";
+import {
+  getTrackingPermissionsAsync,
+  PermissionStatus,
+  requestTrackingPermissionsAsync,
+} from "expo-tracking-transparency";
+import { MobileAds } from "react-native-google-mobile-ads";
 
 const requestTrackingPermission = async () => {
-  if (Platform.OS === "ios") {
-    const result = await request(PERMISSIONS.IOS.APP_TRACKING_TRANSPARENCY);
-    console.log("Tracking permission:", result);
+  const { status } = await getTrackingPermissionsAsync();
+  if (status === PermissionStatus.UNDETERMINED) {
+    await requestTrackingPermissionsAsync();
   }
-};
 
-export default requestTrackingPermission;
-
-import { request, PERMISSIONS } from "react-native-permissions";
-import { Platform } from "react-native";
-
-const requestTrackingPermission = async () => {
-  if (Platform.OS === "ios") {
-    const result = await request(PERMISSIONS.IOS.APP_TRACKING_TRANSPARENCY);
-    console.log("Tracking permission:", result);
-  }
+  const adapterStatuses = await MobileAds().initialize();
 };
 
 export default requestTrackingPermission;

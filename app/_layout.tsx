@@ -22,6 +22,7 @@ import {
   ReanimatedLogLevel,
 } from "react-native-reanimated";
 import HeaderRight from "@/components/Shared/Header/HeaderRight";
+import requestTrackingPermission from "@/utils/Permission/requestTrackingPermission";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -48,6 +49,7 @@ export default function RootLayout() {
   useEffect(() => {
     console.log("Version Check", AppVersionCheck);
     AppVersionCheck();
+    requestTrackingPermission();
   }, []);
 
   useEffect(() => {

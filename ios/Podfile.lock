@@ -9,7 +9,7 @@ PODS:
   - DoubleConversion (1.1.6)
   - EXApplication (6.0.2):
     - ExpoModulesCore
-  - EXConstants (17.0.4):
+  - EXConstants (17.0.5):
     - ExpoModulesCore
   - EXImageLoader (5.0.0):
     - ExpoModulesCore
@@ -72,6 +72,8 @@ PODS:
   - ExpoSplashScreen (0.29.20):
     - ExpoModulesCore
   - ExpoSystemUI (4.0.7):
+    - ExpoModulesCore
+  - ExpoTrackingTransparency (5.1.1):
     - ExpoModulesCore
   - ExpoWebBrowser (14.0.2):
     - ExpoModulesCore
@@ -1804,6 +1806,7 @@ DEPENDENCIES:
   - ExpoModulesCore (from `../node_modules/expo-modules-core`)
   - ExpoSplashScreen (from `../node_modules/expo-splash-screen/ios`)
   - ExpoSystemUI (from `../node_modules/expo-system-ui/ios`)
+  - ExpoTrackingTransparency (from `../node_modules/expo-tracking-transparency/ios`)
   - ExpoWebBrowser (from `../node_modules/expo-web-browser/ios`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - fmt (from `../node_modules/react-native/third-party-podspecs/fmt.podspec`)
@@ -1941,6 +1944,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-splash-screen/ios"
   ExpoSystemUI:
     :path: "../node_modules/expo-system-ui/ios"
+  ExpoTrackingTransparency:
+    :path: "../node_modules/expo-tracking-transparency/ios"
   ExpoWebBrowser:
     :path: "../node_modules/expo-web-browser/ios"
   FBLazyVector:
@@ -2098,7 +2103,7 @@ SPEC CHECKSUMS:
   boost: 1dca942403ed9342f98334bf4c3621f011aa7946
   DoubleConversion: f16ae600a246532c4020132d54af21d0ddb2a385
   EXApplication: 27a524f5c3e671c6218220fba04752629466a1a9
-  EXConstants: cc788e18fb962b77999c16f6b90e551542b1bcf4
+  EXConstants: aa93a3e70f8b37c81a80931cfd23f860b1819167
   EXImageLoader: 759063a65ab016b836f73972d3bb25404888713d
   EXNotifications: 17db1ed04f515dabe11aeb2768bd353b4c005385
   Expo: 377cc60ce8c9030cf52e36987ab3ce099ab9006e
@@ -2116,6 +2121,7 @@ SPEC CHECKSUMS:
   ExpoModulesCore: a6ea87b4d7c647891905d5da53b13eac9c9baa18
   ExpoSplashScreen: c2d80654bda344a827685bb27cb5920512730306
   ExpoSystemUI: 7296f92af7c30ec0fc4305bbeb5c396d7fc9e86c
+  ExpoTrackingTransparency: c7cc2db827cee8e6e7230aada8319c31a54fd2df
   ExpoWebBrowser: 6890a769e6c9d83da938dceb9a03e764afc3ec9c
   FBLazyVector: be509404b5de73a64a74284edcaf73a5d1e128b1
   fmt: 10c6e61f4be25dc963c36bd73fc7b1705fe975be
@@ -2203,6 +2209,6 @@ SPEC CHECKSUMS:
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
   Yoga: fd4ca32b81c4069b4175ad9460b042e17db94b66
 
-PODFILE CHECKSUM: 9299489efe485f99880badb743db96aba06e06c7
+PODFILE CHECKSUM: 5f3d14caaa3f0926b4fee4b9e39749e7491c8a5a
 
 COCOAPODS: 1.15.2

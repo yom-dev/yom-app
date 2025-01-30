@@ -33,17 +33,13 @@
           <string>com.yom.office.app</string>
         </array>
       </dict>
-      <dict>
-        <key>CFBundleURLSchemes</key>
-        <array>
-          <string>com.googleusercontent.apps.330776642226-97jaa538gdc5bve38kvikm3ik9gndldr</string>
-        </array>
-      </dict>
     </array>
     <key>CFBundleVersion</key>
     <string>1</string>
+
     <key>GADApplicationIdentifier</key>
     <string>ca-app-pub-7270360511167481~3716631185</string>
+
     <key>GADDelayAppMeasurementInit</key>
     <false/>
     <key>LSApplicationQueriesSchemes</key>
@@ -75,6 +71,8 @@
       <string>$(PRODUCT_BUNDLE_IDENTIFIER).expo.index_route</string>
       <string>$(PRODUCT_BUNDLE_IDENTIFIER).expo.index_route</string>
     </array>
+    <key>NSUserTrackingUsageDescription</key>
+    <string>This allows yom.app to provide you with a better ads experience.</string>
     <key>UIAppFonts</key>
     <array>
       <string>WantedSans-Medium.otf</string>

@@ -1,4 +1,4 @@
-package com.yom.app
+package com.yom.office.app
 import expo.modules.splashscreen.SplashScreenManager
 
 import android.os.Build
