@@ -69,8 +69,11 @@ const SetInitialNotificationModal: React.FC<
       <View className="flex-1 justify-center items-center bg-black/50">
         <View className="w-[80%] h-[38%] p-4 bg-white rounded-lg flex justify-between">
           <View className="w-full h-fit flex justify-center items-center  ">
-            <Text className="text-[24px] font-[WantedM]">
-              Notification Setting
+            <Text className="text-[24px] font-[WantedM] mb-2">
+              Want a reminder?
+            </Text>
+            <Text className="font-[WantedSB] text-gray-500 text-[11px] text-center">
+              Pick a time, and we'll notify you.
             </Text>
           </View>
 
@@ -83,9 +86,7 @@ const SetInitialNotificationModal: React.FC<
               style={{ flex: 1 }}
             />
           </View>
-          <Text className="font-[WantedM] text-gray-500 text-[10px] text-center">
-            Want a reminder? Pick a time, and we'll notify you.
-          </Text>
+
           <View className="w-full h-[40px]  flex-row justify-between items-center">
             <TouchableOpacity
               onPress={handleSave}

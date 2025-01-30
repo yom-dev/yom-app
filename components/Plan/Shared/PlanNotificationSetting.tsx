@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { View, FlatList, Modal, Text } from "react-native";
+import { View, FlatList, Modal, Text, Alert } from "react-native";
 import NotificationCardWide from "@/components/Notification/NotificationCardWide";
 import { getScheduleNotifications } from "@/utils/Notifications/getScheduledNotifications";
+import { supabase } from "@/utils/supabase";
+import { router } from "expo-router";
 import CustomButton from "@/components/Shared/Button/CustomButton";
-import { planDeleteAlert } from "@/utils/Alert/planDeleteAlert";
 import { useGetUserId } from "@/hooks/useGetUserId";
 import AddNotificationModal from "@/components/Shared/Modal/Notification/AddNotificationModal";
+import useLocalNotifications from "@/hooks/useLocalNotification";
 
 interface PlanNotificationSettingProps {
   planName: string;
@@ -18,9 +20,44 @@ const PlanNotificationSetting = ({
   const [update, setUpdate] = useState(0);
   const [isModalVisible, setModalVisible] = useState(false);
   const { data: userId } = useGetUserId();
+  const { cancelScheduledNotificationById } = useLocalNotifications();
 
   const handleDelete = async () => {
-    planDeleteAlert(planName, userId);
+    Alert.alert(
+      "Remove Plan",
+      "Your data will not be restored. Are you sure you want to remove this plan?",
+      [
+        {
+          text: "Cancel",
+          style: "cancel",
+        },
+        {
+          text: "OK",
+          onPress: async () => {
+            const { data, error } = await supabase
+              .from("my_plans")
+              .update({ [planName]: false })
+              .eq("user_id", userId);
+            const scheduledNotifications = await getScheduleNotifications(
+              planName
+            );
+            for (const notification of scheduledNotifications) {
+              await cancelScheduledNotificationById(notification.identifier);
+            }
+            if (error) {
+              Alert.alert(
+                "Error occurred during deleting plan. Please try again."
+              );
+              console.error("Error updating data:", error);
+            } else {
+              console.log("Data updated successfully:", data);
+              router.push("/(tabs)/plan");
+            }
+          },
+        },
+      ],
+      { cancelable: true }
+    );
   };
 
   const handleAddNotification = () => {
@@ -89,7 +126,9 @@ const PlanNotificationSetting = ({
             backgroundColor="yomRed"
             activeBackgroundColor="yomWhite"
             textColor="yomWhite"
-            onPress={handleDelete}
+            onPress={() => {
+              handleDelete();
+            }}
           />
         </View>
       </View>
