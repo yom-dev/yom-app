@@ -41,6 +41,7 @@ const PlanNotificationSetting = ({
             const scheduledNotifications = await getScheduleNotifications(
               planName
             );
+            console.log(scheduledNotifications);
             for (const notification of scheduledNotifications) {
               await cancelScheduledNotificationById(notification.identifier);
             }
