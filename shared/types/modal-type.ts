@@ -1,4 +1,4 @@
-export type ModalType = "RewardedAd" | "RewardedAdCap";
+export type ModalType = "RewardedAd" | "RewardedAdCap" | "Greetings";
 
 export interface ModalStore {
   type: ModalType | null;

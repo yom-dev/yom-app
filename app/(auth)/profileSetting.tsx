@@ -6,6 +6,7 @@ import { supabase } from "@/utils/supabase"; // Supabase 설정을 불러옵니�
 import SignInButton from "@/components/Shared/Button/SignInButton";
 import { useGetUser } from "@/hooks/useGetUser";
 import { ScrollView } from "react-native-gesture-handler";
+import { useModal } from "@/shared/store/use-modal-store";
 
 const ProfileSetting = () => {
   const [firstName, setFirstName] = useState("");
@@ -13,6 +14,7 @@ const ProfileSetting = () => {
   const [userName, setUserName] = useState("");
   const [birthDate, setBirthDate] = useState(new Date());
   const { user, loading, error } = useGetUser();
+  const { onOpen } = useModal();
 
   // DatePicker 변경 핸들러
   const handleDateChange = (event: any, selectedDate?: Date) => {
@@ -39,8 +41,9 @@ const ProfileSetting = () => {
       Alert.alert("Error", "Failed to update profile.");
     } else {
       console.log("Profile updated successfully:", data);
-      Alert.alert("Success", "Profile saved successfully!");
+      // Alert.alert("Success", "Profile saved successfully!");
       router.replace("/(tabs)/home"); // 성공 시 홈으로 이동
+      onOpen("Greetings", 1);
     }
   };
 

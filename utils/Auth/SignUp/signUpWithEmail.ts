@@ -52,16 +52,16 @@ export async function signUpWithEmail(
   } else {
     router.push("/(auth)/profileSetting");
 
-    Alert.alert(
-      "Welcome to yom!",
-      "Sign-up successful🎉",
-      [
-        {
-          text: "OK",
-        },
-      ],
-      { cancelable: false }
-    );
+    //   Alert.alert(
+    //     "Welcome to yom!",
+    //     "Sign-up successful🎉",
+    //     [
+    //       {
+    //         text: "OK",
+    //       },
+    //     ],
+    //     { cancelable: false }
+    //   );
   }
 
   setLoading(false);

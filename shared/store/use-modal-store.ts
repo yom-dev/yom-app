@@ -15,5 +15,5 @@ export const useModal = create<ModalState>((set) => ({
   param1: 1, // 초기값 설정
   onOpen: (type: ModalType, param1: number) =>
     set({ type, isOpen: true, param1 }), // param1을 상태에 저장
-  onClose: () => set({ isOpen: false, param1: 1 }), // 모달 닫힐 때 param1 초기화
+  onClose: () => set({ isOpen: false, param1: 0 }), // 모달 닫힐 때 param1 초기화
 }));

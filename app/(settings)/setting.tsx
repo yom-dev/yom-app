@@ -4,6 +4,7 @@ import SettingSlot from "@/components/Page/SettingPage/SettingSlot";
 import { supabase } from "@/utils/supabase";
 import { useDeleteUser } from "@/hooks/useDeleteUser";
 import useUpdateYomCoin from "@/hooks/useUpdateYomCoin";
+import { useModal } from "@/shared/store/use-modal-store";
 
 const Setting = () => {
   const handleSignOut = () => {
@@ -12,7 +13,7 @@ const Setting = () => {
 
   const { deleteUser, isDeleting } = useDeleteUser();
   const { updateYomCoin, loading, error } = useUpdateYomCoin();
-
+  const { onOpen } = useModal();
   const handleDeleteAccount = () => {
     Alert.alert(
       "Request for delete account",
@@ -74,7 +75,7 @@ const Setting = () => {
 
         {/* <TouchableOpacity
           onPress={() => {
-            updateYomCoin(100);
+            onOpen("Greetings", 1);
           }} // Call handleDeleteAccount on press
           disabled={isDeleting} // Disable the button while deleting
           className="h-[50px] flex justify-center w-[90%]"
