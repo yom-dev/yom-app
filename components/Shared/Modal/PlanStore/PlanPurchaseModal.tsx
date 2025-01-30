@@ -6,13 +6,13 @@ import {
   Image,
   Alert,
 } from "react-native";
-import React from "react";
-import { useModal } from "@/shared/store/use-modal-store";
+import React, { useState } from "react";
 import useYomCoinStore from "@/shared/store/yomCoinStore";
 import { supabase } from "@/utils/supabase";
 import { useGetUserId } from "@/hooks/useGetUserId";
 import useUpdateYomCoin from "@/hooks/useUpdateYomCoin";
 import { router } from "expo-router";
+import SetInitialNotificationModal from "@/components/Shared/Modal/Notification/SetInitialNotificationModal";
 
 interface PlanPurchaseModalProps {
   visible: boolean;
@@ -30,6 +30,7 @@ const PlanPurchaseModal: React.FC<PlanPurchaseModalProps> = ({
   const { yomCoin, setYomCoin } = useYomCoinStore();
   const { data: userId } = useGetUserId();
   const { updateYomCoin } = useUpdateYomCoin();
+  const [notifyModalVisible, setNotifyModalVisible] = useState(false);
 
   const handlePurchase = async () => {
     if (price !== undefined && price > yomCoin) {
@@ -49,7 +50,9 @@ const PlanPurchaseModal: React.FC<PlanPurchaseModalProps> = ({
       } else {
         console.log("Data updated successfully:", data);
         // Alert.alert("Plan Added!");
-        router.replace("/(tabs)/plan");
+        setNotifyModalVisible(true);
+        // onClose();
+        // router.replace("/(tabs)/plan");
       }
     }
   };
@@ -95,6 +98,13 @@ const PlanPurchaseModal: React.FC<PlanPurchaseModalProps> = ({
               </Text>
             </TouchableOpacity>
           </View>
+          <SetInitialNotificationModal
+            visible={notifyModalVisible}
+            onClose={() => {
+              setNotifyModalVisible(false);
+            }}
+            planName={infoPlanName}
+          ></SetInitialNotificationModal>
         </View>
       </View>
     </Modal>
