@@ -28,17 +28,17 @@ const GreetingsModal: React.FC<GreetingsModalProps> = ({ visible, param1 }) => {
           <View className="w-[94%] h-[65%] ">
             <ScrollView>
               <Text className="font-[WantedM] text-[15px] text-justify">
-                Hello there! We’re so happy you’ve joined us! {"\n"}
+                Hello there! We’re so glad you’ve joined us! {"\n"}
                 {"\n"}
                 <Text className="text-yomGreen font-[WantedSB">"yom"</Text> is
                 an app designed to help you manage your daily routine with
-                various content.
+                engaging content.
                 {"\n"}
                 {"\n"}
                 Our
                 <Text className="text-yomRed font-[WantedSB]"> mission</Text> is
-                to assist our users live their day to the fullest. For more
-                information please visit our website.
+                to empower you to make the most of your day. For more details,
+                please visit our website.
                 {"\n"}
                 {"\n"}
                 As a welcome gift, we are giving you
@@ -46,15 +46,15 @@ const GreetingsModal: React.FC<GreetingsModalProps> = ({ visible, param1 }) => {
                   {" "}
                   200
                 </Text>{" "}
-                coins so you can purchase content within our app.
+                coins which you can use to purchase content within the app.{" "}
                 {"\n"}
                 {"\n"}
-                Visit our
+                Head over to our
                 <Text className="text-yomGreen font-[WantedSB]">
                   {" "}
                   store page{" "}
                 </Text>
-                to start your exciting journey with yom!
+                now and start your exciting journey with yom!{" "}
               </Text>
             </ScrollView>
           </View>
