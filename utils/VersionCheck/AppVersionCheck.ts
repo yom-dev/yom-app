@@ -28,8 +28,8 @@ export const AppVersionCheck = async () => {
 
     if (updateNeeded.isNeeded) {
       Alert.alert(
-        "Update Required",
-        "A new version is available. Please update to continue using the app.",
+        "🆕 Update Available",
+        "A new version is ready with improvements and bug fixes. Update now for the best experience!",
         [
           {
             text: "Go to Store",
