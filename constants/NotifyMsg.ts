@@ -1,10 +1,10 @@
 export const NotifyMsg: { [key: string]: { title: string; body: string } } = {
   gratitude: {
     title: "🌳 Have you thanked today?",
-    body: "Write 3 things you are grateful for today and earn yom coin!",
+    body: "Write 3 things you are grateful for and earn yom coin!",
   },
   bibleReading: {
-    title: "📚 Done with today’s Bible reading?",
-    body: "Head over to our Bible reading page and track your Bible reading.",
+    title: "📚 Done with Bible reading?",
+    body: "Track your Bible reading and earn yom coin!",
   },
 };
