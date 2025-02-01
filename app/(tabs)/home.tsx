@@ -19,6 +19,7 @@ import { BackgroundImage } from "@rneui/themed/dist/config";
 import { ImageBackground } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
 import TutorialCard from "@/components/Shared/Card/TutorialCard";
+import CustomHeader from "@/components/Shared/Header/CustomHeader";
 
 export default function HomeScreen() {
   const { data, loading, error } = useGetProfile();
@@ -26,6 +27,7 @@ export default function HomeScreen() {
   return (
     <View className="h-full w-full bg-yomWhite flex items-center">
       <View className="bg-yomWhite w-[90%] flex h-full">
+        <CustomHeader />
         <FlatList
           data={[]}
           renderItem={null}

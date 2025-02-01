@@ -12,6 +12,7 @@ import ProfileText from "@/components/Page/ProfilePage/ProfileText";
 import useGetProfile from "@/hooks/useGetProfile"; // Import your custom hook
 import AvatarImagePicker from "@/components/Page/ProfilePage/AvatarImagePicker";
 import ProfileEditModal from "@/components/Shared/Modal/Profile/ProfileEditModal"; // ProfileEditModal 컴포넌트 임포트
+import CustomHeader from "@/components/Shared/Header/CustomHeader";
 
 export default function ProfilePage() {
   const { data, error, loading, refetch } = useGetProfile();
@@ -20,7 +21,8 @@ export default function ProfilePage() {
   // Handle loading state
   if (loading) {
     return (
-      <View className="h-full w-full bg-yomWhite flex justify-center items-center">
+      <View className="h-full w-[90%] bg-yomWhite flex justify-center items-center">
+        <CustomHeader />
         <ActivityIndicator size="large" color="#000" />
       </View>
     );
@@ -47,6 +49,7 @@ export default function ProfilePage() {
   return (
     <View className="h-full w-full bg-yomWhite flex items-center">
       <View className="bg-yomWhite w-[90%] flex h-full">
+        <CustomHeader />
         <ScrollView
           className="w-full h-full"
           showsVerticalScrollIndicator={false}
@@ -105,7 +108,6 @@ export default function ProfilePage() {
           <View className="w-full h-[50px]"></View>
           <View className="w-full h-[50px]"></View>
         </ScrollView>
-
         {/* ProfileEditModal 컴포넌트 추가 */}
         <ProfileEditModal
           visible={isModalVisible}

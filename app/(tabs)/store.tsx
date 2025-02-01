@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, FlatList, ActivityIndicator } from "react-native";
 import StoreCard from "@/components/Page/StorePage/StoreCard/StoreCard";
 import useGetStoreItems from "@/hooks/useGetStoreItems"; // Import the custom hook
+import CustomHeader from "@/components/Shared/Header/CustomHeader";
 
 export default function Plan() {
   const { data, loading, error } = useGetStoreItems(); // Use the custom hook
@@ -20,6 +21,7 @@ export default function Plan() {
   return (
     <View className="h-full w-full bg-yomWhite flex items-center">
       <View className="bg-yomWhite w-[90%] flex h-full">
+        <CustomHeader />
         <View className="w-full h-full">
           <View className="w-full h-full mt-[20px]">
             <FlatList

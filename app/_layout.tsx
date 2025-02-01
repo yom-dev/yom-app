@@ -5,7 +5,7 @@ import {
   useNavigation,
 } from "@react-navigation/native";
 import { AppVersionCheck } from "@/utils/VersionCheck/AppVersionCheck";
-import React, { useState, useEffect, useLayoutEffect } from "react";
+import React, { useState, useEffect, useMemo, useLayoutEffect } from "react";
 import { useFonts } from "expo-font";
 import { Stack, Link } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
@@ -59,6 +59,7 @@ export default function RootLayout() {
       SplashScreen.hideAsync();
     }
   }, [loaded]);
+
   if (!loaded) {
     return null;
   }
@@ -67,19 +68,21 @@ export default function RootLayout() {
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <GestureHandlerRootView>
         <ModalProvider />
-        <Stack>
+        <Stack screenOptions={{ gestureEnabled: true }}>
           <Stack.Screen
             name="(tabs)"
             options={{
-              headerShown: true,
+              headerShown: false,
               headerShadowVisible: false,
               headerTitle: "",
+
               headerLeft: () => (
                 <Text className="font-[WantedM] text-[20px] text-yomBlack">
                   yom
                 </Text>
               ),
               headerRight: () => <HeaderRight />,
+
               headerStyle: {
                 backgroundColor: Colors.light.background,
               },

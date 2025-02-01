@@ -12,7 +12,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assets": ["./assets/sounds/notification/notificaion_sound_1.wav"],
+    "assets": [
+      "./assets/sounds/notification/notificaion_sound_1.wav"
+    ],
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.yom.office.app",
@@ -22,6 +24,11 @@
     },
     "android": {
       "package": "com.yom.office.app"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ccf0e8ca-7524-4bd4-892b-ee2d1137a7de"
+      }
     }
   },
   "android": {
@@ -29,7 +36,9 @@
       "foregroundImage": "./assets/images/adaptive-icon.png",
       "backgroundColor": "#ffffff"
     },
-    "permissions": ["android.permission.RECORD_AUDIO"],
+    "permissions": [
+      "android.permission.RECORD_AUDIO"
+    ],
     "package": "com.yom.app"
   },
   "web": {
@@ -45,7 +54,9 @@
         "color": "#ffffff",
         "defaultChannel": "default",
         "badge": true,
-        "sounds": ["./assets/sounds/notification/notificaion_sound_1.wav"]
+        "sounds": [
+          "./assets/sounds/notification/notificaion_sound_1.wav"
+        ]
       }
     ],
     [
@@ -61,7 +72,9 @@
         "iosUrlScheme": "com.googleusercontent.apps.330776642226-97jaa538gdc5bve38kvikm3ik9gndldr"
       }
     ],
-    ["expo-router"],
+    [
+      "expo-router"
+    ],
     [
       "expo-font",
       {
@@ -80,7 +93,6 @@
         "androidAppId": "ca-app-pub-7270360511167481~3716631185",
         "iosAppId": "ca-app-pub-7270360511167481~3716631185",
         "userTrackingUsageDescription": "This allows yom.app to provide you with a better ads experience.",
-
         "skAdNetworkItems": [
           "cstr6suwn9.skadnetwork",
           "4fzdc2evr5.skadnetwork",

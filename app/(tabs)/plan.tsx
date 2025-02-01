@@ -13,6 +13,7 @@ import { useRouter } from "expo-router";
 import PlanCardWide from "@/components/Shared/PlanCard/PlanCardWide";
 import useGetMyPlans from "@/hooks/useGetMyPlans";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import CustomHeader from "@/components/Shared/Header/CustomHeader";
 
 export default function Plan() {
   const router = useRouter();
@@ -25,6 +26,7 @@ export default function Plan() {
   return (
     <View className="h-full w-full bg-yomWhite flex items-center">
       <View className="bg-yomWhite w-[90%] flex h-full">
+        <CustomHeader />
         <View className="w-full h-full">
           <View className="w-full h-full mt-[20px]">
             {loading && (
