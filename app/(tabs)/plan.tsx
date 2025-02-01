@@ -35,9 +35,15 @@ export default function Plan() {
                   className="w-full h-fit"
                   renderItem={({ item }) => (
                     <View>
-                      <View className="w-full h-[80px] rounded-xl bg-gray-200 mb-[30px]"></View>
-                      <View className="w-full h-[80px] rounded-xl bg-gray-200 mb-[30px]"></View>
-                      <View className="w-full h-[80px] rounded-xl bg-gray-200 mb-[30px]"></View>
+                      <View className="w-full h-[80px] rounded-xl bg-gray-400 mb-[30px] flex justify-center items-center">
+                        <ActivityIndicator />
+                      </View>
+                      <View className="w-full h-[80px] rounded-xl bg-gray-400 mb-[30px] flex justify-center items-center">
+                        <ActivityIndicator />
+                      </View>
+                      <View className="w-full h-[80px] rounded-xl bg-gray-400 mb-[30px] flex justify-center items-center">
+                        <ActivityIndicator />
+                      </View>
                     </View>
                   )}
                   keyExtractor={(item) => item.key}
