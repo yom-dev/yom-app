@@ -5,7 +5,7 @@ import {
   AppState,
   AppStateStatus,
 } from "react-native"; // ActivityIndicator 추가
-import React, { FC, useState, useLayoutEffect } from "react";
+import React, { FC, useState, useLayoutEffect, useEffect } from "react";
 import { Image } from "expo-image";
 import { Link } from "expo-router";
 import * as Notifications from "expo-notifications";
@@ -18,7 +18,7 @@ const HeaderRight = () => {
   const { yomCoin, setYomCoin } = useYomCoinStore();
 
   // data 값이 변경되었을 때 yomCoin 상태를 업데이트하는 useEffect
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (data !== undefined) {
       setYomCoin(data);
     }
@@ -35,7 +35,7 @@ const HeaderRight = () => {
     setNotification(deliveredNotifications);
   }
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const fetchDeliveredNotifications = async () => {
       const deliveredNotifications =
         await Notifications.getPresentedNotificationsAsync();
@@ -51,7 +51,7 @@ const HeaderRight = () => {
     };
   }, []);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const handleAppStateChange = (nextAppState: AppStateStatus) => {
       if (appState.match(/inactive|background/) && nextAppState === "active") {
         fetchDeliveredNotifications();

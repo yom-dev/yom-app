@@ -22,7 +22,7 @@ export default function ProfilePage() {
   if (loading) {
     return (
       <View className="h-full w-[90%] bg-yomWhite flex justify-center items-center">
-        <CustomHeader />
+        {/* <CustomHeader /> */}
         <ActivityIndicator size="large" color="#000" />
       </View>
     );
@@ -49,7 +49,7 @@ export default function ProfilePage() {
   return (
     <View className="h-full w-full bg-yomWhite flex items-center">
       <View className="bg-yomWhite w-[90%] flex h-full">
-        <CustomHeader />
+        {/* <CustomHeader /> */}
         <ScrollView
           className="w-full h-full"
           showsVerticalScrollIndicator={false}

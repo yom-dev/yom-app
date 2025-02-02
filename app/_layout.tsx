@@ -68,11 +68,11 @@ export default function RootLayout() {
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <GestureHandlerRootView>
         <ModalProvider />
-        <Stack screenOptions={{ gestureEnabled: true }}>
+        <Stack screenOptions={{ gestureEnabled: false }}>
           <Stack.Screen
             name="(tabs)"
             options={{
-              headerShown: false,
+              headerShown: true,
               headerShadowVisible: false,
               headerTitle: "",
 

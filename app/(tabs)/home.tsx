@@ -27,7 +27,7 @@ export default function HomeScreen() {
   return (
     <View className="h-full w-full bg-yomWhite flex items-center">
       <View className="bg-yomWhite w-[90%] flex h-full">
-        <CustomHeader />
+        {/* <CustomHeader /> */}
         <FlatList
           data={[]}
           renderItem={null}
