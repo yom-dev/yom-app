@@ -3,6 +3,7 @@ import { View, Text } from "react-native";
 import SegmentedControl from "@react-native-segmented-control/segmented-control";
 import BibleReadingProvider from "@/components/Plan/BibleReading/BibleReadingProvider";
 import useStoredPlanName from "@/utils/BibleReading/getStoredPlanName";
+import ContentPageHeader from "@/components/Shared/Header/ContentPageHeader";
 
 const BibleReading = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -17,6 +18,7 @@ const BibleReading = () => {
   return (
     <View className="w-full flex-row justify-center bg-white h-full">
       <View className="w-[90%] bg-white h-full">
+        <ContentPageHeader color={"#000000"} />
         <SegmentedControl
           values={["Old", "New", "Stats", "Settings"]}
           selectedIndex={selectedIndex}

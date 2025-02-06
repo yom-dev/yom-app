@@ -101,7 +101,7 @@ export default function RootLayout() {
               headerLeft: () => (
                 <Ionicons
                   name="arrow-back"
-                  size={24}
+                  size={28}
                   color={"#000000"}
                   onPress={navigation.goBack}
                 />
@@ -121,7 +121,7 @@ export default function RootLayout() {
               headerLeft: () => (
                 <Ionicons
                   name="arrow-back"
-                  size={24}
+                  size={28}
                   color={"#000000"}
                   onPress={navigation.goBack} // Update to use navigation.goBack
                 />
@@ -153,7 +153,7 @@ export default function RootLayout() {
               headerLeft: () => (
                 <Ionicons
                   name="arrow-back"
-                  size={24}
+                  size={28}
                   color={"#000000"}
                   onPress={navigation.goBack}
                 />
@@ -164,7 +164,7 @@ export default function RootLayout() {
           <Stack.Screen
             name="plan/plan/[contentPlanName]" // 특정 경로를 지정
             options={{
-              headerShown: true,
+              headerShown: false,
               headerShadowVisible: false,
               headerTitle: "",
               headerBackground() {
@@ -173,7 +173,7 @@ export default function RootLayout() {
               headerLeft: () => (
                 <Ionicons
                   name="arrow-back"
-                  size={24}
+                  size={28}
                   color={"#000000"}
                   onPress={navigation.goBack}
                 />
@@ -192,7 +192,7 @@ export default function RootLayout() {
               headerLeft: () => (
                 <Ionicons
                   name="arrow-back"
-                  size={24}
+                  size={28}
                   color={"#000000"}
                   onPress={navigation.goBack}
                 />
