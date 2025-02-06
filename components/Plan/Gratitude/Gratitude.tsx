@@ -4,6 +4,7 @@ import SegmentedControl from "@react-native-segmented-control/segmented-control"
 import GratitudeProvider from "./GratitudeProvider";
 import ContentPage from "@/app/plan/plan/[contentPlanName]";
 import ContentPageHeader from "@/components/Shared/Header/ContentPageHeader";
+import { LinearGradient } from "expo-linear-gradient";
 
 const Gratitude = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -12,7 +13,7 @@ const Gratitude = () => {
   return (
     <View className="w-full flex-row justify-center bg-white h-full">
       <View className="w-[90%] bg-white h-full">
-        <ContentPageHeader color={"#000000"} />
+        <ContentPageHeader arrowColor={"#000000"} />
 
         <SegmentedControl
           values={["Main", "Record", "Settings"]}

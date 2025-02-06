@@ -11,10 +11,12 @@ import useLocalNotifications from "@/hooks/useLocalNotification";
 
 interface PlanNotificationSettingProps {
   planName: string;
+  darkMode?: boolean;
 }
 
 const PlanNotificationSetting = ({
   planName,
+  darkMode,
 }: PlanNotificationSettingProps) => {
   const [notifications, setNotifications] = useState<any[]>([]);
   const [update, setUpdate] = useState(0);
@@ -96,7 +98,15 @@ const PlanNotificationSetting = ({
           ListFooterComponent={() => <View style={{ height: 100 }} />}
           ListHeaderComponent={() => (
             <View className="w-fit h-fit mb-[10px] ">
-              <Text className="font-[WantedSB] text-[28px]"> Notification</Text>
+              {darkMode ? (
+                <Text className="font-[WantedSB] text-white text-[28px]">
+                  Notification
+                </Text>
+              ) : (
+                <Text className="font-[WantedSB] text-[28px]">
+                  Notification
+                </Text>
+              )}
             </View>
           )}
           ListEmptyComponent={() => (

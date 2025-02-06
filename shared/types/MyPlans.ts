@@ -4,4 +4,5 @@ export type MyPlans = {
   reading: boolean;
   gratitude: boolean;
   meditation: boolean;
+  sleepAssistant: boolean;
 };
