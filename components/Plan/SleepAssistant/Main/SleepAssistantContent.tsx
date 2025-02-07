@@ -14,8 +14,8 @@ const SleepAssistantContent = () => {
       </Text>
 
       {/* Ambience */}
-      <TouchableOpacity className="w-full h-fit flex items-center  absolute top-[18%]">
-        <View className="w-[70%] aspect-square rounded-full ">
+      <TouchableOpacity className="w-full h-fit flex items-center  absolute top-[12%]">
+        <View className="w-[80%] aspect-square rounded-full ">
           <ImageBackground
             style={{ width: "100%", height: "100%" }}
             source={require("@/assets/images/Plan/SleepAssistant/pink-noise.png")}
