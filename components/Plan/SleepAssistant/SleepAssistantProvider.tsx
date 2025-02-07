@@ -3,6 +3,8 @@ import React from "react";
 
 import getGratitudeItems from "@/utils/Gratitude/getGratitudeItems";
 import PlanNotificationSetting from "@/components/Plan/Shared/PlanNotificationSetting";
+import SleepAssistantContent from "./Main/SleepAssistantContent";
+import SleepAssistantStat from "./Stat/SleepAssistantStat";
 
 interface GratitudeProviderProps {
   index: number;
@@ -13,12 +15,8 @@ const SleepAssistantProvider = ({ index }: GratitudeProviderProps) => {
 
   return (
     <View>
-      {index === 0 && (
-        <View>
-          <Text>main</Text>
-        </View>
-      )}
-      {index === 1 && <View></View>}
+      {index === 0 && <SleepAssistantContent />}
+      {index === 1 && <SleepAssistantStat />}
       {index === 2 && (
         <PlanNotificationSetting planName="sleepAssistant" darkMode={true} />
       )}

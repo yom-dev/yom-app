@@ -16,19 +16,23 @@ const SleepAssistant = () => {
         <View className="w-[90%] bg-tranparent h-full">
           <ContentPageHeader arrowColor={"#FFFFFF"} />
 
-          <SegmentedControl
-            values={["Main", "Record", "Setting"]}
-            selectedIndex={selectedIndex}
-            onChange={(event) => {
-              setSelectedIndex(event.nativeEvent.selectedSegmentIndex);
-              setSelectedValue(event.nativeEvent.value);
-            }}
-            backgroundColor="#68647F"
-            tintColor="#1E1744"
-            activeFontStyle={{ color: "#FFFFFF" }}
-            fontStyle={{ color: "#D9D9D9" }}
-          />
-          <SleepAssistantProvider index={selectedIndex} />
+          <View className="w-full h-[4%] flex justify-center">
+            <SegmentedControl
+              values={["Main", "Stat", "Setting"]}
+              selectedIndex={selectedIndex}
+              onChange={(event) => {
+                setSelectedIndex(event.nativeEvent.selectedSegmentIndex);
+                setSelectedValue(event.nativeEvent.value);
+              }}
+              backgroundColor="#68647F"
+              tintColor="#1E1744"
+              activeFontStyle={{ color: "#FFFFFF" }}
+              fontStyle={{ color: "#D9D9D9" }}
+            />
+          </View>
+          <View className="w-full h-[85%] ">
+            <SleepAssistantProvider index={selectedIndex} />
+          </View>
         </View>
       </View>
     </LinearGradient>

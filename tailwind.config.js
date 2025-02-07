@@ -19,8 +19,9 @@ module.exports = {
         yomPurple: "#403277",
         bibleBrown: "#BC6619",
         bibleIvory: "#FFECCF",
-
         bibleLightBrown: "#F0B775",
+        sleepGray: "#68647F",
+        sleepDarkNavy: "#1D1643",
       },
     },
   },

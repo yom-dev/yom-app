@@ -58,10 +58,10 @@ const NewTestment: React.FC<NewTestmentProps> = ({ planName }) => {
         showsVerticalScrollIndicator={false}
       />
 
-      <View className="w-full h-[50px] absolute top-[65%]">
+      <View className="w-full h-[50px] absolute bottom-[29%]">
         <CustomButton
           title={newLoading ? "Loading..." : "Save Reading"}
-          titleSize={16}
+          titleSize={18}
           backgroundColor={"bibleBrown"}
           activeBackgroundColor={"bibleBrown"}
           textColor={"yomWhite"}

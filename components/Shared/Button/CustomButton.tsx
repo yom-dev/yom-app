@@ -1,4 +1,4 @@
-import { Text, Pressable } from "react-native";
+import { Text, Pressable, TouchableOpacity } from "react-native";
 import React from "react";
 
 const CustomButton = ({
@@ -6,14 +6,16 @@ const CustomButton = ({
   titleSize,
   backgroundColor,
   textColor,
-  activeBackgroundColor,
+  activeBackgroundColor = "blah",
+  borderColor = "transparent",
   onPress,
 }: {
   title: string;
   titleSize: number;
   backgroundColor: string;
   textColor: string;
-  activeBackgroundColor: string;
+  borderColor?: string;
+  activeBackgroundColor?: string;
   onPress: () => void;
 }) => {
   const bgColorVariants: { [key: string]: string } = {
@@ -27,6 +29,8 @@ const CustomButton = ({
     bibleIvory: "bg-bibleIvory",
     bibleBrown: "bg-bibleBrown",
     bibleLightBrown: "bg-bibleLightBrown",
+    sleepGray: "bg-sleepGray",
+    sleepDarkNavy: "bg-sleepDarkNavy",
   };
 
   const textColorVariants: { [key: string]: string } = {
@@ -37,9 +41,10 @@ const CustomButton = ({
     yomRed: "text-yomRed",
     yomDarkGreen: "text-yomDarkGreen",
     yomLightGray: "text-yomLightGray",
-    bibleIvory: "bg-bibleIvory",
-    bibleBrown: "bg-bibleBrown",
+    bibleIvory: "text-bibleIvory",
+    bibleBrown: "text-bibleBrown",
     bibleLightBrown: "bg-bibleLightBrown",
+    white: "text-white",
   };
   const bgColorVariantsActive: { [key: string]: string } = {
     yomGreen: "active:bg-yomGreen",
@@ -54,6 +59,22 @@ const CustomButton = ({
     bibleLightBrown: "bg-bibleLightBrown",
   };
 
+  const borderColorVariants: { [key: string]: string } = {
+    tranparent: "",
+    yomGreen: "border-yomGreen border-[1px]",
+    yomWhite: "border-yomWhite border-[1px]",
+    yomBlack: "border-yomBlack border-[1px]",
+    yomGray: "border-yomGray border-[1px]",
+    yomRed: "border-yomRed border-[1px]",
+    yomDarkGreen: "border-yomDarkGreen border-[1px]",
+    yomLightGray: "border-yomLightGray border-[1px]",
+    bibleIvory: "border-bibleIvory border-[1px]",
+    bibleBrown: "border-bibleBrown border-[1px]",
+    bibleLightBrown: "border-bibleLightBrown border-[1px]",
+    sleepGray: "border-sleepGray border-[1px]",
+    sleepDarkNavy: "border-sleepDarkNavy border-[1px]",
+  };
+
   const titleSizeVariants: { [key: number]: string } = {
     14: "text-[14px]",
     16: "text-[16px]",
@@ -65,16 +86,16 @@ const CustomButton = ({
   };
 
   return (
-    <Pressable
-      className={`w-full h-full ${bgColorVariants[backgroundColor]} flex justify-center items-center rounded-2xl active:opacity-90 ${bgColorVariantsActive[activeBackgroundColor]}`}
+    <TouchableOpacity
+      className={`w-full h-full ${bgColorVariants[backgroundColor]} flex justify-center items-center rounded-xl  ${borderColorVariants[borderColor]}`}
       onPress={onPress}
     >
       <Text
-        className={`${textColorVariants[textColor]} font-[WantedSB] ${titleSizeVariants[titleSize]}`}
+        className={`${textColorVariants[textColor]} font-[WantedM] ${titleSizeVariants[titleSize]}`}
       >
         {title}
       </Text>
-    </Pressable>
+    </TouchableOpacity>
   );
 };
 

@@ -88,7 +88,7 @@ const PlanNotificationSetting = ({
   };
 
   return (
-    <View className="w-full h-full mt-[30px]">
+    <View className="w-full h-full pt-6">
       <View className="flex-1 bg-red">
         <FlatList
           data={notifications} // 알림 데이터를 상태에서 가져옴
@@ -99,11 +99,11 @@ const PlanNotificationSetting = ({
           ListHeaderComponent={() => (
             <View className="w-fit h-fit mb-[10px] ">
               {darkMode ? (
-                <Text className="font-[WantedSB] text-white text-[28px]">
+                <Text className="font-[WantedSB] text-white text-[32px]">
                   Notification
                 </Text>
               ) : (
-                <Text className="font-[WantedSB] text-[28px]">
+                <Text className="font-[WantedSB] text-[32px]">
                   Notification
                 </Text>
               )}
@@ -119,8 +119,8 @@ const PlanNotificationSetting = ({
         />
       </View>
 
-      <View className="w-full h-[45px] absolute top-[70%] flex flex-row justify-between">
-        <View className="w-[48%] h-[45px] flex-row justify-center">
+      <View className="w-full h-[50px] absolute bottom-[10%] flex flex-row justify-between">
+        <View className="w-[48%] h-[50px] flex-row justify-center">
           <CustomButton
             title="Add Notification"
             titleSize={16}

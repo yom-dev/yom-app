@@ -12,9 +12,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assets": [
-      "./assets/sounds/notification/notificaion_sound_1.wav"
-    ],
+    "assets": ["./assets/sounds/notification/notificaion_sound_1.wav"],
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.yom.office.app",
@@ -36,9 +34,7 @@
       "foregroundImage": "./assets/images/adaptive-icon.png",
       "backgroundColor": "#ffffff"
     },
-    "permissions": [
-      "android.permission.RECORD_AUDIO"
-    ],
+    "permissions": ["android.permission.RECORD_AUDIO"],
     "package": "com.yom.app"
   },
   "web": {
@@ -54,9 +50,13 @@
         "color": "#ffffff",
         "defaultChannel": "default",
         "badge": true,
-        "sounds": [
-          "./assets/sounds/notification/notificaion_sound_1.wav"
-        ]
+        "sounds": ["./assets/sounds/notification/notificaion_sound_1.wav"]
+      }
+    ],
+    [
+      "expo-av",
+      {
+        "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone."
       }
     ],
     [
@@ -72,9 +72,7 @@
         "iosUrlScheme": "com.googleusercontent.apps.330776642226-97jaa538gdc5bve38kvikm3ik9gndldr"
       }
     ],
-    [
-      "expo-router"
-    ],
+    ["expo-router"],
     [
       "expo-font",
       {

@@ -164,7 +164,7 @@ const GratitudeContent: React.FC<GratitudeContentProps> = ({
           </ScrollView>
         </KeyboardAwareScrollView>
         {!hasTodayEntry && (
-          <View className="w-full h-[45px] mt-[35px] fixed bottom-[20%]">
+          <View className="w-full h-[50px] mt-[35px] fixed bottom-[18%]">
             <CustomButton
               title={gLoading ? "Loading" : "Save"}
               titleSize={18}
