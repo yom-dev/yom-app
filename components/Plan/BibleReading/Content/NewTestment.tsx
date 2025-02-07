@@ -54,11 +54,11 @@ const NewTestment: React.FC<NewTestmentProps> = ({ planName }) => {
           </View>
         )}
         keyExtractor={(item) => item.title}
-        ListFooterComponent={<View className="w-full h-[350px]" />}
+        ListFooterComponent={<View className="w-full h-[150px]" />}
         showsVerticalScrollIndicator={false}
       />
 
-      <View className="w-full h-[50px] absolute bottom-[29%]">
+      <View className="w-full h-[50px] absolute bottom-[4%]">
         <CustomButton
           title={newLoading ? "Loading..." : "Save Reading"}
           titleSize={18}

@@ -113,75 +113,73 @@ const GratitudeContent: React.FC<GratitudeContentProps> = ({
   }
 
   return (
-    <View className="w-full h-full flex-row justify-center">
-      <View className="w-full">
-        <KeyboardAwareScrollView
-          style={{ flex: 1 }}
-          showsVerticalScrollIndicator={false}
-          extraScrollHeight={80} // 키보드와 인풋 사이의 간격을 설정
-          enableAutomaticScroll={true} // 자동 스크롤을 활성화
-          keyboardOpeningTime={100}
-        >
-          <ScrollView>
-            <View className="w-full h-[200px] mt-[60px] flex-1 justify-center items-center">
-              <ImageBackground
-                source={require("@/assets/images/icons/note-icon.png")}
-                className="w-full h-full flex justify-center items-center"
-                resizeMode="contain"
-                style={{ borderRadius: 20 }}
+    <View className="w-full h-full ">
+      <KeyboardAwareScrollView
+        style={{ flex: 1 }}
+        showsVerticalScrollIndicator={false}
+        extraScrollHeight={80} // 키보드와 인풋 사이의 간격을 설정
+        enableAutomaticScroll={true} // 자동 스크롤을 활성화
+        keyboardOpeningTime={100}
+      >
+        {/* <ScrollView> */}
+        <View className="w-full h-[200px] flex justify-center items-center fixed top-[15%]">
+          <ImageBackground
+            source={require("@/assets/images/icons/note-icon.png")}
+            className="w-full h-full flex justify-center items-center"
+            resizeMode="contain"
+            style={{ borderRadius: 20 }}
+          />
+        </View>
+
+        {!hasTodayEntry ? (
+          <View className=" w-full fixed top-[30%] ">
+            <Text className="text-[16px] font-[WantedSB]">
+              What are you grateful for today?
+            </Text>
+            <View className="h-[220px] mt-[30px] flex">
+              <GratitudeItem
+                item1={item1}
+                item2={item2}
+                item3={item3}
+                setItem1={setItem1}
+                setItem2={setItem2}
+                setItem3={setItem3}
               />
             </View>
-
-            {!hasTodayEntry ? (
-              <View className="mb-[30px]">
-                <Text className="text-[16px] font-[WantedSB] mt-[55px]">
-                  What are you grateful for today?
-                </Text>
-                <View className="h-[220px] mt-[30px] flex">
-                  <GratitudeItem
-                    item1={item1}
-                    item2={item2}
-                    item3={item3}
-                    setItem1={setItem1}
-                    setItem2={setItem2}
-                    setItem3={setItem3}
-                  />
-                </View>
-              </View>
-            ) : (
-              <View className="w-full h-fit">
-                <Text className="text-[24px] font-[WantedSB] mt-[55px]">
-                  Today, you thanked for
-                </Text>
-                <View className="mt-[30px] flex gap-6">
-                  <Text className="text-[20px] font-[WantedM]">{item1}</Text>
-                  <Text className="text-[20px] font-[WantedM]">{item2}</Text>
-                  <Text className="text-[20px] font-[WantedM]">{item3}</Text>
-                </View>
-                <View className="h-[60px]"></View>
-              </View>
-            )}
-          </ScrollView>
-        </KeyboardAwareScrollView>
-        {!hasTodayEntry && (
-          <View className="w-full h-[50px] mt-[35px] fixed bottom-[18%]">
-            <CustomButton
-              title={gLoading ? "Loading" : "Save"}
-              titleSize={18}
-              backgroundColor="yomGreen"
-              activeBackgroundColor="yomDarkGreen"
-              textColor="yomWhite"
-              onPress={
-                gLoading
-                  ? () => {}
-                  : () => {
-                      handleSave();
-                    }
-              }
-            />
+          </View>
+        ) : (
+          <View className="w-full h-fit">
+            <Text className="text-[24px] font-[WantedSB] mt-[55px]">
+              Today, you thanked for
+            </Text>
+            <View className="mt-[30px] flex gap-6">
+              <Text className="text-[20px] font-[WantedM]">{item1}</Text>
+              <Text className="text-[20px] font-[WantedM]">{item2}</Text>
+              <Text className="text-[20px] font-[WantedM]">{item3}</Text>
+            </View>
+            <View className="h-[60px]"></View>
           </View>
         )}
-      </View>
+        {/* </ScrollView> */}
+      </KeyboardAwareScrollView>
+      {!hasTodayEntry && (
+        <View className="w-full h-[50px] mt-[35px] fixed bottom-[4%]">
+          <CustomButton
+            title={gLoading ? "Loading" : "Save"}
+            titleSize={18}
+            backgroundColor="yomGreen"
+            activeBackgroundColor="yomDarkGreen"
+            textColor="yomWhite"
+            onPress={
+              gLoading
+                ? () => {}
+                : () => {
+                    handleSave();
+                  }
+            }
+          />
+        </View>
+      )}
     </View>
   );
 };

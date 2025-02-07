@@ -60,7 +60,7 @@ const BibleReadingProvider = ({
   return (
     <View>
       {index === 3 ? null : (
-        <View className="w-full mt-[25px] flex-row justify-between items-end">
+        <View className="w-full  flex-row justify-between items-end  h-[7%]">
           <View className="w-[85%] h-[30px]">
             <Text className="font-[WantedM] text-[25px]">{data?.planName}</Text>
           </View>
@@ -75,27 +75,37 @@ const BibleReadingProvider = ({
           </TouchableOpacity>
         </View>
       )}
-
       {index === 0 && (
-        <OldTestment
-          data={data?.oldTestament}
-          loading={loading}
-          refetch={refetch}
-          error={error}
-          planName={planName}
-        />
+        <View className="h-[93%]">
+          <OldTestment
+            data={data?.oldTestament}
+            loading={loading}
+            refetch={refetch}
+            error={error}
+            planName={planName}
+          />
+        </View>
       )}
       {index === 1 && (
-        <NewTestment
-          data={data?.newTestament}
-          loading={loading}
-          refetch={refetch}
-          error={error}
-          planName={planName}
-        />
+        <View className="h-[93%]">
+          <NewTestment
+            data={data?.newTestament}
+            loading={loading}
+            refetch={refetch}
+            error={error}
+            planName={planName}
+          />
+        </View>
       )}
       {index === 2 && (
-        <Stats data={data} loading={loading} refetch={refetch} error={error} />
+        <View className="h-[93%]">
+          <Stats
+            data={data}
+            loading={loading}
+            refetch={refetch}
+            error={error}
+          />
+        </View>
       )}
       {index === 3 && <PlanNotificationSetting planName="bibleReading" />}
 

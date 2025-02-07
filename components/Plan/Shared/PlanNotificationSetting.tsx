@@ -88,7 +88,7 @@ const PlanNotificationSetting = ({
   };
 
   return (
-    <View className="w-full h-full pt-6">
+    <View className="w-full h-[100%]   pt-6">
       <View className="flex-1 bg-red">
         <FlatList
           data={notifications} // 알림 데이터를 상태에서 가져옴
@@ -119,7 +119,7 @@ const PlanNotificationSetting = ({
         />
       </View>
 
-      <View className="w-full h-[50px] absolute bottom-[10%] flex flex-row justify-between">
+      <View className="w-full h-[50px] abosolute bottom-[4%] flex flex-row justify-between">
         <View className="w-[48%] h-[50px] flex-row justify-center">
           <CustomButton
             title="Add Notification"

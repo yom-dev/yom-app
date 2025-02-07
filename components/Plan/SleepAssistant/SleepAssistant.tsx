@@ -16,7 +16,7 @@ const SleepAssistant = () => {
         <View className="w-[90%] bg-tranparent h-full">
           <ContentPageHeader arrowColor={"#FFFFFF"} />
 
-          <View className="w-full h-[4%] flex justify-center">
+          <View className="w-full h-[4%] flex justify-end">
             <SegmentedControl
               values={["Main", "Stat", "Setting"]}
               selectedIndex={selectedIndex}

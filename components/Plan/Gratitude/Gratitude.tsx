@@ -15,15 +15,19 @@ const Gratitude = () => {
       <View className="w-[90%] bg-white h-full">
         <ContentPageHeader arrowColor={"#000000"} />
 
-        <SegmentedControl
-          values={["Main", "Record", "Settings"]}
-          selectedIndex={selectedIndex}
-          onChange={(event) => {
-            setSelectedIndex(event.nativeEvent.selectedSegmentIndex);
-            setSelectedValue(event.nativeEvent.value);
-          }}
-        />
-        <GratitudeProvider index={selectedIndex} />
+        <View className="w-full h-[4%] flex justify-end">
+          <SegmentedControl
+            values={["Main", "Record", "Settings"]}
+            selectedIndex={selectedIndex}
+            onChange={(event) => {
+              setSelectedIndex(event.nativeEvent.selectedSegmentIndex);
+              setSelectedValue(event.nativeEvent.value);
+            }}
+          />
+        </View>
+        <View className="w-full h-[85%]">
+          <GratitudeProvider index={selectedIndex} />
+        </View>
       </View>
     </View>
   );

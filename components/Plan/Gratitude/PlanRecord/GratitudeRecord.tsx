@@ -47,39 +47,40 @@ const GratitudeRecord = ({ data }: GratitudeRecordProps) => {
   }, [gratitudeData, month, year]);
 
   return (
-    <View className="w-full h-[86%] mt-[30px]">
-      <View className="w-full h-full rounded-xl overflow-hidden">
+    <View className="w-full h-full  flex justify-start pt-3">
+      <View className="w-full h-[96%] rounded-xl overflow-hidden ">
         <ImageBackground
           source={require("@/assets/images/background/main-card-background.png")}
-          className="w-full h-full flex justify-start items-start px-[20px] py-[20px]"
           resizeMode="cover"
         >
-          <View className="flex flex-column justify-between h-[7%]  w-full">
-            <GratitudeRecordMonthPicker
-              month={month}
-              year={year}
-              setMonth={setMonth}
-              setYear={setYear}
+          <View className="w-full h-full px-[20px] py-[20px] flex justify-start items-start">
+            <View className="flex flex-column justify-between h-[7%]  w-full">
+              <GratitudeRecordMonthPicker
+                month={month}
+                year={year}
+                setMonth={setMonth}
+                setYear={setYear}
+              />
+            </View>
+            <FlatList
+              className="w-full h-[93%] mt-[10px] "
+              data={filteredData}
+              keyExtractor={(item) => item.date}
+              renderItem={({ item }) => (
+                <GratitudeRecordItem date={item.date} items={item.items} />
+              )}
+              showsVerticalScrollIndicator={false}
+              contentContainerStyle={{ gap: 20 }}
+              horizontal={false} // Disable horizontal scrolling
+              ListEmptyComponent={
+                <View className="w-full h-full flex-1 flex items-center justify-center mt-[0px]">
+                  <Text className="text-yomWhite text-[24px] font-[WantedSB]">
+                    No gratitude in {month}
+                  </Text>
+                </View>
+              }
             />
           </View>
-          <FlatList
-            className="w-full h-[93%] mt-[10px]"
-            data={filteredData}
-            keyExtractor={(item) => item.date}
-            renderItem={({ item }) => (
-              <GratitudeRecordItem date={item.date} items={item.items} />
-            )}
-            showsVerticalScrollIndicator={false}
-            contentContainerStyle={{ gap: 20 }}
-            horizontal={false} // Disable horizontal scrolling
-            ListEmptyComponent={
-              <View className="w-full h-full flex-1 flex items-center justify-center mt-[0px]">
-                <Text className="text-yomWhite text-[24px] font-[WantedSB]">
-                  No gratitude in {month}
-                </Text>
-              </View>
-            }
-          />
         </ImageBackground>
       </View>
     </View>

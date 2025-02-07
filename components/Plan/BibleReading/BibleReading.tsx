@@ -16,28 +16,33 @@ const BibleReading = () => {
   };
 
   return (
-    <View className="w-full flex-row justify-center bg-white h-full">
+    <View className="w-full h-full flex-row justify-center bg-white">
       <View className="w-[90%] bg-white h-full">
-        <ContentPageHeader color={"#000000"} />
-        <SegmentedControl
-          values={["Old", "New", "Stats", "Settings"]}
-          selectedIndex={selectedIndex}
-          onChange={(event) => {
-            setSelectedIndex(event.nativeEvent.selectedSegmentIndex);
-            setSelectedValue(event.nativeEvent.value);
-          }}
-        />
+        <ContentPageHeader />
+
+        <View className="w-full h-[4%] flex justify-end">
+          <SegmentedControl
+            values={["Old", "New", "Stats", "Settings"]}
+            selectedIndex={selectedIndex}
+            onChange={(event) => {
+              setSelectedIndex(event.nativeEvent.selectedSegmentIndex);
+              setSelectedValue(event.nativeEvent.value);
+            }}
+          />
+        </View>
 
         {loading ? (
           <View className="flex-1 justify-center items-center">
             <Text>Loading...</Text>
           </View>
         ) : (
-          <BibleReadingProvider
-            key={refreshKey} // Force re-render by changing key
-            index={selectedIndex}
-            planName={planName}
-          />
+          <View className="w-full h-[85%]">
+            <BibleReadingProvider
+              key={refreshKey} // Force re-render by changing key
+              index={selectedIndex}
+              planName={planName}
+            />
+          </View>
         )}
       </View>
     </View>

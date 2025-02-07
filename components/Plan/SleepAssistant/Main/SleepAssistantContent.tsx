@@ -32,7 +32,7 @@ const SleepAssistantContent = () => {
       </View>
 
       {/* Button */}
-      <View className="w-full h-[50px] flex-row justify-between  absolute bottom-[5%]">
+      <View className="w-full h-[50px] flex-row justify-between  absolute bottom-[4%]">
         {/* Sleep Button */}
         <View className="w-[84%]">
           <CustomButton

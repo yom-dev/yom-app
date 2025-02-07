@@ -61,10 +61,10 @@ const OldTestment: React.FC<OldTestmentProps> = ({
           </View>
         )}
         keyExtractor={(item) => item.title}
-        ListFooterComponent={<View className="w-full h-[350px]" />}
+        ListFooterComponent={<View className="w-full h-[150px]" />}
         showsVerticalScrollIndicator={false}
       />
-      <View className="w-full h-[50px] absolute bottom-[29%]">
+      <View className="w-full h-[50px] absolute bottom-[4%]">
         <CustomButton
           title="Save Reading"
           titleSize={18}
